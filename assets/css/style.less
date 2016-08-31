@@ -24,21 +24,30 @@ body {
   height: 48px;
   background-color: darken(@dark, 20%);
   .tool {
-    width: 64px;
+    position: relative;
+    width: 100px;
     height: 24px;
     margin: 5px;
     padding-top: 8px;
-    background-color: @green;
-    color: @dark;
+    color: @green;
     text-align: center;
     cursor: pointer;
+    i {
+      position: absolute;
+      font-size: 32px;
+      top: 0;
+      left: 5px;
+    }
+    span {
+      position: absolute;
+      font-size: 16px;
+      top: 8px;
+      left: 45px;
+    }
   }
   .tool:hover {
-    width: 62px;
-    height: 22px;
-    background-color: transparent;
-    color: @light-blue;
-    border: 1px solid @light-blue;
+    background-color: @green;
+    color: @dark;
   }
 }
 .body {
@@ -68,6 +77,11 @@ body {
   border: 1px solid @green;
   color: #FFF;
   cursor: pointer;
+  padding: 5px;
+}
+.block:hover {
+  color: @light-blue;
+  border: 1px solid @light-blue;
 }
 .test {
   /***************************** Required styles *****************************/
@@ -89,8 +103,8 @@ body {
    */
   .nestedDemo .dropzone ul[dnd-list] {
     min-height: 42px;
-    margin: 0;
-    padding-left: 0;
+    margin: 0px;
+    padding-left: 0px;
   }
 
   /**
@@ -104,7 +118,7 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     display: block;
-    padding: 0;
+    padding: 0px;
   }
 
   /**
@@ -216,7 +230,17 @@ body {
     display: none;
   }
 }
-ul
-{
+ul, li {
+  border: 1px solid black;
   list-style-type: none;
+  min-height: 30px;
+
+}
+.block-box {
+  width: 200px;
+  height: 100%;
+}
+.trashcan {
+  height: 50px;
+  width: 100px;
 }

@@ -6,29 +6,28 @@ define([], function () {
         $scope.models = {
             selected: null,
             templates: [
-                {type: "item", id: 2},
-                {type: "container", id: 1, columns: [[], []]}
+                {
+                    type: "item",
+                    id: "Write('Hello World!');",
+                    content: [
+                        "Write",
+                        [
+                            "(",
+                            "Hello World",
+                            ", var",
+                            ")"
+                        ]
+                    ]
+                }
             ],
             dropzones: {
-                "Lesson1_Program1;": [
-                    {
-                        "type": "container",
-                        "id": "Begin",
-                        "columns": [
-                            [
-                                {
-                                    "type": "item",
-                                    "id": "Write('Hello World!');"
-                                },
-                                {
-                                    "type": "item",
-                                    "id": "Readln;"
-                                }
-                            ]
-                        ]
-                    },
+                "Program Hello_World;": {},
+                "Begin": [
                     {
                         "type": "item",
+                        "id": "Write('Hello World!');"
+                    },
+                    {
                         "id": "End."
                     }
                 ]

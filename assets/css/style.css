@@ -21,21 +21,30 @@ body > div .app-ui {
   background-color: #000000;
 }
 .toolbar .tool {
-  width: 64px;
+  position: relative;
+  width: 100px;
   height: 24px;
   margin: 5px;
   padding-top: 8px;
-  background-color: #95ff6c;
-  color: #303030;
+  color: #95ff6c;
   text-align: center;
   cursor: pointer;
 }
+.toolbar .tool i {
+  position: absolute;
+  font-size: 32px;
+  top: 0;
+  left: 5px;
+}
+.toolbar .tool span {
+  position: absolute;
+  font-size: 16px;
+  top: 8px;
+  left: 45px;
+}
 .toolbar .tool:hover {
-  width: 62px;
-  height: 22px;
-  background-color: transparent;
-  color: #12f6e9;
-  border: 1px solid #12f6e9;
+  background-color: #95ff6c;
+  color: #303030;
 }
 .body {
   height: 100%;
@@ -64,6 +73,11 @@ body > div .app-ui {
   border: 1px solid #95ff6c;
   color: #FFF;
   cursor: pointer;
+  padding: 5px;
+}
+.block:hover {
+  color: #12f6e9;
+  border: 1px solid #12f6e9;
 }
 .test {
   /***************************** Required styles *****************************/
@@ -108,14 +122,14 @@ body > div .app-ui {
 }
 .test .nestedDemo .dropzone ul[dnd-list] {
   min-height: 42px;
-  margin: 0;
-  padding-left: 0;
+  margin: 0px;
+  padding-left: 0px;
 }
 .test .nestedDemo .dropzone li {
   background-color: #fff;
   border: 1px solid #ddd;
   display: block;
-  padding: 0;
+  padding: 0px;
 }
 .test .nestedDemo .dropzone .dndDragging {
   opacity: 0.7;
@@ -187,6 +201,17 @@ body > div .app-ui {
 .test .nestedDemo .trashcan .dndPlaceholder {
   display: none;
 }
-ul {
+ul,
+li {
+  border: 1px solid black;
   list-style-type: none;
+  min-height: 30px;
+}
+.block-box {
+  width: 200px;
+  height: 100%;
+}
+.trashcan {
+  height: 50px;
+  width: 100px;
 }
