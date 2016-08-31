@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>code4ever</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/angular-material.min.css">
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="assets/css/animate.css">-->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <script data-main="main" src="assets/js/require.js"></script>
 </head>
 <body>
-$END$
+    <div class="app-ui" layout="column">
+        <div ui-view="toolbar"></div>
+        <div ui-view="body" flex></div>
+    </div>
 </body>
 </html>
