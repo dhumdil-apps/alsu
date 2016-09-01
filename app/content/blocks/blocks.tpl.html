@@ -1,0 +1,41 @@
+<div layout="column" class="w100_h100">
+
+    <div>
+        <h3 style="text-decoration: underline;">Basic</h3>
+        <div>
+            <div ng-repeat="item in models.templates" dnd-draggable="item" dnd-effect-allowed="copy">
+                <div class="code" layout="column">
+                    <span flex></span><span>{{item.content[0]}}</span><span flex></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="disabled-features">
+        <h1>Soon enabled:</h1>
+        <div>
+            <h4>Variables</h4>
+            <h6>(Not yet ready...)</h6>
+        </div>
+        <div>
+            <h4>Conditional Statements</h4>
+            <h6>(Not yet ready...)</h6>
+        </div>
+        <div>
+            <h4>Loops</h4>
+            <h6>(Not yet ready...)</h6>
+        </div>
+    </div>
+
+    <div flex></div>
+
+    <i class="material-icons icon-button-blocks">info_outline
+        <md-tooltip>Help</md-tooltip>
+    </i>
+    <div class="trash">
+        <ul dnd-list="[]">
+            <i class="material-icons">delete</i>
+            <span>Tralalalalala</span>
+        </ul>
+    </div>
+
+</div>

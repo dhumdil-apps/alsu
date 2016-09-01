@@ -31,12 +31,33 @@ define(modules, function() {
             .state('main', {
                 url: '/',
                 views: {
-                    'toolbar': {
-                        templateUrl: "app/toolbar/toolbar.tpl.html"
-                    },
-                    'body': {
-                        templateUrl: "app/body/body.tpl.html",
+                    '': {
+                        templateUrl: "app/main.tpl.html",
                         controller: "MainController"
+                    }
+                }
+            })
+            .state('main.home', {
+                url: 'home/',
+                views: {
+                    'toolbar': {
+                        templateUrl: "app/content/toolbar/toolbar.tpl.html",
+                        controller: "ToolbarController"
+                    },
+                    'blocks': {
+                        templateUrl: "app/content/blocks/blocks.tpl.html",
+                        controller: "BlocksController"
+                    },
+                    'program': {
+                        templateUrl: "app/content/program/program.tpl.html",
+                        controller: "ProgramController"
+                    },
+                    'output': {
+                        templateUrl: "app/content/output/output.tpl.html",
+                        controller: "OutputController"
+                    },
+                    'files': {
+                        templateUrl: "app/content/files/open.tpl.html"
                     }
                 }
             });

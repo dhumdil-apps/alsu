@@ -1,11 +1,11 @@
 require.config({
     paths: {
-        'angular': 'assets/js/angular.min',
-        'ui-router': 'assets/js/angular-ui-router.min',
-        'angular-material': 'assets/js/angular-material.min',
-        'angular-aria': 'assets/js/angular-aria.min',
-        'angular-messages': 'assets/js/angular-messages.min',
-        'angular-animate': 'assets/js/angular-animate.min',
+        'angular': 'assets/js/angular',
+        'ui-router': 'assets/js/angular-ui-router',
+        'angular-material': 'assets/js/angular-material',
+        'angular-aria': 'assets/js/angular-aria',
+        'angular-messages': 'assets/js/angular-messages',
+        'angular-animate': 'assets/js/angular-animate',
         'code-module': 'app/code.module',
         'dnd-lists': 'assets/js/angular-drag-and-drop-lists'
     },

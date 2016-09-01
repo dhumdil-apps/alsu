@@ -11,7 +11,6 @@
 }
 body {
   .w100_h100();
-  color: @light-blue;
   background-color: @dark;
   > div {
     .w100_h100();
@@ -23,7 +22,7 @@ body {
 .toolbar {
   height: 48px;
   background-color: darken(@dark, 20%);
-  .tool {
+  &__tool {
     position: relative;
     width: 100px;
     height: 24px;
@@ -45,202 +44,118 @@ body {
       left: 45px;
     }
   }
-  .tool:hover {
+  &__tool:hover {
     background-color: @green;
     color: @dark;
   }
-}
-.body {
-  height: 100%;
-  .left-side {
-    position: relative;
+  &__title {
+    width: 100%;
+    color: #FFF;
+    height: 48px;
+    font-size: x-large;
     padding: 10px;
-    background-color: darken(@dark, 10%);
-    overflow: hidden;
   }
-  .right-side {
-    position: relative;
+  i {
     padding: 10px;
+  }
+  .icon-button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: #aaa;
+  }
+  .icon-button:hover {
+    color: #fff;
+  }
+  .icon-button:focus {
+    outline: none;
   }
 }
 .code {
-  width: 100px;
   height: 30px;
   border: 1px solid @green;
-  color: #FFF;
+  color: #000;
   text-align: center;
   cursor: pointer;
 }
 .block {
-  width: 200px;
+  min-width: 150px;
   height: 30px;
   border: 1px solid @green;
   color: #FFF;
   cursor: pointer;
-  padding: 5px;
+  padding-left: 10px;
 }
 .block:hover {
   color: @light-blue;
   border: 1px solid @light-blue;
 }
-.test {
-  /***************************** Required styles *****************************/
-
-  /**
-   * For the correct positioning of the placeholder element, the dnd-list and
-   * it's children must have position: relative
-   */
-  .nestedDemo ul[dnd-list],
-  .nestedDemo ul[dnd-list] > li {
-    position: relative;
-  }
-
-  /***************************** Dropzone Styling *****************************/
-
-  /**
-   * The dnd-list should always have a min-height,
-   * otherwise you can't drop to it once it's empty
-   */
-  .nestedDemo .dropzone ul[dnd-list] {
-    min-height: 42px;
-    margin: 0px;
-    padding-left: 0px;
-  }
-
-  /**
-   * The dnd-lists's child elements currently MUST have
-   * position: relative. Otherwise we can not determine
-   * whether the mouse pointer is in the upper or lower
-   * half of the element we are dragging over. In other
-   * browsers we can use event.offsetY for this.
-   */
-  .nestedDemo .dropzone li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    display: block;
-    padding: 0px;
-  }
-
-  /**
-   * Reduce opacity of elements during the drag operation. This allows the user
-   * to see where he is dropping his element, even if the element is huge. The
-   * .dndDragging class is automatically set during the drag operation.
-   */
-  .nestedDemo .dropzone .dndDragging {
-    opacity: 0.7;
-  }
-
-  /**
-   * The dndDraggingSource class will be applied to the source element of a drag
-   * operation. It makes sense to hide it to give the user the feeling that he's
-   * actually moving it. Note that the source element has also .dndDragging class.
-   */
-  .nestedDemo .dropzone .dndDraggingSource {
-    display: none;
-  }
-
-  /**
-   * An element with .dndPlaceholder class will be added as child of the dnd-list
-   * while the user is dragging over it.
-   */
-  .nestedDemo .dropzone .dndPlaceholder {
-    background-color: #ddd;
-    min-height: 42px;
-    display: block;
-    position: relative;
-  }
-
-  /***************************** Element Selection *****************************/
-
-  .nestedDemo .dropzone .selected .item {
-    color: #3c763d;
-    background-color: #dff0d8;
-  }
-
-  .nestedDemo .dropzone .selected .box {
-    border-color: #d6e9c6;
-  }
-
-  .nestedDemo .dropzone .selected .box > h3 {
-    color: #3c763d;
-    background-color: #dff0d8;
-    background-image: linear-gradient(to bottom,#dff0d8 0,#d0e9c6 100%);
-    border-color: #d6e9c6;
-  }
-
-  /***************************** Element type specific styles *****************************/
-
-  .nestedDemo .dropzone .item {
-    padding: 10px 15px;
-  }
-
-  .nestedDemo .dropzone .container-element {
-    margin: 10px;
-  }
-
-  .nestedDemo .dropzone .container-element .column {
-    float: left;
-    width: 50%;
-  }
-
-  /***************************** Toolbox *****************************/
-
-  .nestedDemo .toolbox ul {
-    list-style: none;
-    padding-left: 0px;
-    cursor: move;
-  }
-
-  .nestedDemo .toolbox button {
-    margin: 5px;
-    width: 123px;
-    opacity: 1.0;
-  }
-
-  .nestedDemo .toolbox .dndDragging {
-    opacity: 0.5;
-  }
-
-  .nestedDemo .toolbox .dndDraggingSource {
-    opacity: 1.0;
-  }
-
-  /***************************** Trashcan *****************************/
-
-  .nestedDemo .trashcan ul {
-    list-style: none;
-    padding-left: 0px;
-  }
-
-  .nestedDemo .trashcan img {
-    width: 100%;
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    filter: grayscale(100%);
-  }
-
-  .nestedDemo .trashcan .dndDragover img {
-    width: 100%;
-    -webkit-filter: none;
-    -moz-filter: none;
-    filter: none;
-  }
-
-  .nestedDemo .trashcan .dndPlaceholder {
-    display: none;
-  }
-}
 ul, li {
-  border: 1px solid black;
+  border: 1px solid @light-blue;
   list-style-type: none;
-  min-height: 30px;
+  min-height: 60px;
 
 }
 .block-box {
   width: 200px;
   height: 100%;
 }
-.trashcan {
-  height: 50px;
-  width: 100px;
+.tralala {
+  overflow: hidden;
+}
+
+.disabled-features {
+  cursor: progress;
+}
+.blocks {
+  width: 300px;
+  color: @dark;
+  padding: 10px;
+    .icon-button-blocks {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      color: #888;
+    }
+    .icon-button-blocks:hover {
+      color: #000;
+    }
+    .icon-button-blocks:focus {
+      outline: none;
+    }
+}
+.program {
+  background-color: @dark;
+  padding: 50px;
+  width: ~"calc(100% - 102px)";
+  height: 900px;
+  border: 1px solid #000;
+  color: #FFF;
+}
+.trash {
+  color: #FFF;
+  background-color: @dark;
+  i {
+    font-size: 48px;
+  }
+  span {
+    position: relative;
+    font-size: xx-large;
+    top: -10px;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    border: none;
+  }
+  .dndPlaceholder {
+    display: none;
+  }
+}
+
+.test {
+  ul[dnd-list],
+  ul[dnd-list] > li {
+    position: relative;
+  }
 }

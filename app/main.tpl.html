@@ -1,0 +1,21 @@
+<div class="w100_h100" layout="column" ng-cloak>
+    <section class="w100_h100" layout="row" flex>
+
+        <md-sidenav class="md-sidenav-left output" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+            <div ui-view="output"></div>
+        </md-sidenav>
+
+        <md-content class="w100_h100 tralala" class="test" flex layout="column">
+            <div class="toolbar" ui-view="toolbar"></div>
+            <div class="content" layout="row">
+                <div class="blocks" ui-view="blocks"></div>
+                <div ui-view="program" flex></div>
+            </div>
+        </md-content>
+
+        <md-sidenav class="md-sidenav-right output" md-component-id="right">
+            <div ui-view="files"></div>
+        </md-sidenav>
+
+    </section>
+</div>

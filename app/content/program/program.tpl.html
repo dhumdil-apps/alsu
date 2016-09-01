@@ -1,0 +1,35 @@
+<div class="program">
+
+    <script type="text/ng-template" id="list.html">
+        <div dnd-list="list">
+            <div ng-repeat="item in list"
+                 dnd-draggable="item"
+                 dnd-effect-allowed="move"
+                 dnd-moved="list.splice($index, 1)"
+                 dnd-selected="models.selected = item"
+                 ng-class="{selected: models.selected === item}"
+                 ng-include="item.type + '.html'">
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="item.html">
+        <div class="block" layout="column">
+            <span flex></span><span>{{item.id}}</span><span flex></span>
+        </div>
+        <!--<div class="block">{{item.id}}</div>-->
+    </script>
+
+    <div>
+        <div layout="column">
+            <div ng-repeat="(zone, list) in models.dropzones">
+                <div class="dropzone box box-yellow">
+                    <h3>{{zone}}</h3>
+                    <div ng-include="'list.html'"></div>
+                    <h3>{{list[list.length-1].id}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
