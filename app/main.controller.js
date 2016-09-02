@@ -1,7 +1,7 @@
 define([], function () {
     'use strict';
 
-    function MainController($scope, $timeout, $state, $mdSidenav, $mdDialog) {
+    function MainController($scope, $timeout    , $state, $mdSidenav, $mdDialog) {
 
         // expressions
         $scope.models = {
@@ -67,8 +67,9 @@ define([], function () {
         /**
          * Toggle sidebar
          */
-        function openLeftMenu() {
+        function openLeftMenu(x) {
             $mdSidenav('left').toggle();
+            $scope.$broadcast('run-output', { any: x });
         }
 
         /**

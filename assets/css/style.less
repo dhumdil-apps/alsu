@@ -100,29 +100,48 @@ ul, li {
   width: 200px;
   height: 100%;
 }
-.tralala {
-  overflow: hidden;
-}
-
 .disabled-features {
-  cursor: progress;
+  cursor: not-allowed;
 }
 .blocks {
   width: 300px;
   color: @dark;
   padding: 10px;
-    .icon-button-blocks {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      color: #888;
+  .trash {
+    height: 60px;
+    padding-left: 30px;
+    color: @green;
+    background-color: @dark;
+    i {
+      font-size: 34px;
     }
-    .icon-button-blocks:hover {
-      color: #000;
+    span {
+      position: relative;
+      font-size: x-large;
+      top: -10px;
+
     }
-    .icon-button-blocks:focus {
-      outline: none;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      border: none;
     }
+    .dndPlaceholder {
+      display: none;
+    }
+  }
+  .icon-button-blocks {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: #888;
+  }
+  .icon-button-blocks:hover {
+    color: #000;
+  }
+  .icon-button-blocks:focus {
+    outline: none;
+  }
 }
 .program {
   background-color: @dark;
@@ -132,30 +151,10 @@ ul, li {
   border: 1px solid #000;
   color: #FFF;
 }
-.trash {
-  color: #FFF;
-  background-color: @dark;
-  i {
-    font-size: 48px;
-  }
-  span {
-    position: relative;
-    font-size: xx-large;
-    top: -10px;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    border: none;
-  }
-  .dndPlaceholder {
-    display: none;
-  }
-}
-
-.test {
+.required {
   ul[dnd-list],
   ul[dnd-list] > li {
     position: relative;
   }
+  overflow: hidden;
 }

@@ -96,16 +96,35 @@ li {
   width: 200px;
   height: 100%;
 }
-.tralala {
-  overflow: hidden;
-}
 .disabled-features {
-  cursor: progress;
+  cursor: not-allowed;
 }
 .blocks {
   width: 300px;
   color: #303030;
   padding: 10px;
+}
+.blocks .trash {
+  height: 60px;
+  padding-left: 30px;
+  color: #95ff6c;
+  background-color: #303030;
+}
+.blocks .trash i {
+  font-size: 34px;
+}
+.blocks .trash span {
+  position: relative;
+  font-size: x-large;
+  top: -10px;
+}
+.blocks .trash ul {
+  list-style: none;
+  padding-left: 0;
+  border: none;
+}
+.blocks .trash .dndPlaceholder {
+  display: none;
 }
 .blocks .icon-button-blocks {
   width: 24px;
@@ -127,27 +146,10 @@ li {
   border: 1px solid #000;
   color: #FFF;
 }
-.trash {
-  color: #FFF;
-  background-color: #303030;
+.required {
+  overflow: hidden;
 }
-.trash i {
-  font-size: 48px;
-}
-.trash span {
-  position: relative;
-  font-size: xx-large;
-  top: -10px;
-}
-.trash ul {
-  list-style: none;
-  padding-left: 0;
-  border: none;
-}
-.trash .dndPlaceholder {
-  display: none;
-}
-.test ul[dnd-list],
-.test ul[dnd-list] > li {
+.required ul[dnd-list],
+.required ul[dnd-list] > li {
   position: relative;
 }
