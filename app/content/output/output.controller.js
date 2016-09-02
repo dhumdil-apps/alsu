@@ -4,7 +4,7 @@ define([], function () {
     function OutputController($scope) {
 
         //
-        $scope.output = '';
+        $scope.output = [];
 
         //
         $scope.showOutput = showOutput;
@@ -12,16 +12,20 @@ define([], function () {
         //
         $scope.$on('run-output', function(event, args) {
 
-            showOutput(args.any);
-        });
+            $scope.output = [];
 
+            args.forEach(function(x){
+                showOutput(x.content[1][0]);
+            });
+
+        });
 
         /**
          * tralalla
          * @param x
          */
         function showOutput(x) {
-            $scope.output = x;
+            $scope.output.push(x);
         }
         
     }

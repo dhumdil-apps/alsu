@@ -76,7 +76,7 @@ body > div .app-ui {
 }
 .block {
   min-width: 150px;
-  height: 30px;
+  height: 50px;
   border: 1px solid #95ff6c;
   color: #FFF;
   cursor: pointer;
@@ -140,14 +140,13 @@ li {
 }
 .program {
   background-color: #303030;
-  padding: 50px;
-  width: calc(100% - 102px);
-  height: 900px;
-  border: 1px solid #000;
+  width: calc(100% - 52px);
+  height: calc(100% - 48px);
   color: #FFF;
+  padding: 20px;
 }
 .required {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .required ul[dnd-list],
 .required ul[dnd-list] > li {

@@ -1,7 +1,7 @@
 define([], function () {
     'use strict';
 
-    function MainController($scope, $timeout    , $state, $mdSidenav, $mdDialog) {
+    function MainController($scope, $timeout, $state, $mdSidenav, $mdDialog) {
 
         // expressions
         $scope.models = {
@@ -12,12 +12,7 @@ define([], function () {
                     id: "Write('Hello World!');",
                     content: [
                         "Write",
-                        [
-                            "(",
-                            "Hello World",
-                            ", var",
-                            ")"
-                        ]
+                        ["Hello World"]
                     ]
                 }
             ],
@@ -26,8 +21,14 @@ define([], function () {
                 "Begin": [
                     {
                         "type": "item",
-                        "id": "Write('Hello World!');"
-                    },
+                        "id": "Write('Hello World!');",
+                        "content": [
+                            "Write",
+                            ["Hello World"]
+                        ]
+                    }
+                ],
+                "End": [
                     {
                         "id": "End."
                     }
@@ -67,9 +68,10 @@ define([], function () {
         /**
          * Toggle sidebar
          */
-        function openLeftMenu(x) {
+        function openLeftMenu() {
             $mdSidenav('left').toggle();
-            $scope.$broadcast('run-output', { any: x });
+            // console.log($scope.models.dropzones.Begin[0].content[0]);
+            $scope.$broadcast('run-output', $scope.models.dropzones.Begin);
         }
 
         /**

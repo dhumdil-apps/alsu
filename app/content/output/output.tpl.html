@@ -3,7 +3,7 @@
     <div class="toolbar" layout="row">
         <span class="toolbar__title">Output</span>
         <i class="material-icons icon-button">info_outline
-            <md-tooltip>Help</md-tooltip>
+            <!--<md-tooltip>Help</md-tooltip>-->
         </i>
         <i ng-click="closeLeftMenu()" class="material-icons icon-button">close
             <md-tooltip>Close</md-tooltip>
@@ -11,9 +11,9 @@
     </div>
 
     <md-content layout-margin>
-        <h4>(Not yet ready...)</h4>
-        <h1>Hello World!</h1>
-        <div>{{output}}</div>
+        <div ng-repeat="row in output track by $index">
+            <span>{{row}}</span>
+        </div>
     </md-content>
 
 </div>

@@ -80,7 +80,7 @@ body {
 }
 .block {
   min-width: 150px;
-  height: 30px;
+  height: 50px;
   border: 1px solid @green;
   color: #FFF;
   cursor: pointer;
@@ -145,16 +145,15 @@ ul, li {
 }
 .program {
   background-color: @dark;
-  padding: 50px;
-  width: ~"calc(100% - 102px)";
-  height: 900px;
-  border: 1px solid #000;
+  width: ~"calc(100% - 52px)";
+  height: ~"calc(100% - 48px)";
   color: #FFF;
+  padding: 20px;
 }
 .required {
+  overflow-y: hidden;
   ul[dnd-list],
   ul[dnd-list] > li {
     position: relative;
   }
-  overflow: hidden;
 }
