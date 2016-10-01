@@ -1,25 +1,27 @@
 require.config({
     paths: {
-        'angular': 'assets/js/angular',
-        'ui-router': 'assets/js/angular-ui-router',
-        'angular-material': 'assets/js/angular-material',
-        'angular-aria': 'assets/js/angular-aria',
-        'angular-messages': 'assets/js/angular-messages',
-        'angular-animate': 'assets/js/angular-animate',
-        'code-module': 'app/code.module',
-        'dnd-lists': 'assets/js/angular-drag-and-drop-lists'
+        'angular': 'src/js/angular',
+        'ui-router': 'src/js/angular-ui-router',
+        'angular-material': 'src/js/angular-material',
+        'angular-aria': 'src/js/angular-aria',
+        'angular-messages': 'src/js/angular-messages',
+        'angular-animate': 'src/js/angular-animate',
+        'alsu-module': 'src/app/alsu.module',
+        'dnd-lists': 'src/js/angular-dnd-lists'
+        // 'du-scroll': 'src/js/angular-scroll.min'
     },
     shim: {
         'ui-router': ['angular'],
         'angular-animate': ['angular'],
         'angular-aria': ['angular'],
         'angular-messages': ['angular'],
-        'dnd-lists': ['angular'],
         'angular-material': ['angular', 'angular-animate', 'angular-aria', 'angular-messages'],
-        'code-module': ['angular', 'ui-router', 'dnd-lists'],
+        'alsu-module': ['angular', 'ui-router'],
+        'dnd-lists': ['angular', 'alsu-module'],
+        // 'du-scroll': ['angular', 'alsu-module'],
         'angular': {
             exports: 'angular'
         }
     },
-    deps: ['app/app.module']
+    deps: ['src/app.module']
 });

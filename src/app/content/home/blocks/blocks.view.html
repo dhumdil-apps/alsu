@@ -1,0 +1,100 @@
+<!-- Blocks -->
+<div ng-class="sidePanel.activeClass" layout="column">
+
+    <!-- expand/collapse view -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <expand-button expand="sidePanel.expanded"></expand-button>
+        <span class="title">{{sidePanel.title}}</span>
+        <i class="material-icons">{{sidePanel.help}}</i>
+    </div>
+    <div flex></div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
+                <i class="material-icons">crop_16_9</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
+                <i class="material-icons">crop_16_9</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
+                <i class="material-icons">crop_16_9</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[1]" dnd-effect-allowed="copy" dnd-copied="models.templates[1].id = models.templates[1].id + 1">
+                <i class="material-icons">change_history</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[1]" dnd-effect-allowed="copy" dnd-copied="models.templates[1].id = models.templates[1].id + 1">
+                <i class="material-icons">rotate_90_degrees_ccw</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[1]" dnd-effect-allowed="copy" dnd-copied="models.templates[1].id = models.templates[1].id + 1">
+                <i class="material-icons">rotate_90_degrees_ccw</i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- The toolbox only allows to copy objects, not move it. After a new
+         element was created, dnd-copied is invoked and we generate the next id -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block">
+            <li dnd-draggable="models.templates[1]" dnd-effect-allowed="copy" dnd-copied="models.templates[1].id = models.templates[1].id + 1">
+                <i class="material-icons">rotate_90_degrees_ccw</i>
+            </li>
+        </ul>
+    </div>
+
+    <div flex></div>
+    <!-- If you use [] as referenced list, the dropped elements will be lost -->
+    <div class="block-button" layout="row">
+        <span class="highlight"></span>
+        <ul class="block" dnd-list="[]">
+            <li><i class="material-icons">delete_forever</i></li>
+        </ul>
+    </div>
+
+</div>
+

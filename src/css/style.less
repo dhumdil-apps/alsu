@@ -1,0 +1,225 @@
+// colors
+@dark: rgb(48,48,48);
+@green: #95ff6c;
+@yellow: rgb(226,255,51);
+@light-blue: rgb(18,246,233);
+@body: #fff;
+@toolbar: #e5e5e5;
+@inactive: #888888;
+// toolbar
+.toolbar {
+  background-color: @dark;
+  color: @body;
+  height: 60px;
+  .logo {
+    width: 150px;
+    height: 60px;
+    padding-left: 50px;
+    font-size: 48px;
+    background-color: #000;
+  }
+  .logo:hover {
+    color: @green;
+    cursor: pointer;
+  }
+  .icons {
+    position: relative;
+    cursor: pointer;
+    i {
+      font-size: 40px;
+      padding: 10px;
+    }
+  }
+  .icons:hover {
+    color: @green;
+  }
+}
+// for testing...
+.view {
+  position: relative;
+  height: 874px;
+  color: @toolbar;
+  font-size: 20px;
+}
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.nestedDemo ul[dnd-list],
+.nestedDemo ul[dnd-list] > li {
+  position: relative;
+}
+// body
+.blocks {
+  background-color: @dark;
+  .expanded_view {
+    width: 200px;
+    -webkit-transition: width 400ms;
+    -webkit-animation-timing-function: ease-in-out;
+    transition: width 400ms;
+  }
+  .collapsed_view {
+    width: 50px;
+    -webkit-transition: width 400ms;
+    -webkit-animation-timing-function: ease-in-out;
+    transition: width 400ms;
+  }
+  .block-button {
+    position: relative;
+    .highlight {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 50px;
+      visibility: hidden;
+      background-color: @green;
+    }
+    expand-button {
+      i {
+        cursor: pointer;
+        font-size: 50px;
+        outline: none;
+        animation-duration: 200ms;
+        -webkit-animation-duration: 200ms;
+        -webkit-animation-timing-function: ease-in-out;
+        -moz-animation-duration: 200ms;
+      }
+      i:hover {
+        color: #fff;
+      }
+    }
+    .block {
+      i {
+        font-size: 50px;
+        cursor: pointer;
+      }
+      i .dndDragover {
+        color: red;
+      }
+      i .dndPlaceholder {
+        display: none;
+      }
+    }
+    .title {
+      position: relative;
+      height: 30px;
+      width: 150px;
+      padding: 10px;
+      font-size: 24px;
+    }
+    > i {
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      color: @inactive;
+    }
+    > i:hover {
+      color: @toolbar;
+    }
+  }
+  .block-button:hover {
+    .highlight {
+      visibility: visible;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+.code {
+  background-color: @toolbar;
+  color: @dark;
+  /***************************** Required styles *****************************/
+  padding-left: 150px;
+  /***************************** Dropzone Styling *****************************/
+  /**
+   * The dnd-list should always have a min-height,
+   * otherwise you can't drop to it once it's empty
+   */
+  .nestedDemo .dropzone ul[dnd-list] {
+    min-height: 42px;
+    margin: 0px;
+    padding-left: 0px;
+  }
+  /**
+   * The dnd-lists's child elements currently MUST have
+   * position: relative. Otherwise we can not determine
+   * whether the mouse pointer is in the upper or lower
+   * half of the element we are dragging over. In other
+   * browsers we can use event.offsetY for this.
+   */
+  .nestedDemo .dropzone li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: block;
+    padding: 0px;
+  }
+  /**
+   * Reduce opacity of elements during the drag operation. This allows the user
+   * to see where he is dropping his element, even if the element is huge. The
+   * .dndDragging class is automatically set during the drag operation.
+   */
+  .nestedDemo .dropzone .dndDragging {
+    opacity: 0.7;
+  }
+  /**
+   * The dndDraggingSource class will be applied to the source element of a drag
+   * operation. It makes sense to hide it to give the user the feeling that he's
+   * actually moving it. Note that the source element has also .dndDragging class.
+   */
+  .nestedDemo .dropzone .dndDraggingSource {
+    display: none;
+  }
+  /**
+   * An element with .dndPlaceholder class will be added as child of the dnd-list
+   * while the user is dragging over it.
+   */
+  .nestedDemo .dropzone .dndPlaceholder {
+    background-color: @toolbar;
+    min-height: 42px;
+    display: block;
+    position: relative;
+  }
+  /***************************** Element Selection *****************************/
+  .nestedDemo .dropzone .selected .item {
+    color: @green;
+    background-color: @toolbar;
+  }
+  .nestedDemo .dropzone .selected .box {
+    border-color: @toolbar;
+  }
+  .nestedDemo .dropzone .selected .box > h3 {
+    color: @green;
+    background-color: @toolbar;
+  }
+  /***************************** Element type specific styles *****************************/
+  .nestedDemo .dropzone .item {
+    padding: 10px 15px;
+  }
+  .nestedDemo .dropzone .container-element {
+    margin: 10px;
+  }
+  .nestedDemo .dropzone .container-element .column {
+    float: left;
+    width: 50%;
+  }
+  /***************************** Toolbox *****************************/
+  .nestedDemo .toolbox ul {
+    list-style: none;
+    padding-left: 0px;
+    cursor: move;
+  }
+  .nestedDemo .toolbox button {
+    margin: 5px;
+    width: 123px;
+    opacity: 1.0;
+  }
+  .nestedDemo .toolbox .dndDragging {
+    opacity: 0.5;
+  }
+  .nestedDemo .toolbox .dndDraggingSource {
+    opacity: 1.0;
+  }
+}

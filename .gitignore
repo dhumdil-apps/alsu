@@ -1,2 +1,8 @@
-bower_components/
 .idea/
+.vscode/
+bower_components/
+node_modules/
+gulpfile.js
+LICENSE
+package.json
+README.md
