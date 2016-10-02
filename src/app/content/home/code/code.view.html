@@ -1,4 +1,5 @@
 <div class="nestedDemo">
+
     <!-- Markup for lists inside the dropzone. It's inside a seperate template
      because it will be used recursively. The dnd-list directive enables
      to drop elements into the referenced array. The dnd-draggable directive
@@ -21,10 +22,17 @@
     <!-- This template is responsible for rendering a container element. It uses
          the above list template to render each container column -->
     <script type="text/ng-template" id="container.html">
-        <div class="container-element box box-blue">
-            <h3>Container {{item.id}}</h3>
-            <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
-            <div class="clearfix"></div>
+        <div layout="row">
+            <span>Boom</span>
+        </div>
+        <div layout="row">
+            <div layout="column" flex>
+                <div ng-repeat="list in item.columns[0]" ng-include="'list.html'"></div>
+            </div>
+
+            <div layout="column" flex>
+                <div ng-repeat="list in item.columns[1]" ng-include="'list.html'"></div>
+            </div>
         </div>
     </script>
 
@@ -37,9 +45,8 @@
     <div layout="column">
         <div layout="row">
             <div ng-repeat="(zone, list) in models.dropzones" layout="column" flex>
-                <div class="dropzone box box-yellow">
+                <div class="dropzone">
                     <!-- The dropzone also uses the list template -->
-                    <h3>Dropzone {{zone}}</h3>
                     <div ng-include="'list.html'"></div>
                 </div>
             </div>

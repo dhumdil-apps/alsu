@@ -26,7 +26,7 @@ define([], function () {
                         "type": "container",
                         "id": 1,
                         "columns": [
-                            [
+                            [[
                                 {
                                     "type": "item",
                                     "id": "2"
@@ -35,13 +35,13 @@ define([], function () {
                                     "type": "item",
                                     "id": "3"
                                 }
-                            ],
-                            [
+                            ]],
+                            [[
                                 {
                                     "type": "item",
                                     "id": "4"
                                 }
-                            ]
+                            ]]
                         ]
                     }
                 ]
@@ -51,6 +51,7 @@ define([], function () {
         $scope.$watch('models.dropzones', function(model) {
             $scope.modelAsJson = angular.toJson(model, true);
         }, true);
+
         init();
 
         function init() {

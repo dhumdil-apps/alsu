@@ -6,16 +6,42 @@
 @body: #fff;
 @toolbar: #e5e5e5;
 @inactive: #888888;
-// toolbar
+// basic
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.nestedDemo ul[dnd-list], .nestedDemo ul[dnd-list] > li {
+  position: relative;
+}
+body {
+  > div {
+    width: 100%;
+    height: 100%;
+    .code-ui {
+      width: 100%;
+      height: 100%;
+      > div {
+        width: 100%;
+        height: 100%;
+        > div {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+// app
 .toolbar {
   background-color: @dark;
   color: @body;
-  height: 60px;
+  height: 50px;
   .logo {
-    width: 150px;
-    height: 60px;
-    padding-left: 50px;
-    font-size: 48px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    padding: 10px 0;
     background-color: #000;
   }
   .logo:hover {
@@ -26,7 +52,7 @@
     position: relative;
     cursor: pointer;
     i {
-      font-size: 40px;
+      font-size: 30px;
       padding: 10px;
     }
   }
@@ -34,35 +60,23 @@
     color: @green;
   }
 }
-// for testing...
-.view {
-  position: relative;
-  height: 874px;
-  color: @toolbar;
-  font-size: 20px;
-}
-/**
- * For the correct positioning of the placeholder element, the dnd-list and
- * it's children must have position: relative
- */
-.nestedDemo ul[dnd-list],
-.nestedDemo ul[dnd-list] > li {
-  position: relative;
-}
-// body
 .blocks {
   background-color: @dark;
+  color: @toolbar;
+  position: relative;
+  font-size: 20px;
+  overflow: hidden;
   .expanded_view {
     width: 200px;
-    -webkit-transition: width 400ms;
+    -webkit-transition: width 800ms;
     -webkit-animation-timing-function: ease-in-out;
-    transition: width 400ms;
+    transition: width 800ms;
   }
   .collapsed_view {
     width: 50px;
-    -webkit-transition: width 400ms;
+    -webkit-transition: width 800ms;
     -webkit-animation-timing-function: ease-in-out;
-    transition: width 400ms;
+    transition: width 800ms;
   }
   .block-button {
     position: relative;
@@ -104,11 +118,14 @@
     .title {
       position: relative;
       height: 30px;
-      width: 150px;
+      width: 80px;
       padding: 10px;
       font-size: 24px;
+      text-align: center;
     }
     > i {
+      position: absolute;
+      left: 150px;
       font-size: 30px;
       padding: 10px;
       cursor: pointer;
@@ -131,17 +148,15 @@
 .code {
   background-color: @toolbar;
   color: @dark;
-  /***************************** Required styles *****************************/
-  padding-left: 150px;
   /***************************** Dropzone Styling *****************************/
   /**
    * The dnd-list should always have a min-height,
    * otherwise you can't drop to it once it's empty
    */
   .nestedDemo .dropzone ul[dnd-list] {
-    min-height: 42px;
-    margin: 0px;
-    padding-left: 0px;
+    min-height: 50px;
+    margin: 0;
+    padding-left: 0;
   }
   /**
    * The dnd-lists's child elements currently MUST have
@@ -152,9 +167,9 @@
    */
   .nestedDemo .dropzone li {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid @dark;
     display: block;
-    padding: 0px;
+    padding: 0;
   }
   /**
    * Reduce opacity of elements during the drag operation. This allows the user
@@ -170,6 +185,7 @@
    * actually moving it. Note that the source element has also .dndDragging class.
    */
   .nestedDemo .dropzone .dndDraggingSource {
+    //background-color: @dark;
     display: none;
   }
   /**
@@ -177,10 +193,10 @@
    * while the user is dragging over it.
    */
   .nestedDemo .dropzone .dndPlaceholder {
-    background-color: @toolbar;
-    min-height: 42px;
-    display: block;
     position: relative;
+    min-height: 50px;
+    background-color: @toolbar;
+    display: block;
   }
   /***************************** Element Selection *****************************/
   .nestedDemo .dropzone .selected .item {
@@ -196,30 +212,30 @@
   }
   /***************************** Element type specific styles *****************************/
   .nestedDemo .dropzone .item {
-    padding: 10px 15px;
-  }
-  .nestedDemo .dropzone .container-element {
-    margin: 10px;
+    height: 50px;
   }
   .nestedDemo .dropzone .container-element .column {
     float: left;
     width: 50%;
   }
   /***************************** Toolbox *****************************/
-  .nestedDemo .toolbox ul {
-    list-style: none;
-    padding-left: 0px;
-    cursor: move;
-  }
-  .nestedDemo .toolbox button {
-    margin: 5px;
-    width: 123px;
-    opacity: 1.0;
-  }
+  //.nestedDemo .toolbox ul {
+  //  list-style: none;
+  //  padding-left: 0px;
+  //  cursor: move;
+  //}
+  //.nestedDemo .toolbox button {
+  //  margin: 5px;
+  //  width: 123px;
+  //  opacity: 1.0;
+  //}
   .nestedDemo .toolbox .dndDragging {
     opacity: 0.5;
   }
   .nestedDemo .toolbox .dndDraggingSource {
     opacity: 1.0;
   }
+}
+.output {
+
 }
