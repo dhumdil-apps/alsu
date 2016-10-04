@@ -45,7 +45,7 @@ body {
     background-color: #000;
   }
   .logo:hover {
-    color: @green;
+    color: @light-blue;
     cursor: pointer;
   }
   .icons {
@@ -57,22 +57,25 @@ body {
     }
   }
   .icons:hover {
-    color: @green;
+    color: @light-blue;
   }
 }
 .blocks {
-  background-color: @dark;
-  color: @toolbar;
   position: relative;
-  font-size: 20px;
+  height: 100%;
+  background-color: @dark;
+  color: @dark;
+  font-size: 18px;
   overflow: hidden;
   .expanded_view {
+    height: 100%;
     width: 200px;
     -webkit-transition: width 800ms;
     -webkit-animation-timing-function: ease-in-out;
     transition: width 800ms;
   }
   .collapsed_view {
+    height: 100%;
     width: 50px;
     -webkit-transition: width 800ms;
     -webkit-animation-timing-function: ease-in-out;
@@ -80,14 +83,17 @@ body {
   }
   .block-button {
     position: relative;
+    width: 200px;
+    height: 50px;
+    margin: 10px 0;
     .highlight {
       position: absolute;
       top: 0;
       left: 0;
-      width: 2px;
+      width: 1px;
       height: 50px;
       visibility: hidden;
-      background-color: @green;
+      background-color: @light-blue;
     }
     expand-button {
       i {
@@ -108,31 +114,98 @@ body {
         font-size: 50px;
         cursor: pointer;
       }
-      i .dndDragover {
-        color: red;
-      }
-      i .dndPlaceholder {
-        display: none;
+      margin: 0;
+      padding: 0;
+    }
+    .dndDragover {
+      i {
+        color: @green;
       }
     }
     .title {
       position: relative;
-      height: 30px;
-      width: 80px;
+      height: 50px;
+      width: 100px;
       padding: 10px;
-      font-size: 24px;
-      text-align: center;
+      font-size: 20px;
     }
-    > i {
-      position: absolute;
-      left: 150px;
-      font-size: 30px;
-      padding: 10px;
+    .block-read {
+      position: relative;
+      left: 0;
+      top: 0;
       cursor: pointer;
-      color: @inactive;
+      .container {
+        position: absolute;
+        left: 50px;
+        top: 0;
+        width: 100px;
+        height: 50px;
+        background: @green;
+        text-align: center;
+        padding: 10px;
+      }
+      .triangle-topright {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 50px solid @green;
+        border-left: 50px solid transparent;
+      }
+      .triangle-bottomleft {
+        position: absolute;
+        left: 150px;
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid @green;
+        border-right: 50px solid transparent;
+      }
     }
-    > i:hover {
-      color: @toolbar;
+    .block-print {
+      cursor: pointer;
+      position: relative;
+      left: 0;
+      top: 0;
+      .container {
+        position: absolute;
+        left: 50px;
+        top: 0;
+        width: 100px;
+        height: 50px;
+        background: @green;
+        text-align: center;
+        padding: 10px;
+      }
+      .triangle-topleft {
+        position: absolute;
+        left: 150px;
+        width: 0;
+        height: 0;
+        border-top: 50px solid @green;
+        border-right: 50px solid transparent;
+      }
+      .triangle-bottomright {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid @green;
+        border-left: 50px solid transparent;
+      }
+    }
+    .block-assign {
+      cursor: pointer;
+      position: relative;
+      left: 0;
+      top: 0;
+      .container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 50px;
+        background: @green;
+        text-align: center;
+        padding: 15px 0;
+      }
     }
   }
   .block-button:hover {
@@ -143,6 +216,7 @@ body {
   ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
   }
 }
 .code {
@@ -156,7 +230,7 @@ body {
   .nestedDemo .dropzone ul[dnd-list] {
     min-height: 50px;
     margin: 0;
-    padding-left: 0;
+    padding: 0;
   }
   /**
    * The dnd-lists's child elements currently MUST have
@@ -167,7 +241,7 @@ body {
    */
   .nestedDemo .dropzone li {
     background-color: #fff;
-    border: 1px solid @dark;
+    //border: 1px solid @dark;
     display: block;
     padding: 0;
   }
@@ -185,8 +259,8 @@ body {
    * actually moving it. Note that the source element has also .dndDragging class.
    */
   .nestedDemo .dropzone .dndDraggingSource {
-    //background-color: @dark;
-    display: none;
+    background-color: @dark;
+    //display: none;
   }
   /**
    * An element with .dndPlaceholder class will be added as child of the dnd-list
@@ -200,24 +274,24 @@ body {
   }
   /***************************** Element Selection *****************************/
   .nestedDemo .dropzone .selected .item {
-    color: @green;
+    //color: @green;
     background-color: @toolbar;
   }
   .nestedDemo .dropzone .selected .box {
     border-color: @toolbar;
   }
   .nestedDemo .dropzone .selected .box > h3 {
-    color: @green;
+    //color: @green;
     background-color: @toolbar;
   }
   /***************************** Element type specific styles *****************************/
   .nestedDemo .dropzone .item {
     height: 50px;
   }
-  .nestedDemo .dropzone .container-element .column {
-    float: left;
-    width: 50%;
-  }
+  //.nestedDemo .dropzone .container-element .column {
+  //  float: left;
+  //  width: 50%;
+  //}
   /***************************** Toolbox *****************************/
   //.nestedDemo .toolbox ul {
   //  list-style: none;
@@ -237,5 +311,5 @@ body {
   }
 }
 .output {
-
+  width: 250px;
 }

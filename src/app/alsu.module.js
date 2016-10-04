@@ -5,13 +5,15 @@ define([
     'src/app/content/home/toolbar/toolbar.controller',
     'src/app/content/home/blocks/blocks.controller',
     'src/app/content/home/blocks/elements/expand-button.directive',
-    'src/app/content/home/code/code.controller'
+    'src/app/content/home/code/code.controller',
+    'src/app/content/home/output/output.controller'
 ], function(
     MainController,
         HomeController, homeContainer,
             ToolbarController,
             BlocksController, expandButton,
-            CodeController
+            CodeController,
+            OutputController
 ) {
     'use strict';
 
@@ -26,6 +28,7 @@ define([
         .directive('homeContainer', homeContainer)
         .controller('BlocksController', BlocksController)
         .directive('expandButton', expandButton)
-        .controller('CodeController', CodeController);
+        .controller('CodeController', CodeController)
+        .controller('OutputController', OutputController);
 
 });

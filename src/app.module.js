@@ -59,6 +59,10 @@ define(modules, function() {
                     'code': {
                         templateUrl: "src/app/content/home/code/code.view.html",
                         controller: "CodeController"
+                    },
+                    'output': {
+                        templateUrl: "src/app/content/home/output/output.view.html",
+                        controller: "OutputController"
                     }
                 }
             });

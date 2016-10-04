@@ -9,41 +9,43 @@ define([], function () {
                 {
                     type: "item",
                     id: 2
-                },
-                {
-                    type: "container",
-                    id: 1,
-                    columns: [[], []]
                 }
+                // ,
+                // {
+                //     type: "container",
+                //     id: 1,
+                //     columns: [[], []]
+                // }
             ],
             dropzones: {
                 "A": [
                     {
                         "type": "item",
                         "id": "1"
-                    },
-                    {
-                        "type": "container",
-                        "id": 1,
-                        "columns": [
-                            [[
-                                {
-                                    "type": "item",
-                                    "id": "2"
-                                },
-                                {
-                                    "type": "item",
-                                    "id": "3"
-                                }
-                            ]],
-                            [[
-                                {
-                                    "type": "item",
-                                    "id": "4"
-                                }
-                            ]]
-                        ]
                     }
+                    // ,
+                    // {
+                    //     "type": "container",
+                    //     "id": 1,
+                    //     "columns": [
+                    //         [[
+                    //             {
+                    //                 "type": "item",
+                    //                 "id": "2"
+                    //             },
+                    //             {
+                    //                 "type": "item",
+                    //                 "id": "3"
+                    //             }
+                    //         ]],
+                    //         [[
+                    //             {
+                    //                 "type": "item",
+                    //                 "id": "4"
+                    //             }
+                    //         ]]
+                    //     ]
+                    // }
                 ]
             }
         };
