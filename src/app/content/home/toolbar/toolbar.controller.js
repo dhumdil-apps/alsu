@@ -4,9 +4,9 @@ define([], function () {
     function ToolbarController($scope, $state) {
 
         $scope.toolbar = {
-            logo: 'L2C',
-            run: 'play_arrow',
-            settings: 'menu'
+            logo: 'REFRESH',
+            run: 'RUN',
+            settings: 'SETTINGS'
         };
 
         $scope.refreshPage = refreshPage;

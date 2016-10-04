@@ -19,8 +19,8 @@ define([], function(){
         function link(scope, element, attrs) {
 
             scope.sidePanel = {
-                expanded: false,
-                iconDirection: 'keyboard_arrow_right'
+                expanded: true,
+                iconDirection: 'keyboard_arrow_left'
             };
 
             // expressions

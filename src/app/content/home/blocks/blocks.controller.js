@@ -4,7 +4,7 @@ define([], function () {
     function BlocksController($scope) {
 
         $scope.sidePanel = {
-            expanded: false,
+            expanded: true,
             activeClass: ''
         };
 

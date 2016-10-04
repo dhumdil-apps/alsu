@@ -7,52 +7,79 @@ define([], function () {
             selected: null,
             templates: [
                 {
+                    id: 1,
                     type: "item",
-                    id: 2
+                    role: "assign"
+                },
+                {
+                    id: 2,
+                    type: "item",
+                    role: "write"
+                },
+                {
+                    id: 3,
+                    type: "item",
+                    role: "read"
+                },
+                {
+                    id: 4,
+                    type: "container",
+                    role: "if",
+                    columns: [[], []]
                 }
-                // ,
-                // {
-                //     type: "container",
-                //     id: 1,
-                //     columns: [[], []]
-                // }
             ],
             dropzones: {
                 "A": [
                     {
+                        "id": "1",
                         "type": "item",
-                        "id": "1"
+                        "role": "assign"
+                    },
+                    {
+                        "id": "2",
+                        "type": "item",
+                        "role": "read"
+                    },
+                    {
+                        "id": "3",
+                        "type": "container",
+                        "role": "if",
+                        "columns": [
+                            [[
+                                {
+                                    "id": "4",
+                                    "type": "item",
+                                    "role": "assign"
+                                },
+                                {
+                                    "id": "5",
+                                    "type": "item",
+                                    "role": "write"
+                                }
+                            ]],
+                            [[
+                                {
+                                    "id": "6",
+                                    "type": "item",
+                                    "role": "write"
+                                }
+                            ]]
+                        ]
+                    },
+                    {
+                        "id": "7",
+                        "type": "item",
+                        "role": "write"
                     }
-                    // ,
-                    // {
-                    //     "type": "container",
-                    //     "id": 1,
-                    //     "columns": [
-                    //         [[
-                    //             {
-                    //                 "type": "item",
-                    //                 "id": "2"
-                    //             },
-                    //             {
-                    //                 "type": "item",
-                    //                 "id": "3"
-                    //             }
-                    //         ]],
-                    //         [[
-                    //             {
-                    //                 "type": "item",
-                    //                 "id": "4"
-                    //             }
-                    //         ]]
-                    //     ]
-                    // }
                 ]
             }
         };
 
-        $scope.$watch('models.dropzones', function(model) {
-            $scope.modelAsJson = angular.toJson(model, true);
-        }, true);
+        // $scope.$watch('models.dropzones', function(model) {
+        //     $scope.modelAsJson = angular.toJson(model, true);
+        // }, true);
+
+        $scope.compileAndRun = compileAndRun;
 
         init();
 
@@ -60,6 +87,9 @@ define([], function () {
             $scope.goToState('main.home.code');
         }
 
+        function compileAndRun() {
+            $scope.modelAsJson = angular.toJson($scope.models.dropzones, true);
+        }
     }
 
     HomeController.$inject = ['$scope'];
