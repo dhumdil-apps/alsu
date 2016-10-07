@@ -1,19 +1,8 @@
 // colors
-@dark: rgb(48,48,48);
-@green: #95ff6c;
-@yellow: rgb(226,255,51);
-@light-blue: rgb(18,246,233);
-@body: #fff;
-@toolbar: #e5e5e5;
-@inactive: #888888;
+@dark: rgba(48,48,48, 1);
+@neutral: rgba(136,136,136, 1);
+@light: rgba(229,229,229, 1);
 // basic
-/**
- * For the correct positioning of the placeholder element, the dnd-list and
- * it's children must have position: relative
- */
-.nestedDemo ul[dnd-list], .nestedDemo ul[dnd-list] > li {
-  position: relative;
-}
 body {
   > div {
     width: 100%;
@@ -31,286 +20,298 @@ body {
       }
     }
   }
+  ul[dnd-list] {
+    position: relative;
+    > li {
+      position: relative;
+    }
+  }
 }
 // app
 .toolbar {
-  background-color: @dark;
-  color: @body;
+  position: fixed;
   height: 50px;
+  width: 100%;
+  background-color: @dark;
+  color: @neutral;
+
   .logo {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    outline: none;
+
+    .alsu {
+      font-size: 35px;
+      color: @light;
+      cursor: pointer;
+    }
+  }
+  .tool {
+    position: relative;
     width: 50px;
     height: 50px;
-    font-size: 25px;
-    padding: 10px 0;
-    background-color: #000;
-  }
-  .logo:hover {
-    color: @light-blue;
     cursor: pointer;
-  }
-  .icons {
-    position: relative;
-    cursor: pointer;
-    i {
+    outline: none;
+
+    .run {
       font-size: 30px;
       padding: 10px;
     }
-  }
-  .icons:hover {
-    color: @light-blue;
+    .run:hover {
+      color: @light;
+    }
+
+    .menu {
+      font-size: 30px;
+      padding: 10px;
+    }
+    .menu:hover {
+      //color: @light;
+    }
   }
 }
+
 .blocks {
-  position: relative;
-  height: 100%;
-  background-color: @dark;
-  color: @dark;
+  position: fixed;
+  height: ~"calc(100% - 50px)";
+  width: 200px;
+  top: 50px;
+  background-color: lighten(@dark, 10%);
+  color: @light;
   font-size: 18px;
-  overflow: hidden;
-  .expanded_view {
-    height: 100%;
-    width: 200px;
-    -webkit-transition: width 800ms;
-    -webkit-animation-timing-function: ease-in-out;
-    transition: width 800ms;
-  }
-  .collapsed_view {
-    height: 100%;
-    width: 50px;
-    -webkit-transition: width 800ms;
-    -webkit-animation-timing-function: ease-in-out;
-    transition: width 800ms;
-  }
-  .block-button {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    margin: 10px 0;
-    .highlight {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1px;
-      height: 50px;
-      visibility: hidden;
-      background-color: @light-blue;
-    }
-    expand-button {
-      i {
-        cursor: pointer;
-        font-size: 50px;
-        outline: none;
-        animation-duration: 200ms;
-        -webkit-animation-duration: 200ms;
-        -webkit-animation-timing-function: ease-in-out;
-        -moz-animation-duration: 200ms;
-      }
-      i:hover {
-        color: #fff;
-      }
-    }
-    .block {
-      i {
-        font-size: 50px;
-        cursor: pointer;
-      }
-      margin: 0;
-      padding: 0;
-    }
-    .dndDragover {
-      i {
-        color: @green;
-      }
-    }
-    .title {
-      position: relative;
-      height: 50px;
-      width: 100px;
-      padding: 10px;
-      font-size: 20px;
-    }
-    .block-read {
-      position: relative;
-      left: 0;
-      top: 0;
-      cursor: pointer;
-      .container {
-        position: absolute;
-        left: 50px;
-        top: 0;
-        width: 100px;
-        height: 50px;
-        background: @green;
-        text-align: center;
-        padding: 10px;
-      }
-      .triangle-topright {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 50px solid @green;
-        border-left: 50px solid transparent;
-      }
-      .triangle-bottomleft {
-        position: absolute;
-        left: 150px;
-        width: 0;
-        height: 0;
-        border-bottom: 50px solid @green;
-        border-right: 50px solid transparent;
-      }
-    }
-    .block-print {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      top: 0;
-      .container {
-        position: absolute;
-        left: 50px;
-        top: 0;
-        width: 100px;
-        height: 50px;
-        background: @green;
-        text-align: center;
-        padding: 10px;
-      }
-      .triangle-topleft {
-        position: absolute;
-        left: 150px;
-        width: 0;
-        height: 0;
-        border-top: 50px solid @green;
-        border-right: 50px solid transparent;
-      }
-      .triangle-bottomright {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-bottom: 50px solid @green;
-        border-left: 50px solid transparent;
-      }
-    }
-    .block-assign {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      top: 0;
-      .container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 200px;
-        height: 50px;
-        background: @green;
-        text-align: center;
-        padding: 15px 0;
-      }
-    }
-  }
-  .block-button:hover {
-    .highlight {
-      visibility: visible;
-    }
-  }
+
+  //.block-button {
+  //  position: relative;
+  //  width: 200px;
+  //  height: 50px;
+  //  margin: 10px 0;
+  //  .highlight {
+  //    position: absolute;
+  //    top: 0;
+  //    left: 0;
+  //    width: 1px;
+  //    height: 50px;
+  //    visibility: hidden;
+  //    background-color: @light-blue;
+  //  }
+  //  expand-button {
+  //    i {
+  //      cursor: pointer;
+  //      font-size: 50px;
+  //      outline: none;
+  //      animation-duration: 200ms;
+  //      -webkit-animation-duration: 200ms;
+  //      -webkit-animation-timing-function: ease-in-out;
+  //      -moz-animation-duration: 200ms;
+  //    }
+  //    i:hover {
+  //      color: #fff;
+  //    }
+  //  }
+  //  .block {
+  //    i {
+  //      font-size: 50px;
+  //      cursor: pointer;
+  //    }
+  //    margin: 0;
+  //    padding: 0;
+  //  }
+  //  .dndDragover {
+  //    i {
+  //      color: @green;
+  //    }
+  //  }
+  //  .title {
+  //    position: relative;
+  //    height: 50px;
+  //    width: 100px;
+  //    padding: 10px;
+  //    font-size: 20px;
+  //  }
+  //  .block-read {
+  //    position: relative;
+  //    left: 0;
+  //    top: 0;
+  //    cursor: pointer;
+  //    .container {
+  //      position: absolute;
+  //      left: 50px;
+  //      top: 0;
+  //      width: 100px;
+  //      height: 50px;
+  //      background: @green;
+  //      text-align: center;
+  //      padding: 10px;
+  //    }
+  //    .triangle-topright {
+  //      position: absolute;
+  //      width: 0;
+  //      height: 0;
+  //      border-top: 50px solid @green;
+  //      border-left: 50px solid transparent;
+  //    }
+  //    .triangle-bottomleft {
+  //      position: absolute;
+  //      left: 150px;
+  //      width: 0;
+  //      height: 0;
+  //      border-bottom: 50px solid @green;
+  //      border-right: 50px solid transparent;
+  //    }
+  //  }
+  //  .block-print {
+  //    cursor: pointer;
+  //    position: relative;
+  //    left: 0;
+  //    top: 0;
+  //    .container {
+  //      position: absolute;
+  //      left: 50px;
+  //      top: 0;
+  //      width: 100px;
+  //      height: 50px;
+  //      background: @green;
+  //      text-align: center;
+  //      padding: 10px;
+  //    }
+  //    .triangle-topleft {
+  //      position: absolute;
+  //      left: 150px;
+  //      width: 0;
+  //      height: 0;
+  //      border-top: 50px solid @green;
+  //      border-right: 50px solid transparent;
+  //    }
+  //    .triangle-bottomright {
+  //      position: absolute;
+  //      width: 0;
+  //      height: 0;
+  //      border-bottom: 50px solid @green;
+  //      border-left: 50px solid transparent;
+  //    }
+  //  }
+  //  .block-assign {
+  //    cursor: pointer;
+  //    position: relative;
+  //    left: 0;
+  //    top: 0;
+  //    .container {
+  //      position: absolute;
+  //      left: 0;
+  //      top: 0;
+  //      width: 200px;
+  //      height: 50px;
+  //      background: @green;
+  //      text-align: center;
+  //      padding: 15px 0;
+  //    }
+  //  }
+  //}
+  //.block-button:hover {
+  //  .highlight {
+  //    visibility: visible;
+  //  }
+  //}
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
 }
-.code {
-  background-color: @toolbar;
-  color: @dark;
-  /***************************** Dropzone Styling *****************************/
-  /**
-   * The dnd-list should always have a min-height,
-   * otherwise you can't drop to it once it's empty
-   */
-  .nestedDemo .dropzone ul[dnd-list] {
-    min-height: 50px;
-    margin: 0;
-    padding: 0;
-  }
-  /**
-   * The dnd-lists's child elements currently MUST have
-   * position: relative. Otherwise we can not determine
-   * whether the mouse pointer is in the upper or lower
-   * half of the element we are dragging over. In other
-   * browsers we can use event.offsetY for this.
-   */
-  .nestedDemo .dropzone li {
-    background-color: #fff;
-    //border: 1px solid @dark;
-    display: block;
-    padding: 0;
-  }
-  /**
-   * Reduce opacity of elements during the drag operation. This allows the user
-   * to see where he is dropping his element, even if the element is huge. The
-   * .dndDragging class is automatically set during the drag operation.
-   */
-  .nestedDemo .dropzone .dndDragging {
-    opacity: 0.7;
-  }
-  /**
-   * The dndDraggingSource class will be applied to the source element of a drag
-   * operation. It makes sense to hide it to give the user the feeling that he's
-   * actually moving it. Note that the source element has also .dndDragging class.
-   */
-  .nestedDemo .dropzone .dndDraggingSource {
-    background-color: @dark;
-    //display: none;
-  }
-  /**
-   * An element with .dndPlaceholder class will be added as child of the dnd-list
-   * while the user is dragging over it.
-   */
-  .nestedDemo .dropzone .dndPlaceholder {
-    position: relative;
-    min-height: 50px;
-    background-color: @toolbar;
-    display: block;
-  }
-  /***************************** Element Selection *****************************/
-  .nestedDemo .dropzone .selected .item {
-    //color: @green;
-    background-color: @toolbar;
-  }
-  .nestedDemo .dropzone .selected .box {
-    border-color: @toolbar;
-  }
-  .nestedDemo .dropzone .selected .box > h3 {
-    //color: @green;
-    background-color: @toolbar;
-  }
-  /***************************** Element type specific styles *****************************/
-  .nestedDemo .dropzone .item {
-    height: 50px;
-  }
-  //.nestedDemo .dropzone .container-element .column {
-  //  float: left;
-  //  width: 50%;
-  //}
-  /***************************** Toolbox *****************************/
-  //.nestedDemo .toolbox ul {
-  //  list-style: none;
-  //  padding-left: 0px;
-  //  cursor: move;
-  //}
-  //.nestedDemo .toolbox button {
-  //  margin: 5px;
-  //  width: 123px;
-  //  opacity: 1.0;
-  //}
-  .nestedDemo .toolbox .dndDragging {
-    opacity: 0.5;
-  }
-  .nestedDemo .toolbox .dndDraggingSource {
-    opacity: 1.0;
-  }
-}
-.output {
-  width: 250px;
-  overflow-y: scroll;
-}
+//.code {
+//  background-color: @toolbar;
+//  color: @dark;
+//  /***************************** Dropzone Styling *****************************/
+//  /**
+//   * The dnd-list should always have a min-height,
+//   * otherwise you can't drop to it once it's empty
+//   */
+//  .nestedDemo .dropzone ul[dnd-list] {
+//    min-height: 50px;
+//    margin: 0;
+//    padding: 0;
+//  }
+//  /**
+//   * The dnd-lists's child elements currently MUST have
+//   * position: relative. Otherwise we can not determine
+//   * whether the mouse pointer is in the upper or lower
+//   * half of the element we are dragging over. In other
+//   * browsers we can use event.offsetY for this.
+//   */
+//  .nestedDemo .dropzone li {
+//    background-color: #fff;
+//    //border: 1px solid @dark;
+//    display: block;
+//    padding: 0;
+//  }
+//  /**
+//   * Reduce opacity of elements during the drag operation. This allows the user
+//   * to see where he is dropping his element, even if the element is huge. The
+//   * .dndDragging class is automatically set during the drag operation.
+//   */
+//  .nestedDemo .dropzone .dndDragging {
+//    opacity: 0.7;
+//  }
+//  /**
+//   * The dndDraggingSource class will be applied to the source element of a drag
+//   * operation. It makes sense to hide it to give the user the feeling that he's
+//   * actually moving it. Note that the source element has also .dndDragging class.
+//   */
+//  .nestedDemo .dropzone .dndDraggingSource {
+//    background-color: @dark;
+//    //display: none;
+//  }
+//  /**
+//   * An element with .dndPlaceholder class will be added as child of the dnd-list
+//   * while the user is dragging over it.
+//   */
+//  .nestedDemo .dropzone .dndPlaceholder {
+//    position: relative;
+//    min-height: 50px;
+//    background-color: @toolbar;
+//    display: block;
+//  }
+//  /***************************** Element Selection *****************************/
+//  .nestedDemo .dropzone .selected .item {
+//    //color: @green;
+//    background-color: @toolbar;
+//  }
+//  .nestedDemo .dropzone .selected .box {
+//    border-color: @toolbar;
+//  }
+//  .nestedDemo .dropzone .selected .box > h3 {
+//    //color: @green;
+//    background-color: @toolbar;
+//  }
+//  /***************************** Element type specific styles *****************************/
+//  .nestedDemo .dropzone .item {
+//    height: 50px;
+//  }
+//  //.nestedDemo .dropzone .container-element .column {
+//  //  float: left;
+//  //  width: 50%;
+//  //}
+//  /***************************** Toolbox *****************************/
+//  //.nestedDemo .toolbox ul {
+//  //  list-style: none;
+//  //  padding-left: 0px;
+//  //  cursor: move;
+//  //}
+//  //.nestedDemo .toolbox button {
+//  //  margin: 5px;
+//  //  width: 123px;
+//  //  opacity: 1.0;
+//  //}
+//  .nestedDemo .toolbox .dndDragging {
+//    opacity: 0.5;
+//  }
+//  .nestedDemo .toolbox .dndDraggingSource {
+//    opacity: 1.0;
+//  }
+//}
+//.output {
+//  width: 250px;
+//  overflow-y: scroll;
+//}

@@ -3,14 +3,11 @@ define([], function () {
 
     function BlocksController($scope) {
 
-        $scope.sidePanel = {
-            expanded: true,
-            activeClass: ''
+        $scope.role = {
+            write: 1,
+            if: 4,
+            trash: 0
         };
-
-        $scope.$watch('sidePanel.expanded', function () {
-            $scope.sidePanel.activeClass = ($scope.sidePanel.expanded) ? 'expanded_view' : 'collapsed_view';
-        });
 
     }
 

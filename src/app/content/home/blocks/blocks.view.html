@@ -1,66 +1,21 @@
 <!-- Blocks -->
-<div ng-class="sidePanel.activeClass" layout="column">
-
-    <!-- expand/collapse view -->
-    <div class="block-button" layout="row">
-        <span class="highlight"></span>
-        <expand-button expand="sidePanel.expanded"></expand-button>
-        <span class="title">HELP</span>
-    </div>
+<div layout="column">
+    <h3>Blocks:</h3>
     <div flex></div>
 
-    <!-- The toolbox only allows to copy objects, not move it. After a new
-         element was created, dnd-copied is invoked and we generate the next id -->
-    <div class="block-button" layout="row">
-        <span class="highlight"></span>
-        <ul class="block">
-            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
-                <div class="block-print">
-                    <span class="triangle-bottomright"></span>
-                    <span class="container">printf()</span>
-                    <span class="triangle-topleft"></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="block-button" layout="row">
-        <span class="highlight"></span>
-        <ul class="block">
-            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
-                <div class="block-read">
-                    <span class="triangle-topright"></span>
-                    <span class="container">gets()</span>
-                    <span class="triangle-bottomleft"></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="block-button" layout="row">
-        <span class="highlight"></span>
-        <ul class="block">
-            <li dnd-draggable="models.templates[0]" dnd-effect-allowed="copy" dnd-copied="models.templates[0].id = models.templates[0].id + 1">
-                <div class="block-assign">
-                    <span class="container">i++</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <block-element role="role.write">
+        <span class="triangle-bottomright"></span>
+        <span class="container">printf("%d\n", (1+1))</span>
+        <span class="triangle-topleft"></span>
+    </block-element>
 
-    <!--<div class="block-button" layout="row">-->
-        <!--<span class="highlight"></span>-->
-        <!--<ul class="block">-->
-            <!--<li dnd-draggable="models.templates[1]" dnd-effect-allowed="copy" dnd-copied="models.templates[1].id = models.templates[1].id + 1">-->
-                <!--<i class="material-icons">rotate_90_degrees_ccw</i>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</div>-->
+    <block-element role="role.if">
+        <i class="material-icons">rotate_90_degrees_ccw</i>
+    </block-element>
 
     <div flex></div>
-    <!-- If you use [] as referenced list, the dropped elements will be lost -->
-    <div class="block-button" layout="row">
-        <ul class="block" dnd-list="[]">
-            <li><i class="material-icons">delete_forever</i></li>
-        </ul>
-    </div>
+    <block-element role="role.trash">
+        <i class="material-icons">delete_forever</i>
+    </block-element>
 
 </div>

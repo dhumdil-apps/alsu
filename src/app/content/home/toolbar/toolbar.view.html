@@ -1,18 +1,17 @@
 <div layout="row">
     <span ng-click="refreshPage()" class="logo">
-        <span>L2C</span>
-        <md-tooltip>{{toolbar.logo}}</md-tooltip>
+        <span class="alsu">ALSU2+++</span>
     </span>
     <span flex></span>
 
-    <span ng-click="compileAndRun()" class="icons">
-        <i class="material-icons">play_arrow</i>
-        <md-tooltip>{{toolbar.run}}</md-tooltip>
+    <span ng-click="compileAndRun()" class="tool">
+        <i class="material-icons run">play_arrow</i>
+        <md-tooltip md-direction="right">{{toolbar.run}}</md-tooltip>
     </span>
 
     <span flex></span>
-    <span class="icons">
-        <i class="material-icons">menu</i>
-        <md-tooltip>{{toolbar.settings}}</md-tooltip>
+    <span class="tool">
+        <i class="material-icons menu">menu</i>
+        <!--<md-tooltip md-direction="left">{{toolbar.settings}}</md-tooltip>-->
     </span>
 </div>
