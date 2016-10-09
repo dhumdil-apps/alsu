@@ -24,7 +24,7 @@ define([], function () {
                 {
                     id: 4,
                     type: "container",
-                    role: "if",
+                    role: "ifElse",
                     columns: [[], []]
                 }
             ],
@@ -74,12 +74,16 @@ define([], function () {
                 ]
             }
         };
-
-        // $scope.$watch('models.dropzones', function(model) {
-        //     $scope.modelAsJson = angular.toJson(model, true);
-        // }, true);
-
-        $scope.compileAndRun = compileAndRun;
+        $scope.home = {
+            toolbar: {},
+            blocks: {
+                isActive: true
+            },
+            code: {},
+            output: {
+                isActive: false
+            }
+        }
 
         init();
 
@@ -87,9 +91,30 @@ define([], function () {
             $scope.goToState('main.home.code');
         }
 
-        function compileAndRun() {
+        $scope.$on('SHOW_OUTPUT', function(){
+            $scope.home.output.isActive = true;
+        });
+        $scope.$on('HIDE_OUTPUT', function(){
+            $scope.home.output.isActive = false;
+        });
+
+        $scope.$on('SHOW_BLOCKS', function(){
+            $scope.home.blocks.isActive = true;
+        });
+        $scope.$on('HIDE_BLOCKS', function(){
+            $scope.home.blocks.isActive = false;
+        });
+
+        $scope.$on('UPDATE_JSON', function(){
             $scope.modelAsJson = angular.toJson($scope.models.dropzones, true);
-        }
+            /** this watch is watching for changes and 'precompiles' after the change...
+             *  can be used as error/warninng insector ;)
+             */
+            // $scope.$watch('models.dropzones', function(model) {
+            //     $scope.modelAsJson = angular.toJson(model, true);
+            // }, true);
+        });
+
     }
 
     HomeController.$inject = ['$scope'];

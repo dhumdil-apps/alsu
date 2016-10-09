@@ -1,4 +1,4 @@
-<div class="nestedDemo">
+<div>
 
     <!-- Markup for lists inside the dropzone. It's inside a seperate template
      because it will be used recursively. The dnd-list directive enables
@@ -23,13 +23,12 @@
          the above list template to render each container column -->
     <script type="text/ng-template" id="container.html">
         <div layout="row">
-            <h1>Boom</h1>
+            <h1>Booooooooooooooooooooooooooooooom</h1>
         </div>
         <div layout="row">
             <div layout="column" flex>
                 <div ng-repeat="list in item.columns[0]" ng-include="'list.html'"></div>
             </div>
-
             <div layout="column" flex>
                 <div ng-repeat="list in item.columns[1]" ng-include="'list.html'"></div>
             </div>
@@ -38,7 +37,7 @@
 
     <!-- Template for a normal list item -->
     <script type="text/ng-template" id="item.html">
-        <div class="item">Item {{item.id}}</div>
+        <div class="item">Block {{item.id}}</div>
     </script>
 
     <!-- Main area with dropzones and source code -->

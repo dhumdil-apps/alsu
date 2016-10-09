@@ -4,9 +4,18 @@ define([], function () {
     function BlocksController($scope) {
 
         $scope.role = {
-            write: 1,
-            if: 4,
-            trash: 0
+            write: {
+                id: 1,
+                name: 'write'
+            },
+            ifElse: {
+                id: 4,
+                name: 'if-else'
+            },
+            trash: {
+                id: 0,
+                name: 'trash'
+            }
         };
 
     }
