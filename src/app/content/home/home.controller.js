@@ -83,7 +83,7 @@ define([], function () {
             output: {
                 isActive: false
             }
-        }
+        };
 
         init();
 

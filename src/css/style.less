@@ -1,7 +1,7 @@
 // colors
-@dark: rgba(48,48,48, 1);
-@neutral: rgba(136,136,136, 1);
-@light: rgba(229,229,229, 1);
+@dark: rgb(48,48,48);
+@neutral: rgb(136,136,136);
+@light: rgb(229,229,229);
 
 body {
   background-color: @light;
@@ -33,9 +33,6 @@ body {
   position: relative;
   .home_sm {
     width: 600px;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 1s;
   }
   .home_md {
     width: 1200px;
@@ -51,7 +48,7 @@ body {
   }
 
   .toolbar-container {
-    position: fixed;
+    position: relative;
     height: 50px;
     width: 100%;
     background-color: @dark;
@@ -95,25 +92,22 @@ body {
     }
   }
   .blocks-container {
-    position: fixed;
-    height: ~"calc(100% - 50px)";
+    position: relative;
     width: 200px;
-    top: 50px;
     background-color: lighten(@dark, 10%);
     color: @light;
     font-size: 18px;
 
     .block {
-      // > li {
-        position: relative;
-        width: 200px;
-        height: 50px;
-        margin: 10px 0;
-      // }
+      position: relative;
+      width: 200px;
+      height: 50px;
+      margin: 10px 0;
 
       .write {
         cursor: pointer;
         position: relative;
+        background-color: @dark;
 
         .container {
           position: absolute;
@@ -121,9 +115,9 @@ body {
           top: 0;
           width: 100px;
           height: 50px;
-          background: #000;
-          text-align: center;
           padding: 10px;
+          background-color: #000;
+          text-align: center;
         }
         .triangle-topleft {
           position: absolute;
@@ -142,7 +136,7 @@ body {
         }
       }
       .write:hover {
-        background-color: @dark;
+        background-color: #000;
       }
       .if-else {
         position: relative;
@@ -215,7 +209,7 @@ body {
           */
           position: relative;
           min-height: 50px;
-          background-color: @toolbar;
+          background-color: @neutral;
           display: block;
         }
         /* Element Selection */

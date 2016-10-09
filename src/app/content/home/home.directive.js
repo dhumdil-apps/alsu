@@ -14,7 +14,7 @@ define([], function(){
 
             var activeClass = {
                 classCategory: 0,
-                allClasses: ['home_sm', 'home_md', 'home_lg']
+                allClasses: ['', 'home_sm', 'home_md', 'home_lg']
             };
             scope.home_cat = '';
 
@@ -40,11 +40,24 @@ define([], function(){
              * @returns {number}
              */
             function getSizeCategory(width) {
-                switch(width) {
-                    case 600: return 0;
-                    case 1200: return 1;
-                    default: return 2;
+
+                switch(1) {
+                    case sm(): return 1;
+                    case md(): return 2;
+                    case lg(): return 3;
+                    default:   return 0;
                 }
+
+                function sm() {
+                    return (width <= 600) ? 1 : 0;
+                }
+                function md() {
+                    return (600 < width <= 960) ? 1 : 0;
+                }
+                function lg() {
+                    return (960 < width <= 1280) ? 1 : 0;
+                }
+
             }
 
             /**
