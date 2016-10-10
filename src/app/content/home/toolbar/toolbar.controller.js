@@ -7,7 +7,8 @@ define([], function () {
             logo: 'REFRESH',
             run: {
                 name: 'RUN',
-                isClicked: false
+                icon: 'play_arrow',
+                isActive: false
             },
             settings: 'SETTINGS'
         };
@@ -29,18 +30,33 @@ define([], function () {
          * - 'update'/'ignore'' json
          */
         function run() {
-            
-            $scope.toolbar.run.isClicked = ($scope.toolbar.run.isClicked) ? function(){
-                $scope.$emmit('SHOW_OUTPUT');
-                $scope.$emmit('HIDE_BLOCKS');
-                $scope.$emmit('UPDATE_JSON');
-                return false;
-            }(): function() {
-                $scope.$emmit('HIDE_OUTPUT');
-                $scope.$emmit('SHOW_BLOCKS');
-                return true;
-            }();
 
+            if ($scope.toolbar.run.isActive) {
+                hideOutput();
+            } else {
+                hideBlocks()
+            }
+
+        }
+
+        /**
+         * Swap run-icon to stop-icon
+         */
+        function hideOutput() {
+            $scope.$emit('HIDE_OUTPUT');
+            $scope.$emit('SHOW_BLOCKS');
+
+            $scope.toolbar.run.isActive = false;
+            $scope.toolbar.run.icon = 'play_arrow';
+        }
+
+        function hideBlocks() {
+            $scope.$emit('SHOW_OUTPUT');
+            $scope.$emit('HIDE_BLOCKS');
+            $scope.$emit('UPDATE_JSON');
+
+            $scope.toolbar.run.isActive = true;
+            $scope.toolbar.run.icon = 'stop';
         }
 
     }

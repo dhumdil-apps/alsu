@@ -32,19 +32,13 @@ body {
 .home {
   position: relative;
   .home_sm {
-    width: 600px;
+    width: 960px;
   }
   .home_md {
-    width: 1200px;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 1s;
+    width: 1280px;
   }
   .home_lg {
     width: 1920px;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 1s;
   }
 
   .toolbar-container {
@@ -101,55 +95,118 @@ body {
     .block {
       position: relative;
       width: 200px;
-      height: 50px;
-      margin: 10px 0;
+      height: 102px;
 
       .write {
         cursor: pointer;
         position: relative;
-        background-color: @dark;
+        top: 26px;
 
         .container {
           position: absolute;
-          left: 50px;
           top: 0;
+          left: 50px;
           width: 100px;
           height: 50px;
           padding: 10px;
-          background-color: #000;
+          background-color: @dark;
           text-align: center;
         }
-        .triangle-topleft {
+        .triangle {
           position: absolute;
+          width: 0;
+          height: 0;
+        }
+        .triangle_left {
+          left: 25px;
+          border-bottom: 50px solid @dark;
+          border-left: 25px solid transparent;
+        }
+        .triangle_right {
           left: 150px;
-          width: 0;
-          height: 0;
-          border-top: 50px solid #000;
-          border-right: 50px solid transparent;
+          border-top: 50px solid @dark;
+          border-right: 25px solid transparent;
         }
-        .triangle-bottomright {
-          position: absolute;
-          width: 0;
-          height: 0;
-          border-bottom: 50px solid #000;
-          border-left: 50px solid transparent;
-        }
-      }
-      .write:hover {
-        background-color: #000;
       }
       .if-else {
         position: relative;
-      }
-      .trash {
-      
-        .dndDragover {
-      
+        top: 25px;
+        cursor: pointer;
+
+        .container {
+          position: absolute;
+          top: -10px;
+          left: 64px;
+          width: 72px;
+          height: 72px;
+          background-color: @dark;
+          transform: rotate(45deg);
+
+          .content {
+            transform: rotate(-45deg);
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 11px;
+            top: 11px;
+            text-align: center;
+            padding: 10px 0;
+          }
+        }
+        .branch {
+          position: absolute;
+          top: 0;
+          width: 25px;
+          height: 50px;
+
           i {
-            color: #000;
+            position: absolute;
+            top: 0;
+            font-size: 25px;
+            width: 25px;
+            height: 25px;
+            color: @dark;
+          }
+          .line {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            top: 25px;
+            border-top: 2px solid @dark;
+          }
+        }
+        .if_branch {
+          left: 25px;
+
+          .line_left {
+            border-left: 2px solid @dark;
+          }
+        }
+        .else_branch {
+          left: 150px;
+
+          .line_right {
+            border-right: 2px solid @dark;
           }
         }
       }
+      .trash {
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        .container {
+          color: @neutral;
+          text-align: center;
+          padding: 40px;
+          border-top: 1px solid #000;
+        }
+      }
+      .dndDragover {
+        background-color: #000;
+      }
+    }
+    .block:hover {
+      background-color: @light;
     }
     ul {
       list-style-type: none;
@@ -159,6 +216,7 @@ body {
   }
   .code-container {
     position: relative;
+    padding: 20px;
 
     .dropzone {
 
@@ -242,7 +300,7 @@ body {
   }
   .output-container {
     position: relative;
-    width: 250px;
+    width: 400px;
     overflow-y: scroll;
   }
 }

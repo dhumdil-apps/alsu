@@ -1,21 +1,30 @@
 <!-- Blocks -->
-<div layout="column">
+<div style="height:100%;" layout="column">
     <h3>Blocks:</h3>
     <div flex></div>
 
     <block-element role="role.write">
-        <span class="triangle-bottomright"></span>
-        <span class="container">printf("%d\n", (1+1))</span>
-        <span class="triangle-topleft"></span>
+        <div class="triangle triangle_left"></div>
+        <div class="container">WRITE</div>
+        <div class="triangle triangle_right"></div>
     </block-element>
 
     <block-element role="role.ifElse">
-        <i class="material-icons">rotate_90_degrees_ccw</i>
+        <div class="branch if_branch">
+            <i class="material-icons">add</i>
+            <span class="line line_left"></span>
+        </div>
+        <div class="container">
+            <span class="content">IF</span>
+        </div>
+        <div class="branch else_branch">
+            <i class="material-icons">remove</i>
+            <span class="line line_right"></span>
+        </div>
     </block-element>
 
     <div flex></div>
     <block-element role="role.trash">
-        <i class="material-icons">delete_forever</i>
+        <span class="container">TRASH</span>
     </block-element>
-
 </div>

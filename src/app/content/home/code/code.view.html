@@ -23,7 +23,7 @@
          the above list template to render each container column -->
     <script type="text/ng-template" id="container.html">
         <div layout="row">
-            <h1>Booooooooooooooooooooooooooooooom</h1>
+            <h1>{{item.role}}</h1>
         </div>
         <div layout="row">
             <div layout="column" flex>
@@ -37,7 +37,11 @@
 
     <!-- Template for a normal list item -->
     <script type="text/ng-template" id="item.html">
-        <div class="item">Block {{item.id}}</div>
+        <div class="item">{{item.role + item.id}}</div>
+        <!--<div ng-if="models.selected">-->
+            <!--<strong>Type: </strong> {{models.selected.type}}<br>-->
+            <!--<input type="text" ng-model="models.selected.role" class="form-control" style="margin-top: 5px" />-->
+        <!--</div>-->
     </script>
 
     <!-- Main area with dropzones and source code -->
