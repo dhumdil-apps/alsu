@@ -1,14 +1,13 @@
 define([], function(){
     'use strict';
 
-    function block() {
+    function list() {
 
         var directive =  {
             restrict: 'E',
-            templateUrl: 'src/app/content/home/blocks/elements/block.tpl.html',
-            transclude: true,
+            templateUrl: 'src/app/content/home/code/list/list.tpl.html',
             scope: {
-                'model': '='
+                'list': '='
             }
         };
 
@@ -16,5 +15,5 @@ define([], function(){
 
     }
 
-    return block;
+    return list;
 });

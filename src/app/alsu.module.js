@@ -6,13 +6,16 @@ define([
     'src/app/content/home/blocks/blocks.controller',
     'src/app/content/home/blocks/elements/block.directive',
     'src/app/content/home/code/code.controller',
+    'src/app/content/home/code/list/list.directive',
+    'src/app/content/home/code/container/container.directive',
+    'src/app/content/home/code/item/item.directive',
     'src/app/content/home/output/output.controller'
 ], function(
     MainController,
         HomeController, homeContainer,
             ToolbarController,
-            BlocksController, blockElement,
-            CodeController,
+            BlocksController, block,
+            CodeController, list, container, item,
             OutputController
 ) {
     'use strict';
@@ -27,8 +30,11 @@ define([
         .controller('ToolbarController', ToolbarController)
         .directive('homeContainer', homeContainer)
         .controller('BlocksController', BlocksController)
-        .directive('blockElement', blockElement)
+        .directive('block', block)
         .controller('CodeController', CodeController)
+        .directive('list', list)
+        .directive('container', container)
+        .directive('item', item)
         .controller('OutputController', OutputController);
 
 });

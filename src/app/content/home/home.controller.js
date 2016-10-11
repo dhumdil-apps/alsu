@@ -7,25 +7,33 @@ define([], function () {
             selected: null,
             templates: [
                 {
+                    id: 0,
+                    type: '',
+                    name: 'trash'
+                },
+                {
                     id: 1,
                     type: "item",
-                    role: "assign"
+                    name: "assign"
                 },
                 {
                     id: 2,
                     type: "item",
-                    role: "write"
+                    name: "write"
                 },
                 {
                     id: 3,
                     type: "item",
-                    role: "read"
+                    name: "read"
                 },
                 {
                     id: 4,
                     type: "container",
-                    role: "ifElse",
-                    columns: [[], []]
+                    name: "if-else",
+                    columns: [
+                        [[]],
+                        [[]]
+                    ]
                 }
             ],
             dropzones: {
@@ -33,43 +41,43 @@ define([], function () {
                     {
                         "id": "1",
                         "type": "item",
-                        "role": "assign"
-                    },
-                    {
-                        "id": "2",
-                        "type": "item",
-                        "role": "read"
+                        "name": "assign"
                     },
                     {
                         "id": "3",
+                        "type": "item",
+                        "name": "read"
+                    },
+                    {
+                        "id": "4",
                         "type": "container",
-                        "role": "if",
+                        "name": "if",
                         "columns": [
                             [[
                                 {
-                                    "id": "4",
+                                    "id": "1",
                                     "type": "item",
-                                    "role": "assign"
+                                    "name": "assign"
                                 },
                                 {
-                                    "id": "5",
+                                    "id": "2",
                                     "type": "item",
-                                    "role": "write"
+                                    "name": "write"
                                 }
                             ]],
                             [[
                                 {
-                                    "id": "6",
+                                    "id": "2",
                                     "type": "item",
-                                    "role": "write"
+                                    "name": "write"
                                 }
                             ]]
                         ]
                     },
                     {
-                        "id": "7",
+                        "id": "2",
                         "type": "item",
-                        "role": "write"
+                        "name": "write"
                     }
                 ]
             }
@@ -86,7 +94,6 @@ define([], function () {
         };
 
         init();
-
         function init() {
             $scope.goToState('main.home.code');
         }
@@ -97,14 +104,12 @@ define([], function () {
         $scope.$on('HIDE_OUTPUT', function(){
             $scope.home.output.isActive = false;
         });
-
         $scope.$on('SHOW_BLOCKS', function(){
             $scope.home.blocks.isActive = true;
         });
         $scope.$on('HIDE_BLOCKS', function(){
             $scope.home.blocks.isActive = false;
         });
-
         $scope.$on('UPDATE_JSON', function(){
             $scope.modelAsJson = angular.toJson($scope.models.dropzones, true);
             /** this watch is watching for changes and 'precompiles' after the change...

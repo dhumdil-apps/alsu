@@ -1,0 +1,21 @@
+<!--
+ This template is responsible for rendering a container element. It uses
+ the above list template to render each container column
+-->
+<div class="container">
+    <div layout="row">
+        <h1>{{container.name}}</h1>
+    </div>
+    <div layout="row">
+        <div layout="column" flex>
+            <div ng-repeat="list in container.columns[0]">
+                <list list="list"></list>
+            </div>
+        </div>
+        <div layout="column" flex>
+            <div ng-repeat="list in container.columns[1]">
+                <list list="list"></list>
+            </div>
+        </div>
+    </div>
+</div>

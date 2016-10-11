@@ -8,7 +8,6 @@ require.config({
         'angular-animate': 'src/js/angular-animate',
         'alsu-module': 'src/app/alsu.module',
         'dnd-lists': 'src/js/angular-dnd-lists'
-        // 'du-scroll': 'src/js/angular-scroll.min'
     },
     shim: {
         'ui-router': ['angular'],
@@ -18,7 +17,6 @@ require.config({
         'angular-material': ['angular', 'angular-animate', 'angular-aria', 'angular-messages'],
         'alsu-module': ['angular', 'ui-router'],
         'dnd-lists': ['angular', 'alsu-module'],
-        // 'du-scroll': ['angular', 'alsu-module'],
         'angular': {
             exports: 'angular'
         }
