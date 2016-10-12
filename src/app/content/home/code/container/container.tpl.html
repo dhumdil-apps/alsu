@@ -6,13 +6,13 @@
     <div layout="row">
         <h1>{{container.name}}</h1>
     </div>
-    <div layout="row">
-        <div layout="column" flex>
+    <div layout="row" class="container_content">
+        <div class="content_w" layout="column">
             <div ng-repeat="list in container.columns[0]">
                 <list list="list"></list>
             </div>
         </div>
-        <div layout="column" flex>
+        <div class="content_w" layout="column">
             <div ng-repeat="list in container.columns[1]">
                 <list list="list"></list>
             </div>

@@ -8,11 +8,7 @@
 -->
 <div class="list">
     <ul dnd-list="list">
-        <li ng-repeat="item in list"
-            dnd-draggable="item"
-            dnd-effect-allowed="move"
-            dnd-moved="list.splice($index, 1)"
-        >
+        <li ng-repeat="item in list" dnd-draggable="item" dnd-effect-allowed="move" dnd-moved="list.splice($index, 1)">
             <item ng-if="item.type === 'item'" item="item"></item>
             <container ng-if="item.type === 'container'" container="item"></container>
         </li>

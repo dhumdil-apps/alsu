@@ -5,7 +5,6 @@
 
 body {
   background-color: @light;
-  overflow: hidden;
   > div {
     width: 100%;
     height: 100%;
@@ -210,8 +209,6 @@ body {
   .code-container {
     position: relative;
     padding: 20px;
-    overflow: scroll;
-
     .dropzone {
 
       /* Style-decoration */
@@ -275,7 +272,15 @@ body {
       /* Element type specific styles */
       .item {
         height: 50px;
-        min-width: 100px;
+        min-width: 200px;
+
+      }
+      .container {
+        .container_content {
+          .content_w {
+            min-width: 200px;
+          }
+        }
       }
     }
     .toolbox {
