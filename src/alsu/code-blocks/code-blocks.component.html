@@ -1,0 +1,12 @@
+<div class="code-blocks">
+    <div>
+        <button (click)="destroy()" type="button">destroy</button>
+        <button (click)="add('test')" type="button">add</button>
+    </div>
+
+    <ul class="code-blocks__list">
+        <li class="code-blocks__list_item" *ngFor="let block of codeblocks">
+            <block [block]="block"></block>
+        </li>
+    </ul>
+</div>
