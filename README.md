@@ -1,45 +1,23 @@
-# Getting Started
+# alsu
 
-Super simple Angular 2 app with 1 module and 2 routes 
+## Prerequisites & Installing npm packages
 
-## Get the Code
-```
-git clone https://github.com/johnpapa/angular2-tour-of-heroes.git toh
-cd toh
-npm i
-```
+Node.js and npm are essential to Angular development.
 
-### Just in Time (JiT) Compilation
+Install the npm packages described in the `package.json` and verify that it works:
+```bash
+git clone https://github.com/m16peter/alsu2.git
 
-Runs the TypeScript compiler and launches the app
-
-```
+npm install
 npm start
 ```
 
-### Ahead of Time (AoT) Compilation 
+The `npm start` command first compiles the application, 
+then simultaneously re-compiles and runs the `lite-server`.
+Both the compiler and the server watch for file changes.
 
-Runs the Angular AoT compiler, rollup, uglify for an optimized bundle, then launches the app
+Shut it down manually with `Ctrl-C`.
 
-```
-npm run start-aot
-```
-
-### AoT + gzip 
-
-Runs AoT plus gzips and launches the app 
-
-```
-gulp copy-aot-gzip
-npm run aot
-npm run rollup
-http-server
-```
-
-Notes:
-- Use your favorite server in place of `http-server`
-- This could be scripted, obviously
-- `lite-server` does not launch gzipped files by default.
 
 ### vscode - tweak
 ```
