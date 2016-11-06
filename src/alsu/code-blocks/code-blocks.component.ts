@@ -170,6 +170,7 @@ export class CodeBlocksComponent implements OnInit {
         }
 
         function fromTail(b: CodeBlocks) {
+            b.i1.previous.setPointers(b.i1.previous.previous, null);
             return new CodeBlocks(b.head, b.i1.previous, null, b.i1.previous);
         }
 
