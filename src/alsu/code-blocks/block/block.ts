@@ -16,5 +16,5 @@ export class Block {
         this.previous = previous;
         this.next = next;
     }
-    
+
 }

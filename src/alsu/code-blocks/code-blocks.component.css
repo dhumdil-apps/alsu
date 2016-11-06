@@ -1,12 +1,23 @@
 /* code-blocks */
-h2 {
+.code-blocks h2 {
     color: #48f;
+}
+
+.code-blocks div input {
+    position: relative;
+    top: 1px;
+    width: 96px;
+    height: 20px;
+}
+.code-blocks div button {
+    width: 100px;
 }
 
 /* ul */
 .code-blocks__list {
     position: relative;
     list-style-type: none;
+    padding: 0;
 }
 
 /* li */
@@ -14,6 +25,7 @@ h2 {
     position: relative;
     height: 30px;
     border: 1px solid #000;
+    margin-top: 5px;    
 }
 
 /* block */
@@ -21,7 +33,6 @@ h2 {
     position: absolute;
     left: 70px;
     padding: 5px;
-    
 }
 
 /* span */
@@ -32,6 +43,7 @@ h2 {
     width: 70px;
     color: #fff;
     text-align: center;
+    cursor: pointer;
 }
 .code-blocks__list_item span:hover {
     background-color: #48f;

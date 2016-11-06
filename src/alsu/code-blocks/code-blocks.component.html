@@ -1,15 +1,24 @@
 <div class="code-blocks">
 
-    <div>
-        <button (click)="destroy()" type="button">destroy()</button>
-        <button (click)="pop()" type="button">pop()</button>
+    <hr><div>
+        <button (click)="toFirst()" type="button">toFirst</button>
+        <button (click)="toLast()" type="button">toLast</button>
+    </div><hr><div>
+        <button (click)="toPrevious()" type="button">toPrevious</button>
+        <button (click)="toNext()" type="button">toNext</button>
+    </div><hr><div>
+        <button (click)="swap()" type="button">swap</button>
+    </div><hr><div>
+        <button (click)="destroy()" type="button">destroy</button>
+        <button (click)="pop()" type="button">pop</button>
+    </div><hr><div>
         <input type="text" [(ngModel)]="data" />
-        <button (click)="add(data)" type="button">add('{{data}}')</button>
-    </div>
+        <button (click)="add(data)" type="button">add</button>
+    </div><hr>
 
     <ul class="code-blocks__list">
         <li class="code-blocks__list_item" *ngFor="let block of codeBlocks">
-            <span [ngClass]="{active: isPointer(block)}" (click)="pointTo(block)">pointTo()</span>
+            <span [ngClass]="{active: isPointer(block)}" (click)="pointTo(block)">pointTo</span>
             <block [block]="block"></block>
         </li>
     </ul>

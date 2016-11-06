@@ -14,10 +14,9 @@ import { CodeBlocks } from './code-blocks.js';
 
 export class CodeBlocksComponent {
 
-    public blocks: CodeBlocks;
-    public codeBlocks: Block[];
-
-    public data: string;
+    private blocks: CodeBlocks;
+    private codeBlocks: Block[];
+    private data: string;
 
     constructor (private router: Router) {
         this.blocks = new CodeBlocks(null, null, null, null);
@@ -32,6 +31,7 @@ export class CodeBlocksComponent {
         }
     }
 
+    // just to see what's up! defenetly not efficient!!!
     private updateList(): void {
         let tmpB: Block = this.blocks.head;
         this.codeBlocks = [];
@@ -41,39 +41,61 @@ export class CodeBlocksComponent {
             tmpB = tmpB.next;
         }
 
-        console.log("updated!", this.codeBlocks);
+        // console.log("updated!", this.codeBlocks);
+    }
+
+    // FIXXXXX
+    private swap(): void {
+
+        if ( !this.isFirst() ) {
+
+            if ( this.isHead() ) {
+                // this.toNext();
+                return;
+            }
+            if ( this.isTail() ) {
+                // this.toPrevious();
+                return;
+            }
+
+            this.blocks.i1.previous.next = this.blocks.i2;
+            this.blocks.i2.next.previous = this.blocks.i1;
+
+            this.blocks.i2.previous = this.blocks.i1.previous;
+            this.blocks.i1.next = this.blocks.i2.next;
+
+            this.blocks.i1.previous = this.blocks.i2;
+            this.blocks.i2.next = this.blocks.i1;
+
+            this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i2, this.blocks.tail);
+
+            this.updateList();
+        }
+        
     }
 
     private toPrevious(): void {
         if (this.blocks.i1 !== this.blocks.head) {
             this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1.previous, this.blocks.i1, this.blocks.tail);
-        } else {
-            // console.log("impossible!");
         }
     }
     private toNext(): void {
         if (this.blocks.i1 !== this.blocks.tail) {
             this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i2, this.blocks.i2.next, this.blocks.tail);
-        } else {
-            // console.log("impossible!");            
         }
     }
     private toFirst(): void {
         if (this.blocks.i1 !== this.blocks.head) {
             this.blocks = new CodeBlocks(this.blocks.head, this.blocks.head, this.blocks.head.next, this.blocks.tail);
-        } else {
-            // console.log("nothing to do!");
         }
     }
     private toLast(): void {
         if (this.blocks.i1 !== this.blocks.tail) {
             this.blocks = new CodeBlocks(this.blocks.head, this.blocks.tail, null, this.blocks.tail);
-        } else {
-            // console.log("nothing to do!");            
         }
     }
 
-    public isPointer(block: Block) {
+    private isPointer(block: Block) {
         return this.blocks.i1 === block;
     }
     private isFirst(): boolean {
