@@ -1,13 +1,13 @@
-<div class="block-data">
+<div class="block-data" [ngClass]="{active: block.selected}">
 
     <div class="block_unselected" *ngIf="!block.selected" (click)="select(block)">
         <span class="block__data">{{block.data}}</span>
     </div>
     
     <div class="block_selected" *ngIf="block.selected">
+        <button class="block__data_cancel" type="button" (click)="cancel(block)">X</button>
         <input class="block__data" type="text" [(ngModel)]="data" />
-        <button class="block__data_cancel" type="button" (click)="cancel(block)">cancel</button>
-        <button class="block__data_update" type="button" (click)="update(block)">update</button>
+        <button class="block__data_update" type="button" (click)="update(block)">OK</button>
     </div>
 
 </div>

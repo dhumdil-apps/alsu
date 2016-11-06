@@ -2,3 +2,7 @@
     color: #369;
     font-weight: 700;
 }
+
+.active {
+    background-color: #ccc;
+}

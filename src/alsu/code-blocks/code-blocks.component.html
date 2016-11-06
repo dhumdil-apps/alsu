@@ -1,13 +1,17 @@
 <div class="code-blocks">
+
     <div>
-        <button (click)="destroy()" type="button">destroy</button>
-        <button (click)="pop()" type="button">pop</button>
-        <button (click)="add('test')" type="button">add</button>
+        <button (click)="destroy()" type="button">destroy()</button>
+        <button (click)="pop()" type="button">pop()</button>
+        <input type="text" [(ngModel)]="data" />
+        <button (click)="add(data)" type="button">add('{{data}}')</button>
     </div>
 
     <ul class="code-blocks__list">
         <li class="code-blocks__list_item" *ngFor="let block of codeBlocks">
-            <block (click)="select(block)" [block]="block"></block>
+            <span [ngClass]="{active: isPointer(block)}" (click)="pointTo(block)">pointTo()</span>
+            <block [block]="block"></block>
         </li>
     </ul>
+
 </div>
