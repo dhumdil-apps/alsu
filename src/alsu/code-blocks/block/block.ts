@@ -5,9 +5,9 @@ export class Block {
     next: Block;
     selected: boolean;
 
-    constructor(data: string) {
+    constructor(data?: string) {
         this.previous = null;
-        this.data = data;
+        this.data = data ? data : "";
         this.next = null;
         this.selected = false;
     }

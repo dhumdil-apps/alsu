@@ -3,35 +3,15 @@ import { Block } from './block/block.js';
 export class CodeBlocks {
 
     head: Block;
-    index: Block;
+    i1: Block;
+    i2: Block;
     tail: Block;
 
-    constructor(head: Block = null, index: Block = null, tail: Block = null) {
-
+    constructor(head: Block, i1: Block, i2: Block, tail: Block) {
         this.head = head;
-        if (this.head !== null) {
-            this.head.previous = null;
-        }
-
-        this.index = index;
-
+        this.i1 = i1;
+        this.i2 = i2;
         this.tail = tail;
-        if (this.tail !== null) {
-            this.tail.next = null;
-        }
-        
-    }
-
-    public isEmpty(): boolean {
-        return this.index === null;
-    }
-
-    public isHead(): boolean {
-        return this.index === this.head;
-    }
-
-    public isTail(): boolean {
-        return this.index === this.tail;
     }
 
 }

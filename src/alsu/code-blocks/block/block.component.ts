@@ -12,28 +12,22 @@ import { Block } from './block.js';
 export class BlockComponent {
     @Input() block: Block;
     
-    selectedBlock: Block;
-    blockData: string;
-
-    constructor() { }
+    data: string;
 
     select(block: Block): void {
-        if (this.selectedBlock != null) {
-            this.cancel();
+        if (!block.selected) {
+            this.data = block.data;
+            block.selected = true;
         }
-        this.blockData = block.data;
-        this.selectedBlock = block;
-        this.selectedBlock.selected = true;
-        // emmit - selected
     }
 
-    update(): void {
-        this.selectedBlock.data = this.blockData;
-        this.cancel();
+    update(block: Block): void {
+        block.data = this.data;
+        this.cancel(block);
     }
 
-    cancel(): void {
-        this.selectedBlock.selected = false;
+    cancel(block: Block): void {
+        block.selected = false;
     }
 
 }
