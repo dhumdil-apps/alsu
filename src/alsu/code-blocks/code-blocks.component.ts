@@ -35,7 +35,7 @@ export class CodeBlocksComponent {
     private updateList(): void {
         let tmpB: Block = this.blocks.head;
         this.codeBlocks = [];
-        
+
         while ( tmpB !== null ) {
             this.codeBlocks.push(tmpB);
             tmpB = tmpB.next;
@@ -44,34 +44,39 @@ export class CodeBlocksComponent {
         // console.log("updated!", this.codeBlocks);
     }
 
-    // FIXXXXX
     private swap(): void {
 
         if ( !this.isFirst() ) {
 
-            if ( this.isHead() ) {
-                // this.toNext();
+            if ( this.isHead() || this.isTail() ) {
                 return;
+
+            } else if (this.blocks.i1.previous !== null && this.blocks.i2.next !== null) {
+                this.blocks.i1.previous.next = this.blocks.i2;
+                this.blocks.i2.next.previous = this.blocks.i1;
+                this.blocks.i2.previous = this.blocks.i1.previous;
+                this.blocks.i1.next = this.blocks.i2.next;
+                this.blocks.i1.previous = this.blocks.i2;
+                this.blocks.i2.next = this.blocks.i1;
+                this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i1.next, this.blocks.tail);
+                // console.log(this.blocks);
+
+                this.updateList();
             }
-            if ( this.isTail() ) {
-                // this.toPrevious();
-                return;
-            }
 
-            this.blocks.i1.previous.next = this.blocks.i2;
-            this.blocks.i2.next.previous = this.blocks.i1;
-
-            this.blocks.i2.previous = this.blocks.i1.previous;
-            this.blocks.i1.next = this.blocks.i2.next;
-
-            this.blocks.i1.previous = this.blocks.i2;
-            this.blocks.i2.next = this.blocks.i1;
-
-            this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i2, this.blocks.tail);
-
-            this.updateList();
         }
-        
+
+    }
+
+    private moveDown(): void {
+        this.swap();
+    }
+    private moveUp(): void {
+        if (this.blocks.i1.previous.previous !== null) {
+            this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1.previous, this.blocks.i1, this.blocks.tail);
+            this.swap();
+            this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1.previous, this.blocks.i1, this.blocks.tail);        
+        }
     }
 
     private toPrevious(): void {
@@ -198,8 +203,10 @@ export class CodeBlocksComponent {
     }
 
     private destroy(): void {
-        this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, null, this.blocks.tail);
+        this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i2, this.blocks.tail);
+        // this.blocks.i2 = new Block("END");
         this.blocks.head = this.blocks.i1 = this.blocks.tail = new Block("START");
+        this.add('END');
         // console.log("List initialized!", this.blocks);
         this.updateList();        
     }

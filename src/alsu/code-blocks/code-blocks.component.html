@@ -1,19 +1,18 @@
 <div class="code-blocks">
 
     <hr><div>
-        <button (click)="toFirst()" type="button">toFirst</button>
-        <button (click)="toLast()" type="button">toLast</button>
+        <button (click)="toFirst()" type="button"><<</button>
+        <button (click)="toPrevious()" type="button"><</button>
+        <button (click)="toNext()" type="button">></button>
+        <button (click)="toLast()" type="button">>></button>
     </div><hr><div>
-        <button (click)="toPrevious()" type="button">toPrevious</button>
-        <button (click)="toNext()" type="button">toNext</button>
+        <button (click)="moveUp()" type="button">/\</button>
+        <button (click)="moveDown()" type="button">\/</button>
     </div><hr><div>
-        <button (click)="swap()" type="button">swap</button>
-    </div><hr><div>
-        <button (click)="destroy()" type="button">destroy</button>
-        <button (click)="pop()" type="button">pop</button>
-    </div><hr><div>
+        <button (click)="destroy()" type="button">X</button>
+        <button (click)="pop()" type="button">-</button>
         <input type="text" [(ngModel)]="data" />
-        <button (click)="add(data)" type="button">add</button>
+        <button (click)="add(data)" type="button">+</button>
     </div><hr>
 
     <ul class="code-blocks__list">
