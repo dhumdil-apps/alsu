@@ -2,27 +2,35 @@
 
 ## Prerequisites & Installing npm packages
 
-Node.js and npm are essential to Angular development.
+<a href="https://nodejs.org/en/">Node.js</a> and npm are essential to <a href="https://angular.io/">Angular</a> development.
 
-Install the npm packages described in the `package.json` and verify that it works:
+Install the npm packages described in the `package.json`:
 ```bash
-git clone https://github.com/m16peter/alsu2.git
-
 npm install
 npm start
 ```
-
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
-
 Shut it down manually with `Ctrl-C`.
-
 
 ### vscode - tweak
 ```
-"files.exclude": {
-    "src/**/*.js": true,
-    "src/**/*.js.map": true
+// Place your settings in this file to overwrite the default settings
+{
+
+    "files.exclude": {
+        "src/**/*.js": true,
+        "src/**/*.js.map": true,
+
+        "src/app/main*.ts": true,
+        "src/app/rxjs*.ts": true,
+        "node_modules": true,
+        ".*": true,
+        "**/*.json": true,
+        "*-config.*": true,
+        "index-*.html": true,
+        "*.js": true,
+        "LICENSE": true,
+        "README.md": true
+    }
+
 }
 ```
