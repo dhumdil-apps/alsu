@@ -1,11 +1,1 @@
-system-config.js*
-src/**/*.js
-src/**/*.map
-node_modules
-jspm_packages
-bower_components
-aot/*
-dist/*
-yarn.lock
-.vscode/
-.idea/
+
