@@ -25,13 +25,14 @@ export class CodeBlocksComponent {
     }
 
     private pointTo(block: Block) {
-        if ( !this.isPointer(block) ) {
+        if ( !this.isPointer(block) && block !== this.blocks.tail ) {
             this.blocks = new CodeBlocks(this.blocks.head, block, block.next, this.blocks.tail);
             // console.log("pointing to", block);
         }
     }
 
     // just to see what's up! defenetly not efficient!!!
+    // use instead: slice/splice/push/pop...
     private updateList(): void {
         let tmpB: Block = this.blocks.head;
         this.codeBlocks = [];
@@ -52,12 +53,14 @@ export class CodeBlocksComponent {
                 return;
 
             } else if (this.blocks.i1.previous !== null && this.blocks.i2.next !== null) {
+
                 this.blocks.i1.previous.next = this.blocks.i2;
                 this.blocks.i2.next.previous = this.blocks.i1;
                 this.blocks.i2.previous = this.blocks.i1.previous;
                 this.blocks.i1.next = this.blocks.i2.next;
                 this.blocks.i1.previous = this.blocks.i2;
                 this.blocks.i2.next = this.blocks.i1;
+
                 this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i1.next, this.blocks.tail);
                 // console.log(this.blocks);
 
@@ -72,8 +75,8 @@ export class CodeBlocksComponent {
         this.swap();
     }
     private moveUp(): void {
-        if (this.blocks.i1.previous.previous !== null) {
-            this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1.previous, this.blocks.i1, this.blocks.tail);
+        if ( !this.isHead() && this.blocks.i1.previous.previous !== null) {
+            this.pointTo(this.blocks.i1.previous);
             this.swap();
             this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1.previous, this.blocks.i1, this.blocks.tail);        
         }
@@ -119,42 +122,42 @@ export class CodeBlocksComponent {
     private add(data: string): void {
         
         if ( this.isFirst() ) {
-            this.blocks = second(this.blocks);
+            // this.blocks = second(this.blocks);
             // console.log("second added!", this.blocks);
 
         } else if ( this.isTail() ) {
-            this.blocks = last(this.blocks);
+            // this.blocks = last(this.blocks);
             // console.log("last added!", this.blocks);
 
         } else {
             this.blocks = between(this.blocks);
             // console.log("between added!", this.blocks);
 
+            this.updateList();
         }
 
-        this.updateList();
 
         function second(b: CodeBlocks): CodeBlocks {
-            b.i2 = new Block(data);
-            b.i2.setPointers(b.head, null);
-            b.head.next = b.i1 = b.tail = b.i2;
+            //b.i2 = new Block(data);
+            //b.i2.setPointers(b.head, null);
+            //b.head.next = b.i1 = b.tail = b.i2;
             return new CodeBlocks(b.head, b.i1, null, b.tail);
         }
 
         function last(b: CodeBlocks): CodeBlocks {
-            b.i2 = new Block(data);
-            b.i2.setPointers(b.i1, null);
-            b.i1.setPointers(b.i1.previous, b.i2);
-            b.i1 = b.tail = b.i2;
+            //b.i2 = new Block(data);
+            //b.i2.setPointers(b.i1, null);
+            //b.i1.setPointers(b.i1.previous, b.i2);
+            //b.i1 = b.tail = b.i2;
             return new CodeBlocks(b.head, b.i1, null, b.tail);
         }
 
         function between(b: CodeBlocks): CodeBlocks {
-            let tmpB = new Block(data);
-            tmpB.setPointers(b.i1, b.i2);
-            b.i1.setPointers(b.i1.previous, tmpB);
-            b.i2.setPointers(tmpB, b.i2.next);
-            return new CodeBlocks(b.head, tmpB, b.i2, b.tail);
+            let tmpB = new Block(b.i1, b.i2, data, "assign");
+            b.i1.next = tmpB;
+            b.i2.previous = tmpB;
+
+            return new CodeBlocks(b.head, tmpB, tmpB.next, b.tail);
         }
 
     }
@@ -162,7 +165,7 @@ export class CodeBlocksComponent {
     private pop(): void {
 
         if ( this.isHead() ) {
-
+            /*
             if ( this.isFirst() ) {
                 this.destroy();
                 // console.log("destroyed!", this.blocks);
@@ -172,9 +175,9 @@ export class CodeBlocksComponent {
                 // console.log("fromHead poped!", this.blocks);
 
             }
-
+            */
         } else if ( this.isTail() ) {
-            this.blocks = fromTail(this.blocks);
+            // this.blocks = fromTail(this.blocks);
             // console.log("fromTail poped!", this.blocks);
 
         } else {
@@ -190,23 +193,28 @@ export class CodeBlocksComponent {
         }
 
         function fromTail(b: CodeBlocks) {
-            b.i1.previous.setPointers(b.i1.previous.previous, null);
+            // b.i1.previous.setPointers(b.i1.previous.previous, null);
             return new CodeBlocks(b.head, b.i1.previous, null, b.i1.previous);
         }
 
         function fromInBetween(b: CodeBlocks) {
             b.i1.previous.next = b.i2;
             b.i2.previous = b.i1.previous; 
-            return new CodeBlocks(b.head, b.i2, b.i2.next, b.tail);
+            if ( b.i2.next !== null ) {
+                return new CodeBlocks(b.head, b.i2, b.i2.next, b.tail);
+            }
+            return new CodeBlocks(b.head, b.i2.previous, b.i2, b.tail);
         }
 
     }
 
     private destroy(): void {
+        this.blocks.i2 = new Block();
+        this.blocks.i1 = new Block(null, this.blocks.i2, "begin");
+        this.blocks.i2.set(this.blocks.i1, null, "end");
+        this.blocks.head = this.blocks.i1;
+        this.blocks.tail = this.blocks.i2;
         this.blocks = new CodeBlocks(this.blocks.head, this.blocks.i1, this.blocks.i2, this.blocks.tail);
-        // this.blocks.i2 = new Block("END");
-        this.blocks.head = this.blocks.i1 = this.blocks.tail = new Block("START");
-        this.add('END');
         // console.log("List initialized!", this.blocks);
         this.updateList();        
     }

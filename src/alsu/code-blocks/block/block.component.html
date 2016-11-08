@@ -5,8 +5,8 @@
     </div>
     
     <div class="block_selected" *ngIf="block.selected">
-        <button class="block__data_cancel" type="button" (click)="cancel(block)">X</button>
         <input class="block__data" type="text" [(ngModel)]="data" />
+        <button class="block__data_cancel" type="button" (click)="cancel(block)">X</button>
         <button class="block__data_update" type="button" (click)="update(block)">OK</button>
     </div>
 

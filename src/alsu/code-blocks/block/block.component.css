@@ -2,7 +2,11 @@
     color: #369;
     font-weight: 700;
 }
-
+.block-data div {
+    min-width: 200px;
+    min-height: 20px;
+    background: #eee;
+}
 .active {
     background-color: #ccc;
 }

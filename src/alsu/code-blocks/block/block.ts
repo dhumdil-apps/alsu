@@ -1,20 +1,20 @@
 export class Block {
 
     previous: Block;
-    data: string;
     next: Block;
+    data: string;
+    type: string;
     selected: boolean;
 
-    constructor(data?: string) {
-        this.previous = null;
-        this.data = data ? data : "";
-        this.next = null;
-        this.selected = false;
+    constructor(previous: Block = null, next: Block = null, data: string = "", type: string = "") {
+        this.set(previous, next, data, type);
     }
 
-    public setPointers(previous: Block, next: Block): void {
+    public set(previous: Block, next: Block, data: string, type?: string): void {
         this.previous = previous;
+        this.data = data;
         this.next = next;
+        this.type = type ? type : "";
     }
 
 }
