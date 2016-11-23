@@ -1,0 +1,63 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/tmp
+aot/*
+dist/*
+
+yarn.lock
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+
+
+# ignore js and map files
+**/*.map
+#src/**/*.js
+app/**/*.js
+!app/assets/*.js
+api/**/*.js
+
+
+
+#dist
+#
+#node_modules
+#jspm_packages
+#bower_components
+#
+##tests
+#!**/*.e2e.js
+#_test-output
+#_temp
+#src/client/test-help/**/*.js
+#
+##!**/*e2e-spec.js
+##!karma*.js
+##!protractor*.js
+#
+#plnkr.html
+##plnkr.no-link.html
+#
+#npm-debug.log
+#

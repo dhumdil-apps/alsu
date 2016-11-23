@@ -1,0 +1,22 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "removeComments": false,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+  },
+  "include": [
+    "alsu/**/*"
+  ],
+  "exclude": [
+    "node_modules/*",
+    "aot/*",
+    "app/*-aot.ts"
+  ]
+}

@@ -1,0 +1,64 @@
+.block {
+  position: relative;
+  width: 196px;
+  height: 46px;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+.block__data {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  text-align: center;
+  border: none;
+  background-color: #fff;
+}
+.block__selected i {
+  position: absolute;
+  top: calc(50% - 10px);
+  font-size: 20px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.2);
+}
+.block__selected i:hover {
+  color: #000000;
+}
+.block__selected .pointer {
+  left: -30px;
+}
+.block__selected .clear-data {
+  right: 0px;
+}
+.block__selected .remove {
+  right: -30px;
+}
+.begin,
+.end {
+  cursor: pointer;
+}
+.begin .block,
+.end .block {
+  border-radius: 25px;
+}
+.begin .block__data,
+.end .block__data {
+  cursor: pointer;
+}
+.begin .block .clear-data,
+.end .block .clear-data {
+  display: none;
+}
+.begin .top {
+  display: none;
+}
+.end .bottom {
+  display: none;
+}
+.block-connection {
+  position: relative;
+  left: 98px;
+  width: 2px;
+  height: 20px;
+  background: #333;
+}

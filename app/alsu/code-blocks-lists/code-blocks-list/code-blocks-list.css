@@ -1,0 +1,56 @@
+.toolbar {
+  display: flex;
+  position: relative;
+  height: 50px;
+  background-color: #eee;
+  box-shadow: 0 1px 5px #333;
+  z-index: 100;
+}
+.toolbar__run {
+  cursor: pointer;
+  font-size: 25px;
+  padding: 10px;
+}
+.toolbar__run:hover {
+  background-color: #333;
+  color: #eee;
+}
+.body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  z-index: 99;
+}
+.body .side-panel {
+  display: none;
+  flex: 1;
+  z-index: 98;
+  background: #369;
+  box-shadow: 1px 0 5px #333;
+}
+.body .side-panel__title {
+  display: inline-block;
+  padding: 5px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  background: #333;
+  color: #eee;
+}
+.body .center {
+  display: flex;
+  flex: 3;
+  background-color: #fff;
+  z-index: 97;
+}
+.body .center .blocks {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+}
+.body .active {
+  display: block;
+}
+.flex-1 {
+  flex: 1;
+}
