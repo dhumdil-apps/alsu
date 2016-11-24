@@ -14,7 +14,7 @@ import { OutputDataComponent } from './alsu/code-blocks-lists/code-blocks-list/o
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,

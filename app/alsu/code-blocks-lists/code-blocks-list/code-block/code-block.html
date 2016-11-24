@@ -6,8 +6,6 @@
     <input class="block__data" type="text" [(ngModel)]="block.data" [disabled]="isDisabled()" />
 
     <div class="block__selected" *ngIf="block.id === selectedId[1]">
-      <!-- TODO: for moving => drag'n drop this arrow :) -->
-      <i class="pointer material-icons">arrow_forward</i>
       <i class="clear-data material-icons" (click)="clear()">close</i>
       <i class="remove material-icons" (click)="removeSelected()">delete</i>
     </div>

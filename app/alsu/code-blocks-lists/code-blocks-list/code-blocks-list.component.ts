@@ -15,11 +15,14 @@ export class CodeBlocksListComponent {
   list: CodeBlocksList;
   outputData: any;
   editMode: any;
+  dragging: boolean;
 
   constructor() {
-    this.editMode = {};
-    this.editMode.enabled = true;
-    this.editMode.run = "play_arrow";
+    this.editMode = {
+      enabled: true,
+      run: "play_arrow"
+    };
+    this.dragging = false;
     this.list = new CodeBlocksList();
   }
 
@@ -31,15 +34,28 @@ export class CodeBlocksListComponent {
     this.list.remove();
   }
 
-  // TODO: DRAG AND DROP!
-  // move(steps: number): void {
-  //   this.list.move(steps);
-  // }
-
   run(): void {
     this.editMode.enabled = !this.editMode.enabled;
     this.editMode.run = this.editMode.run === "play_arrow" ? "stop" : "play_arrow";
     this.outputData = this.list.compile();
+  }
+
+  dragStart() {
+    this.dragging = true;
+  }
+  dragOver(ev, id): void {
+    if ( this.list.selectedId[1] > 0 && this.list.selectedId[1] !== id ) {
+      ev.preventDefault();
+      // highlight!
+    }
+  }
+  dragEnd() {
+    this.dragging = false;
+  }
+  drop(ev, id): void {
+    ev.preventDefault();
+    console.log(id);
+    this.list.move(id);
   }
 
 }

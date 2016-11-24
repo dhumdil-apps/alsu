@@ -48,6 +48,48 @@
   flex-direction: column;
   padding: 50px 0;
 }
+.body .center .blocks .code-block {
+  position: relative;
+  display: flex;
+}
+.body .center .blocks .code-block .backdrop {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.body .center .blocks .code-block .backdrop i {
+  position: absolute;
+  top: 28px;
+  left: -40px;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  padding: 5px 10px;
+  visibility: hidden;
+}
+.body .center .blocks .code-block .backdrop:hover i {
+  visibility: visible;
+}
+.body .center .blocks .code-block i {
+  padding: 5px 10px;
+  position: absolute;
+  top: 28px;
+  left: -40px;
+  font-size: 20px;
+  cursor: pointer;
+  visibility: hidden;
+  color: rgba(0, 0, 0, 0.2);
+}
+.body .center .blocks .code-block .dragging {
+  visibility: visible;
+}
+.body .center .blocks .selected i {
+  visibility: visible;
+  color: #333;
+}
+.body .center .blocks .selected .backdrop {
+  display: none;
+}
 .body .active {
   display: block;
 }

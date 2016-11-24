@@ -13,7 +13,6 @@ export class CodeBlockComponent {
 
   @Input() block: Block;
   @Input() selectedId: any;
-
   @Output() remove = new EventEmitter();
 
   clear(): void {
@@ -24,6 +23,7 @@ export class CodeBlockComponent {
     this.remove.emit();
   }
 
+  // refactor!
   isDisabled():boolean {
     return this.block.type === 'begin' || this.block.type === 'end';
   }

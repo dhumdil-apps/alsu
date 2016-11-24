@@ -16,18 +16,22 @@ export class CodeBlocksList {
     this.blocks.push(new End());
   }
 
-  // adding at current position to list
+  // adding at current position
   public add(inputData: Block): void {
     inputData.id = this.uniqueId++;
-    this.blocks.splice(this.getPosition(this.selectedId[0]++), 0, inputData);
+
+    this.blocks.splice(getPosition(this.blocks.length, this.selectedId[0]++), 0, inputData);
     this.selectedId[1] = this.blocks[this.selectedId[0]].id;
-  }
-  private getPosition(n: number): number {
-    return this.blocks.length > n+1 ? n+1 : n;
+
+    function getPosition(len, n: number): number {
+      return len > n+1 ? n+1 : n;
+    }
   }
 
-  // removing from the current position from the list
-  public remove(): void {
+
+  // removing from current position
+  public remove(): Block {
+    let b: Block = this.blocks[this.selectedId[0]];
     if ( this.selectedId[0] > 0 && this.selectedId[0] < this.blocks.length-1 ) {
       this.blocks.splice(this.selectedId[0], 1);
       this.selectedId[1] = this.blocks[this.selectedId[0]].id;
@@ -37,7 +41,10 @@ export class CodeBlocksList {
     } else if ( this.selectedId[0] > 1 && this.selectedId[0] === this.blocks.length-1 ) {
       this.blocks.splice(--this.selectedId[0], 1);
       this.selectedId[1] = this.blocks[this.selectedId[0]].id;
-    } else { }
+    } else {
+      return null;
+    }
+    return b;
   }
 
   // changing the current position
@@ -46,18 +53,18 @@ export class CodeBlocksList {
     this.selectedId[1] = id;
   }
 
-  // moving (up/down)
-  public move(direction: string): void {
-    if (direction === 'up') {
-      this.swap(--this.selectedId);
-    } else if (direction === 'down') {
-      this.swap(this.selectedId++);
+  public move(id: number): void {
+    let i = this.selectedId[0];
+    let b = this.remove();
+
+    if ( b !== null ) {
+      this.selectId(id);
+      if ( i > this.selectedId[0] && this.selectedId[0] > 0 ) {
+        this.selectedId[0]--;
+      }
+      this.add(b);
     }
-  }
-  private swap(index: number) {
-    let tmpBlock = this.blocks[index];
-    this.blocks[index] = this.blocks[index+1];
-    this.blocks[index+1] = tmpBlock;
+
   }
 
   // running the code!

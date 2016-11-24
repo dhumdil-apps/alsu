@@ -24,9 +24,6 @@
 .block__selected i:hover {
   color: #000000;
 }
-.block__selected .pointer {
-  left: -30px;
-}
 .block__selected .clear-data {
   right: 0px;
 }
@@ -50,10 +47,10 @@
   display: none;
 }
 .begin .top {
-  display: none;
+  visibility: hidden;
 }
 .end .bottom {
-  display: none;
+  visibility: hidden;
 }
 .block-connection {
   position: relative;

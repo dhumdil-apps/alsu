@@ -16,14 +16,25 @@
       <div class="flex-1"></div>
       <div class="blocks">
 
-        <code-block *ngFor="let block of list.blocks"
-                    (click)="list.selectId(block.id)"
-                    [selectedId]="list.selectedId"
-                    (remove)="remove()"
-                    [block]="block">
-        </code-block>
+        <div class="code-block"
+             *ngFor="let block of list.blocks" (click)="list.selectId(block.id)"
+             [ngClass]="{'selected': block.id === list.selectedId[1]}">
+
+          <!-- refactor! -->
+          <i [ngClass]="{'dragging': dragging }" class="material-icons"
+             draggable="true" (dragend)="dragEnd()" (dragstart)="dragStart()" (dragover)="dragOver($event, block.id)" (drop)="drop($event, block.id)">
+             arrow_forward
+          </i>
+
+          <code-block [selectedId]="list.selectedId" (remove)="remove()" [block]="block"></code-block>
+
+          <div class="backdrop">
+            <i class="material-icons">arrow_forward</i>
+          </div>
+        </div>
 
       </div>
+
       <div class="flex-1"></div>
     </div>
 
