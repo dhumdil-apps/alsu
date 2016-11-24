@@ -3,7 +3,7 @@
   width: 196px;
   height: 46px;
   border: 2px solid #333;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #fff;
 }
 .block__data {
@@ -13,6 +13,12 @@
   text-align: center;
   border: none;
   background-color: #fff;
+  box-sizing: border-box;
+}
+.block__data.autoresize {
+  width: 125px;
+  min-width: 125px;
+  max-width: 400px;
 }
 .block__selected i {
   position: absolute;
@@ -25,7 +31,7 @@
   color: #000000;
 }
 .block__selected .clear-data {
-  right: 0px;
+  right: 10px;
 }
 .block__selected .remove {
   right: -30px;
@@ -43,8 +49,15 @@
   cursor: pointer;
 }
 .begin .block .clear-data,
-.end .block .clear-data {
+.end .block .clear-data,
+.begin .block .remove,
+.end .block .remove {
   display: none;
+}
+.begin .block-connection,
+.assign .block-connection,
+.end .block-connection {
+  visibility: visible;
 }
 .begin .top {
   visibility: hidden;
@@ -58,4 +71,5 @@
   width: 2px;
   height: 20px;
   background: #333;
+  visibility: hidden;
 }

@@ -3,16 +3,22 @@
   flex-direction: column;
 }
 .input-data .block {
+  display: flex;
   position: relative;
-  padding: 20px 10px;
+  padding: 0 10px;
+}
+.input-data .block > div {
+  flex: 1;
+  cursor: pointer;
 }
 .input-data .block .add {
-  position: absolute;
-  right: 10px;
-  top: 40px;
-  font-size: 50px;
+  position: relative;
+  float: left;
+  top: 30px;
+  left: 5px;
+  font-size: 30px;
   visibility: hidden;
-  cursor: pointer;
+  color: #eee;
 }
 .input-data .block:hover .add {
   visibility: visible;

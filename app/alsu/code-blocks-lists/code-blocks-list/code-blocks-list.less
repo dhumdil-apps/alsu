@@ -1,7 +1,7 @@
 .toolbar {
   display: flex;
   position: relative;
-  height: 50px;
+  height: 35px;
   background-color: #eee;
   box-shadow: 0 1px 5px #333;
   z-index: 100;
@@ -9,7 +9,7 @@
   &__run {
     cursor: pointer;
     font-size: 25px;
-    padding: 10px;
+    padding: 5px;
   }
   &__run:hover {
     background-color: #333;
@@ -25,10 +25,10 @@
 
   .side-panel {
     display: none;
-    flex: 1;
     z-index: 98;
     background: #369;
     box-shadow: 1px 0 5px #333;
+    min-width: 250px;
 
     &__title{
       display: inline-block;
@@ -42,7 +42,7 @@
   }
   .center {
     display: flex;
-    flex: 3;
+    flex: 1;
     background-color: #fff;
     z-index: 97;
 

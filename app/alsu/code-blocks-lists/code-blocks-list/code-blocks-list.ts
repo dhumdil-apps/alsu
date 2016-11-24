@@ -54,8 +54,8 @@ export class CodeBlocksList {
   }
 
   public move(id: number): void {
-    let i = this.selectedId[0];
-    let b = this.remove();
+    let i: number = this.selectedId[0];
+    let b: Block = this.remove();
 
     if ( b !== null ) {
       this.selectId(id);

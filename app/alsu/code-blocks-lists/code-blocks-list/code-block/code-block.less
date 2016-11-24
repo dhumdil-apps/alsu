@@ -3,7 +3,7 @@
   width: 196px;
   height: 46px;
   border: 2px solid #333;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #fff;
 
   &__data {
@@ -13,6 +13,12 @@
     text-align: center;
     border: none;
     background-color: #fff;
+    box-sizing: border-box;
+  }
+  &__data.autoresize {
+    width: 125px;
+    min-width: 125px;
+    max-width: 400px;
   }
   &__selected {
     i {
@@ -26,7 +32,7 @@
       color: rgba(0, 0, 0, 1);
     }
     .clear-data {
-      right: 0px;
+      right: 10px;
     }
     .remove {
       right: -30px;
@@ -41,11 +47,18 @@
     &__data {
       cursor: pointer;
     }
-    .clear-data {
+    .clear-data, .remove {
       display: none;
     }
   }
 }
+
+.begin, .assign, .end {
+  .block-connection {
+    visibility: visible;
+  }
+}
+
 .begin {
   .top {
     visibility: hidden;
@@ -63,4 +76,5 @@
   width: 2px;
   height: 20px;
   background: #333;
+  visibility: hidden;
 }

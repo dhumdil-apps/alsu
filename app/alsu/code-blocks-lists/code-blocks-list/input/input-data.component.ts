@@ -18,7 +18,8 @@ export class InputDataComponent {
 
   constructor() {
     this.blocks = [];
-    this.blocks.push(new Assign("1+1"));
+    this.blocks.push(new Assign("x = 5"));
+    this.blocks.push(new Assign("y = 7"));
     // this.blocks.push(new Read("x"));
     // this.blocks.push(new Write("7"));
   }
