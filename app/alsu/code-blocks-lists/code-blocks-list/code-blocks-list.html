@@ -1,46 +1,45 @@
 <div class="toolbar">
-  <div class="flex-1"></div>
-  <i class="toolbar__run material-icons" (click)="run()">{{ editMode.run }}</i>
-  <div class="flex-1"></div>
+    <div class="flex-1"></div>
+    <i class="toolbar__run material-icons" (click)="run()">{{ editMode.run }}</i>
+    <div class="flex-1"></div>
 </div>
 
 <div class="body">
 
   <div class="side-panel" [ngClass]="{'active': editMode.enabled}">
-    <span class="side-panel__title">input</span>
-    <input-data (add)="add($event)"></input-data>
-    <div class="add"></div>
+      <span class="side-panel__title">input</span>
+      <input-data (add)="add($event)"></input-data>
+      <div class="add"></div>
   </div>
 
     <div class="center">
-      <div class="flex-1"></div>
-      <div class="blocks">
+        <div class="flex-1"></div>
+        <div class="blocks">
 
-        <div class="code-block"
-             *ngFor="let block of list.blocks" (click)="list.selectId(block.id)"
-             [ngClass]="{'selected': block.id === list.selectedId[1]}">
+            <code-block *ngFor="let block of list.blocks"
+                        [ngClass]="editMode.drag select(block)"
+                        [selectedId]="list.selectedId"
+                        [block]="block"
+                        (click)="select(block)"
+                        (remove)="remove()"
+                        (dragstart)="dragStart()"
+                        (dragover)="dragOver($event, block.id)"
+                        (dragend)="dragEnd()"
+                        (drop)="drop($event, block.id)"
+                        draggable="true">
+            </code-block>
 
-          <!-- refactor! -->
-          <i [ngClass]="{'dragging': dragging }" class="material-icons"
-             draggable="true" (dragend)="dragEnd()" (dragstart)="dragStart()" (dragover)="dragOver($event, block.id)" (drop)="drop($event, block.id)">
-             arrow_forward
-          </i>
+            <div class="backdrop">
+                <i class="material-icons">arrow_forward</i>
+            </div>
 
-          <code-block [selectedId]="list.selectedId" (remove)="remove()" [block]="block"></code-block>
-
-          <div class="backdrop">
-            <i class="material-icons">arrow_forward</i>
-          </div>
         </div>
-
-      </div>
-
-      <div class="flex-1"></div>
+        <div class="flex-1"></div>
     </div>
 
   <div class="side-panel" [ngClass]="{'active': !editMode.enabled}">
-    <span class="side-panel__title">output</span>
-    <output-data [outputData]="outputData"></output-data>
+      <span class="side-panel__title">output</span>
+      <output-data [outputData]="outputData"></output-data>
   </div>
 
 </div>

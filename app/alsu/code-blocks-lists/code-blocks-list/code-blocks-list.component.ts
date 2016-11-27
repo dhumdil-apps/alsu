@@ -13,16 +13,15 @@ import { Block } from './code-block/blocks/block';
 export class CodeBlocksListComponent {
 
   list: CodeBlocksList;
-  outputData: any;
   editMode: any;
-  dragging: boolean;
+  outputData: any;
 
   constructor() {
     this.editMode = {
       enabled: true,
-      run: "play_arrow"
+      run: "play_arrow",
+      drag: ""
     };
-    this.dragging = false;
     this.list = new CodeBlocksList();
   }
 
@@ -36,25 +35,29 @@ export class CodeBlocksListComponent {
 
   run(): void {
     this.editMode.enabled = !this.editMode.enabled;
-    this.editMode.run = this.editMode.run === "play_arrow" ? "stop" : "play_arrow";
+    this.editMode.run = ( this.editMode.run === "play_arrow" ) ? "stop" : "play_arrow";
     this.outputData = this.list.compile();
   }
 
-  dragStart() {
-    this.dragging = true;
+  select(block: any): string {
+    this.list.selectId(block.id);
+    return (block.id === this.list.selectedId[1]) ? "selected" : "";
   }
-  dragOver(ev, id): void {
+
+  dragStart() {
+    this.editMode.drag = "drag-start";
+  }
+  dragOver(ev: any, id: number): void {
     if ( this.list.selectedId[1] > 0 && this.list.selectedId[1] !== id ) {
       ev.preventDefault();
-      // highlight!
+      this.editMode.drag = "drag-over";
     }
   }
   dragEnd() {
-    this.dragging = false;
+    this.editMode.drag = "";
   }
-  drop(ev, id): void {
+  drop(ev: any, id: number): void {
     ev.preventDefault();
-    console.log(id);
     this.list.move(id);
   }
 

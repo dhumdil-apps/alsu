@@ -9,10 +9,10 @@
     "removeComments": false,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": [
-    "alsu/**/*"
+    "app/**/*"
   ],
   "exclude": [
     "node_modules/*",

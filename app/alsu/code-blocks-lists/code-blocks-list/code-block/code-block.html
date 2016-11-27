@@ -1,18 +1,16 @@
-<div [ngClass]="type()">
+<div [ngClass]="type() selected()">
+    <div class="block-connection top"></div>
 
-  <div class="block-connection top"></div>
-  <div class="block" >
+    <div class="block">
 
-    <label>
-      <input class="block__data autoresize" type="text" [(ngModel)]="block.data" [disabled]="disabled()" />
-    </label>
+        <input type="text" [(ngModel)] = "block.data" [disabled]  = "disabled()" />
 
-    <div class="block__selected" *ngIf="block.id === selectedId[1]">
-      <i class="clear-data material-icons" (click)="clearText()">close</i>
-      <i class="remove material-icons" (click)="removeBlock()">delete</i>
+        <div>
+            <i class="clear-data material-icons" (click)="clearText()">close</i>
+            <i class="remove material-icons" (click)="removeBlock()">delete</i>
+        </div>
+
     </div>
 
-  </div>
-  <div class="block-connection bottom"></div>
-
+    <div class="block-connection bottom"></div>
 </div>
