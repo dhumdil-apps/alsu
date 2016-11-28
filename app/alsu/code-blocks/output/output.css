@@ -1,8 +1,7 @@
 .output-data {
   display: flex;
   flex-direction: column;
-
-  &__row {
-    padding: 10px 20px;
-  }
+}
+.output-data__row {
+  padding: 10px 20px;
 }

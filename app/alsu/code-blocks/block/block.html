@@ -1,0 +1,30 @@
+<div class="{{block.type}}">
+    <div class="block-connection top"></div>
+
+    <div class="block" [ngClass]="{ '_selected': block.selected, '_hightlighted': dragover }"
+         (dragover)="dragOver($event, block)"
+         (drop)="drop($event, block.id)">
+
+        <label (click)="selectBlock()">
+            <input type="text" [(ngModel)]="block.data" [disabled]="disabled()" />
+        </label>
+
+        <div *ngIf=" !block.draggable ">
+
+            <i class="pointer material-icons"
+               [ngClass]="{ '_drag': dragging }"
+               (dragstart)="dragStart()"
+               (dragend)="dragEnd()"
+               draggable="true">keyboard_arrow_right
+            </i>
+
+            <i class="fake-pointer material-icons">keyboard_arrow_right</i>
+            <i class="clear-data material-icons" (click)="clearText()">close</i>
+            <i class="remove material-icons" (click)="removeBlock()">delete</i>
+
+        </div>
+
+    </div>
+
+    <div class="block-connection bottom"></div>
+</div>

@@ -6,61 +6,71 @@
   padding: 10px 30px;
   background-color: #fff;
 }
-.block__data {
+.block input {
   width: 100%;
   height: 100%;
   outline: 0;
   text-align: center;
   border: none;
   background-color: #fff;
-  box-sizing: border-box;
 }
-.block__data.autoresize {
-  width: 125px;
-  min-width: 125px;
-  max-width: 400px;
-}
-.block__selected i {
+.block > div i {
   position: absolute;
   top: calc(50% - 10px);
   font-size: 20px;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.2);
 }
-.block__selected i:hover {
+.block > div i:hover {
   color: #000000;
 }
-.block__selected .clear-data {
+.block > div .fake-pointer {
+  visibility: hidden;
+  left: -30px;
+  color: #369;
+}
+.block > div .pointer {
+  left: -30px;
+  padding: 10px;
+}
+.block > div .clear-data {
   right: 10px;
 }
-.block__selected .remove {
+.block > div .remove {
   right: -30px;
 }
-.begin,
-.end {
-  cursor: pointer;
+.block > div ._drag {
+  color: #f00;
 }
-.begin .block,
-.end .block {
-  border-radius: 25px;
+._selected {
+  border: 2px solid #369;
 }
-.begin .block__data,
-.end .block__data {
-  cursor: pointer;
+._hightlighted > div .pointer {
+  visibility: hidden;
 }
-.begin .block .clear-data,
-.end .block .clear-data,
-.begin .block .remove,
-.end .block .remove {
-  display: none;
-}
-.begin .block-connection,
-.assign .block-connection,
-.end .block-connection {
+._hightlighted > div .fake-pointer {
   visibility: visible;
+}
+.begin {
+  cursor: pointer;
 }
 .begin .top {
   visibility: hidden;
+}
+.begin .block {
+  border-radius: 25px;
+}
+.begin .block__data {
+  cursor: pointer;
+}
+.end {
+  cursor: pointer;
+}
+.end .block {
+  border-radius: 25px;
+}
+.end .block__data {
+  cursor: pointer;
 }
 .end .bottom {
   visibility: hidden;
@@ -71,5 +81,4 @@
   width: 2px;
   height: 20px;
   background: #333;
-  visibility: hidden;
 }

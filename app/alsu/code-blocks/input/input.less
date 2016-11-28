@@ -1,0 +1,29 @@
+.input-data {
+    display: flex;
+    flex-direction: column;
+
+    .block {
+        display: flex;
+        position: relative;
+        padding: 0 10px;
+
+        > div {
+            flex: 1;
+            cursor: pointer;
+        }
+        .add {
+            position: relative;
+            float: left;
+            top: 30px;
+            left: 5px;
+            font-size: 30px;
+            visibility: hidden;
+            color: #eee;
+        }
+    }
+    .block:hover {
+        .add {
+            visibility: visible;
+        }
+    }
+}

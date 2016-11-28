@@ -1,0 +1,37 @@
+<div class="toolbar">
+    <flex></flex>
+    <i  class="toolbar__run material-icons"
+        (click)="compile()">{{ editMode.toolbarIcon }}
+    </i>
+    <flex></flex>
+</div>
+
+<div class="body">
+
+    <div class="side-panel" [ngClass]="{'_active': editMode.enabled}">
+        <span class="side-panel__title">input</span>
+        <input-data (add)="add($event)"></input-data>
+    </div>
+
+    <div class="code-blocks">
+        <div class="code-blocks__backdrop" [ngClass]="{'_disabled': !editMode.enabled}"></div>
+        <flex></flex>
+        <div class="code-blocks__wrapper">
+
+            <block  *ngFor="let block of list.blocks"
+                    (select)="select($event)"
+                    (move)="move($event)"
+                    (remove)="remove()"
+                    [block]="block">
+            </block>
+
+        </div>
+        <flex></flex>
+    </div>
+
+    <div class="side-panel" [ngClass]="{'_active': !editMode.enabled}">
+        <span class="side-panel__title">output</span>
+        <output-data [outputData]="outputData"></output-data>
+    </div>
+
+</div>

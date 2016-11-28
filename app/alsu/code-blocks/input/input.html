@@ -1,0 +1,12 @@
+<div class="input-data">
+
+    <div class="block" *ngFor="let block of blocks">
+
+        <block class="code-block" [block]="block"></block>
+        <div (click)="addBlock(block)">
+            <i class="add material-icons">add</i>
+        </div>
+
+    </div>
+
+</div>

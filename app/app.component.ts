@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'app',
   styleUrls: ['./app.css'],
-  template: `<div class="app"><code-blocks-list></code-blocks-list></div>`
+  template: `<div class="app"><code-blocks></code-blocks></div>`
 })
 
 export class AppComponent { }
