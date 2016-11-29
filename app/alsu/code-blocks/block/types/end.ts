@@ -13,7 +13,7 @@ export class End extends Block {
         super();
         this.id = -2;
         this.type = "end";
-        this.selected = true;
+        this.selected = false;
         this.disabled = true;
         this.draggable = false;
         this.set("END");

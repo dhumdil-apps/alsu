@@ -5,7 +5,7 @@
     .block {
         display: flex;
         position: relative;
-        padding: 0 10px;
+        padding: 10px;
 
         > div {
             flex: 1;
@@ -18,7 +18,7 @@
             left: 5px;
             font-size: 30px;
             visibility: hidden;
-            color: #eee;
+            color: #333;
         }
     }
     .block:hover {
@@ -27,3 +27,16 @@
         }
     }
 }
+
+:host /deep/ block {
+
+    .block-connection {
+        visibility: hidden;
+    }
+
+    .block {
+        border: 2px solid #333;
+    }
+
+}
+

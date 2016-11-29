@@ -2,7 +2,7 @@
 
     <div class="block" *ngFor="let block of blocks">
 
-        <block class="code-block" [block]="block"></block>
+        <block class="code-block" [block]="block" [style]="'input'"></block>
         <div (click)="addBlock(block)">
             <i class="add material-icons">add</i>
         </div>

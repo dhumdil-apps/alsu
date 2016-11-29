@@ -1,6 +1,7 @@
 .output-data {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 .output-data__row {
   padding: 10px 20px;

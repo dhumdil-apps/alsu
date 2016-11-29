@@ -5,7 +5,7 @@
 .input-data .block {
   display: flex;
   position: relative;
-  padding: 0 10px;
+  padding: 10px;
 }
 .input-data .block > div {
   flex: 1;
@@ -18,8 +18,14 @@
   left: 5px;
   font-size: 30px;
   visibility: hidden;
-  color: #eee;
+  color: #333;
 }
 .input-data .block:hover .add {
   visibility: visible;
+}
+:host /deep/ block .block-connection {
+  visibility: hidden;
+}
+:host /deep/ block .block {
+  border: 2px solid #333;
 }

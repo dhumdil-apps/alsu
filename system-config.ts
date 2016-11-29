@@ -20,7 +20,7 @@ System.config({
     '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
     '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
     '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-    'rxjs': 'npm:rxjs',
+    'rxjs': 'npm:rxjs'
   },
   packages: {
     'app': { main: './main.js', defaultExtension: 'js' },

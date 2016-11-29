@@ -13,8 +13,9 @@
   text-align: center;
   border: none;
   background-color: #fff;
+  cursor: pointer;
 }
-.block > div i {
+.block i {
   position: absolute;
   top: calc(50% - 10px);
   font-size: 20px;
@@ -24,35 +25,30 @@
 .block > div i:hover {
   color: #000000;
 }
-.block > div .fake-pointer {
-  visibility: hidden;
-  left: -30px;
-  color: #369;
-}
 .block > div .pointer {
+  cursor: move;
   left: -30px;
-  padding: 10px;
 }
 .block > div .clear-data {
-  right: 10px;
+  right: 12px;
 }
 .block > div .remove {
   right: -30px;
 }
 .block > div ._drag {
-  color: #f00;
+  background: #369;
+}
+.block .before1,
+.block .after1,
+.block .before2,
+.block .after2 {
+  display: none;
 }
 ._selected {
-  border: 2px solid #369;
+  border: 2px solid #58c;
 }
-._hightlighted > div .pointer {
-  visibility: hidden;
-}
-._hightlighted > div .fake-pointer {
-  visibility: visible;
-}
-.begin {
-  cursor: pointer;
+._selected input {
+  cursor: text;
 }
 .begin .top {
   visibility: hidden;
@@ -60,20 +56,71 @@
 .begin .block {
   border-radius: 25px;
 }
-.begin .block__data {
-  cursor: pointer;
-}
-.end {
-  cursor: pointer;
-}
 .end .block {
   border-radius: 25px;
 }
-.end .block__data {
-  cursor: pointer;
-}
 .end .bottom {
   visibility: hidden;
+}
+.write .before1 {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -2px;
+  left: 0;
+  border-bottom: 46px solid transparent;
+}
+.write .before2 {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -2px;
+  left: -2px;
+  border-bottom: 46px solid transparent;
+}
+.write .after1 {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -2px;
+  left: 167px;
+  border-top: 46px solid transparent;
+}
+.write .after2 {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -2px;
+  left: 169px;
+  border-top: 46px solid transparent;
+}
+.write ._deselected .before1 {
+  border-left: 25px solid #333;
+}
+.write ._deselected .before2 {
+  border-left: 25px solid #fff;
+}
+.write ._deselected .after1 {
+  border-right: 25px solid #333;
+}
+.write ._deselected .after2 {
+  border-right: 25px solid #fff;
+}
+.write ._selected .before1 {
+  border-left: 25px solid #58c;
+}
+.write ._selected .before2 {
+  border-left: 25px solid #fff;
+}
+.write ._selected .after1 {
+  border-right: 25px solid #58c;
+}
+.write ._selected .after2 {
+  border-right: 25px solid #fff;
 }
 .block-connection {
   position: relative;
@@ -81,4 +128,28 @@
   width: 2px;
   height: 20px;
   background: #333;
+}
+.input ._selected .before1 {
+  border-left: 25px solid #333;
+}
+.input ._selected .before2 {
+  border-left: 25px solid #369;
+}
+.input ._selected .after1 {
+  border-right: 25px solid #333;
+}
+.input ._selected .after2 {
+  border-right: 25px solid #369;
+}
+.input ._deselected .before1 {
+  border-left: 25px solid #333;
+}
+.input ._deselected .before2 {
+  border-left: 25px solid #369;
+}
+.input ._deselected .after1 {
+  border-right: 25px solid #333;
+}
+.input ._deselected .after2 {
+  border-right: 25px solid #369;
 }

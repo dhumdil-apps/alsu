@@ -13,75 +13,127 @@
         text-align: center;
         border: none;
         background-color: #fff;
+        cursor: pointer;
+    }
+    i {
+        position: absolute;
+        top: ~"calc(50% - 10px)";
+        font-size: 20px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.2);
     }
     > div {
-        i {
-            position: absolute;
-            top: ~"calc(50% - 10px)";
-            font-size: 20px;
-            cursor: pointer;
-            color: rgba(0, 0, 0, 0.2);
-        }
         i:hover {
             color: rgba(0, 0, 0, 1);
         }
-        .fake-pointer {
-            visibility: hidden;
-            left: -30px;
-            color: #369;
-        }
         .pointer {
+            cursor: move;
             left: -30px;
-            padding: 10px;
         }
         .clear-data {
-            right: 10px;
+            right: 12px;
         }
         .remove {
             right: -30px;
         }
         ._drag {
-            color: #f00;
+            background: #369;
         }
+    }
+    .before1, .after1, .before2, .after2 {
+        display: none;
     }
 }
 ._selected {
-    border: 2px solid #369;
-}
-._hightlighted {
-    > div {
-        .pointer {
-            visibility: hidden;
-        }
-        .fake-pointer {
-            visibility: visible;
-        }
+    border: 2px solid #58c;
+    input {
+        cursor: text;
     }
 }
 
 
 .begin {
-    cursor: pointer;
     .top {
         visibility: hidden;
     }
     .block {
         border-radius: 25px;
-        &__data {
-            cursor: pointer;
-        }
     }
 }
 .end {
-    cursor: pointer;
     .block {
         border-radius: 25px;
-        &__data {
-            cursor: pointer;
-        }
     }
     .bottom {
         visibility: hidden;
+    }
+}
+.write {
+    .before1 {
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -2px;
+        left: 0;
+        border-bottom: 46px solid transparent;
+    }
+    .before2 {
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -2px;
+        left: -2px;
+        border-bottom: 46px solid transparent;
+    }
+    .after1 {
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -2px;
+        left: 167px;
+        border-top: 46px solid transparent;
+    }
+    .after2 {
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -2px;
+        left: 169px;
+        border-top: 46px solid transparent;
+    }
+    ._deselected {
+        .before1 {
+            border-left: 25px solid #333;
+        }
+        .before2 {
+            border-left: 25px solid #fff;
+        }
+
+        .after1 {
+            border-right: 25px solid #333;
+        }
+        .after2 {
+            border-right: 25px solid #fff;
+        }
+    }
+    ._selected {
+        .before1 {
+            border-left: 25px solid #58c;
+        }
+        .before2 {
+            border-left: 25px solid #fff;
+        }
+
+        .after1 {
+            border-right: 25px solid #58c;
+        }
+        .after2 {
+            border-right: 25px solid #fff;
+        }
     }
 }
 
@@ -91,4 +143,36 @@
     width: 2px;
     height: 20px;
     background: #333;
+}
+
+
+.input {
+    ._selected {
+        .before1 {
+            border-left: 25px solid #333;
+        }
+        .before2 {
+            border-left: 25px solid #369;
+        }
+        .after1 {
+            border-right: 25px solid #333;
+        }
+        .after2 {
+            border-right: 25px solid #369;
+        }
+    }
+    ._deselected {
+        .before1 {
+            border-left: 25px solid #333;
+        }
+        .before2 {
+            border-left: 25px solid #369;
+        }
+        .after1 {
+            border-right: 25px solid #333;
+        }
+        .after2 {
+            border-right: 25px solid #369;
+        }
+    }
 }

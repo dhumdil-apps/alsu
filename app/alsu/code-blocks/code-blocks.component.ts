@@ -45,6 +45,7 @@ export class CodeBlocksComponent {
             this.editMode.output = this.list.compile();
         } else {
             this.setEditMode(true, "play_arrow");
+            this.list.select( -1 );
         }
     }
 

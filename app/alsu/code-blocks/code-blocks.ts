@@ -20,24 +20,24 @@ export class CodeBlocks {
     public add(b: Block): void {
 
         b.id = this.uniqueId++;
-        this.blocks.splice(getPosition(this.blocks.length, this.selectedId[0]), 0, b);
-        this.select( b.id );
 
-        function getPosition(len, n: number): number {
-            return len > n+1 ? n+1 : n;
+        let i: number;
+        if ( this.blocks.length > this.selectedId[0] + 1 ) {
+            i = this.selectedId[0] + 1;
+        } else {
+            i = this.selectedId[0]++;
         }
+
+        this.blocks.splice(i, 0, b);
+        this.select( b.id );
 
     }
     public move(id: number): void {
 
-        // let i: number = this.selectedId[0];
         let b: Block = this.remove();
 
         if ( b !== null ) {
             this.select(id);
-            // if ( i > this.selectedId[0] && this.selectedId[0] > 0 ) {
-            //     this.selectedId[0]--;
-            // }
             this.add(b);
         } else {
             console.log("Ups, something went wrong...");
@@ -48,10 +48,18 @@ export class CodeBlocks {
 
         let b: Block = this.blocks[this.selectedId[0]];
 
-        if ( this.blocks[this.selectedId[0]].id > 0 ) {
+        if ( this.selectedId[1] > 0 ) {
+
             this.blocks.splice(this.selectedId[0], 1);
-            this.select(this.blocks[this.selectedId[0]-1].id);
+
+            if ( this.blocks[ this.selectedId[0] ].id === -2 ) {
+                this.select( --this.selectedId[0] );
+            } else {
+                this.select( this.selectedId[0] );
+            }
+
             return b;
+
         } else {
             console.log("Ups, something went wrong...");
         }
@@ -61,22 +69,41 @@ export class CodeBlocks {
     public select(id: number): number {
 
         this.blocks[this.selectedId[0]].selected = false;
-        this.selectedId[0] = this.blocks.findIndex(b => b.id === id);
+        if ( id > 0 ) {
+            this.blocks[this.selectedId[0]].disabled = true;
+        }
 
-        if ( this.selectedId[0] === "undefined" || this.selectedId[0] === null) {
-            console.log("Ups, something went wrong...");
+        let n: number = this.blocks.length,
+            i: number;
+        for (i = 0; i < n; i++) {
+            if ( this.blocks[i].id === id ) {
+                this.selectedId = [i, id];
+                break;
+            }
         }
 
         this.blocks[this.selectedId[0]].selected = true;
-        this.selectedId[1] = id;
+        if ( id > 0 ) {
+            this.blocks[this.selectedId[0]].disabled = false;
+        }
 
         return this.selectedId[0];
     }
     public compile(): any {
+
         let output: any = [];
+
         this.blocks.forEach( b => {
-            output.push(b.data);
+            if ( b.id > 0 ) {
+                b.disabled = true;
+                b.selected = false;
+                output.push({
+                    "type": b.type,
+                    "data": b.data
+                });
+            }
         });
+
         return output;
     }
 

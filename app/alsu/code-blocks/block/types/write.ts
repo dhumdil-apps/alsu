@@ -1,6 +1,6 @@
 import { Block } from './../block';
 
-export class Assign extends Block {
+export class Write extends Block {
 
     id: number;
     type: string;
@@ -12,7 +12,7 @@ export class Assign extends Block {
     constructor(data: any) {
         super();
         this.id = 0;
-        this.type = "assign";
+        this.type = "write";
         this.selected = true;
         this.disabled = true;
         this.draggable = true;

@@ -13,7 +13,7 @@ export class Begin extends Block {
         super();
         this.id = -1;
         this.type = "begin";
-        this.selected = true;
+        this.selected = false;
         this.disabled = true;
         this.draggable = false;
         this.set("BEGIN");

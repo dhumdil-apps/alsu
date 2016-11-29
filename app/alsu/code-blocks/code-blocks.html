@@ -1,21 +1,21 @@
+
 <div class="toolbar">
-    <flex></flex>
+    <div class="flex"></div>
     <i  class="toolbar__run material-icons"
         (click)="compile()">{{ editMode.toolbarIcon }}
     </i>
-    <flex></flex>
+    <div class="flex"></div>
 </div>
 
 <div class="body">
 
-    <div class="side-panel" [ngClass]="{'_active': editMode.enabled}">
+    <div class="side-panel" *ngIf="editMode.enabled">
         <span class="side-panel__title">input</span>
         <input-data (add)="add($event)"></input-data>
     </div>
 
     <div class="code-blocks">
-        <div class="code-blocks__backdrop" [ngClass]="{'_disabled': !editMode.enabled}"></div>
-        <flex></flex>
+        <div class="flex"></div>
         <div class="code-blocks__wrapper">
 
             <block  *ngFor="let block of list.blocks"
@@ -26,12 +26,14 @@
             </block>
 
         </div>
-        <flex></flex>
+        <div class="flex"></div>
+        <div class="code-blocks__backdrop" [ngClass]="{'_disabled': !editMode.enabled}"></div>
+
     </div>
 
-    <div class="side-panel" [ngClass]="{'_active': !editMode.enabled}">
+    <div class="side-panel" *ngIf="!editMode.enabled">
         <span class="side-panel__title">output</span>
-        <output-data [outputData]="outputData"></output-data>
+        <output-data [outputData]="editMode.output"></output-data>
     </div>
 
 </div>

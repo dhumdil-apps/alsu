@@ -12,6 +12,7 @@ import { Block } from './block';
 export class BlockComponent {
 
     @Input() block: Block;
+    @Input() style: string;
 
     @Output() select = new EventEmitter();
     @Output() move = new EventEmitter();
@@ -19,7 +20,6 @@ export class BlockComponent {
 
     // expressions
     dragging: boolean;
-    dragover: boolean;
 
     // events
     selectBlock(): void {
@@ -46,10 +46,9 @@ export class BlockComponent {
     dragEnd(): void {
         this.dragging = false;
     }
-    dragOver(ev: any, b: Block): void {
-        if ( b.id !== 0 ) {
+    dragOver(ev: any, id: number): void {
+        if ( id !== 0 ) {
             ev.preventDefault();
-            this.dragover = true;
         }
     }
     drop(ev: any, id: number): void {
