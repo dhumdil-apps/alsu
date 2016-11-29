@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import {isBoolean} from "util";
 
 @Component({
     moduleId: module.id,
@@ -107,28 +106,37 @@ export class OutputComponent {
             val = val.substring(val.indexOf('=')+1, val.length).trim();
 
             if ( (val.match(/ /g) || []).length ) {
-                console.log("More than one param on right side");
+                // console.log("More than one param on right side");
 
                 let paramerters: any = val.split(' ');
 
                 paramerters.forEach(paramerter => {
 
-                    let i: number;
-                    if ( paramerter.match(/\W/g) !== null
-                        && paramerter.match(/\W/g).length === 0 //  non-word characters
-                        && paramerter.match(/\d/g) !== null
-                        && paramerter.match(/\d/g).length !== paramerter.length) { // digit
-                        i = isKey(paramerter);
-                        if ( vars[i].val === null ) {
-                            console.log("not found || isn't initialized");
-                            return '';
-                        } else {
-                            console.log(vars[i].key, "=>" ,vars[i].val);
-                            val.replace(vars[i].key, vars[i].val);
-                        }
-                    }
+                    // console.log('paramerter', paramerter);
 
-                    console.log( paramerter );
+                    let digits: string = paramerter.match(/\d/g);
+                    let words: string = paramerter.match(/\w/g);
+                    // console.log('all digits', digits === null);
+                    // console.log('all words', words !== null);
+
+                    if ( words !== null && digits === null ) {
+
+                        // console.log('words.length === paramerter.length', words.length === paramerter.length);
+
+                        if ( words.length === paramerter.length ) {
+                            let i: number = isKey(paramerter);
+
+                            if ( vars[i].val === null ) {
+                                // console.log("paramerter not found || isn't initialized");
+                                return '';
+                            } else {
+                                // console.log(vars[i].key, "=>", vars[i].val);
+                                // buggy... but for now it's enought
+                                val = val.split(vars[i].key).join(vars[i].val);
+                            }
+                        }
+
+                    }
                 });
             }
             return val;
@@ -136,6 +144,3 @@ export class OutputComponent {
     }
 
 }
-
-// box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-// transition: background-color .3s,color .15s,box-shadow .3s,opacity 0.3s,filter 0.3s;

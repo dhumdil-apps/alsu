@@ -1,4 +1,5 @@
 .block {
+  font-size: 16px;
   position: relative;
   width: 196px;
   height: 46px;
@@ -46,6 +47,8 @@
 }
 ._selected {
   border: 2px solid #58c;
+  font-weight: 600;
+  color: #369;
 }
 ._selected input {
   cursor: text;

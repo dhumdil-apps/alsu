@@ -8,7 +8,7 @@
         "emitDecoratorMetadata": true,
         "removeComments": false,
         "experimentalDecorators": true,
-//        "noImplicitAny": true,
+        "noImplicitAny": true,
         "suppressImplicitAnyIndexErrors": true
     },
     "include": [
