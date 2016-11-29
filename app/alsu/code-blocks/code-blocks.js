@@ -1,13 +1,12 @@
-"use strict";
-var begin_1 = require('./block/types/begin');
-var end_1 = require('./block/types/end');
-var CodeBlocks = (function () {
+import { Begin } from './block/types/begin';
+import { End } from './block/types/end';
+export var CodeBlocks = (function () {
     function CodeBlocks() {
         this.blocks = [];
         this.uniqueId = 1;
         this.selectedId = [0, -1];
-        this.blocks.push(new begin_1.Begin());
-        this.blocks.push(new end_1.End());
+        this.blocks.push(new Begin());
+        this.blocks.push(new End());
         this.select(-1);
     }
     CodeBlocks.prototype.add = function (b) {
@@ -83,5 +82,4 @@ var CodeBlocks = (function () {
     };
     return CodeBlocks;
 }());
-exports.CodeBlocks = CodeBlocks;
 //# sourceMappingURL=code-blocks.js.map

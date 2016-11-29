@@ -1,13 +1,6 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var core_1 = require('@angular/core');
-var code_blocks_1 = require('./code-blocks');
-var CodeBlocksComponent = (function () {
+import { Component } from '@angular/core';
+import { CodeBlocks } from './code-blocks';
+export var CodeBlocksComponent = (function () {
     // init
     function CodeBlocksComponent() {
         this.editMode = {
@@ -15,7 +8,7 @@ var CodeBlocksComponent = (function () {
             toolbarIcon: "play_arrow",
             output: []
         };
-        this.list = new code_blocks_1.CodeBlocks();
+        this.list = new CodeBlocks();
     }
     // event listeners
     CodeBlocksComponent.prototype.add = function (b) {
@@ -45,15 +38,16 @@ var CodeBlocksComponent = (function () {
         this.editMode.enabled = enable;
         this.editMode.toolbarIcon = icon;
     };
-    CodeBlocksComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'code-blocks',
-            templateUrl: './code-blocks.html',
-            styleUrls: ['./code-blocks.css']
-        })
-    ], CodeBlocksComponent);
+    CodeBlocksComponent.decorators = [
+        { type: Component, args: [{
+                    moduleId: module.id,
+                    selector: 'code-blocks',
+                    templateUrl: './code-blocks.html',
+                    styleUrls: ['./code-blocks.css']
+                },] },
+    ];
+    /** @nocollapse */
+    CodeBlocksComponent.ctorParameters = [];
     return CodeBlocksComponent;
 }());
-exports.CodeBlocksComponent = CodeBlocksComponent;
 //# sourceMappingURL=code-blocks.component.js.map

@@ -1,11 +1,10 @@
-"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var block_1 = require('./../block');
-var Assign = (function (_super) {
+import { Block } from './../block';
+export var Assign = (function (_super) {
     __extends(Assign, _super);
     function Assign(data) {
         _super.call(this);
@@ -20,6 +19,5 @@ var Assign = (function (_super) {
         this.data = data;
     };
     return Assign;
-}(block_1.Block));
-exports.Assign = Assign;
+}(Block));
 //# sourceMappingURL=assign.js.map
