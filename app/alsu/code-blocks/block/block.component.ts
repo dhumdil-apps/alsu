@@ -1,6 +1,22 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+// import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 import { Block } from './block';
+
+// @Directive({
+//     selector: 'input[type=text]'
+// })
+// export class FocusInput implements AfterViewInit {
+//     private firstTime: boolean = true;
+//     constructor(public elem: ElementRef) {
+//     }
+//
+//     ngAfterViewInit() {
+//         if (this.firstTime) {
+//             this.elem.nativeElement.focus();
+//             this.firstTime = false;
+//         }
+//     }
+// }
 
 @Component({
     moduleId: module.id,
@@ -12,48 +28,16 @@ import { Block } from './block';
 export class BlockComponent {
 
     @Input() block: Block;
-    @Input() style: string;
-
-    @Output() select = new EventEmitter();
-    @Output() move = new EventEmitter();
     @Output() remove = new EventEmitter();
 
-    // expressions
-    dragging: boolean;
-
-    // events
-    selectBlock(): void {
-        if ( !this.block.selected && this.block.id !== 0 ) {
-            this.select.emit( this.block.id );
+    removeBlock(): void {
+        if (this.block.id > 0) {
+            this.remove.emit();
         }
     }
-    moveBlock(id: number): void {
-        this.move.emit( id );
-    }
-    removeBlock(): void {
-        this.remove.emit();
-    }
 
-    // methods
     clearText(): void {
         this.block.data = '';
-    }
-
-    // drag & drop
-    dragStart() {
-        this.dragging = true;
-    }
-    dragEnd(): void {
-        this.dragging = false;
-    }
-    dragOver(ev: any, id: number): void {
-        if ( id !== 0 ) {
-            ev.preventDefault();
-        }
-    }
-    drop(ev: any, id: number): void {
-        ev.preventDefault();
-        this.moveBlock( id );
     }
 
 }

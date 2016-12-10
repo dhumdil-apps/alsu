@@ -99,6 +99,14 @@ export class OutputComponent {
                 return '';
             }
 
+            let words: any = key.match(/\w/g);
+            if ( words !== null ) {
+                if ( key.length > words.length) {
+                    result.push('possible binary operations)');
+                    return '';
+                }
+            }
+
             return key;
         }
         function rightSide(val: string): string {
@@ -114,8 +122,8 @@ export class OutputComponent {
 
                     // console.log('paramerter', paramerter);
 
-                    let digits: string = paramerter.match(/\d/g);
-                    let words: string = paramerter.match(/\w/g);
+                    let digits: any = paramerter.match(/\d/g);
+                    let words: any = paramerter.match(/\w/g);
                     // console.log('all digits', digits === null);
                     // console.log('all words', words !== null);
 

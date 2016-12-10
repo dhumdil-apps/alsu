@@ -1,58 +1,90 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import { CodeBlocks } from './code-blocks';
 import { Block } from './block/block';
+// import { FocusDirective } from './focus.directive';
+
+
 
 @Component({
-  moduleId: module.id,
-  selector: 'code-blocks',
-  templateUrl: './code-blocks.html',
-  styleUrls: ['./code-blocks.css']
+    moduleId: module.id,
+    selector: 'code-blocks',
+    // directives: [FocusDirective],
+    templateUrl: './code-blocks.html',
+    styleUrls: ['./code-blocks.css']
 })
 
 export class CodeBlocksComponent {
 
-    // expressions
+    // Expressions
     list: CodeBlocks;
-    editMode: any;
+    style: any;
 
-    // init
+    // Init
     constructor() {
-        this.editMode = {
-            enabled: true,
-            toolbarIcon: "play_arrow",
-            output: []
+        this.style = {
+            editMode: true,
+            toolbar: {
+                run: "glyphicon-play"
+            },
+            output: [],
+            blocks: {
+                input: false,
+                dragging: false,
+                draggingId: 0
+            }
         };
         this.list = new CodeBlocks();
     }
 
-    // event listeners
+    // Event Listeners
     add(b: Block): void {
-        this.list.add( b );
-    }
-    select(id: number): void {
-        this.list.select( id );
-    }
-    move(id: number) {
-        this.list.move( id );
+        this.list.add(b);
     }
     remove(): void {
         this.list.remove();
     }
+
     compile(): void {
-        if ( this.editMode.enabled ) {
-            this.setEditMode(false, "stop");
-            this.editMode.output = this.list.compile();
+        if (this.style.editMode) {
+            this.setEditMode(false, "glyphicon-stop");
+            this.style.output = this.list.compile();
         } else {
-            this.setEditMode(true, "play_arrow");
-            this.list.select( -1 );
+            this.setEditMode(true, "glyphicon-play");
+            this.list.select(1);
         }
     }
 
-    // methods
-    setEditMode(enable: boolean, icon: string) {
-        this.editMode.enabled = enable;
-        this.editMode.toolbarIcon = icon;
+    setEditMode(mode: boolean, icon: string): void {
+        this.style.editMode = mode;
+        this.style.toolbar.run = icon;
+    }
+
+    selectBlock(b: Block): void {
+        if (!b.selected && b.id > 0) {
+            this.list.select(b.id);
+        }
+    }
+
+    dragStart(id: number): void {
+        this.style.blocks.draggingId = id;
+        this.style.blocks.dragging = true;
+    }
+
+    dragEnd(): void {
+        if (this.list.selectedId[1] !== this.style.blocks.draggingId) {
+            this.list.move(this.style.blocks.draggingId);
+        }
+        this.style.blocks.dragging = false;
+    }
+
+    dragOver(ev: any, id: number): void {
+        if (id !== this.list.selectedId[1]) {
+            if (id > 0) {
+                ev.preventDefault();
+                this.list.select(id);
+            }
+        }
     }
 
 }

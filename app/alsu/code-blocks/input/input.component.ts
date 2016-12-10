@@ -1,8 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 import { Block } from './../block/block';
-import { Assign } from './../block/types/assign';
-import { Write } from './../block/types/write';
+import { Simple } from './../block/types/simple';
 
 @Component({
     moduleId: module.id,
@@ -19,8 +18,8 @@ export class InputComponent {
 
     constructor() {
         this.blocks = [];
-        this.blocks.push(new Assign("assign"));
-        this.blocks.push(new Write("write"));
+        this.blocks.push(new Simple('', 'assign'));
+        this.blocks.push(new Simple('', 'write'));
         this.blocks.forEach(b => {
             b.disabled = false;
             b.draggable = false;
@@ -28,20 +27,10 @@ export class InputComponent {
     }
 
     addBlock(block: Block): void {
-
-        let b: Block;
-
-        switch (block.type) {
-            case 'assign': b = new Assign(block.data); break;
-            case 'write': b = new Write(block.data); break;
-            default: b = null; break;
-        }
-
-        if ( b !== null ) {
-            this.add.emit(b);
-        } else {
-            console.log("Ups, something went wrong...");
+        try {
+            this.add.emit(new Simple(block.data, block.type));
+        } catch (err) {
+            console.log(err.message);
         }
     }
-
 }

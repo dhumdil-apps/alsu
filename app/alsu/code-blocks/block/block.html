@@ -1,32 +1,11 @@
-<div class="{{block.type}} {{style}}">
-    <div class="block-connection top"></div>
-
-    <div class="block" [ngClass]="{ '_selected': block.selected, '_deselected': !block.selected }"
-         (dragover)="dragOver($event, block.id)"
-         (drop)="drop($event, block.id)"
-         (click)="selectBlock()">
-
-        <div>
-            <div class="before1"></div><div class="before2"></div>
-            <input type="text" [(ngModel)]="block.data" [disabled]="block.disabled" />
-            <div class="after1"></div><div class="after2"></div>
+<div class="{{ block.type }}">
+    <div class="connect-top"></div>
+    <div class="block" [ngClass]="{ 'block_selected': block.selected, 'block_disabled': block.disabled }">
+        <input type="text" [(ngModel)]="block.data" [disabled]="block.disabled" placeholder="{{ block.type }}"/>
+        <div class="block__options" *ngIf=" block.selected && block.draggable ">
+            <span (click)="clearText()" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span (click)="removeBlock()" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </div>
-
-        <div *ngIf=" block.selected && block.draggable ">
-
-            <i class="pointer material-icons"
-               [ngClass]="{ '_drag': dragging }"
-               (dragstart)="dragStart()"
-               (dragend)="dragEnd()"
-               draggable="true">arrow_forward
-            </i>
-
-            <i class="clear-data material-icons" (click)="clearText()">close</i>
-            <i class="remove material-icons" (click)="removeBlock()">delete</i>
-
-        </div>
-
     </div>
-
-    <div class="block-connection bottom"></div>
+    <div class="connect-bottom"></div>
 </div>

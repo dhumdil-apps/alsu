@@ -8,6 +8,7 @@ import { AppComponent }   from './app.component';
 // alsu
 import { CodeBlocksComponent } from './alsu/code-blocks/code-blocks.component';
 import { BlockComponent } from './alsu/code-blocks/block/block.component';
+// import { FocusInput } from './alsu/code-blocks/block/block.component';
 import { InputComponent } from './alsu/code-blocks/input/input.component';
 import { OutputComponent } from './alsu/code-blocks/output/output.component';
 
@@ -23,6 +24,7 @@ import { OutputComponent } from './alsu/code-blocks/output/output.component';
         InputComponent,
         OutputComponent,
         BlockComponent
+        // FocusInput
     ],
     providers: [],
     bootstrap: [AppComponent],

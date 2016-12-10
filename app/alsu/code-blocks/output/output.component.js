@@ -1,5 +1,15 @@
-import { Component, Input } from '@angular/core';
-export var OutputComponent = (function () {
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var OutputComponent = (function () {
     function OutputComponent() {
     }
     OutputComponent.prototype.ngOnInit = function () {
@@ -72,6 +82,13 @@ export var OutputComponent = (function () {
                 result.push('Syntax error! (more than one parameter on left side)');
                 return '';
             }
+            var words = key.match(/\w/g);
+            if (words !== null) {
+                if (key.length > words.length) {
+                    result.push('possible binary operations)');
+                    return '';
+                }
+            }
             return key;
         }
         function rightSide(val) {
@@ -105,19 +122,20 @@ export var OutputComponent = (function () {
             return val;
         }
     };
-    OutputComponent.decorators = [
-        { type: Component, args: [{
-                    moduleId: module.id,
-                    selector: 'output-data',
-                    templateUrl: './output.html',
-                    styleUrls: ['./output.css']
-                },] },
-    ];
-    /** @nocollapse */
-    OutputComponent.ctorParameters = [];
-    OutputComponent.propDecorators = {
-        'outputData': [{ type: Input },],
-    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], OutputComponent.prototype, "outputData", void 0);
+    OutputComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'output-data',
+            templateUrl: './output.html',
+            styleUrls: ['./output.css']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], OutputComponent);
     return OutputComponent;
 }());
+exports.OutputComponent = OutputComponent;
 //# sourceMappingURL=output.component.js.map

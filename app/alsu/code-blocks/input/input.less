@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 
-    .block {
+    .input-blocks {
         display: flex;
         position: relative;
         padding: 10px;
@@ -11,21 +11,19 @@
             flex: 1;
             cursor: pointer;
         }
-        .add {
+        .glyphicon-plus {
             position: relative;
             float: left;
             top: 30px;
             left: 5px;
-            font-size: 30px;
-            visibility: hidden;
-            color: #333;
+            font-size: 20px;
+            color: rgba(51, 51, 51, 0.2);
+        }
+        .glyphicon-plus:hover {
+            color: rgb(51, 51, 51);
         }
     }
-    .block:hover {
-        .add {
-            visibility: visible;
-        }
-    }
+
 }
 
 :host /deep/ block {
@@ -39,4 +37,3 @@
     }
 
 }
-

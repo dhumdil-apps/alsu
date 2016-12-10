@@ -5,11 +5,13 @@
     background-color: #eee;
     box-shadow: 0 1px 5px #333;
     z-index: 100;
+    min-width: 768px;
 
     &__run {
         cursor: pointer;
-        font-size: 25px;
-        padding: 5px;
+        font-size: 19px;
+        padding: 8px;
+        transition: color 100ms, background-color 300ms;
     }
     &__run:hover {
         background-color: #333;
@@ -22,6 +24,7 @@
     display: flex;
     flex: 1;
     z-index: 99;
+    min-width: 768px;
 
     .side-panel {
         z-index: 98;
@@ -60,6 +63,37 @@
         }
         ._disabled {
             display: block;
+        }
+        .block {
+            position: relative;
+
+            .glyphicon-arrow-right {
+                position: absolute;
+                display: none;
+                left: -30px;
+                top: 33px;
+                font-size: 20px;
+                color: rgba(0, 0, 0, 0.2);
+                transition: color 150ms;
+                cursor: move;
+                z-index: 10;
+            }
+            .visible {
+                display: block;
+                color: rgba(0, 0, 0, 1);
+            }
+            .glyphicon-circle-arrow-right {
+                position: absolute;
+                left: -41px;
+                top: 22px;
+                cursor: move;
+                font-size: 25px;
+                color: rgba(0, 0, 0, 0.2);
+                padding: 10px 240px 10px 10px;
+            }
+            .selected {
+                color: #fff;
+            }
         }
     }
 }
