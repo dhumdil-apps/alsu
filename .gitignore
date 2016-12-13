@@ -9,10 +9,10 @@ dist/*
 /.idea
 /.vscode
 
-# misc
-npm-debug.log
-
 # ignore js and map files
 app/**/*.js
 app/**/*.map
 app/**/*.css
+
+# misc
+npm-debug.log

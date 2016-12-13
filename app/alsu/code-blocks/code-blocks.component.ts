@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CodeBlocks } from './code-blocks';
 import { Block } from './block/block';
 

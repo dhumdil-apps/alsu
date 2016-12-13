@@ -10,10 +10,10 @@ var config = {
     'node_modules/zone.js/dist/zone.js'
   ],
   index: {
-    run: 'index.html',
-    aot: 'index-aot.html',
-    aotgz: 'index-aot-gzip.html',
-    jit: 'index-jit.html'
+    run: '/index.html',
+    aot: '/index-aot.html',
+    aotgz: '/index-aot-gzip.html',
+    jit: '/index-jit.html'
   },
   dest: './dist',
   root: './'
@@ -49,7 +49,6 @@ gulp.task('copy-jit', ['clean'], function () {
 gulp.task('clean', function (done) {
   log('clean');
   del([config.index.run]).then(paths => {
-    // console.log('Deleted files and folders:\n', paths.join('\n'));
     done()
   });
 });
