@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var simple_1 = require('./../block/types/simple');
+var core_1 = require("@angular/core");
+var simple_1 = require("./../block/types/simple");
 var InputComponent = (function () {
     function InputComponent() {
         this.add = new core_1.EventEmitter();
@@ -29,20 +29,20 @@ var InputComponent = (function () {
             console.log(err.message);
         }
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], InputComponent.prototype, "add", void 0);
-    InputComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'input-data',
-            templateUrl: './input.html',
-            styleUrls: ['./input.css']
-        }), 
-        __metadata('design:paramtypes', [])
-    ], InputComponent);
     return InputComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], InputComponent.prototype, "add", void 0);
+InputComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'input-data',
+        templateUrl: './input.html',
+        styleUrls: ['./input.css']
+    }),
+    __metadata("design:paramtypes", [])
+], InputComponent);
 exports.InputComponent = InputComponent;
 //# sourceMappingURL=input.component.js.map

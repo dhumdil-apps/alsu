@@ -4,13 +4,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var block_1 = require('./../block');
+var block_1 = require("./../block");
 var Simple = (function (_super) {
     __extends(Simple, _super);
     function Simple(data, type) {
-        _super.call(this);
-        this.setType(type);
-        this.setData(data);
+        var _this = _super.call(this) || this;
+        _this.setType(type);
+        _this.setData(data);
+        return _this;
     }
     Simple.prototype.setIds = function (previous, id, next) {
         this.previous = previous;

@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var code_blocks_1 = require('./code-blocks');
+var core_1 = require("@angular/core");
+var code_blocks_1 = require("./code-blocks");
 var CodeBlocksComponent = (function () {
     // Init
     function CodeBlocksComponent() {
@@ -71,16 +71,16 @@ var CodeBlocksComponent = (function () {
             }
         }
     };
-    CodeBlocksComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'code-blocks',
-            templateUrl: './code-blocks.html',
-            styleUrls: ['./code-blocks.css']
-        }), 
-        __metadata('design:paramtypes', [])
-    ], CodeBlocksComponent);
     return CodeBlocksComponent;
 }());
+CodeBlocksComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'code-blocks',
+        templateUrl: './code-blocks.html',
+        styleUrls: ['./code-blocks.css']
+    }),
+    __metadata("design:paramtypes", [])
+], CodeBlocksComponent);
 exports.CodeBlocksComponent = CodeBlocksComponent;
 //# sourceMappingURL=code-blocks.component.js.map

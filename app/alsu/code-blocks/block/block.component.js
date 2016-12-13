@@ -8,24 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-// import { Directive, ElementRef, AfterViewInit } from '@angular/core';
-var block_1 = require('./block');
-// @Directive({
-//     selector: 'input[type=text]'
-// })
-// export class FocusInput implements AfterViewInit {
-//     private firstTime: boolean = true;
-//     constructor(public elem: ElementRef) {
-//     }
-//
-//     ngAfterViewInit() {
-//         if (this.firstTime) {
-//             this.elem.nativeElement.focus();
-//             this.firstTime = false;
-//         }
-//     }
-// }
+var core_1 = require("@angular/core");
+var block_1 = require("./block");
 var BlockComponent = (function () {
     function BlockComponent() {
         this.remove = new core_1.EventEmitter();
@@ -38,24 +22,24 @@ var BlockComponent = (function () {
     BlockComponent.prototype.clearText = function () {
         this.block.data = '';
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', block_1.Block)
-    ], BlockComponent.prototype, "block", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], BlockComponent.prototype, "remove", void 0);
-    BlockComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'block',
-            templateUrl: './block.html',
-            styleUrls: ['./block.css']
-        }), 
-        __metadata('design:paramtypes', [])
-    ], BlockComponent);
     return BlockComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", block_1.Block)
+], BlockComponent.prototype, "block", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], BlockComponent.prototype, "remove", void 0);
+BlockComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'block',
+        templateUrl: './block.html',
+        styleUrls: ['./block.css']
+    }),
+    __metadata("design:paramtypes", [])
+], BlockComponent);
 exports.BlockComponent = BlockComponent;
 //# sourceMappingURL=block.component.js.map

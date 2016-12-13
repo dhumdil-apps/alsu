@@ -1,5 +1,5 @@
 "use strict";
-var simple_1 = require('./block/types/simple');
+var simple_1 = require("./block/types/simple");
 var CodeBlocks = (function () {
     function CodeBlocks() {
         this.init();

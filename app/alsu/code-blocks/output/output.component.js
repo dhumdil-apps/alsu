@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var OutputComponent = (function () {
     function OutputComponent() {
     }
@@ -122,20 +122,20 @@ var OutputComponent = (function () {
             return val;
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], OutputComponent.prototype, "outputData", void 0);
-    OutputComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'output-data',
-            templateUrl: './output.html',
-            styleUrls: ['./output.css']
-        }), 
-        __metadata('design:paramtypes', [])
-    ], OutputComponent);
     return OutputComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], OutputComponent.prototype, "outputData", void 0);
+OutputComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'output-data',
+        templateUrl: './output.html',
+        styleUrls: ['./output.css']
+    }),
+    __metadata("design:paramtypes", [])
+], OutputComponent);
 exports.OutputComponent = OutputComponent;
 //# sourceMappingURL=output.component.js.map

@@ -18,7 +18,7 @@ import { OutputComponent } from './alsu/code-blocks/output/output.component';
     ],
     declarations: [
         AppComponent,
-        CodeBlocksComponent,  BlockComponent
+        CodeBlocksComponent,  BlockComponent,
         InputComponent, OutputComponent
     ],
     providers: [],
