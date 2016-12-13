@@ -15,5 +15,4 @@ npm-debug.log
 # ignore js and map files
 app/**/*.js
 app/**/*.map
-/e2e/*.js
-/e2e/*.map
+app/**/*.css
