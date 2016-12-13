@@ -10,12 +10,10 @@ var platform_browser_1 = require('@angular/platform-browser');
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
-// basic
-var app_component_1 = require('./app.component');
 // alsu
+var app_component_1 = require('./app.component');
 var code_blocks_component_1 = require('./alsu/code-blocks/code-blocks.component');
 var block_component_1 = require('./alsu/code-blocks/block/block.component');
-// import { FocusInput } from './alsu/code-blocks/block/block.component';
 var input_component_1 = require('./alsu/code-blocks/input/input.component');
 var output_component_1 = require('./alsu/code-blocks/output/output.component');
 var AppModule = (function () {
@@ -30,10 +28,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                code_blocks_component_1.CodeBlocksComponent,
-                input_component_1.InputComponent,
-                output_component_1.OutputComponent,
-                block_component_1.BlockComponent
+                code_blocks_component_1.CodeBlocksComponent, block_component_1.BlockComponent,
+                input_component_1.InputComponent, output_component_1.OutputComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

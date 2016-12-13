@@ -4,16 +4,6 @@ var CodeBlocks = (function () {
     function CodeBlocks() {
         this.init();
     }
-    CodeBlocks.prototype.init = function () {
-        this.blocks = [];
-        this.uniqueId = 3;
-        this.blocks.push(new simple_1.Simple('BEGIN', 'begin'));
-        this.blocks.push(new simple_1.Simple('Hello World!', 'write'));
-        this.blocks[1].setIds(1, 2, -1);
-        this.selectedId = [1, 2];
-        this.blocks.push(new simple_1.Simple('END', 'end'));
-        console.log(this.blocks);
-    };
     CodeBlocks.prototype.select = function (id) {
         if (this.selectedId[0] < 0) {
             // console.log("selecting - ERROR!");
@@ -21,9 +11,9 @@ var CodeBlocks = (function () {
             return;
         }
         try {
-            this.unselectSelected(this.selectedId[0]);
+            this.unsetSelected(this.selectedId[0]);
             this.selectedId = [this.getId(id), id];
-            this.selectSelected(this.selectedId[0]);
+            this.setSelected(this.selectedId[0]);
             // console.log("selected!", this.selectedId[0]);
             return this.selectedId[0];
         }
@@ -93,7 +83,7 @@ var CodeBlocks = (function () {
             else {
                 this.selectedId = [this.getId(b.previous), b.previous];
             }
-            this.selectSelected(this.selectedId[0]);
+            this.setSelected(this.selectedId[0]);
             // console.log("removed!", b);
             return b;
         }
@@ -117,11 +107,21 @@ var CodeBlocks = (function () {
         // console.log('Compiling...', output);
         return output;
     };
-    CodeBlocks.prototype.unselectSelected = function (id) {
+    CodeBlocks.prototype.init = function () {
+        this.blocks = [];
+        this.uniqueId = 3;
+        this.blocks.push(new simple_1.Simple('BEGIN', 'begin'));
+        this.blocks.push(new simple_1.Simple('Hello World!', 'write'));
+        this.blocks[1].setIds(1, 2, -1);
+        this.selectedId = [1, 2];
+        this.blocks.push(new simple_1.Simple('END', 'end'));
+        console.log(this.blocks);
+    };
+    CodeBlocks.prototype.unsetSelected = function (id) {
         this.blocks[id].selected = false;
         this.blocks[id].disabled = true;
     };
-    CodeBlocks.prototype.selectSelected = function (id) {
+    CodeBlocks.prototype.setSelected = function (id) {
         this.blocks[id].selected = true;
         this.blocks[id].disabled = (id === 0);
     };

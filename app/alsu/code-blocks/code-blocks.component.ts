@@ -1,15 +1,11 @@
 import {Component} from '@angular/core';
-
 import { CodeBlocks } from './code-blocks';
 import { Block } from './block/block';
-// import { FocusDirective } from './focus.directive';
-
 
 
 @Component({
     moduleId: module.id,
     selector: 'code-blocks',
-    // directives: [FocusDirective],
     templateUrl: './code-blocks.html',
     styleUrls: ['./code-blocks.css']
 })

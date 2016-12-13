@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var code_blocks_1 = require('./code-blocks');
-// import { FocusDirective } from './focus.directive';
 var CodeBlocksComponent = (function () {
     // Init
     function CodeBlocksComponent() {
@@ -76,7 +75,6 @@ var CodeBlocksComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'code-blocks',
-            // directives: [FocusDirective],
             templateUrl: './code-blocks.html',
             styleUrls: ['./code-blocks.css']
         }), 

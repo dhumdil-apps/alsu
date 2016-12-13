@@ -1,8 +1,6 @@
 <div class="input-data">
     <div class="input-blocks" *ngFor="let block of blocks">
         <block class="input-block" [block]="block"></block>
-        <div (click)="addBlock(block)">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </div>
+        <span (click)="addBlock(block)" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </div>
 </div>

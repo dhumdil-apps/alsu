@@ -1,11 +1,33 @@
 <div class="{{ block.type }}">
     <div class="connect-top"></div>
-    <div class="block" [ngClass]="{ 'block_selected': block.selected, 'block_disabled': block.disabled }">
-        <input type="text" [(ngModel)]="block.data" [disabled]="block.disabled" placeholder="{{ block.type }}"/>
-        <div class="block__options" *ngIf=" block.selected && block.draggable ">
-            <span (click)="clearText()" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            <span (click)="removeBlock()" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+    <div [ngClass]="{
+         'block_selected': block.selected,
+         'block_disabled': block.disabled }"
+         class="block">
+
+        <input type="text"
+               [(ngModel)]="block.data"
+               [disabled]="block.disabled"
+               placeholder="{{ block.type }}"
+        />
+
+        <div class="block__options"
+             *ngIf="block.selected && block.draggable">
+
+            <span class="glyphicon glyphicon-remove"
+                  (click)="clearText()"
+                  aria-hidden="true">
+            </span>
+            <span class="glyphicon glyphicon-trash"
+                  (click)="removeBlock()"
+                  aria-hidden="true">
+            </span>
+
         </div>
+
+        <div class="type"></div>
     </div>
+
     <div class="connect-bottom"></div>
 </div>

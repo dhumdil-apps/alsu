@@ -1,27 +1,60 @@
 <div class="toolbar">
     <div class="flex"></div>
-    <span (click)="compile()" class="toolbar__run glyphicon" [ngClass]="style.toolbar.run" aria-hidden="true"></span>
+
+    <span class="toolbar__run glyphicon"
+          [ngClass]="style.toolbar.run"
+          (click)="compile()"
+          aria-hidden="true">
+    </span>
+
     <div class="flex"></div>
 </div>
+
 <div class="body">
-    <div class="side-panel" *ngIf=" style.editMode ">
+    <div class="side-panel"
+         *ngIf="style.editMode">
+
         <span class="side-panel__title">Input</span>
         <input-data (add)="add($event)"></input-data>
+
     </div>
     <div class="code-blocks">
         <div class="flex"></div>
         <div class="code-blocks__wrapper">
             <div class="block" *ngFor="let block of list.blocks">
-                <block [block]="block" (click)="selectBlock(block)"  (remove)="remove()"></block>
-                <span class="glyphicon glyphicon-arrow-right" [ngClass]="{'visible': block.selected}" (dragstart)="dragStart(block.id)" (dragend)="dragEnd()" aria-hidden="true" draggable="true"></span>
-                <span class="glyphicon glyphicon-circle-arrow-right" [ngClass]="{'selected': block.selected }" (dragover)="dragOver($event, block.id)" *ngIf="style.blocks.dragging && block.id" aria-hidden="true"></span>
+
+                <block [block]="block"
+                       (click)="selectBlock(block)"
+                       (remove)="remove()">
+                </block>
+
+                <span class="glyphicon glyphicon-arrow-right"
+                      [ngClass]="{'visible': block.selected}"
+                      (dragstart)="dragStart(block.id)"
+                      (dragend)="dragEnd()"
+                      aria-hidden="true"
+                      draggable="true">
+                </span>
+
+                <span class="glyphicon glyphicon-circle-arrow-right"
+                      [ngClass]="{'selected': block.selected }"
+                      (dragover)="dragOver($event, block.id)"
+                      *ngIf="style.blocks.dragging && block.id"
+                      aria-hidden="true">
+                </span>
+
             </div>
         </div>
-        <div [ngClass]="{'_disabled': !style.editMode}" class="code-blocks__backdrop"></div>
+        <div [ngClass]="{'_disabled': !style.editMode}"
+             class="code-blocks__backdrop">
+        </div>
         <div class="flex"></div>
     </div>
-    <div class="side-panel" *ngIf=" !style.editMode ">
+    <div *ngIf="!style.editMode"
+         class="side-panel">
+
         <span class="side-panel__title">Output</span>
         <output-data [outputData]="style.output"></output-data>
+
     </div>
 </div>

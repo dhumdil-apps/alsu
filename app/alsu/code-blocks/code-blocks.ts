@@ -6,24 +6,8 @@ export class CodeBlocks {
     public blocks: Block[];
     public selectedId: any; // [array-index, unique-id]
     private uniqueId: number;
-
     constructor() {
         this.init();
-    }
-
-    private init(): void {
-        this.blocks = [];
-        this.uniqueId = 3;
-
-        this.blocks.push(new Simple('BEGIN', 'begin'));
-
-        this.blocks.push(new Simple('Hello World!', 'write'));
-        this.blocks[1].setIds(1, 2, -1);
-        this.selectedId = [1, 2];
-
-        this.blocks.push(new Simple('END', 'end'));
-
-        console.log(this.blocks);
     }
 
     public select(id: number): number {
@@ -35,9 +19,9 @@ export class CodeBlocks {
 
         try {
 
-            this.unselectSelected(this.selectedId[0]);
+            this.unsetSelected(this.selectedId[0]);
             this.selectedId = [this.getId(id), id];
-            this.selectSelected(this.selectedId[0]);
+            this.setSelected(this.selectedId[0]);
 
             // console.log("selected!", this.selectedId[0]);
             return this.selectedId[0];
@@ -48,7 +32,6 @@ export class CodeBlocks {
             return;
         }
     }
-
     public add(b: Block, id: number = this.selectedId[1]): void {
         if (id <= 0) {
             // console.log("adding - ERROR!");
@@ -77,7 +60,6 @@ export class CodeBlocks {
             return;
         }
     }
-
     public move(id: number): void {
         if (this.selectedId[1] < 2 || id < 2) {
             // console.log("moving - ERROR!");
@@ -101,7 +83,6 @@ export class CodeBlocks {
             this.init();
         }
     }
-
     public remove(): Block {
         if (this.selectedId[1] < 2) {
             // console.log("Can't remove! (The selected block id can't be removed)", this.selectedId, this.blocks);
@@ -123,7 +104,7 @@ export class CodeBlocks {
                 this.selectedId = [this.getId(b.previous), b.previous];
             }
 
-            this.selectSelected(this.selectedId[0]);
+            this.setSelected(this.selectedId[0]);
 
             // console.log("removed!", b);
             return b;
@@ -133,7 +114,6 @@ export class CodeBlocks {
             this.init();
         }
     }
-
     public compile(): any {
         let output: any = [];
 
@@ -152,11 +132,25 @@ export class CodeBlocks {
         return output;
     }
 
-    private unselectSelected(id: number): void {
+    private init(): void {
+        this.blocks = [];
+        this.uniqueId = 3;
+
+        this.blocks.push(new Simple('BEGIN', 'begin'));
+
+        this.blocks.push(new Simple('Hello World!', 'write'));
+        this.blocks[1].setIds(1, 2, -1);
+        this.selectedId = [1, 2];
+
+        this.blocks.push(new Simple('END', 'end'));
+
+        console.log(this.blocks);
+    }
+    private unsetSelected(id: number): void {
         this.blocks[id].selected = false;
         this.blocks[id].disabled = true;
     }
-    private selectSelected(id: number): void {
+    private setSelected(id: number): void {
         this.blocks[id].selected = true;
         this.blocks[id].disabled = (id === 0);
     }

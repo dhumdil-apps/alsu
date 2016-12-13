@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 .block:hover {
-  border: 2px solid #58c;
+  color: #369;
 }
 .connect-top,
 .connect-bottom {
@@ -71,4 +71,30 @@
 }
 .end .connect-bottom {
   visibility: hidden;
+}
+.write .block {
+  border: none;
+  width: 158px;
+  left: 20px;
+}
+.write .block__options .glyphicon-remove {
+  right: 0;
+  top: 15px;
+}
+.write .block__options .glyphicon-trash {
+  right: -48px;
+  top: 15px;
+}
+.write .type {
+  position: absolute;
+  top: -2px;
+  left: -10px;
+  width: 178px;
+  height: 50px;
+  background-color: #fff;
+  border: 2px solid #333;
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+  z-index: -1;
 }
