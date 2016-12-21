@@ -1,9 +1,9 @@
-node_modules/*
+node_modules/
 
 aot/*
 dist/*
 
-.idea/*
+.idea/
 .vscode/*
 
 app/**/*.js
