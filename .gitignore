@@ -1,20 +1,16 @@
-# compiled output
+node_modules/*
+
 aot/*
 dist/*
 
-# dependencies
-/node_modules
+.idea/*
+.vscode/*
 
-# IDEs and editors
-/.idea
-/.vscode
-
-# ignore js and map files
 app/**/*.js
 app/**/*.map
-app/**/*.css
+app/alsu/**/*.css
+app/app.css
 
-# misc
 npm-debug.log
 system-config.js
 system-config.js.map
