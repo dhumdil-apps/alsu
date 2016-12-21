@@ -16,3 +16,5 @@ app/**/*.css
 
 # misc
 npm-debug.log
+system-config.js
+system-config.js.map
