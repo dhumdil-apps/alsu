@@ -1,10 +1,8 @@
 <div class="toolbar">
     <div class="flex"></div>
 
-    <span class="toolbar__run glyphicon"
-          [ngClass]="style.toolbar.run"
-          (click)="compile()"
-          aria-hidden="true">
+    <span (click)="compile()" class="toolbar__run">
+        <i class="material-icons md-dark">{{ style.toolbar.run }}</i>
     </span>
 
     <div class="flex"></div>
@@ -28,19 +26,19 @@
                        (remove)="remove()">
                 </block>
 
-                <span class="glyphicon glyphicon-arrow-right"
+                <span class="glyphicon-arrow-right"
                       [ngClass]="{'visible': block.selected}"
                       (dragstart)="dragStart(block.id)"
                       (dragend)="dragEnd()"
-                      aria-hidden="true"
                       draggable="true">
+                    <i class="material-icons md-dark">arrow_forward</i>
                 </span>
 
-                <span class="glyphicon glyphicon-circle-arrow-right"
+                <span class="glyphicon-circle-arrow-right"
                       [ngClass]="{'selected': block.selected }"
                       (dragover)="dragOver($event, block.id)"
-                      *ngIf="style.blocks.dragging && block.id"
-                      aria-hidden="true">
+                      *ngIf="style.blocks.dragging && block.id">
+                    <i class="material-icons md-dark">navigate_next</i>
                 </span>
 
             </div>

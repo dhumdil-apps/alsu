@@ -21,7 +21,7 @@ export class CodeBlocksComponent {
         this.style = {
             editMode: true,
             toolbar: {
-                run: "glyphicon-play"
+                run: "play_arrow"
             },
             output: [],
             blocks: {
@@ -43,10 +43,10 @@ export class CodeBlocksComponent {
 
     compile(): void {
         if (this.style.editMode) {
-            this.setEditMode(false, "glyphicon-stop");
+            this.setEditMode(false, "stop");
             this.style.output = this.list.compile();
         } else {
-            this.setEditMode(true, "glyphicon-play");
+            this.setEditMode(true, "play_arrow");
             this.list.select(1);
         }
     }
