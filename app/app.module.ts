@@ -7,6 +7,7 @@ import { AppComponent }   from './app.component';
 // alsu
 import { CodeBlocksComponent } from './alsu/code-blocks/code-blocks.component';
 import { BlockComponent } from './alsu/code-blocks/block/block.component';
+import { ToolbarComponent } from './alsu/code-blocks/toolbar/toolbar.component';
 import { InputComponent } from './alsu/code-blocks/input/input.component';
 import { OutputComponent } from './alsu/code-blocks/output/output.component';
 
@@ -20,6 +21,7 @@ import { OutputComponent } from './alsu/code-blocks/output/output.component';
         AppComponent,
         CodeBlocksComponent,
         BlockComponent,
+        ToolbarComponent,
         InputComponent,
         OutputComponent
     ],
