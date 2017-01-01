@@ -1,60 +1,73 @@
-<div class="toolbar">
-    <div class="flex"></div>
+<div class="code-blocks layout-column">
 
-    <span class="toolbar__run glyphicon"
-          [ngClass]="style.toolbar.run"
-          (click)="compile()"
-          aria-hidden="true">
-    </span>
+    <toolbar (compile)="compile()" [toolbar]="style.toolbar"></toolbar>
 
-    <div class="flex"></div>
-</div>
 
-<div class="body">
-    <div class="side-panel"
-         *ngIf="style.editMode">
+    <div class="code-blocks__content layout-row">
 
-        <span class="side-panel__title">Input</span>
-        <input-data (add)="add($event)"></input-data>
+        <div class="side-panel" *ngIf="style.input"></div>
+
+        <div class="blocks layout-row flex"></div>
+
+        <div class="side-panel" *ngIf="!style.input"></div>
 
     </div>
-    <div class="code-blocks">
-        <div class="flex"></div>
-        <div class="code-blocks__wrapper">
-            <div class="block" *ngFor="let block of list.blocks">
 
-                <block [block]="block"
-                       (click)="selectBlock(block)"
-                       (remove)="remove()">
-                </block>
+</div>
 
-                <span class="glyphicon glyphicon-arrow-right"
-                      [ngClass]="{'visible': block.selected}"
-                      (dragstart)="dragStart(block.id)"
-                      (dragend)="dragEnd()"
-                      aria-hidden="true"
-                      draggable="true">
+<!--
+<div class="code-blocks layout-column">
+
+    <toolbar (compile)="compile()" [toolbar]="style.toolbar"></toolbar>
+
+
+    <div class="code-blocks__content layout-row">
+
+        <div class="side-panel" *ngIf="style.input">
+            <span class="side-panel__title">Input</span>
+            <input-data (add)="add($event)"></input-data>
+        </div>
+
+        <div class="blocks layout-row flex">
+            <div class="flex"></div>
+            <div class="code-blocks__wrapper layout-column">
+                <div class="block" *ngFor="let block of list.blocks">
+
+                    <block [block]="block"
+                           (click)="selectBlock(block)"
+                           (remove)="remove()">
+                    </block>
+
+                    <span class="glyphicon-arrow-right"
+                          [ngClass]="{'visible': block.selected}"
+                          (dragstart)="dragStart(block.id)"
+                          (dragend)="dragEnd()"
+                          draggable="true">
+                    <i class="material-icons md-dark">arrow_forward</i>
                 </span>
 
-                <span class="glyphicon glyphicon-circle-arrow-right"
-                      [ngClass]="{'selected': block.selected }"
-                      (dragover)="dragOver($event, block.id)"
-                      *ngIf="style.blocks.dragging && block.id"
-                      aria-hidden="true">
+                    <span class="glyphicon-circle-arrow-right"
+                          [ngClass]="{'selected': block.selected }"
+                          (dragover)="dragOver($event, block.id)"
+                          *ngIf="style.blocks.dragging && block.id">
+                    <i class="material-icons md-dark">navigate_next</i>
                 </span>
 
+                </div>
             </div>
+            <div [ngClass]="{'_disabled': !style.input}"
+                 class="code-blocks__backdrop">
+            </div>
+            <div class="flex"></div>
         </div>
-        <div [ngClass]="{'_disabled': !style.editMode}"
-             class="code-blocks__backdrop">
+
+        <div class="side-panel" *ngIf="!style.input">
+            <span class="side-panel__title">Output</span>
+            <output-data [outputData]="style.output"></output-data>
         </div>
-        <div class="flex"></div>
-    </div>
-    <div *ngIf="!style.editMode"
-         class="side-panel">
-
-        <span class="side-panel__title">Output</span>
-        <output-data [outputData]="style.output"></output-data>
 
     </div>
+
 </div>
+
+-->

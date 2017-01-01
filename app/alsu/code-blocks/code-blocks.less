@@ -1,65 +1,15 @@
-.toolbar {
-    display: flex;
-    position: relative;
-    height: 35px;
-    background-color: #eee;
-    box-shadow: 0 1px 5px #333;
-    z-index: 100;
-    min-width: 768px;
+@import url("../../variables");
 
-    &__run {
-        cursor: pointer;
-        font-size: 19px;
-        padding: 8px;
-        transition: color 100ms, background-color 300ms;
+.code-blocks {
+
+    toolbar {
+        background-color: @white;
     }
-    &__run:hover {
-        background-color: #333;
-        color: #eee;
-    }
-}
+    &__content {
 
-.body {
-    position: relative;
-    display: flex;
-    flex: 1;
-    z-index: 99;
-    min-width: 768px;
-
-    .side-panel {
-        z-index: 98;
-        background: #369;
-        box-shadow: 1px 0 5px #333;
-        width: 216px;
-
-        &__title {
-            display: inline-block;
-            padding: 5px;
-            text-transform: uppercase;
-            width: 100%;
-            text-align: center;
-            background: #333;
-            color: #eee;
-        }
-    }
-    .code-blocks {
-        display: flex;
-        flex: 1;
-        background-color: #fff;
-        z-index: 97;
-        padding-top: 50px;
-
-        &__wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-        &__backdrop {
-            display: none;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 97;
+        .side-panel {
+            background-color: @blue;
+            width: 216px;
         }
         ._disabled {
             display: block;
@@ -94,10 +44,79 @@
             .selected {
                 color: #fff;
             }
+        .blocks {
+            background-color: #fff;
         }
     }
 }
 
-.flex {
-    flex: 1;
-}
+//.blocks {
+//    background-color: #fff;
+//    z-index: 97;
+//    padding-top: 50px;
+//
+//    &__backdrop {
+//        display: none;
+//        position: absolute;
+//        top: 0;
+//        width: 100%;
+//        height: 100%;
+//        z-index: 97;
+//    }
+//    ._disabled {
+//        display: block;
+//    }
+//    .block {
+//        position: relative;
+//
+//        .glyphicon-arrow-right {
+//            position: absolute;
+//            display: none;
+//            left: -30px;
+//            top: 33px;
+//            font-size: 20px;
+//            color: rgba(0, 0, 0, 0.2);
+//            transition: color 150ms;
+//            cursor: move;
+//            z-index: 10;
+//        }
+//        .visible {
+//            display: block;
+//            color: rgba(0, 0, 0, 1);
+//        }
+//        .glyphicon-circle-arrow-right {
+//            position: absolute;
+//            left: -41px;
+//            top: 22px;
+//            cursor: move;
+//            font-size: 25px;
+//            color: rgba(0, 0, 0, 0.2);
+//            padding: 10px 240px 10px 10px;
+//        }
+//        .selected {
+//            color: #fff;
+//        }
+//    }
+//}
+//
+//.code-blocks__content {
+//    position: relative;
+//    z-index: 99;
+//
+//    .side-panel {
+//        z-index: 98;
+//        background-color: @blue;
+//        box-shadow: 1px 0 5px @dark;
+//        width: 216px;
+//
+//        &__title {
+//            display: inline-block;
+//            padding: 5px;
+//            text-transform: uppercase;
+//            width: 100%;
+//            text-align: center;
+//            background-color: @dark;
+//            color: @white;
+//        }
+//    }
+//}

@@ -15,13 +15,11 @@
         <div class="block__options"
              *ngIf="block.selected && block.draggable">
 
-            <span class="glyphicon glyphicon-remove"
-                  (click)="clearText()"
-                  aria-hidden="true">
+            <span (click)="clearText()" class="glyphicon-remove">
+                <i class="material-icons md-18 md-dark">close</i>
             </span>
-            <span class="glyphicon glyphicon-trash"
-                  (click)="removeBlock()"
-                  aria-hidden="true">
+            <span (click)="removeBlock()" class="glyphicon-trash">
+                <i class="material-icons md-18 md-dark">delete</i>
             </span>
 
         </div>

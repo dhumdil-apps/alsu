@@ -19,10 +19,10 @@ export class CodeBlocksComponent {
     // Init
     constructor() {
         this.style = {
-            editMode: true,
             toolbar: {
-                run: "glyphicon-play"
+                run: "play_arrow"
             },
+            input: true,
             output: [],
             blocks: {
                 input: false,
@@ -40,20 +40,25 @@ export class CodeBlocksComponent {
     remove(): void {
         this.list.remove();
     }
-
     compile(): void {
-        if (this.style.editMode) {
-            this.setEditMode(false, "glyphicon-stop");
-            this.style.output = this.list.compile();
-        } else {
-            this.setEditMode(true, "glyphicon-play");
-            this.list.select(1);
-        }
+        this.style.input ? this.deactivateInputMode() : this.activateInputMode();
+        // if (this.style.input) {
+        //     this.deactivateInputMode();
+        // } else {
+        //     this.activateInputMode();
+        // }
     }
 
-    setEditMode(mode: boolean, icon: string): void {
-        this.style.editMode = mode;
-        this.style.toolbar.run = icon;
+    activateInputMode(): void {
+        this.style.input = true;
+        this.style.toolbar.run = "play_arrow";
+        this.list.select(1);
+    }
+
+    deactivateInputMode(): void {
+        this.style.input = false;
+        this.style.toolbar.run = "stop";
+        this.style.output = this.list.compile();
     }
 
     selectBlock(b: Block): void {

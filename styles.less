@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("/app/variables");
+
+html {
+    .w100_h100;
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    body {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        .w100_h100;
+
+        app {
+            .w100_h100;
+        }
+    }
+}
+
+
+/* BASIC */
+.w100_h100 {
+    width: 100%;
+    height: 100%;
+}
+code-blocks {
+    height: 100%;
+}
+.mobile {
+    width: @w-mobile;
+}
+.tablet {
+    width: @w-tablet;
+}
+.desktop {
+    width: @w-desktop;
+}
+
+
+/* FLEX */
+.flex {
+    flex: 1;
+    -webkit-flex: 1;
+}
+// horizontally
+.layout-row {
+    display: flex;
+    display: -webkit-flex;
+}
+.layout-row-left {
+    display: flex;
+    justify-content: flex-start;
+    display: -webkit-flex;
+    -webkit-justify-content: flex-start;
+}
+.layout-row-middle {
+    display: flex;
+    justify-content: space-around;
+    display: -webkit-flex;
+    -webkit-justify-content: space-around;
+}
+.layout-row-right {
+    display: flex;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-justify-content: flex-end;
+}
+.layout-row-center {
+    display: flex;
+    align-items: stretch;
+    display: -webkit-flex;
+    -webkit-align-items: stretch;
+}
+.layout-row-custom {
+    display: flex;
+    display: -webkit-flex;
+
+    &_start  {
+        -webkit-align-self: flex-start;
+        align-self: flex-start;
+    }
+    &_center {
+        -webkit-align-self: center;
+        align-self: center;
+    }
+    &_end {
+        -webkit-align-self: flex-end;
+        align-self: flex-end;
+    }
+}
+// vertically
+.layout-column {
+    display: flex;
+    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+
+/* MEDIA */
+// < 300px (NONE)
+@media screen and (max-width: @w-mobile) {
+    code-blocks {
+        display: none;
+    }
+}
+// 300px - 600px (MOBILE)
+@media screen and (min-width: @w-mobile) {
+    code-blocks {
+        .mobile();
+    }
+}
+// 600px - 1200px (TABLET)
+@media screen and (min-width: @w-tablet) {
+    code-blocks {
+        .tablet();
+    }
+}
+// > 1200px (DESKTOP)
+@media screen and (min-width: @w-desktop) {
+    code-blocks {
+        .desktop();
+    }
+}
