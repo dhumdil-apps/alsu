@@ -3,14 +3,32 @@
     <toolbar (compile)="compile()" [toolbar]="style.toolbar"></toolbar>
 
 
-    <div class="layout-row code-blocks__content">
+    <div class="code-blocks__content layout-row">
+
+        <div class="side-panel" *ngIf="style.input"></div>
+
+        <div class="blocks layout-row flex"></div>
+
+        <div class="side-panel" *ngIf="!style.input"></div>
+
+    </div>
+
+</div>
+
+<!--
+<div class="code-blocks layout-column">
+
+    <toolbar (compile)="compile()" [toolbar]="style.toolbar"></toolbar>
+
+
+    <div class="code-blocks__content layout-row">
 
         <div class="side-panel" *ngIf="style.input">
             <span class="side-panel__title">Input</span>
             <input-data (add)="add($event)"></input-data>
         </div>
 
-        <div class="layout-row flex code-blocks">
+        <div class="blocks layout-row flex">
             <div class="flex"></div>
             <div class="code-blocks__wrapper layout-column">
                 <div class="block" *ngFor="let block of list.blocks">
@@ -51,3 +69,5 @@
     </div>
 
 </div>
+
+-->
