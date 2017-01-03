@@ -1,20 +1,92 @@
 @import url("../../variables");
+@import url("../../layout");
 
 .code-blocks {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    .layout-column();
 
-    toolbar {
-        background-color: @white;
-    }
     &__content {
+        .flex();
+        .layout-row-center();
+    }
+}
 
-        .side-panel {
-            background-color: @blue;
-            width: 216px;
-        }
-        ._disabled {
-            display: block;
-        }
-        .block {
+toolbar {
+    background-color: @white;
+}
+
+.side-panel {
+    background-color: @blue;
+    width: 0;
+    transition: width 300ms ease;
+    .layout-column();
+}
+
+.blocks {
+    height: 100%;
+    background-color: #fff;
+    color: @dark;
+    margin: auto;
+    .layout-column();
+}
+
+.none {
+    .code-blocks {
+        display: none;
+    }
+}
+.mobile {
+    .blocks {
+        width: @mobile;
+    }
+    .side-panel {
+        width: 35px;
+    }
+}
+.tablet {
+    .blocks {
+        width: @tablet;
+    }
+    .side-panel {
+        width: 35px;
+    }
+}
+.desktop {
+    .blocks {
+        width: @desktop;
+    }
+    .side-panel {
+        width: 300px;
+    }
+}
+
+// < 300px (NONE)
+@media screen and (max-width: @w-mobile) {
+    .none();
+}
+// 300px - 600px (MOBILE)
+@media screen and (min-width: @w-mobile) {
+    .mobile();
+}
+// 600px - 1200px (TABLET)
+@media screen and (min-width: @w-tablet) {
+    .tablet();
+}
+// > 1200px (DESKTOP)
+@media screen and (min-width: @w-desktop) {
+    .desktop();
+}
+
+
+
+
+/**
+._disabled {
+    display: block;
+}
+.block {
             position: relative;
 
             .glyphicon-arrow-right {
@@ -44,11 +116,11 @@
             .selected {
                 color: #fff;
             }
-        .blocks {
-            background-color: #fff;
+            .blocks {
+                background-color: #fff;
+            }
         }
-    }
-}
+ */
 
 //.blocks {
 //    background-color: #fff;
@@ -120,3 +192,4 @@
 //        }
 //    }
 //}
+
