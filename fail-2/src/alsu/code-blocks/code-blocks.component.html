@@ -1,0 +1,20 @@
+<div class="code-blocks">
+
+    <div>
+        <button (click)="moveUp()" type="button">/\</button>
+        <button (click)="moveDown()" type="button">\/</button>
+    </div><hr><div>
+        <button (click)="destroy()" type="button">X</button>
+        <button (click)="pop()" type="button">-</button>
+        <input type="text" [(ngModel)]="data" />
+        <button (click)="add(data)" type="button">+</button>
+    </div><hr>
+
+    <ul class="code-blocks__list">
+        <li class="code-blocks__list_item" *ngFor="let block of codeBlocks">
+            <span [ngClass]="{active: isPointer(block)}" (click)="pointTo(block)">pointTo</span>
+            <block [block]="block"></block>
+        </li>
+    </ul>
+
+</div>
