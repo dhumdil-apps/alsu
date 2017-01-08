@@ -1,0 +1,301 @@
+// colors
+@dark: rgb(48,48,48);
+@neutral: rgb(136,136,136);
+@light: rgb(229,229,229);
+
+body {
+  background-color: @light;
+  > div {
+    width: 100%;
+    height: 100%;
+    .code-ui {
+      width: 100%;
+      height: 100%;
+      > div {
+        width: 100%;
+        height: 100%;
+        > div {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  ul[dnd-list] {
+    position: relative;
+    > li {
+      position: relative;
+    }
+  }
+}
+.home {
+  position: relative;
+  //.home_sm {
+  //  width: 960px;
+  //}
+  //.home_md {
+  //  width: 1280px;
+  //}
+  //.home_lg {
+  //  width: 1920px;
+  //}
+
+  .toolbar-container {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background-color: @dark;
+    color: @neutral;
+
+    .logo {
+      position: relative;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      outline: none;
+
+      .alsu {
+        font-size: 35px;
+        color: @neutral;
+        cursor: pointer;
+      }
+    }
+    .tool {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      outline: none;
+
+      .run {
+        font-size: 30px;
+        padding: 10px;
+      }
+      .run:hover {
+        color: @light;
+      }
+
+      .menu {
+        font-size: 30px;
+        padding: 10px;
+      }
+    }
+  }
+  .blocks-container {
+    position: relative;
+    width: 200px;
+    background-color: lighten(@dark, 10%);
+    color: @light;
+    font-size: 18px;
+
+    .block {
+      position: relative;
+      width: 200px;
+      height: 102px;
+
+      .write {
+        cursor: pointer;
+        position: relative;
+        top: 26px;
+
+        .container {
+          position: absolute;
+          top: 0;
+          left: 50px;
+          width: 100px;
+          height: 50px;
+          background-color: @dark;
+          text-align: center;
+        }
+        .triangle {
+          position: absolute;
+          width: 0;
+          height: 0;
+        }
+        .triangle_left {
+          left: 25px;
+          border-bottom: 50px solid @dark;
+          border-left: 25px solid transparent;
+        }
+        .triangle_right {
+          left: 150px;
+          border-top: 50px solid @dark;
+          border-right: 25px solid transparent;
+        }
+      }
+      .if-else {
+        position: relative;
+        top: 25px;
+        cursor: pointer;
+
+        .container {
+          position: absolute;
+          top: -10px;
+          left: 64px;
+          width: 72px;
+          height: 72px;
+          background-color: @dark;
+          transform: rotate(45deg);
+
+          .content {
+            transform: rotate(-45deg);
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 11px;
+            top: 11px;
+            text-align: center;
+          }
+        }
+        .branch {
+          position: absolute;
+          top: 0;
+          width: 25px;
+          height: 50px;
+
+          i {
+            position: absolute;
+            top: 0;
+            font-size: 25px;
+            width: 25px;
+            height: 25px;
+            color: @dark;
+          }
+          .line {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            top: 25px;
+            border-top: 2px solid @dark;
+          }
+        }
+        .if_branch {
+          left: 25px;
+
+          .line_left {
+            border-left: 2px solid @dark;
+          }
+        }
+        .else_branch {
+          left: 150px;
+
+          .line_right {
+            border-right: 2px solid @dark;
+          }
+        }
+      }
+      .trash {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        color: @neutral;
+        text-align: center;
+        padding: 40px 0;
+        border-top: 1px solid #000;
+      }
+      .dndDragover {
+        background-color: @dark;
+      }
+    }
+    .block:hover {
+      background-color: @light;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .code-container {
+    position: relative;
+    padding: 20px;
+    .dropzone {
+
+      /* Style-decoration */
+      ul[dnd-list] {
+        /**
+          * The dnd-list should always have a min-height,
+          * otherwise you can't drop to it once it's empty
+          */
+        min-height: 50px;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        /**
+        * The dnd-lists's child elements currently MUST have
+        * position: relative. Otherwise we can not determine
+        * whether the mouse pointer is in the upper or lower
+        * half of the element we are dragging over. In other
+        * browsers we can use event.offsetY for this.
+        */
+        position: relative;
+        background-color: @light;
+        border: 1px solid @dark;
+        margin: 5px;
+        display: block;
+        padding: 0;
+      }
+      .dndDragging {
+        /**
+          * Reduce opacity of elements during the drag operation. This allows the user
+          * to see where he is dropping his element, even if the element is huge. The
+          * .dndDragging class is automatically set during the drag operation.
+          */
+        opacity: 0.7;
+      }
+      .dndDraggingSource {
+        /**
+        * The dndDraggingSource class will be applied to the source element of a drag
+        * operation. It makes sense to hide it to give the user the feeling that he's
+        * actually moving it. Note that the source element has also .dndDragging class.
+        */
+        background-color: rgba(44,44,44, 0.5);
+        //display: none;
+      }
+      .dndPlaceholder {
+        /**
+        * An element with .dndPlaceholder class will be added as child of the dnd-list
+        * while the user is dragging over it.
+        */
+        position: relative;
+        min-height: 50px;
+        background-color: @neutral;
+        display: block;
+      }
+      /* Element Selection */
+      .selected {
+        .item {
+          background-color: @neutral;
+        }
+      }
+      /* Element type specific styles */
+      .item {
+        height: 50px;
+        min-width: 200px;
+
+      }
+      .container {
+        .container_content {
+          .content_w {
+            min-width: 200px;
+          }
+        }
+      }
+    }
+    .toolbox {
+
+      .dndDragging {
+        opacity: 0.5;
+      }
+      .dndDraggingSource {
+        opacity: 1.0;
+      }
+    }
+  }
+  .output-container {
+    position: relative;
+    width: 400px;
+    overflow-y: scroll;
+  }
+}

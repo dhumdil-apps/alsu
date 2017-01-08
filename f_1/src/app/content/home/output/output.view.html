@@ -1,0 +1,12 @@
+<div layout="column">
+
+    <div ng-show="models.selected">
+        <strong>{{models.selected.type}}</strong>
+        <input type="text" ng-model="models.selected.id">
+    </div>
+    <div>
+        <pre>{{modelAsJson}}</pre>
+    </div>
+
+</div>
+
