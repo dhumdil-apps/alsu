@@ -1,0 +1,16 @@
+node_modules/
+
+aot/*
+dist/*
+
+.idea/
+.vscode/*
+
+app/**/*.js
+app/**/*.map
+app/alsu/**/*.css
+app/app.css
+
+npm-debug.log
+system-config.js
+system-config.js.map
