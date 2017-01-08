@@ -1,0 +1,119 @@
+@import url("../../../variables");
+
+
+.block {
+    font-size: 16px;
+    position: relative;
+    width: 196px;
+    height: 46px;
+    border: 2px solid #333;
+    padding: 10px 30px;
+    background-color: #fff;
+    cursor: pointer;
+
+    input {
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        text-align: center;
+        border: none;
+        background-color: #fff;
+    }
+    &__options {
+        span {
+            color: rgba(0, 0, 0, 0.2);
+        }
+        span:hover {
+            color: rgba(0, 0, 0, 1);
+        }
+        .glyphicon-remove {
+            right: 12px;
+            font-size: 10px;
+            padding: 5px;
+            position: absolute;
+            top: 13px;
+            cursor: pointer;
+            color: rgba(0, 0, 0, 0.2);
+        }
+        .glyphicon-trash {
+            right: -30px;
+            position: absolute;
+            top: 13px;
+            padding: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+.block_selected {
+    color: #369;
+    input {
+        cursor: text;
+    }
+}
+.block_disabled {
+    input {
+        cursor: pointer;
+    }
+}
+.block:hover {
+    color: #369;
+}
+
+.connect-top,
+.connect-bottom {
+    position: relative;
+    left: 98px;
+    width: 2px;
+    height: 20px;
+    background: #333;
+}
+
+.begin {
+    .connect-top {
+        visibility: hidden;
+    }
+    .block {
+        border-radius: 25px;
+    }
+}
+.end {
+    .block {
+        border-radius: 25px;
+    }
+    .connect-bottom {
+        visibility: hidden;
+    }
+}
+.write {
+    .block {
+        border: none;
+        width: 158px;
+        left: 20px;
+        &__options {
+            .glyphicon-remove {
+                right: 0;
+                top: 15px;
+            }
+            .glyphicon-trash {
+                right: -48px;
+                top: 15px;
+            }
+        }
+    }
+    .type {
+        position: absolute;
+        top: -2px;
+        left: -10px;
+        width: 178px;
+        height: 50px;
+        background-color: #fff;
+        border: 2px solid #333;
+        -webkit-transform: skew(-20deg);
+        -moz-transform: skew(-20deg);
+        -o-transform: skew(-20deg);
+        z-index: -1;
+    }
+}
+

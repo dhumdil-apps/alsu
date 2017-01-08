@@ -1,0 +1,27 @@
+@import url("../../../variables");
+
+.toolbar {
+    display: flex;
+    position: relative;
+    height: 35px;
+    background-color: @white;
+    box-shadow: 0 1px 5px @dark;
+    z-index: 100;
+
+    &__tab {
+        cursor: pointer;
+        margin: auto;
+
+        &_run {
+            padding: 9px;
+            font-size: 18px;
+            transition: color 100ms, background-color 300ms;
+        }
+    }
+    &__tab:hover {
+
+        .toolbar__tab_run {
+            color: @blue
+        }
+    }
+}
