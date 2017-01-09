@@ -7,10 +7,11 @@ import { HttpModule }       from '@angular/http';
 import { AppComponent }     from './app.component';
 
 // layout
-import { MainComponent }        from '../alsu/main/main.component';
-// import { ToolbarComponent }     from './../alsu/toolbar/toolbar.component';
+import { MainComponent }        from '../alsu/structure/main.component';
+import { ToolbarComponent }     from '../alsu/structure/toolbar/toolbar.component';
 // import { LeftSideComponent }    from './../alsu/right-side/right-side.component';
 // import { RightSideComponent }   from './../alsu/left-side/left-side.component';
+
 // // alsu
 // import { CodeBlocksComponent }  from '../alsu/main/code-blocks/code-blocks.component';
 // import { BlockComponent }       from '../alsu/main/code-blocks/block/block.component';
@@ -21,7 +22,8 @@ import { MainComponent }        from '../alsu/main/main.component';
     declarations: [
         AppComponent,
 
-        MainComponent
+        MainComponent,
+        ToolbarComponent
     ],
     imports: [
         BrowserModule,

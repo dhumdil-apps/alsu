@@ -1,11 +1,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Block } from './../block/block';
-import { Simple } from './../block/types/simple';
+import { Block } from '../block/block';
+import { Simple } from '../block/types/simple';
 
 @Component({
     moduleId: module.id,
     selector: 'input-data',
-    templateUrl: './input.html',
+    templateUrl: 'input.html',
     styleUrls: ['./input.css']
 })
 

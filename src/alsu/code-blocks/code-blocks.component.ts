@@ -6,7 +6,7 @@ import { Block } from './block/block';
 @Component({
     moduleId: module.id,
     selector: 'code-blocks',
-    templateUrl: './code-blocks.html',
+    templateUrl: 'code-blocks.html',
     styleUrls: ['./code-blocks.css']
 })
 
@@ -42,11 +42,6 @@ export class CodeBlocksComponent {
     }
     compile(): void {
         this.style.input ? this.deactivateInputMode() : this.activateInputMode();
-        // if (this.style.input) {
-        //     this.deactivateInputMode();
-        // } else {
-        //     this.activateInputMode();
-        // }
     }
 
     activateInputMode(): void {

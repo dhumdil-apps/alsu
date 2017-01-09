@@ -1,7 +1,6 @@
-@import url("../../../variables");
+@import url("../variables");
 
 .toolbar {
-    display: flex;
     position: relative;
     height: 35px;
     background-color: @white;
@@ -15,13 +14,14 @@
         &_run {
             padding: 9px;
             font-size: 18px;
-            transition: color 100ms, background-color 300ms;
+            color: @dark;
+            transition: all 100ms;
         }
     }
     &__tab:hover {
 
         .toolbar__tab_run {
-            color: @blue
+            color: @blue;
         }
     }
 }

@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'toolbar',
     templateUrl: './toolbar.html',
     styleUrls: ['./toolbar.css']
@@ -9,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export class ToolbarComponent {
 
-    @Input() toolbar: any;
+    @Input() config: any;
     @Output() compile = new EventEmitter();
 
     emitCompile(): void {

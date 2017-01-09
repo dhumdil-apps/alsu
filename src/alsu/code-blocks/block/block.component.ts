@@ -4,8 +4,8 @@ import { Block } from './block';
 @Component({
     moduleId: module.id,
     selector: 'block',
-    templateUrl: './block.html',
-    styleUrls: ['./block.css']
+    templateUrl: 'block.html',
+    styleUrls: ['block.css']
 })
 
 export class BlockComponent {
