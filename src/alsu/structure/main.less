@@ -6,6 +6,57 @@
 
     .content {
         height: 100%;
-        background: @blue;
+        padding: 35px 200px 10px 200px;
     }
+    .lists {
+        >div {
+            height: 100%;
+            margin: auto;
+            >div {
+                width: 200px;
+                padding: 10px;
+                border: 1px solid @dark;
+                margin: 20px 0;
+            }
+        }
+    }
+}
+
+toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    z-index: 100;
+}
+
+.left-side {
+    position: fixed;
+    left: 0;
+    top: 35px;
+    height: ~"calc(100% - 35px)";
+    width: 250px;
+    z-index: 90;
+}
+
+right-side {
+    position: fixed;
+    right: 0;
+    top: 35px;
+    height: ~"calc(100% - 35px)";
+    width: 250px;
+    z-index: 90;
+}
+
+@media all and (max-width: @w-desktop) {
+
+}
+
+@media all and (max-width: @w-tablet) {
+
+}
+
+@media all and (max-width: @w-mobile) {
+
 }

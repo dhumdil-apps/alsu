@@ -1,0 +1,20 @@
+@import url("../variables");
+
+.right-side {
+    background-color: @blue;
+    height: 100%;
+    width: 230px;
+    padding: 10px;
+    transition: width 300ms ease;
+    box-shadow: -2px 0 10px @dark;
+
+    &__row {
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        padding: 10px;
+    }
+    &__row:hover {
+        background-color: darken(@blue, 20%);
+    }
+}

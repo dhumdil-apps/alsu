@@ -23,14 +23,19 @@ export class MainComponent {
             // left-side
             "input": {
                 "width": ["sm", "md", "lg"],
-                "data": []
+                "data": ['1', '2', '3']
             },
 
             // right-side
             "output": {
                 "width": ["sm", "md", "lg"],
-                "data": []
-            }
+                "data": ['1', '2', '3']
+            },
+
+            // lists
+            "lists": [
+                ['1', '2', '3']
+            ]
 
         };
     }
