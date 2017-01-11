@@ -1,28 +1,34 @@
-@import "/alsu/structure/variables";
+/* GLOBAL STYLES */
 
+// imports
+@import "/alsu/variables";
+
+// BASIC
 html {
-    border: none;
-    margin: 0;
-    padding: 0;
+    .w100h100;
+
+    body {
+        border: none;
+        margin: 0;
+        padding: 0;
+        .w100h100;
+
+        app {
+            .w100h100;
+
+            main {
+                overflow: hidden;
+                .w100h100;
+            }
+        }
+    }
+}
+.w100h100 {
     width: 100%;
     height: 100%;
 }
-body {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-app {
-    width: 100%;
-    height: 100%;
-}
-main {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+
+// material icons
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -43,7 +49,7 @@ main {
     direction: ltr;
 }
 
-// responsive styles
+// responsive design
 .none {
     .side-panel {
         display: none;
@@ -95,8 +101,6 @@ main {
         width: 250px;
     }
 }
-
-
 // the order is important! (desc)
 @media all and (min-width: @w-xlg) {
     .main {
@@ -127,4 +131,19 @@ main {
     .main {
         .none;
     }
+}
+// flex-box layout
+.flex {
+    flex: 1;
+    -webkit-flex: 1;
+}
+.layout-row {
+    display: flex;
+    display: -webkit-flex;
+}
+.layout-column {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
 }
