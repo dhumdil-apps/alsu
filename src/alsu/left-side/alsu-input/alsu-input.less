@@ -1,0 +1,21 @@
+@import "../../variables";
+
+.alsu-input {
+    position: relative;
+    padding: 10px;
+
+    .span {
+        position: absolute;
+        cursor: pointer;
+        top: 43px;
+        left: 166px;
+        font-size: 18px;
+        color: @dark;
+    }
+}
+
+:host /deep/ block {
+    .connect-bottom, .connect-top {
+        visibility: hidden;
+    }
+}

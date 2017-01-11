@@ -6,13 +6,18 @@
     padding: 10px;
     box-shadow: -2px 0 10px @dark;
 
-    &__row {
-        cursor: pointer;
+    &__title {
+        display: inline-block;
+        padding: 5px;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        background-color: @dark;
+        color: @white;
+    }
+    &__content {
         font-size: 20px;
         color: #fff;
         padding: 10px;
-    }
-    &__row:hover {
-        background-color: darken(@blue, 20%);
     }
 }

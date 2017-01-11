@@ -2,10 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Block } from './block';
 
 @Component({
-    moduleId: module.id,
-    selector: 'block',
-    templateUrl: 'block.html',
-    styleUrls: ['block.css']
+    selector: 'alsu-block',
+    templateUrl: './alsu-block.html',
+    styleUrls: ['./alsu-block.css']
 })
 
 export class BlockComponent {

@@ -9,6 +9,8 @@ import { Component, Input } from '@angular/core';
 export class LeftSideComponent {
 
     @Input() config: any;
-    @Input() input: any;
 
+    public addEvent(ev: any) {
+        console.log('addEvent()', ev);
+    }
 }

@@ -8,7 +8,7 @@ import { AppComponent }     from './app.component';
 import { MainComponent }        from '../alsu/main.component';
 import { ToolbarComponent }     from '../alsu/toolbar/toolbar.component';
 import { LeftSideComponent }   from '../alsu/left-side/left-side.component';
-// import { InputComponent }       from '../alsu/left-side/input/input.component';
+import { AlsuInputComponent }       from '../alsu/left-side/alsu-input/alsu-input.component';
 // import { CodeBlocksComponent }  from '../alsu/main/code-blocks/code-blocks.component';
 // import { BlockComponent }       from '../alsu/main/code-blocks/block/block.component';
 import { RightSideComponent }    from '../alsu/right-side/right-side.component';
@@ -17,12 +17,10 @@ import { RightSideComponent }    from '../alsu/right-side/right-side.component';
 @NgModule({
     declarations: [
         AppComponent,
-
         MainComponent,
-        ToolbarComponent,
-        LeftSideComponent,
-        RightSideComponent
-        // modules
+            LeftSideComponent, AlsuInputComponent,
+            RightSideComponent,
+            ToolbarComponent
     ],
     imports: [
         BrowserModule,

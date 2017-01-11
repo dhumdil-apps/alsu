@@ -1,15 +1,14 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Block } from '../block/block';
-import { Simple } from '../block/types/simple';
+import { Block } from '../../code-blocks/block/block';
+import { Simple } from '../../code-blocks/block/types/simple';
 
 @Component({
-    moduleId: module.id,
-    selector: 'input-data',
-    templateUrl: 'input.html',
-    styleUrls: ['./input.css']
+    selector: 'alsu-input',
+    templateUrl: './alsu-input.html',
+    styleUrls: ['./alsu-input.css']
 })
 
-export class InputComponent {
+export class AlsuInputComponent {
 
     @Output() add = new EventEmitter();
 
@@ -20,8 +19,7 @@ export class InputComponent {
         this.blocks.push(new Simple('', 'assign'));
         this.blocks.push(new Simple('', 'write'));
         this.blocks.forEach(b => {
-            b.disabled = false;
-            b.draggable = false;
+            b.disabled = b.draggable = false;
         });
     }
 
