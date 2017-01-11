@@ -1,32 +1,5 @@
 @import "variables";
 
-.main {
-    position: relative;
-    top: 35px;
-    height: ~"calc(100% - 35px)";
-    width: 100%;
-    background-color: @white;
-}
-
-.body {
-    position: relative;
-    margin: auto;
-    height: 100%;
-
-    .lists {
-        position: relative;
-        height: 100%;
-        margin: auto;
-
-        .item {
-            width: 188px;
-            height: 30px;
-            padding: 10px;
-            border: 1px solid @dark;
-            margin: 10px 0;
-        }
-    }
-}
 toolbar {
     position: fixed;
     top: 0;
@@ -35,6 +8,43 @@ toolbar {
     height: 35px;
     z-index: 100;
 }
+
+.main {
+    position: relative;
+    top: 35px;
+    height: ~"calc(100% - 35px)";
+    width: 100%;
+    background-color: @white;
+
+    .body {
+        position: relative;
+        margin: auto;
+        height: 100%;
+
+        code-blocks {
+            position: relative;
+            height: 100%;
+            margin: auto;
+        }
+        .body-backdrop {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 90;
+        }
+
+    }
+}
+
+left-side {
+    left: 0;
+}
+right-side {
+    right: 0;
+}
 left-side, right-side {
     width: 0;
     background-color: @blue;
@@ -42,9 +52,8 @@ left-side, right-side {
     z-index: 90;
     transition: width 150ms ease;
 }
-left-side {
-    left: 0;
+
+.hide {
+    display: none;
 }
-right-side {
-    right: 0;
-}
+

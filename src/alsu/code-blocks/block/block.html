@@ -12,14 +12,13 @@
                placeholder="{{ block.type }}"
         />
 
-        <div class="block__options"
-             *ngIf="block.selected && block.draggable">
+        <div class="block__options" *ngIf="block.selected && block.draggable">
 
             <span (click)="clearText()" class="glyphicon-remove">
-                <i class="material-icons md-18 md-dark">close</i>
+                  <i class="material-icons">close</i>
             </span>
-            <span (click)="removeBlock()" class="glyphicon-trash">
-                <i class="material-icons md-18 md-dark">delete</i>
+            <span (click)="removeEmit()" class="glyphicon-trash">
+                  <i class="material-icons">delete</i>
             </span>
 
         </div>

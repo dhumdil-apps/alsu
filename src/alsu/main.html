@@ -6,11 +6,8 @@
     </left-side>
 
     <div class="body layout-row">
-        <div class="lists layout-column">
-            <div class="item">start</div>
-            <div class="item">write</div>
-            <div class="item">end</div>
-        </div>
+        <code-blocks [main]="main"></code-blocks>
+        <!--<div class="body-backdrop" [ngClass]="{'disabled': main.config.activated}"></div>-->
     </div>
 
     <right-side [ngClass]="{'side-panel': main.config.activated}"
