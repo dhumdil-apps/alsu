@@ -20,15 +20,15 @@ export class MainComponent {
             },
 
             // left-side
-            "input": {
-                "width": ["sm", "md", "lg"],
-                "data": ['1', '2', '3']
-            },
+            "input": {},
 
             // right-side
             "output": {
-                "width": ["sm", "md", "lg"],
-                "data": ['1', '2', '3']
+                "data": [
+                    {"type": "write","data": "1"},
+                    {"type": "write","data": "2"},
+                    {"type": "write","data": "3"}
+                ]
             },
 
             // lists

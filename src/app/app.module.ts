@@ -12,14 +12,14 @@ import { AlsuInputComponent }       from '../alsu/left-side/alsu-input/alsu-inpu
 // import { CodeBlocksComponent }  from '../alsu/main/code-blocks/code-blocks.component';
 // import { BlockComponent }       from '../alsu/main/code-blocks/block/block.component';
 import { RightSideComponent }    from '../alsu/right-side/right-side.component';
-// import { OutputComponent }      from '../alsu/right-side/output/output.component';
+import { AlsuOutputComponent }      from '../alsu/right-side/alsu-output/alsu-output.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MainComponent,
             LeftSideComponent, AlsuInputComponent,
-            RightSideComponent,
+            RightSideComponent, AlsuOutputComponent,
             ToolbarComponent
     ],
     imports: [

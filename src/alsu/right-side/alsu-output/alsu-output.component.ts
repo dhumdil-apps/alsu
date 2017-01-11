@@ -1,23 +1,23 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
-    selector: 'output-data',
-    templateUrl: 'output.html',
-    styleUrls: ['./output.css']
+    selector: 'alsu-output',
+    templateUrl: './alsu-output.html',
+    styleUrls: ['./alsu-output.css']
 })
 
-export class OutputComponent {
+export class AlsuOutputComponent {
 
-    @Input() outputData: any;
+    @Input() output: any;
 
     ngOnInit() {
         this.evaluateExpression();
     }
 
+    // demo only (eval is evil)
     evaluateExpression(): void {
 
-        let blocks : any = this.outputData;
+        let blocks : any = this.output.data;
         let result: any = [];
         let geval = eval;
         let param: any = {"key": '', "val": null};
@@ -69,11 +69,11 @@ export class OutputComponent {
             });
 
             console.log( vars );
-            this.outputData = result;
+            this.output.data = result;
 
         } catch (error) {
             console.log(error);
-            this.outputData = [error];
+            this.output.data = [error];
         }
 
         function isValidEqual(str: string): number {
