@@ -1,7 +1,7 @@
 <toolbar (compile)="compileEvent()" [config]="main.config"></toolbar>
 
 <div class="main layout-row">
-    <left-side [ngClass]="{'w250': !main.config.activated}"
+    <left-side [ngClass]="{'side-panel': !main.config.activated}"
                [config]="main.config"
                [input]="main.input">
     </left-side>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <right-side [ngClass]="{'w250': main.config.activated}"
+    <right-side [ngClass]="{'side-panel': main.config.activated}"
                 [config]="main.config"
                 [output]="main.output">
     </right-side>

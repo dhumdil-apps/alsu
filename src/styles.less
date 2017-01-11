@@ -1,53 +1,48 @@
-@import "variables";
+@import "/alsu/structure/variables";
 
-.main {
-    position: relative;
-    top: 35px;
-    height: ~"calc(100% - 35px)";
+html {
+    border: none;
+    margin: 0;
+    padding: 0;
     width: 100%;
-}
-
-.body {
-    position: relative;
-
-    .lists {
-        position: relative;
-        height: 100%;
-        margin: auto;
-
-        .item {
-            width: 188px;
-            height: 30px;
-            padding: 10px;
-            border: 1px solid @dark;
-            margin: 10px 0;
-        }
-    }
-}
-toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 35px;
-    z-index: 100;
-}
-left-side,
-right-side {
-    width: 0;
-    background-color: @blue;
     height: 100%;
-    z-index: 90;
-    transition: width 300ms ease;
 }
-left-side {
-    left: 0;
+body {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
-right-side {
-    right: 0;
+app {
+    width: 100%;
+    height: 100%;
+}
+main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v19/2fcrYFNaTjcS6g4U3t-Y5StnKWgpfO2iSkLzTz-AABg.ttf) format('truetype');
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
 }
 
-/* GLOBAL LESS
 .none {
     .side-panel {
         display: none;
@@ -133,4 +128,3 @@ right-side {
         .none;
     }
 }
-*/
