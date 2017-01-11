@@ -9,6 +9,8 @@
 
 .body {
     position: relative;
+    margin: auto;
+    height: 100%;
 
     .lists {
         position: relative;
@@ -46,91 +48,3 @@ left-side {
 right-side {
     right: 0;
 }
-
-/* GLOBAL LESS
-.none {
-    .side-panel {
-        display: none;
-    }
-}
-.phone {
-    .body {
-        background-color: @dark;
-        width: @w-xsm;
-    }
-    .side-panel {
-        width: 20px;
-        .left-side, .right-side {
-            display: none;
-        }
-    }
-}
-.tablet {
-    .body {
-        width: @w-sm;
-        background-color: @blue;
-    }
-    .side-panel {
-        width: 250px;
-    }
-}
-.desktop1 {
-    .body {
-        width: @w-md;
-        background-color: @white;
-    }
-    .side-panel {
-        width: 250px;
-    }
-}
-.desktop2 {
-    .body {
-        width: @w-lg;
-        background-color: @dark;
-    }
-    .side-panel {
-        width: 250px;
-    }
-}
-.all {
-    .body {
-        width: @w-xlg;
-        background-color: @blue;
-    }
-    .side-panel {
-        width: 250px;
-    }
-}
-
-// the order is important! (desc)
-@media all and (min-width: @w-xlg) {
-    .main {
-        .all;
-    }
-}
-@media all and (max-width: @w-xlg) {
-    .main {
-        .desktop2;
-    }
-}
-@media all and (max-width: @w-lg) {
-    .main {
-        .desktop1;
-    }
-}
-@media all and (max-width: @w-md) {
-    .main {
-        .tablet;
-    }
-}
-@media all and (max-width: @w-sm) {
-    .main {
-        .phone;
-    }
-}
-@media all and (max-width: @w-xsm) {
-    .main {
-        .none;
-    }
-}
-*/

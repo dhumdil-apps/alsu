@@ -43,6 +43,7 @@ main {
     direction: ltr;
 }
 
+// responsive styles
 .none {
     .side-panel {
         display: none;
@@ -51,7 +52,7 @@ main {
 .phone {
     .body {
         background-color: @dark;
-        width: @w-xsm;
+        width: @w-xsm - 20px;
     }
     .side-panel {
         width: 20px;
@@ -62,17 +63,20 @@ main {
 }
 .tablet {
     .body {
-        width: @w-sm;
-        background-color: @blue;
+        width: @w-sm - 40px;
+        background-color: @white;
     }
     .side-panel {
-        width: 250px;
+        width: 40px;
+        .left-side, .right-side {
+            display: none;
+        }
     }
 }
 .desktop1 {
     .body {
-        width: @w-md;
-        background-color: @white;
+        width: @w-md - 250px;
+        background-color: @dark;
     }
     .side-panel {
         width: 250px;
@@ -80,8 +84,8 @@ main {
 }
 .desktop2 {
     .body {
-        width: @w-lg;
-        background-color: @dark;
+        width: @w-lg - 250px;
+        background-color: @white;
     }
     .side-panel {
         width: 250px;
@@ -89,13 +93,14 @@ main {
 }
 .all {
     .body {
-        width: @w-xlg;
-        background-color: @blue;
+        width: @w-xlg - 250px;
+        background-color: @dark;
     }
     .side-panel {
         width: 250px;
     }
 }
+
 
 // the order is important! (desc)
 @media all and (min-width: @w-xlg) {
