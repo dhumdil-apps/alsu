@@ -1,7 +1,7 @@
-<div class="right-side layout-column">
+<div class="right-side layout-column" *ngIf="config.activated">
 
     <!-- ROW -->
-    <div class="right-side__row layout-row" *ngFor="let row of output">
+    <div class="right-side__row layout-row" *ngFor="let row of output.data">
         <div>{{ row }}</div>
     </div>
 

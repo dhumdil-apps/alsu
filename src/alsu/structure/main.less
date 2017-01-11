@@ -1,23 +1,21 @@
 @import "variables";
 
 .main {
+    position: relative;
+    top: 35px;
     width: 100%;
-    height: 100%;
+    height: ~"calc(100% - 35px)";
+}
 
-    .content {
-        height: 100%;
-        padding: 35px 200px 10px 200px;
-    }
+.body {
     .lists {
+        height: 100%;
+        margin: auto;
         >div {
-            height: 100%;
-            margin: auto;
-            >div {
                 width: 200px;
                 padding: 10px;
                 border: 1px solid @dark;
                 margin: 20px 0;
-            }
         }
     }
 }
@@ -31,24 +29,26 @@ toolbar {
     z-index: 100;
 }
 
-.left-side {
-    position: fixed;
-    left: 0;
-    top: 35px;
-    height: ~"calc(100% - 35px)";
-    width: 250px;
-    z-index: 90;
-}
-
+left-side,
 right-side {
-    position: fixed;
-    right: 0;
-    top: 35px;
-    height: ~"calc(100% - 35px)";
-    width: 250px;
+    width: 0;
+    background-color: @blue;
+    height: 100%;
     z-index: 90;
+    transition: width 300ms ease;
+}
+left-side {
+    left: 0;
+}
+right-side {
+    right: 0;
 }
 
+.w250 {
+    width: 250px;
+}
+
+/*
 @media all and (max-width: @w-desktop) {
 
 }
@@ -60,3 +60,4 @@ right-side {
 @media all and (max-width: @w-mobile) {
 
 }
+*/

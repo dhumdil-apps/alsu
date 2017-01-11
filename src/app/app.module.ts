@@ -6,11 +6,11 @@ import { HttpModule }       from '@angular/http';
 // app
 import { AppComponent }     from './app.component';
 
-// layout
+// structure
 import { MainComponent }        from '../alsu/structure/main.component';
 import { ToolbarComponent }     from '../alsu/structure/toolbar/toolbar.component';
-import { RightSideComponent }    from './../alsu/structure/right-side/right-side.component';
-// import { RightSideComponent }   from './../alsu/left-side/left-side.component';
+import { RightSideComponent }    from '../alsu/structure/right-side/right-side.component';
+import { LeftSideComponent }   from '../alsu/structure/left-side/left-side.component';
 
 // // alsu
 // import { CodeBlocksComponent }  from '../alsu/main/code-blocks/code-blocks.component';
@@ -21,10 +21,12 @@ import { RightSideComponent }    from './../alsu/structure/right-side/right-side
 @NgModule({
     declarations: [
         AppComponent,
-
+        // structure
         MainComponent,
         ToolbarComponent,
+        LeftSideComponent,
         RightSideComponent
+        // modules
     ],
     imports: [
         BrowserModule,

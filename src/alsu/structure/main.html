@@ -1,31 +1,43 @@
 <toolbar (compile)="compileEvent()" [config]="main.config"></toolbar>
 
-<div class="left-side"></div>
+<div class="main layout-row">
+    <left-side [ngClass]="{'w250': !main.config.activated}"
+               [config]="main.config"
+               [input]="main.input">
+    </left-side>
 
-<right-side [output]="main.output.data"></right-side>
-
-<div class="main layout-column">
-    <div class="content layout-row">
-        <div class="lists layout-column flex">
-            <div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-            </div>
+    <div class="body layout-row flex">
+        <div class="lists layout-column">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
         </div>
     </div>
+
+    <right-side [ngClass]="{'w250': main.config.activated}"
+                [config]="main.config"
+                [output]="main.output">
+    </right-side>
 </div>
