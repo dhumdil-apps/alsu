@@ -28,6 +28,20 @@ html {
     height: 100%;
 }
 
+// elements
+span {
+    position: absolute;
+    top: 10px;
+    padding: 14px 13px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: @dark;
+}
+span:hover {
+    background-color: rgba(0,0,0, 0.1);
+}
+
 // material icons
 @font-face {
     font-family: 'Material Icons';
@@ -51,60 +65,37 @@ html {
 
 // responsive design
 .none {
-    .side-panel {
-        display: none;
-    }
+    //
 }
 .phone {
-    .body {
-        width: @w-xsm - 20px;
-    }
-    .side-panel {
-        width: 20px;
-        .left-side, .right-side {
-            display: none;
-        }
-    }
+    //
 }
 .tablet {
-    .body {
-        width: @w-sm - 40px;
-    }
-    .side-panel {
-        width: 40px;
-        .left-side, .right-side {
-            display: none;
-        }
-    }
+    //
 }
 .desktop1 {
     .body {
-        width: @w-md - 250px;
+        width: @w-md - 300px;
     }
     .side-panel {
-        width: 250px;
+        width: 300px;
     }
 }
 .desktop2 {
     .body {
-        width: @w-lg - 250px;
+        width: @w-md - 300px;
     }
     .side-panel {
-        width: 250px;
+        width: 300px;
     }
 }
 .all {
-    .body {
-        width: @w-xlg - 250px;
-    }
-    .side-panel {
-        width: 250px;
-    }
+    //
 }
 // the order is important! (desc)
 @media all and (min-width: @w-xlg) {
-    .main {
-        .all;
+    main {
+        display: none;
     }
 }
 @media all and (max-width: @w-xlg) {
@@ -118,18 +109,18 @@ html {
     }
 }
 @media all and (max-width: @w-md) {
-    .main {
-        .tablet;
+    main {
+        display: none;
     }
 }
 @media all and (max-width: @w-sm) {
-    .main {
-        .phone;
+    main {
+        display: none;
     }
 }
 @media all and (max-width: @w-xsm) {
-    .main {
-        .none;
+    main {
+        display: none;
     }
 }
 // flex-box layout

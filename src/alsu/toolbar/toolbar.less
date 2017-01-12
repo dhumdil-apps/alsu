@@ -6,22 +6,13 @@
     background-color: @white;
     box-shadow: 0 2px 5px @dark;
     z-index: 100;
-
-    &__tab {
-        cursor: pointer;
-        margin: auto;
-
-        &_run {
-            padding: 9px;
-            font-size: 18px;
-            color: @dark;
-            transition: all 100ms;
-        }
-    }
-    &__tab:hover {
-
-        .toolbar__tab_run {
-            color: @blue;
-        }
-    }
+}
+span {
+    position: relative;
+    top: 0;
+    margin: auto;
+    padding: 5.5px;
+}
+span:hover {
+    background-color: rgba(0,0,0, 0.1);
 }

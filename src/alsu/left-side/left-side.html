@@ -1,6 +1,6 @@
-<div class="left-side layout-column" *ngIf="!config.activated">
+<div class="left-side layout-column" *ngIf="!activated">
 
-    <span class="left-side__title">Input</span>
-    <alsu-input class="layout-column" (add)="addEvent($event)"></alsu-input>
+    <div class="left-side__title">Input</div>
+    <alsu-input class="layout-column" (add)="emitAdd($event)"></alsu-input>
 
 </div>

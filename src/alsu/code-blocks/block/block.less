@@ -1,52 +1,40 @@
 @import url("../../variables");
 
 .block {
-    font-size: 16px;
     position: relative;
-    width: 196px;
-    height: 46px;
-    border: 2px solid #333;
-    padding: 10px 30px;
-    background-color: #fff;
-    cursor: pointer;
 
     input {
-        width: 100%;
-        height: 100%;
+        position: absolute;
+        left: 50px;
+        top: 10px;
+        width: 158px;
+        height: 44px;
         outline: 0;
         text-align: center;
-        border: none;
+        border: 2px solid @dark;
+        background-color: @white;
+        padding: 2px 20px;
+    }
+    input:hover {
         background-color: #fff;
     }
-    &__options {
-        span {
-            color: rgba(0, 0, 0, 0.2);
+    .remove-text {
+        right: 50px;
+        padding: 17px 1px;
+        width: 18px;
+        height: 18px;
+        i {
+            font-size: 18px;
         }
-        span:hover {
-            color: rgba(0, 0, 0, 1);
-        }
-        .glyphicon-remove {
-            right: 12px;
-            font-size: 10px;
-            padding: 5px;
-            position: absolute;
-            top: 13px;
-            cursor: pointer;
-            color: rgba(0, 0, 0, 0.2);
-        }
-        .glyphicon-trash {
-            right: -30px;
-            position: absolute;
-            top: 13px;
-            padding: 5px;
-            font-size: 15px;
-            cursor: pointer;
-            color: rgba(0, 0, 0, 0.2);
-        }
+    }
+    .remove-text:hover {
+        background-color: rgba(0,0,0, 0);
+    }
+    .remove-block {
+        right: 0;
     }
 }
 .block_selected {
-    color: #369;
     input {
         cursor: text;
     }
@@ -56,63 +44,31 @@
         cursor: pointer;
     }
 }
-.block:hover {
-    color: #369;
-}
-
-.connect-top,
-.connect-bottom {
-    position: relative;
-    left: 98px;
+.connect-top {
+    position: absolute;
+    top: 0;
+    left: 149px;
     width: 2px;
-    height: 20px;
-    background: #333;
+    height: 10px;
+    background: @dark;
 }
-
+.connect-bottom {
+    position: absolute;
+    top: 60px;
+    left: 149px;
+    width: 2px;
+    height: 10px;
+    background: @dark;
+}
 .begin {
+    border-radius: 50px;
     .connect-top {
         visibility: hidden;
     }
-    .block {
-        border-radius: 25px;
-    }
 }
 .end {
-    .block {
-        border-radius: 25px;
-    }
+    border-radius: 50px;
     .connect-bottom {
         visibility: hidden;
     }
 }
-.write {
-    .block {
-        border: none;
-        width: 158px;
-        left: 20px;
-        &__options {
-            .glyphicon-remove {
-                right: 0;
-                top: 15px;
-            }
-            .glyphicon-trash {
-                right: -48px;
-                top: 15px;
-            }
-        }
-    }
-    .type {
-        position: absolute;
-        top: -2px;
-        left: -10px;
-        width: 178px;
-        height: 50px;
-        background-color: #fff;
-        border: 2px solid #333;
-        -webkit-transform: skew(-20deg);
-        -moz-transform: skew(-20deg);
-        -o-transform: skew(-20deg);
-        z-index: -1;
-    }
-}
-

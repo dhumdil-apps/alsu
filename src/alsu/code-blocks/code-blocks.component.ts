@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CodeBlocks } from './code-blocks';
+import { Block } from './block/block';
 
 @Component({
     selector: 'code-blocks',
@@ -8,26 +10,39 @@ import { Component, Input } from '@angular/core';
 
 export class CodeBlocksComponent {
 
-    @Input() main: any;
+    @Input() list: CodeBlocks;
+    @Input() codeblocks: any;
+    @Output() select = new EventEmitter();
+    @Output() remove = new EventEmitter();
+
+    /**
+     * Events
+     */
+    public emitSelect(block: Block): void {
+        this.select.emit(block);
+    }
+    public emitRemove(): void {
+        this.remove.emit();
+    }
 
     /**
      * Drag'n Drop
      */
     public dragStart(id: number): void {
-        this.main['code-blocks'].draggingId = id;
-        this.main['code-blocks'].dragging = true;
+        this.codeblocks.draggingId = id;
+        this.codeblocks.dragging = true;
     }
     public dragEnd(): void {
-        if (this.main['list'].selectedId[1] !== this.main['code-blocks'].draggingId) {
-            this.main['list'].move(this.main['code-blocks'].draggingId);
+        if (this.list.selectedId[1] !== this.codeblocks.draggingId) {
+            this.list.move(this.codeblocks.draggingId);
         }
-        this.main['code-blocks'].dragging = false;
+        this.codeblocks.dragging = false;
     }
     public dragOver(ev: any, id: number): void {
-        if (id !== this.main['list'].selectedId[1]) {
+        if (id !== this.list.selectedId[1]) {
             if (id > 0) {
                 ev.preventDefault();
-                this.main['list'].select(id);
+                this.list.select(id);
             }
         }
     }

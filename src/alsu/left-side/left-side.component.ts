@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Block} from "../code-blocks/block/block";
 
 @Component({
     selector: 'left-side',
@@ -8,9 +9,10 @@ import { Component, Input } from '@angular/core';
 
 export class LeftSideComponent {
 
-    @Input() config: any;
+    @Input() activated: any;
+    @Output() add = new EventEmitter();
 
-    public addEvent(ev: any) {
-        console.log('addEvent()', ev);
+    public emitAdd(block: Block) {
+        this.add.emit(block);
     }
 }

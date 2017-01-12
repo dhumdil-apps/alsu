@@ -47,14 +47,14 @@ export class MainComponent {
     private activateConfig(): void {
         this.main['config'].run = "stop";
         this.main['config'].activated = true;
-        this.main['config'].data = this.main['list'].compile();
+        this.main['output'].data = this.main['list'].compile();
     }
 
     /**
      * Add Event
      */
-    public addEvent(b: Block): void {
-        this.main['list'].add(b);
+    public addEvent(block: Block): void {
+        this.main['list'].add(block);
     }
 
     /**
@@ -67,9 +67,9 @@ export class MainComponent {
     /**
      * Select Event
      */
-    public selectEvent(b: Block): void {
-        if (!b.selected && b.id > 0) {
-            this.main['list'].select(b.id);
+    public selectEvent(block: Block): void {
+        if (!block.selected && block.id > 0) {
+            this.main['list'].select(block.id);
         }
     }
 }

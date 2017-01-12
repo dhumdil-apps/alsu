@@ -12,7 +12,7 @@ export class BlockComponent {
     @Input() block: Block;
     @Output() remove = new EventEmitter();
 
-    removeEmit(): void {
+    emitRemove(): void {
         if (this.block.id > 0) {
             this.remove.emit();
         }

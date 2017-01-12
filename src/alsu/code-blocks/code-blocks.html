@@ -1,11 +1,11 @@
 <div class="code-blocks layout-column">
     <!-- Blocks -->
-    <div class="blocks" *ngFor="let block of main['list'].blocks">
+    <div class="block" *ngFor="let block of list.blocks">
 
         <!-- Block -->
         <block [block]="block"
-               (click)="selectEvent(block)"
-               (remove)="removeEvent()">
+               (click)="emitSelect(block)"
+               (remove)="emitRemove()">
         </block>
 
         <!-- Drag'n Drop -->
@@ -19,8 +19,7 @@
         <span class="block-drop"
               [ngClass]="{'selected': block.selected }"
               (dragover)="dragOver($event, block.id)"
-              *ngIf="main['code-blocks'].dragging && block.id">
-              <i class="material-icons">navigate_next</i>
+              *ngIf="codeblocks.dragging && block.id">
         </span>
 
     </div>

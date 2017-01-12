@@ -1,26 +1,29 @@
-<div class="{{ block.type }}">
+<div class="block {{ block.type }}">
     <div class="connect-top"></div>
 
+    <!-- Block Style -->
     <div [ngClass]="{
-         'block_selected': block.selected,
-         'block_disabled': block.disabled }"
-         class="block">
+             'block_selected': block.selected,
+             'block_disabled': block.disabled
+         }">
 
+        <!-- Input -->
         <input type="text"
                [(ngModel)]="block.data"
                [disabled]="block.disabled"
                placeholder="{{ block.type }}"
         />
 
-        <div class="block__options" *ngIf="block.selected && block.draggable">
-
-            <span (click)="clearText()" class="glyphicon-remove">
+        <!-- Buttons -->
+        <div *ngIf="block.selected && block.draggable">
+            <span class="remove-text"
+                  (click)="clearText()">
                   <i class="material-icons">close</i>
             </span>
-            <span (click)="removeEmit()" class="glyphicon-trash">
+            <span class="remove-block"
+                  (click)="emitRemove()">
                   <i class="material-icons">delete</i>
             </span>
-
         </div>
 
         <div class="type"></div>

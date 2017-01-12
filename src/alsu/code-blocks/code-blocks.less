@@ -1,43 +1,35 @@
 @import "../variables";
 
 .code-blocks {
+    width: 300px;
     height: 100%;
-    width: 100%;
-    color: @dark;
     margin: auto;
+    color: @dark;
+    padding-top: 100px;
 }
-
-.blocks {
+.block {
     position: relative;
-
-    .block-drag {
-        position: absolute;
-        display: none;
-        left: -30px;
-        top: 33px;
-        font-size: 20px;
-        color: rgba(0, 0, 0, 0.2);
-        transition: color 150ms;
-        cursor: move;
-        z-index: 10;
-    }
-    .block-drop {
-        position: absolute;
-        left: -41px;
-        top: 22px;
-        cursor: move;
-        font-size: 25px;
-        color: rgba(0, 0, 0, 0.2);
-        padding: 10px 240px 10px 10px;
-    }
-    .selected {
-        color: #fff;
-    }
-    .visible {
-        display: block;
-        color: rgba(0, 0, 0, 1);
-    }
-    .selected {
-        color: #fff;
-    }
+    width: 300px;
+    height: 70px;
+}
+span {
+    left: 0;
+    cursor: grab;
+}
+.block-drag {
+    z-index: 10;
+    display: none;
+}
+.block-drop {
+    top: 0;
+    width: 300px;
+    height: 70px;
+    background-color: rgba(0,0,0, 0);
+    padding: 0;
+}
+.selected {
+    background-color: rgba(0,0,0, 0.1);
+}
+.visible {
+    display: block;
 }

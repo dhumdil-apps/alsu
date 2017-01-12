@@ -23,7 +23,7 @@ export class AlsuInputComponent {
         });
     }
 
-    addEmit(block: Block): void {
+    emitAdd(block: Block): void {
         try {
             this.add.emit(new Simple(block.data, block.type));
         } catch (err) {

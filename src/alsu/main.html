@@ -1,17 +1,31 @@
-<toolbar (compile)="compileEvent()" [config]="main.config"></toolbar>
+<toolbar [config]="main.config"
+         (compile)="compileEvent()">
+</toolbar>
 
 <div class="main layout-row">
-    <left-side [ngClass]="{'side-panel': !main.config.activated}"
-               [config]="main.config">
+    <left-side [activated]="main.config.activated"
+               (add)="addEvent($event)"
+               [ngClass]="{
+                    'side-panel': !main.config.activated
+                }">
     </left-side>
 
     <div class="body layout-row">
-        <code-blocks [main]="main"></code-blocks>
-        <!--<div class="body-backdrop" [ngClass]="{'disabled': main.config.activated}"></div>-->
+        <code-blocks [list]="main['list']"
+                     [codeblocks]="main['code-blocks']"
+                     (select)="selectEvent($event)"
+                     (remove)="removeEvent()">
+        </code-blocks>
+        <div [ngClass]="{
+                'body_disabled': main.config.activated
+             }">
+        </div>
     </div>
 
-    <right-side [ngClass]="{'side-panel': main.config.activated}"
-                [config]="main.config"
-                [output]="main.output">
+    <right-side [activated]="main.config.activated"
+                [output]="main.output"
+                [ngClass]="{
+                    'side-panel': main.config.activated
+                }">
     </right-side>
 </div>

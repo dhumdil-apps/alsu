@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 
 export class RightSideComponent {
 
-    @Input() config: any;
+    @Input() activated: any;
     @Input() output: any;
 
 }
