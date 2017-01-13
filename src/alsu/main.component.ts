@@ -68,8 +68,12 @@ export class MainComponent {
      * Select Event
      */
     public selectEvent(block: Block): void {
-        if (!block.selected && block.id > 0) {
-            this.main['list'].select(block.id);
+        if (!block.selected && block.id !== 0) {
+            if (block.id === -1) {
+                this.main['list'].select(1);
+            } else {
+                this.main['list'].select(block.id);
+            }
         }
     }
 }

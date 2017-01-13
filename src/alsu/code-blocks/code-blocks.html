@@ -1,6 +1,6 @@
 <div class="code-blocks layout-column">
     <!-- Blocks -->
-    <div class="block" *ngFor="let block of list.blocks">
+    <div class="blocks" *ngFor="let block of list.blocks">
 
         <!-- Block -->
         <block [block]="block"
@@ -9,7 +9,7 @@
         </block>
 
         <!-- Drag'n Drop -->
-        <span class="block-drag"
+        <span class="block-drag" *ngIf="block.id > 1"
               [ngClass]="{'visible': block.selected}"
               (dragstart)="dragStart(block.id)"
               (dragend)="dragEnd()"

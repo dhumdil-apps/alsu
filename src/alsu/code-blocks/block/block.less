@@ -1,74 +1,114 @@
 @import url("../../variables");
 
 .block {
-    position: relative;
+    position: absolute;
+    left: 50px;
+    top: 10px;
+    height: 50px;
+    width: 200px;
+    background-color: @white;
+    box-shadow: 0 0 2px 1px @dark;
 
-    input {
+    .input {
         position: absolute;
-        left: 50px;
+        left: 20px;
         top: 10px;
-        width: 158px;
-        height: 44px;
+        width: 150px;
+        height: 20px;
         outline: 0;
+        border: none;
         text-align: center;
-        border: 2px solid @dark;
+        padding: 5px;
         background-color: @white;
-        padding: 2px 20px;
-    }
-    input:hover {
-        background-color: #fff;
     }
     .remove-text {
-        right: 50px;
-        padding: 17px 1px;
+        top: 0;
+        right: 20px;
         width: 18px;
         height: 18px;
+        padding: 16px 1px;
+        color: rgba(0,0,0, 0.2);
+        font-family: sans-serif;
+        font-size: 14px;
+
+        &:hover {
+            i {
+                background-color: #fff;
+            }
+            background-color: rgba(0,0,0, 0);
+            color: #000;
+        }
         i {
             font-size: 18px;
         }
     }
-    .remove-text:hover {
-        background-color: rgba(0,0,0, 0);
-    }
     .remove-block {
-        right: 0;
+        top: 0;
+        right: -50px;
     }
 }
-.block_selected {
-    input {
+.selected {
+    .input {
         cursor: text;
     }
 }
-.block_disabled {
-    input {
+.disabled {
+    cursor: pointer;
+    .input {
         cursor: pointer;
     }
 }
 .connect-top {
     position: absolute;
-    top: 0;
-    left: 149px;
+    top: -10px;
+    left: 99px;
     width: 2px;
     height: 10px;
     background: @dark;
 }
 .connect-bottom {
     position: absolute;
-    top: 60px;
-    left: 149px;
+    top: 50px;
+    left: 99px;
     width: 2px;
     height: 10px;
     background: @dark;
 }
 .begin {
     border-radius: 50px;
+
     .connect-top {
         visibility: hidden;
     }
 }
 .end {
     border-radius: 50px;
+
     .connect-bottom {
         visibility: hidden;
+    }
+}
+.write {
+    &::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 50px;
+        background-color: red;
+        left: 0;
+        //-ms-transform: skew(11.5deg); /* IE 9 */
+        //-webkit-transform: skew(11.5deg); /* Safari */
+        //transform: skew(11.5deg); /* Standard syntax */
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 50px;
+        background-color: red;
+        right: 0;
+        //-ms-transform: skew(11.5deg); /* IE 9 */
+        //-webkit-transform: skew(11.5deg); /* Safari */
+        //transform: skew(11.5deg); /* Standard syntax */
     }
 }

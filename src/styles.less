@@ -32,14 +32,23 @@ html {
 span {
     position: absolute;
     top: 10px;
-    padding: 14px 13px;
+    padding: 13px 13px;
     width: 24px;
     height: 24px;
     cursor: pointer;
     color: @dark;
+
+    &:hover {
+        background-color: rgba(0,0,0, 0.1);
+    }
 }
-span:hover {
-    background-color: rgba(0,0,0, 0.1);
+.blocks:hover {
+    .block {
+        background-color: #fff;
+        .input {
+            background-color: ~"#fff  !important";
+        }
+    }
 }
 
 // material icons
