@@ -25,16 +25,10 @@ export class BlockComponent implements AfterViewInit {
 
         if (this.block.type === "begin" || this.block.type === "end") {
             // rounded rectangle
-            // left arc
-            ctx.arc(25, 25, 24, Math.PI/2, Math.PI*(1.5), false);
-            // top-line
-            ctx.moveTo(25,1);
-            ctx.lineTo(175,1);
-            // bottom-line
-            ctx.moveTo(25,49);
             ctx.lineTo(175,49);
-            // right arc
-            ctx.arc(175, 25, 24, Math.PI/2, Math.PI*(1.5), true);
+            ctx.arc(25, 25, 24, Math.PI/2, Math.PI*(1.5), false);
+            ctx.lineTo(175,1);
+            ctx.arc(175, 25, 24, Math.PI*(1.5), Math.PI/2, false);
         } else if (this.block.type === "assign") {
             // rectangle
             ctx.moveTo(0,1);
@@ -51,8 +45,8 @@ export class BlockComponent implements AfterViewInit {
             ctx.lineTo(25,1);
         }
 
-        // ctx.fillStyle = "#ff0000";
-        // ctx.fill();
+        ctx.fillStyle = "#fff";
+        ctx.fill();
         ctx.stroke();
     }
 
