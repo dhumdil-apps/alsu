@@ -291,6 +291,39 @@ var BlockComponent = (function () {
     function BlockComponent() {
         this.remove = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
     }
+    BlockComponent.prototype.ngAfterViewInit = function () {
+        var canvas = this.myBlock.nativeElement;
+        this.context = canvas.getContext("2d");
+        var ctx = this.context;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (this.block.type === "begin" || this.block.type === "end") {
+            // rounded rectangle
+            ctx.lineTo(175, 49);
+            ctx.arc(25, 25, 24, Math.PI / 2, Math.PI * (1.5), false);
+            ctx.lineTo(175, 1);
+            ctx.arc(175, 25, 24, Math.PI * (1.5), Math.PI / 2, false);
+        }
+        else if (this.block.type === "assign") {
+            // rectangle
+            ctx.moveTo(0, 1);
+            ctx.lineTo(199, 1);
+            ctx.lineTo(199, 49);
+            ctx.lineTo(1, 49);
+            ctx.lineTo(1, 1);
+        }
+        else if (this.block.type === "write") {
+            // parallelogram
+            ctx.moveTo(25, 1);
+            ctx.lineTo(199, 1);
+            ctx.lineTo(175, 49);
+            ctx.lineTo(1, 49);
+            ctx.lineTo(25, 1);
+        }
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.stroke();
+    };
     BlockComponent.prototype.emitRemove = function () {
         if (this.block.id > 0) {
             this.remove.emit();
@@ -307,6 +340,10 @@ var BlockComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
         __metadata('design:type', Object)
     ], BlockComponent.prototype, "remove", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* ViewChild */])("myBlock"), 
+        __metadata('design:type', Object)
+    ], BlockComponent.prototype, "myBlock", void 0);
     BlockComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'block',
@@ -1009,28 +1046,28 @@ var environment = {
 /***/ 615:
 /***/ function(module, exports) {
 
-module.exports = ".block {\n  position: absolute;\n  left: 50px;\n  top: 10px;\n  height: 50px;\n  width: 200px;\n  background-color: #eee;\n  box-shadow: 0 0 2px 1px #333;\n}\n.block .input {\n  position: absolute;\n  left: 20px;\n  top: 10px;\n  width: 150px;\n  height: 20px;\n  outline: 0;\n  border: none;\n  text-align: center;\n  padding: 5px;\n  background-color: #eee;\n}\n.block .remove-text {\n  top: 0;\n  right: 20px;\n  width: 18px;\n  height: 18px;\n  padding: 16px 1px;\n  color: rgba(0, 0, 0, 0.2);\n  font-family: sans-serif;\n  font-size: 14px;\n}\n.block .remove-text:hover {\n  background-color: rgba(0, 0, 0, 0);\n  color: #000;\n}\n.block .remove-text:hover i {\n  background-color: #fff;\n}\n.block .remove-text i {\n  font-size: 18px;\n}\n.block .remove-block {\n  top: 0;\n  right: -50px;\n}\n.selected .input {\n  cursor: text;\n}\n.disabled {\n  cursor: pointer;\n}\n.disabled .input {\n  cursor: pointer;\n}\n.connect-top {\n  position: absolute;\n  top: -10px;\n  left: 99px;\n  width: 2px;\n  height: 10px;\n  background: #333;\n}\n.connect-bottom {\n  position: absolute;\n  top: 50px;\n  left: 99px;\n  width: 2px;\n  height: 10px;\n  background: #333;\n}\n.begin {\n  border-radius: 50px;\n}\n.begin .connect-top {\n  visibility: hidden;\n}\n.end {\n  border-radius: 50px;\n}\n.end .connect-bottom {\n  visibility: hidden;\n}\n.write::before {\n  content: \"\";\n  position: absolute;\n  width: 2px;\n  height: 50px;\n  background-color: red;\n  left: 0;\n}\n.write::after {\n  content: \"\";\n  position: absolute;\n  width: 2px;\n  height: 50px;\n  background-color: red;\n  right: 0;\n}\n"
+module.exports = "canvas {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n}\n.input {\n  position: absolute;\n  left: 72px;\n  top: 20px;\n  width: 145px;\n  height: 20px;\n  outline: 0;\n  border: none;\n  text-align: center;\n  padding: 5px;\n}\n.input[type=\"text\"]:disabled {\n  background-color: transparent;\n}\n.remove-text {\n  top: 10px;\n  right: 70px;\n  width: 18px;\n  height: 18px;\n  padding: 16px 1px;\n  color: rgba(0, 0, 0, 0.2);\n  font-size: 14px;\n}\n.remove-text:hover {\n  color: #000;\n}\n.remove-text i {\n  font-size: 18px;\n}\n.remove-block {\n  top: 10px;\n  right: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.remove-block:hover {\n  color: #000;\n}\n.selected {\n  background-color: transparent;\n}\n.begin,\n.end {\n  background-color: #eee;\n}\n.connect-top {\n  position: absolute;\n  left: 149px;\n  top: 0;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n.connect-bottom {\n  position: absolute;\n  left: 149px;\n  top: 60px;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n"
 
 /***/ },
 
 /***/ 616:
 /***/ function(module, exports) {
 
-module.exports = ".code-blocks {\n  width: 300px;\n  height: 100%;\n  margin: auto;\n  color: #333;\n  padding-top: 100px;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
+module.exports = ".code-blocks {\n  width: 300px;\n  height: 100%;\n  margin: auto;\n  color: #333;\n  padding-top: 100px;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
 
 /***/ },
 
 /***/ 617:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  right: 0;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
+module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\nspan:hover {\n  color: #eee;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
 
 /***/ },
 
 /***/ 618:
 /***/ function(module, exports) {
 
-module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2px 0 10px #333;\n}\n.left-side__title {\n  display: inline-block;\n  padding: 5px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
+module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2px 0 10px #333;\n}\n.left-side__title {\n  display: inline-block;\n  padding: 5px;\n  margin-bottom: 50px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
 
 /***/ },
 
@@ -1065,7 +1102,7 @@ module.exports = ".toolbar {\n  width: 100%;\n  height: 35px;\n  background-colo
 /***/ 623:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"block {{ block.type }} \"\n     [ngClass]=\"{\n         'selected': block.selected,\n         'disabled': block.disabled\n     }\">\n    <div class=\"connect-top\"></div>\n\n    <!-- Input -->\n    <input class=\"input\" type=\"text\"\n           [(ngModel)]=\"block.data\"\n           [disabled]=\"block.disabled\"\n           placeholder=\"{{ block.type }}\"\n    />\n\n    <!-- Buttons -->\n    <div *ngIf=\"block.selected && block.draggable\">\n        <span class=\"remove-text\"\n              (click)=\"clearText()\">\n              <i class=\"material-icons\">close</i>\n        </span>\n        <span class=\"remove-block\"\n              (click)=\"emitRemove()\">\n              <i class=\"material-icons\">delete</i>\n        </span>\n    </div>\n\n    <div class=\"connect-bottom\"></div>\n</div>\n"
+module.exports = "<!-- Shape -->\n<canvas #myBlock width=\"200\" height=\"50\"></canvas>\n<div class=\"connect-top\" *ngIf=\"block.type !== 'begin'\"></div>\n<div class=\"connect-bottom\" *ngIf=\"block.type !== 'end'\"></div>\n\n<!-- Input -->\n<input [ngClass]=\"{'selected': block.selected}\"\n       class=\"input {{ block.type }}\"\n       placeholder=\"{{ block.type }}\"\n       [disabled]=\"block.disabled\"\n       [(ngModel)]=\"block.data\"\n       type=\"text\"\n/>\n\n<!-- Buttons -->\n<div *ngIf=\"block.selected && block.draggable\">\n    <span class=\"remove-text\"\n          (click)=\"clearText()\">\n          <i class=\"material-icons\">close</i>\n    </span>\n    <span class=\"remove-block\"\n          (click)=\"emitRemove()\">\n          <i class=\"material-icons\">delete</i>\n    </span>\n</div>\n"
 
 /***/ },
 

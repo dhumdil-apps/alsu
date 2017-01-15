@@ -25,21 +25,11 @@ html body app main {
 }
 span {
   position: absolute;
-  top: 10px;
   padding: 13px 13px;
   width: 24px;
   height: 24px;
   cursor: pointer;
   color: #333;
-}
-span:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.blocks:hover .block {
-  background-color: #fff;
-}
-.blocks:hover .block .input {
-  background-color: #fff  !important;
 }
 @font-face {
   font-family: 'Material Icons';
@@ -73,13 +63,16 @@ span:hover {
   width: 300px;
 }
 @media all and (min-width: 1920px) {
-  main {
-    display: none;
+  .main .body {
+    width: 660px;
+  }
+  .main .side-panel {
+    width: 300px;
   }
 }
 @media all and (max-width: 1920px) {
   .main .body {
-    width: 980px;
+    width: 660px;
   }
   .main .side-panel {
     width: 300px;
@@ -94,18 +87,27 @@ span:hover {
   }
 }
 @media all and (max-width: 960px) {
-  main {
-    display: none;
+  .main .body {
+    width: 660px;
+  }
+  .main .side-panel {
+    width: 300px;
   }
 }
 @media all and (max-width: 768px) {
-  main {
-    display: none;
+  .main .body {
+    width: 660px;
+  }
+  .main .side-panel {
+    width: 300px;
   }
 }
 @media all and (max-width: 320px) {
-  main {
-    display: none;
+  .main .body {
+    width: 660px;
+  }
+  .main .side-panel {
+    width: 300px;
   }
 }
 .flex {
