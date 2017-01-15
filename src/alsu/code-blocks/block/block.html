@@ -1,28 +1,25 @@
-<div class="block {{ block.type }} "
-     [ngClass]="{
-         'selected': block.selected,
-         'disabled': block.disabled
-     }">
-    <div class="connect-top"></div>
+<!-- Shape -->
+<canvas #myBlock width="200" height="50"></canvas>
+<div class="connect-top" *ngIf="block.type !== 'begin'"></div>
+<div class="connect-bottom" *ngIf="block.type !== 'end'"></div>
 
-    <!-- Input -->
-    <input class="input" type="text"
-           [(ngModel)]="block.data"
-           [disabled]="block.disabled"
-           placeholder="{{ block.type }}"
-    />
+<!-- Input -->
+<input [ngClass]="{'selected': block.selected}"
+       class="input {{ block.type }}"
+       placeholder="{{ block.type }}"
+       [disabled]="block.disabled"
+       [(ngModel)]="block.data"
+       type="text"
+/>
 
-    <!-- Buttons -->
-    <div *ngIf="block.selected && block.draggable">
-        <span class="remove-text"
-              (click)="clearText()">
-              <i class="material-icons">close</i>
-        </span>
-        <span class="remove-block"
-              (click)="emitRemove()">
-              <i class="material-icons">delete</i>
-        </span>
-    </div>
-
-    <div class="connect-bottom"></div>
+<!-- Buttons -->
+<div *ngIf="block.selected && block.draggable">
+    <span class="remove-text"
+          (click)="clearText()">
+          <i class="material-icons">close</i>
+    </span>
+    <span class="remove-block"
+          (click)="emitRemove()">
+          <i class="material-icons">delete</i>
+    </span>
 </div>

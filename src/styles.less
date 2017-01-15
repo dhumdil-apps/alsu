@@ -31,24 +31,11 @@ html {
 // elements
 span {
     position: absolute;
-    top: 10px;
     padding: 13px 13px;
     width: 24px;
     height: 24px;
     cursor: pointer;
     color: @dark;
-
-    &:hover {
-        background-color: rgba(0,0,0, 0.1);
-    }
-}
-.blocks:hover {
-    .block {
-        background-color: #fff;
-        .input {
-            background-color: ~"#fff  !important";
-        }
-    }
 }
 
 // material icons
@@ -103,13 +90,13 @@ span {
 }
 // the order is important! (desc)
 @media all and (min-width: @w-xlg) {
-    main {
-        display: none;
+    .main {
+        .desktop1;
     }
 }
 @media all and (max-width: @w-xlg) {
     .main {
-        .desktop2;
+        .desktop1;
     }
 }
 @media all and (max-width: @w-lg) {
@@ -118,18 +105,18 @@ span {
     }
 }
 @media all and (max-width: @w-md) {
-    main {
-        display: none;
+    .main {
+        .desktop1;
     }
 }
 @media all and (max-width: @w-sm) {
-    main {
-        display: none;
+    .main {
+        .desktop1;
     }
 }
 @media all and (max-width: @w-xsm) {
-    main {
-        display: none;
+    .main {
+        .desktop1;
     }
 }
 // flex-box layout
