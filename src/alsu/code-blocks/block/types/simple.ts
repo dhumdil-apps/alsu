@@ -48,7 +48,7 @@ export class Simple extends Block {
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(0, 1, 2);
+                this.setIds(0, 1, -1);
                 break;
 
             case 'end':
@@ -56,7 +56,7 @@ export class Simple extends Block {
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(2, -1, 0);
+                this.setIds(1, -1, 0);
                 break;
 
             default: break;
