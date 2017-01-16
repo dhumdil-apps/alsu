@@ -1,24 +1,10 @@
 webpackJsonp([0,3],{
 
-/***/ 297:
+/***/ 198:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Block; });
-var Block = (function () {
-    function Block() {
-    }
-    return Block;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.js.map
-
-/***/ },
-
-/***/ 298:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block__ = __webpack_require__(298);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Simple; });
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -68,14 +54,14 @@ var Simple = (function (_super) {
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(0, 1, 2);
+                this.setIds(0, 1, -1);
                 break;
             case 'end':
                 this.type = 'end';
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(2, -1, 0);
+                this.setIds(1, -1, 0);
                 break;
             default: break;
         }
@@ -86,11 +72,25 @@ var Simple = (function (_super) {
 
 /***/ },
 
+/***/ 298:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Block; });
+var Block = (function () {
+    function Block() {
+    }
+    return Block;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.js.map
+
+/***/ },
+
 /***/ 299:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_types_simple__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_types_simple__ = __webpack_require__(198);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CodeBlocks; });
 
 var CodeBlocks = (function () {
@@ -201,14 +201,49 @@ var CodeBlocks = (function () {
         return output;
     };
     CodeBlocks.prototype.init = function () {
+        /* basic
         this.blocks = [];
-        this.uniqueId = 3;
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('BEGIN', 'begin'));
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('Hello World!', 'write'));
-        this.blocks[1].setIds(1, 2, -1);
-        this.selectedId = [1, 2];
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('END', 'end'));
+        this.uniqueId = 2;
+        this.blocks.push(new Simple('BEGIN', 'begin'));
+        this.blocks[0].setIds(0, 1, -1);
+        this.blocks.push(new Simple('END', 'end'));
+        this.blocks[1].setIds(1, -1, 0);
+        this.selectedId = [0, 1];
+        this.blocks[0].selected = true;
+        */
+        this.dummyData();
         console.log(this.blocks);
+    };
+    CodeBlocks.prototype.dummyData = function () {
+        this.blocks = [];
+        this.uniqueId = 11;
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('BEGIN', 'begin'));
+        this.blocks[0].setIds(0, 1, 2);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('x = 5', 'assign'));
+        this.blocks[1].setIds(1, 2, 3);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('y = 13', 'assign'));
+        this.blocks[2].setIds(2, 3, 4);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('x', 'write'));
+        this.blocks[3].setIds(3, 4, 5);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('y', 'write'));
+        this.blocks[4].setIds(4, 5, 6);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('x = x + y', 'assign'));
+        this.blocks[5].setIds(5, 6, 7);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('y = x - y', 'assign'));
+        this.blocks[6].setIds(6, 7, 8);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('x = x - y', 'assign'));
+        this.blocks[7].setIds(7, 8, 9);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('x', 'write'));
+        this.blocks[8].setIds(8, 9, 10);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('y', 'write'));
+        this.blocks[9].setIds(9, 10, -1);
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('END', 'end'));
+        this.blocks[10].setIds(10, -1, 0);
+        this.blocks.forEach(function (b) {
+            b.selected = false;
+        });
+        this.selectedId = [0, 1];
+        this.blocks[0].selected = true;
     };
     CodeBlocks.prototype.unsetSelected = function (id) {
         this.blocks[id].selected = false;
@@ -250,12 +285,12 @@ webpackEmptyContext.id = 341;
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfills_ts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(431);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_module__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_module__ = __webpack_require__(461);
 
 
 
@@ -274,7 +309,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__block__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__block__ = __webpack_require__(298);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BlockComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -347,8 +382,8 @@ var BlockComponent = (function () {
     BlockComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'block',
-            template: __webpack_require__(623),
-            styles: [__webpack_require__(615)]
+            template: __webpack_require__(625),
+            styles: [__webpack_require__(616)]
         }), 
         __metadata('design:paramtypes', [])
     ], BlockComponent);
@@ -431,8 +466,8 @@ var CodeBlocksComponent = (function () {
     CodeBlocksComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'code-blocks',
-            template: __webpack_require__(624),
-            styles: [__webpack_require__(616)]
+            template: __webpack_require__(626),
+            styles: [__webpack_require__(617)]
         }), 
         __metadata('design:paramtypes', [])
     ], CodeBlocksComponent);
@@ -448,7 +483,7 @@ var CodeBlocksComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__ = __webpack_require__(198);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AlsuInputComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -464,6 +499,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AlsuInputComponent = (function () {
     function AlsuInputComponent() {
         this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
+        this.help = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
         this.blocks = [];
         this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('', 'assign'));
         this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('', 'write'));
@@ -479,15 +515,22 @@ var AlsuInputComponent = (function () {
             console.log(err.message);
         }
     };
+    AlsuInputComponent.prototype.emitHelp = function (type) {
+        this.help.emit(type);
+    };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
         __metadata('design:type', Object)
     ], AlsuInputComponent.prototype, "add", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
+        __metadata('design:type', Object)
+    ], AlsuInputComponent.prototype, "help", void 0);
     AlsuInputComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'alsu-input',
-            template: __webpack_require__(625),
-            styles: [__webpack_require__(617)]
+            template: __webpack_require__(627),
+            styles: [__webpack_require__(618)]
         }), 
         __metadata('design:paramtypes', [])
     ], AlsuInputComponent);
@@ -516,9 +559,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LeftSideComponent = (function () {
     function LeftSideComponent() {
         this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
+        this.help = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
     }
     LeftSideComponent.prototype.emitAdd = function (block) {
         this.add.emit(block);
+    };
+    LeftSideComponent.prototype.emitHelp = function (type) {
+        this.help.emit(type);
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(), 
@@ -528,11 +575,15 @@ var LeftSideComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
         __metadata('design:type', Object)
     ], LeftSideComponent.prototype, "add", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
+        __metadata('design:type', Object)
+    ], LeftSideComponent.prototype, "help", void 0);
     LeftSideComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'left-side',
-            template: __webpack_require__(626),
-            styles: [__webpack_require__(618)]
+            template: __webpack_require__(628),
+            styles: [__webpack_require__(619)]
         }), 
         __metadata('design:paramtypes', [])
     ], LeftSideComponent);
@@ -565,7 +616,9 @@ var MainComponent = (function () {
         this.main = {
             "config": {
                 "activated": false,
-                "run": "play_arrow"
+                "run": "play_arrow",
+                "help": false,
+                "helpType": ""
             },
             "code-blocks": {
                 "input": false,
@@ -622,11 +675,24 @@ var MainComponent = (function () {
             }
         }
     };
+    /**
+     * Help Event
+     */
+    MainComponent.prototype.helpEvent = function (type) {
+        this.main['config'].helpType = type;
+        this.main['config'].help = true;
+    };
+    /**
+     * Pop-up Event
+     */
+    MainComponent.prototype.popUpEvent = function () {
+        this.main['config'].help = false;
+    };
     MainComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'main',
-            template: __webpack_require__(627),
-            styles: [__webpack_require__(619)]
+            template: __webpack_require__(629),
+            styles: [__webpack_require__(620)]
         }), 
         __metadata('design:paramtypes', [])
     ], MainComponent);
@@ -637,6 +703,58 @@ var MainComponent = (function () {
 /***/ },
 
 /***/ 456:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__ = __webpack_require__(198);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PopUpComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PopUpComponent = (function () {
+    function PopUpComponent() {
+        this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
+        this.block = [];
+        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x = x + 1', 'assign'));
+        this.block[0].disabled = this.block[0].draggable = false;
+        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x', 'write'));
+        this.block[1].disabled = this.block[1].draggable = false;
+    }
+    PopUpComponent.prototype.emitClose = function () {
+        this.close.emit();
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(), 
+        __metadata('design:type', String)
+    ], PopUpComponent.prototype, "type", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
+        __metadata('design:type', Object)
+    ], PopUpComponent.prototype, "close", void 0);
+    PopUpComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
+            selector: 'pop-up',
+            template: __webpack_require__(630),
+            styles: [__webpack_require__(621)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], PopUpComponent);
+    return PopUpComponent;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/pop-up.component.js.map
+
+/***/ },
+
+/***/ 457:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -773,8 +891,8 @@ var AlsuOutputComponent = (function () {
     AlsuOutputComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'alsu-output',
-            template: __webpack_require__(628),
-            styles: [__webpack_require__(620)]
+            template: __webpack_require__(631),
+            styles: [__webpack_require__(622)]
         }), 
         __metadata('design:paramtypes', [])
     ], AlsuOutputComponent);
@@ -784,7 +902,7 @@ var AlsuOutputComponent = (function () {
 
 /***/ },
 
-/***/ 457:
+/***/ 458:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -814,8 +932,8 @@ var RightSideComponent = (function () {
     RightSideComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'right-side',
-            template: __webpack_require__(629),
-            styles: [__webpack_require__(621)]
+            template: __webpack_require__(632),
+            styles: [__webpack_require__(623)]
         }), 
         __metadata('design:paramtypes', [])
     ], RightSideComponent);
@@ -825,7 +943,7 @@ var RightSideComponent = (function () {
 
 /***/ },
 
-/***/ 458:
+/***/ 459:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -859,8 +977,8 @@ var ToolbarComponent = (function () {
     ToolbarComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'toolbar',
-            template: __webpack_require__(630),
-            styles: [__webpack_require__(622)]
+            template: __webpack_require__(633),
+            styles: [__webpack_require__(624)]
         }), 
         __metadata('design:paramtypes', [])
     ], ToolbarComponent);
@@ -870,7 +988,7 @@ var ToolbarComponent = (function () {
 
 /***/ },
 
-/***/ 459:
+/***/ 460:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -902,7 +1020,7 @@ var AppComponent = (function () {
 
 /***/ },
 
-/***/ 460:
+/***/ 461:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -910,15 +1028,16 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(421);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(427);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(460);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__alsu_main_component__ = __webpack_require__(455);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__alsu_code_blocks_code_blocks_component__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__alsu_code_blocks_block_block_component__ = __webpack_require__(451);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__alsu_left_side_left_side_component__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__alsu_left_side_alsu_input_alsu_input_component__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alsu_right_side_right_side_component__ = __webpack_require__(457);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__alsu_right_side_alsu_output_alsu_output_component__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__alsu_toolbar_toolbar_component__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alsu_right_side_right_side_component__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__alsu_right_side_alsu_output_alsu_output_component__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__alsu_toolbar_toolbar_component__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__alsu_pop_up_pop_up_component__ = __webpack_require__(456);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -929,6 +1048,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -953,7 +1073,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__alsu_code_blocks_code_blocks_component__["a" /* CodeBlocksComponent */], __WEBPACK_IMPORTED_MODULE_7__alsu_code_blocks_block_block_component__["a" /* BlockComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__alsu_left_side_left_side_component__["a" /* LeftSideComponent */], __WEBPACK_IMPORTED_MODULE_9__alsu_left_side_alsu_input_alsu_input_component__["a" /* AlsuInputComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__alsu_right_side_right_side_component__["a" /* RightSideComponent */], __WEBPACK_IMPORTED_MODULE_11__alsu_right_side_alsu_output_alsu_output_component__["a" /* AlsuOutputComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__alsu_toolbar_toolbar_component__["a" /* ToolbarComponent */]
+                __WEBPACK_IMPORTED_MODULE_12__alsu_toolbar_toolbar_component__["a" /* ToolbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__alsu_pop_up_pop_up_component__["a" /* PopUpComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["b" /* BrowserModule */],
@@ -971,7 +1092,7 @@ var AppModule = (function () {
 
 /***/ },
 
-/***/ 461:
+/***/ 462:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -987,41 +1108,41 @@ var environment = {
 
 /***/ },
 
-/***/ 462:
+/***/ 463:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__ = __webpack_require__(470);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__ = __webpack_require__(471);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__ = __webpack_require__(476);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__ = __webpack_require__(473);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__ = __webpack_require__(474);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__ = __webpack_require__(466);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__ = __webpack_require__(467);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__ = __webpack_require__(475);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(477);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__);
 
 
@@ -1043,119 +1164,133 @@ var environment = {
 
 /***/ },
 
-/***/ 615:
+/***/ 616:
 /***/ function(module, exports) {
 
 module.exports = "canvas {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n}\n.input {\n  position: absolute;\n  left: 72px;\n  top: 20px;\n  width: 145px;\n  height: 20px;\n  outline: 0;\n  border: none;\n  text-align: center;\n  padding: 5px;\n}\n.input[type=\"text\"]:disabled {\n  background-color: transparent;\n}\n.remove-text {\n  top: 10px;\n  right: 70px;\n  width: 18px;\n  height: 18px;\n  padding: 16px 1px;\n  color: rgba(0, 0, 0, 0.2);\n  font-size: 14px;\n}\n.remove-text:hover {\n  color: #000;\n}\n.remove-text i {\n  font-size: 18px;\n}\n.remove-block {\n  top: 10px;\n  right: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.remove-block:hover {\n  color: #000;\n}\n.selected {\n  background-color: transparent;\n}\n.begin,\n.end {\n  background-color: #eee;\n}\n.connect-top {\n  position: absolute;\n  left: 149px;\n  top: 0;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n.connect-bottom {\n  position: absolute;\n  left: 149px;\n  top: 60px;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n"
 
 /***/ },
 
-/***/ 616:
-/***/ function(module, exports) {
-
-module.exports = ".code-blocks {\n  width: 300px;\n  height: 100%;\n  margin: auto;\n  color: #333;\n  padding-top: 100px;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
-
-/***/ },
-
 /***/ 617:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\nspan:hover {\n  color: #eee;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
+module.exports = ".code-blocks {\n  width: 300px;\n  height: 100%;\n  margin: auto;\n  color: #333;\n  padding-top: 50px;\n  overflow-y: hidden;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
 
 /***/ },
 
 /***/ 618:
 /***/ function(module, exports) {
 
-module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2px 0 10px #333;\n}\n.left-side__title {\n  display: inline-block;\n  padding: 5px;\n  margin-bottom: 50px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
+module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\n.add {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\n.add:active {\n  color: #eee;\n}\n.help {\n  top: 10px;\n  left: 0;\n  color: #333;\n}\n.help:active {\n  color: #eee;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
 
 /***/ },
 
 /***/ 619:
 /***/ function(module, exports) {
 
-module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 35px;\n  z-index: 100;\n}\nleft-side {\n  left: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\nright-side {\n  right: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\n.main {\n  position: relative;\n  top: 35px;\n  height: calc(100% - 35px);\n  width: 100%;\n  background-color: #eee;\n}\n.main .body {\n  position: relative;\n  height: 100%;\n  margin: auto;\n}\n.main .body code-blocks {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  margin: auto;\n}\n.main .body .body_disabled {\n  display: block;\n  position: fixed;\n  top: 35px;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n}\n"
+module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2px 0 10px #333;\n}\n.left-side__title {\n  display: inline-block;\n  padding: 5px;\n  margin-bottom: 50px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
 
 /***/ },
 
 /***/ 620:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-output__item {\n  cursor: pointer;\n  font-size: 20px;\n  color: #fff;\n  padding: 10px;\n}\n.alsu-output__item:hover {\n  background-color: #19334d;\n}\n"
+module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 35px;\n  z-index: 100;\n}\nleft-side {\n  left: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\nright-side {\n  right: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\n.main {\n  position: relative;\n  top: 35px;\n  height: calc(100% - 35px);\n  width: 100%;\n  background-color: #eee;\n}\n.main .body {\n  position: relative;\n  height: 100%;\n  margin: auto;\n}\n.main .body code-blocks {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  margin: auto;\n}\n.main .body .body_disabled {\n  display: block;\n  position: fixed;\n  top: 35px;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n}\n"
 
 /***/ },
 
 /***/ 621:
 /***/ function(module, exports) {
 
-module.exports = ".right-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: -2px 0 10px #333;\n}\n.right-side__title {\n  display: inline-block;\n  padding: 5px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
+module.exports = ".pop-up {\n  position: absolute;\n  width: 100%;\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 0;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:active {\n  color: #B22222;\n}\n.pop-up .block {\n  left: -50px;\n  margin: 50px 0;\n  position: relative;\n}\n"
 
 /***/ },
 
 /***/ 622:
 /***/ function(module, exports) {
 
-module.exports = ".toolbar {\n  width: 100%;\n  height: 35px;\n  background-color: #eee;\n  box-shadow: 0 2px 5px #333;\n  z-index: 100;\n}\nspan {\n  position: relative;\n  top: 0;\n  margin: auto;\n  padding: 5.5px;\n}\nspan:hover {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n"
+module.exports = ".alsu-output__item {\n  cursor: pointer;\n  font-size: 20px;\n  color: #fff;\n  padding: 10px;\n}\n.alsu-output__item:hover {\n  background-color: #19334d;\n}\n"
 
 /***/ },
 
 /***/ 623:
 /***/ function(module, exports) {
 
-module.exports = "<!-- Shape -->\n<canvas #myBlock width=\"200\" height=\"50\"></canvas>\n<div class=\"connect-top\" *ngIf=\"block.type !== 'begin'\"></div>\n<div class=\"connect-bottom\" *ngIf=\"block.type !== 'end'\"></div>\n\n<!-- Input -->\n<input [ngClass]=\"{'selected': block.selected}\"\n       class=\"input {{ block.type }}\"\n       placeholder=\"{{ block.type }}\"\n       [disabled]=\"block.disabled\"\n       [(ngModel)]=\"block.data\"\n       type=\"text\"\n/>\n\n<!-- Buttons -->\n<div *ngIf=\"block.selected && block.draggable\">\n    <span class=\"remove-text\"\n          (click)=\"clearText()\">\n          <i class=\"material-icons\">close</i>\n    </span>\n    <span class=\"remove-block\"\n          (click)=\"emitRemove()\">\n          <i class=\"material-icons\">delete</i>\n    </span>\n</div>\n"
+module.exports = ".right-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: -2px 0 10px #333;\n}\n.right-side__title {\n  display: inline-block;\n  padding: 5px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
 
 /***/ },
 
 /***/ 624:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"code-blocks layout-column\">\n    <!-- Blocks -->\n    <div class=\"blocks\" *ngFor=\"let block of list.blocks\">\n\n        <!-- Block -->\n        <block [block]=\"block\"\n               (click)=\"emitSelect(block)\"\n               (remove)=\"emitRemove()\">\n        </block>\n\n        <!-- Drag'n Drop -->\n        <span class=\"block-drag\" *ngIf=\"block.id > 1\"\n              [ngClass]=\"{'visible': block.selected}\"\n              (dragstart)=\"dragStart(block.id)\"\n              (dragend)=\"dragEnd()\"\n              draggable=\"true\">\n              <i class=\"material-icons\">arrow_forward</i>\n        </span>\n        <span class=\"block-drop\"\n              [ngClass]=\"{'selected': block.selected }\"\n              (dragover)=\"dragOver($event, block.id)\"\n              *ngIf=\"codeblocks.dragging && block.id\">\n        </span>\n\n    </div>\n</div>\n"
+module.exports = ".toolbar {\n  width: 100%;\n  height: 35px;\n  background-color: #eee;\n  box-shadow: 0 2px 5px #333;\n  z-index: 100;\n}\nspan {\n  position: relative;\n  top: 0;\n  margin: auto;\n  padding: 5.5px;\n}\nspan:active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n"
 
 /***/ },
 
 /***/ 625:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"alsu-input\" *ngFor=\"let block of blocks\">\n\n    <block [block]=\"block\"></block>\n    <span (click)=\"emitAdd(block)\">\n        <i class=\"material-icons\">add</i>\n    </span>\n\n</div>\n"
+module.exports = "<!-- Shape -->\n<canvas #myBlock width=\"200\" height=\"50\"></canvas>\n<div class=\"connect-top\" *ngIf=\"block.type !== 'begin'\"></div>\n<div class=\"connect-bottom\" *ngIf=\"block.type !== 'end'\"></div>\n\n<!-- Input -->\n<input [ngClass]=\"{'selected': block.selected}\"\n       class=\"input {{ block.type }}\"\n       placeholder=\"{{ block.type }}\"\n       [disabled]=\"block.disabled\"\n       [(ngModel)]=\"block.data\"\n       type=\"text\"\n/>\n\n<!-- Buttons -->\n<div *ngIf=\"block.selected && block.draggable\">\n    <span class=\"remove-text\"\n          (click)=\"clearText()\">\n          <i class=\"material-icons\">close</i>\n    </span>\n    <span class=\"remove-block\"\n          (click)=\"emitRemove()\">\n          <i class=\"material-icons\">delete</i>\n    </span>\n</div>\n"
 
 /***/ },
 
 /***/ 626:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"left-side layout-column\" *ngIf=\"!activated\">\n\n    <div class=\"left-side__title\">Input</div>\n    <alsu-input class=\"layout-column\" (add)=\"emitAdd($event)\"></alsu-input>\n\n</div>\n"
+module.exports = "<div class=\"code-blocks layout-column\">\n    <!-- Blocks -->\n    <div class=\"blocks\" *ngFor=\"let block of list.blocks\">\n\n        <!-- Block -->\n        <block [block]=\"block\"\n               (click)=\"emitSelect(block)\"\n               (remove)=\"emitRemove()\">\n        </block>\n\n        <!-- Drag'n Drop -->\n        <span class=\"block-drag\" *ngIf=\"block.id > 1\"\n              [ngClass]=\"{'visible': block.selected}\"\n              (dragstart)=\"dragStart(block.id)\"\n              (dragend)=\"dragEnd()\"\n              draggable=\"true\">\n              <i class=\"material-icons\">arrow_forward</i>\n        </span>\n        <span class=\"block-drop\"\n              [ngClass]=\"{'selected': block.selected }\"\n              (dragover)=\"dragOver($event, block.id)\"\n              *ngIf=\"codeblocks.dragging && block.id\">\n        </span>\n\n    </div>\n</div>\n"
 
 /***/ },
 
 /***/ 627:
 /***/ function(module, exports) {
 
-module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compileEvent()\">\n</toolbar>\n\n<div class=\"main layout-row\">\n    <left-side [activated]=\"main.config.activated\"\n               (add)=\"addEvent($event)\"\n               [ngClass]=\"{\n                    'side-panel': !main.config.activated\n                }\">\n    </left-side>\n\n    <div class=\"body layout-row\">\n        <code-blocks [list]=\"main['list']\"\n                     [codeblocks]=\"main['code-blocks']\"\n                     (select)=\"selectEvent($event)\"\n                     (remove)=\"removeEvent()\">\n        </code-blocks>\n        <div [ngClass]=\"{\n                'body_disabled': main.config.activated\n             }\">\n        </div>\n    </div>\n\n    <right-side [activated]=\"main.config.activated\"\n                [output]=\"main.output\"\n                [ngClass]=\"{\n                    'side-panel': main.config.activated\n                }\">\n    </right-side>\n</div>\n"
+module.exports = "<div class=\"alsu-input\" *ngFor=\"let block of blocks\">\n\n    <block [block]=\"block\"></block>\n\n    <!-- Buttons -->\n    <span class=\"add\" (click)=\"emitAdd(block)\">\n        <i class=\"material-icons\">add</i>\n    </span>\n    <span class=\"help\" (click)=\"emitHelp(block.type)\">\n        <i class=\"material-icons\">help_outline</i>\n    </span>\n\n</div>\n"
 
 /***/ },
 
 /***/ 628:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"alsu-output\" *ngFor=\"let item of output.data\">\n    <div class=\"alsu-output__item\">{{ item }}</div>\n</div>\n"
+module.exports = "<div class=\"left-side layout-column\" *ngIf=\"!activated\">\n\n    <div class=\"left-side__title\">Input</div>\n    <alsu-input class=\"layout-column\" (add)=\"emitAdd($event)\" (help)=\"emitHelp($event)\"></alsu-input>\n\n</div>\n"
 
 /***/ },
 
 /***/ 629:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"right-side layout-column\" *ngIf=\"activated\">\n\n    <div class=\"right-side__title\">Output</div>\n    <alsu-output class=\"layout-column\" [output]=\"output\"></alsu-output>\n\n</div>\n"
+module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compileEvent()\">\n</toolbar>\n\n<div class=\"main layout-row\">\n    <left-side [activated]=\"main.config.activated\"\n               (add)=\"addEvent($event)\"\n               (help)=\"helpEvent($event)\"\n               [ngClass]=\"{\n                    'side-panel': !main.config.activated\n                }\">\n    </left-side>\n\n    <div class=\"body layout-row\">\n        <code-blocks [list]=\"main['list']\"\n                     [codeblocks]=\"main['code-blocks']\"\n                     (select)=\"selectEvent($event)\"\n                     (remove)=\"removeEvent()\">\n        </code-blocks>\n        <div [ngClass]=\"{\n                'body_disabled': main.config.activated\n             }\">\n        </div>\n        <pop-up *ngIf=\"main['config'].help\"\n                [type]=\"main['config'].helpType\"\n                (close)=\"popUpEvent()\">\n        </pop-up>\n    </div>\n\n    <right-side [activated]=\"main.config.activated\"\n                [output]=\"main.output\"\n                [ngClass]=\"{\n                    'side-panel': main.config.activated\n                }\">\n    </right-side>\n\n</div>\n\n"
 
 /***/ },
 
 /***/ 630:
 /***/ function(module, exports) {
 
+module.exports = "<div class=\"pop-up\">\n\n    <div class=\"title layout-row\">\n        <h4>{{ type }}</h4>\n        <div class=\"flex\"></div>\n        <span (click)=\"emitClose()\">\n            <i class=\"material-icons\">close</i>\n        </span>\n    </div>\n\n    <div class=\"content layout-column\">\n\n        <div>\n            <div *ngIf=\"type === 'assign'\">\n                <h4>Assign Block</h4>\n                <p>This type of block is used to declare variables, and do some operations.</p>\n                <h4>Rules</h4>\n                <p>Every single variable and operation must be separated with space (' ')</p>\n                <p>There always must be a single equals-sign ('=')</p>\n                <p>Left side of equals-sign must be a single variable</p>\n                <p>Right side of equals-sign must contain only variables (already declared) and operations (+ - * /)</p>\n            </div>\n            <div *ngIf=\"type === 'write'\">\n                <h4>Write Block</h4>\n                <p>This type of block is used print data to output</p>\n                <h4>Rules</h4>\n                <p>Everything inside this block get's printed to the screen</p>\n                <p>To print out a variable, it must be declared and no other data than the variable itself must be inside this block</p>\n            </div>\n\n            <h4>Dummy text</h4>\n            <p>Lorem Ipsum je fiktívny text, používaný pri návrhu tlačovín a typografie. Lorem Ipsum je štandardným výplňovým textom už od 16. storočia, keď neznámy tlačiar zobral sadzobnicu plnú tlačových znakov a pomiešal ich, aby tak vytvoril vzorkovú knihu. Prežil nielen päť storočí, ale aj skok do elektronickej sadzby, a pritom zostal v podstate nezmenený. Spopularizovaný bol v 60-tych rokoch 20.storočia, vydaním hárkov Letraset, ktoré obsahovali pasáže Lorem Ipsum, a neskôr aj publikačným softvérom ako Aldus PageMaker, ktorý obsahoval verzie Lorem Ipsum.</p>\n        </div>\n\n        <div class=\"block\" >\n            <block *ngIf=\"type === 'assign'\" [block]=\"block[0]\"></block>\n            <block *ngIf=\"type === 'write'\" [block]=\"block[1]\"></block>\n        </div>\n\n    </div>\n\n</div>\n"
+
+/***/ },
+
+/***/ 631:
+/***/ function(module, exports) {
+
+module.exports = "<div class=\"alsu-output\" *ngFor=\"let item of output.data\">\n    <div class=\"alsu-output__item\">{{ item }}</div>\n</div>\n"
+
+/***/ },
+
+/***/ 632:
+/***/ function(module, exports) {
+
+module.exports = "<div class=\"right-side layout-column\" *ngIf=\"activated\">\n\n    <div class=\"right-side__title\">Output</div>\n    <alsu-output class=\"layout-column\" [output]=\"output\"></alsu-output>\n\n</div>\n"
+
+/***/ },
+
+/***/ 633:
+/***/ function(module, exports) {
+
 module.exports = "<div class=\"toolbar layout-row\">\n\n    <!-- Start/Stop - TAB -->\n    <span (click)=\"emitCompile()\">\n        <i class=\"material-icons\">{{ config.run }}</i>\n    </span>\n\n</div>\n"
 
 /***/ },
 
-/***/ 643:
+/***/ 646:
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(342);
@@ -1163,5 +1298,5 @@ module.exports = __webpack_require__(342);
 
 /***/ }
 
-},[643]);
+},[646]);
 //# sourceMappingURL=main.bundle.map
