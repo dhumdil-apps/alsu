@@ -11,6 +11,7 @@ import { Simple } from '../../code-blocks/block/types/simple';
 export class AlsuInputComponent {
 
     @Output() add = new EventEmitter();
+    @Output() help = new EventEmitter();
 
     blocks: Block[];
 
@@ -29,5 +30,8 @@ export class AlsuInputComponent {
         } catch (err) {
             console.log(err.message);
         }
+    }
+    emitHelp(type: string) {
+        this.help.emit(type);
     }
 }

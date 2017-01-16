@@ -1,0 +1,42 @@
+@import url("../variables");
+
+.pop-up {
+    position: absolute;
+    width: 100%;
+    height: ~"calc(100% - 100px)";
+    top: 50px;
+    left: 0;
+    background-color: rgba(0,0,0, 0.1);
+    box-shadow: 2px 2px 15px 2px @dark;
+    z-index: 200;
+
+    .title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: ~"calc(100% - 50px)";
+        height: 50px;
+        padding-left: 50px;
+        background-color: @dark;
+        color: @white;
+        text-transform: uppercase;
+    }
+    .content {
+        padding: 50px;
+        height: ~"calc(100% - 100px)";
+        background: @white;
+    }
+    span {
+        color: @white;
+        position: relative;
+        top: 0;
+    }
+    span:hover {
+        color: @red;
+    }
+    .block {
+        left: -50px;
+        margin: 50px 0;
+        position: relative;
+    }
+}

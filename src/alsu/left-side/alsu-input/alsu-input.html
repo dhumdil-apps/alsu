@@ -1,8 +1,13 @@
 <div class="alsu-input" *ngFor="let block of blocks">
 
     <block [block]="block"></block>
-    <span (click)="emitAdd(block)">
+
+    <!-- Buttons -->
+    <span class="add" (click)="emitAdd(block)">
         <i class="material-icons">add</i>
+    </span>
+    <span class="help" (click)="emitHelp(block.type)">
+        <i class="material-icons">help_outline</i>
     </span>
 
 </div>

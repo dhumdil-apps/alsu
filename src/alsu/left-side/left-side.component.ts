@@ -11,8 +11,12 @@ export class LeftSideComponent {
 
     @Input() activated: any;
     @Output() add = new EventEmitter();
+    @Output() help = new EventEmitter();
 
     public emitAdd(block: Block) {
         this.add.emit(block);
+    }
+    public emitHelp(type: string) {
+        this.help.emit(type);
     }
 }

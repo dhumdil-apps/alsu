@@ -16,7 +16,9 @@ export class MainComponent {
         this.main = {
             "config": {
                 "activated": false,
-                "run": "play_arrow"
+                "run": "play_arrow",
+                "help": false,
+                "helpType": ""
             },
             "code-blocks": {
                 "input": false,
@@ -75,5 +77,20 @@ export class MainComponent {
                 this.main['list'].select(block.id);
             }
         }
+    }
+
+    /**
+     * Help Event
+     */
+    public helpEvent(type: string): void {
+        this.main['config'].helpType = type;
+        this.main['config'].help = true;
+    }
+
+    /**
+     * Pop-up Event
+     */
+    public popUpEvent(): void {
+        this.main['config'].help = false;
     }
 }

@@ -1,0 +1,42 @@
+<div class="pop-up">
+
+    <div class="title layout-row">
+        <h4>{{ type }}</h4>
+        <div class="flex"></div>
+        <span (click)="emitClose()">
+            <i class="material-icons">close</i>
+        </span>
+    </div>
+
+    <div class="content layout-column">
+
+        <div>
+            <div *ngIf="type === 'assign'">
+                <h4>Assign Block</h4>
+                <p>This type of block is used to declare variables, and do some operations.</p>
+                <h4>Rules</h4>
+                <p>Every single variable and operation must be separated with space (' ')</p>
+                <p>There always must be a single equals-sign ('=')</p>
+                <p>Left side of equals-sign must be a single variable</p>
+                <p>Right side of equals-sign must contain only variables (already declared) and operations (+ - * /)</p>
+            </div>
+            <div *ngIf="type === 'write'">
+                <h4>Write Block</h4>
+                <p>This type of block is used print data to output</p>
+                <h4>Rules</h4>
+                <p>Everything inside this block get's printed to the screen</p>
+                <p>To print out a variable, it must be declared and no other data than the variable itself must be inside this block</p>
+            </div>
+
+            <h4>Dummy text</h4>
+            <p>Lorem Ipsum je fiktívny text, používaný pri návrhu tlačovín a typografie. Lorem Ipsum je štandardným výplňovým textom už od 16. storočia, keď neznámy tlačiar zobral sadzobnicu plnú tlačových znakov a pomiešal ich, aby tak vytvoril vzorkovú knihu. Prežil nielen päť storočí, ale aj skok do elektronickej sadzby, a pritom zostal v podstate nezmenený. Spopularizovaný bol v 60-tych rokoch 20.storočia, vydaním hárkov Letraset, ktoré obsahovali pasáže Lorem Ipsum, a neskôr aj publikačným softvérom ako Aldus PageMaker, ktorý obsahoval verzie Lorem Ipsum.</p>
+        </div>
+
+        <div class="block" >
+            <block *ngIf="type === 'assign'" [block]="block[0]"></block>
+            <block *ngIf="type === 'write'" [block]="block[1]"></block>
+        </div>
+
+    </div>
+
+</div>

@@ -13,6 +13,7 @@ import { AlsuInputComponent }  from '../alsu/left-side/alsu-input/alsu-input.com
 import { RightSideComponent }  from '../alsu/right-side/right-side.component';
 import { AlsuOutputComponent } from '../alsu/right-side/alsu-output/alsu-output.component';
 import { ToolbarComponent }    from '../alsu/toolbar/toolbar.component';
+import { PopUpComponent }    from '../alsu/pop-up/pop-up.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ToolbarComponent }    from '../alsu/toolbar/toolbar.component';
             CodeBlocksComponent, BlockComponent,
             LeftSideComponent, AlsuInputComponent,
             RightSideComponent, AlsuOutputComponent,
-            ToolbarComponent
+            ToolbarComponent,
+        PopUpComponent
     ],
     imports: [
         BrowserModule,
