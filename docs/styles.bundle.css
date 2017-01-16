@@ -50,6 +50,24 @@ span {
   word-wrap: normal;
   direction: ltr;
 }
+.none .body {
+  display: none;
+}
+.none .side-panel {
+  display: none;
+}
+.phone .body {
+  width: 768px;
+}
+.phone left-side {
+  display: none;
+}
+.tablet .body {
+  width: 468px;
+}
+.tablet .side-panel {
+  width: 300px;
+}
 .desktop1 .body {
   width: 660px;
 }
@@ -62,9 +80,15 @@ span {
 .desktop2 .side-panel {
   width: 300px;
 }
+.all .body {
+  width: 980px;
+}
+.all .side-panel {
+  width: 300px;
+}
 @media all and (min-width: 1920px) {
   .main .body {
-    width: 660px;
+    width: 980px;
   }
   .main .side-panel {
     width: 300px;
@@ -72,7 +96,7 @@ span {
 }
 @media all and (max-width: 1920px) {
   .main .body {
-    width: 660px;
+    width: 980px;
   }
   .main .side-panel {
     width: 300px;
@@ -88,7 +112,7 @@ span {
 }
 @media all and (max-width: 960px) {
   .main .body {
-    width: 660px;
+    width: 468px;
   }
   .main .side-panel {
     width: 300px;
@@ -96,18 +120,18 @@ span {
 }
 @media all and (max-width: 768px) {
   .main .body {
-    width: 660px;
+    width: 768px;
   }
-  .main .side-panel {
-    width: 300px;
+  .main left-side {
+    display: none;
   }
 }
 @media all and (max-width: 320px) {
   .main .body {
-    width: 660px;
+    display: none;
   }
   .main .side-panel {
-    width: 300px;
+    display: none;
   }
 }
 .flex {

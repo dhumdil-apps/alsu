@@ -1174,14 +1174,14 @@ module.exports = "canvas {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n
 /***/ 617:
 /***/ function(module, exports) {
 
-module.exports = ".code-blocks {\n  width: 300px;\n  height: 100%;\n  margin: auto;\n  color: #333;\n  padding-top: 50px;\n  overflow-y: hidden;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
+module.exports = ".code-blocks {\n  width: 300px;\n  margin: auto;\n  color: #333;\n  padding-top: 50px;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
 
 /***/ },
 
 /***/ 618:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\n.add {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\n.add:active {\n  color: #eee;\n}\n.help {\n  top: 10px;\n  left: 0;\n  color: #333;\n}\n.help:active {\n  color: #eee;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
+module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\n.add {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\n.add:active {\n  color: #eee;\n}\n.help {\n  top: 10px;\n  left: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.help:hover {\n  color: #333;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
 
 /***/ },
 
@@ -1195,14 +1195,14 @@ module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2
 /***/ 620:
 /***/ function(module, exports) {
 
-module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 35px;\n  z-index: 100;\n}\nleft-side {\n  left: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\nright-side {\n  right: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\n.main {\n  position: relative;\n  top: 35px;\n  height: calc(100% - 35px);\n  width: 100%;\n  background-color: #eee;\n}\n.main .body {\n  position: relative;\n  height: 100%;\n  margin: auto;\n}\n.main .body code-blocks {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  margin: auto;\n}\n.main .body .body_disabled {\n  display: block;\n  position: fixed;\n  top: 35px;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n}\n"
+module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 35px;\n  z-index: 100;\n}\nleft-side {\n  left: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\nright-side {\n  right: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\n.main {\n  position: relative;\n  top: 35px;\n  height: calc(100% - 35px);\n  width: 100%;\n  background-color: #eee;\n  overflow: hidden;\n}\n.main .body {\n  position: relative;\n  height: 100%;\n  margin: auto;\n}\n.main .body code-blocks {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 768px;\n  overflow-x: hidden;\n  overflow-y: scroll;\n}\n.main .body code-blocks::-webkit-scrollbar {\n  width: 0;\n}\n.main .body .body_disabled {\n  display: block;\n  position: fixed;\n  top: 35px;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n}\n"
 
 /***/ },
 
 /***/ 621:
 /***/ function(module, exports) {
 
-module.exports = ".pop-up {\n  position: absolute;\n  width: 100%;\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 0;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:active {\n  color: #B22222;\n}\n.pop-up .block {\n  left: -50px;\n  margin: 50px 0;\n  position: relative;\n}\n"
+module.exports = ".pop-up {\n  position: absolute;\n  width: calc(100% - 100px);\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 50px;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:hover {\n  color: #fff;\n}\n.pop-up .block {\n  left: -50px;\n  margin: 50px 0;\n  position: relative;\n}\n"
 
 /***/ },
 
@@ -1258,7 +1258,7 @@ module.exports = "<div class=\"left-side layout-column\" *ngIf=\"!activated\">\n
 /***/ 629:
 /***/ function(module, exports) {
 
-module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compileEvent()\">\n</toolbar>\n\n<div class=\"main layout-row\">\n    <left-side [activated]=\"main.config.activated\"\n               (add)=\"addEvent($event)\"\n               (help)=\"helpEvent($event)\"\n               [ngClass]=\"{\n                    'side-panel': !main.config.activated\n                }\">\n    </left-side>\n\n    <div class=\"body layout-row\">\n        <code-blocks [list]=\"main['list']\"\n                     [codeblocks]=\"main['code-blocks']\"\n                     (select)=\"selectEvent($event)\"\n                     (remove)=\"removeEvent()\">\n        </code-blocks>\n        <div [ngClass]=\"{\n                'body_disabled': main.config.activated || main['config'].help\n             }\">\n        </div>\n        <pop-up *ngIf=\"main['config'].help\"\n                [type]=\"main['config'].helpType\"\n                (close)=\"popUpEvent()\">\n        </pop-up>\n    </div>\n\n    <right-side [activated]=\"main.config.activated\"\n                [output]=\"main.output\"\n                [ngClass]=\"{\n                    'side-panel': main.config.activated\n                }\">\n    </right-side>\n\n</div>\n"
+module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compileEvent()\">\n</toolbar>\n\n<div class=\"main layout-row\">\n    <left-side [activated]=\"main.config.activated\"\n               (add)=\"addEvent($event)\"\n               (help)=\"helpEvent($event)\"\n               [ngClass]=\"{\n                    'side-panel': !main.config.activated\n                }\">\n    </left-side>\n\n    <div class=\"body layout-row\">\n        <code-blocks [list]=\"main['list']\"\n                     [codeblocks]=\"main['code-blocks']\"\n                     (select)=\"selectEvent($event)\"\n                     (remove)=\"removeEvent()\">\n        </code-blocks>\n        <div (click)=\"popUpEvent()\" [ngClass]=\"{\n                'body_disabled': main.config.activated || main['config'].help\n             }\">\n        </div>\n        <pop-up *ngIf=\"main['config'].help\"\n                [type]=\"main['config'].helpType\"\n                (close)=\"popUpEvent()\">\n        </pop-up>\n    </div>\n\n    <right-side [activated]=\"main.config.activated\"\n                [output]=\"main.output\"\n                [ngClass]=\"{\n                    'side-panel': main.config.activated\n                }\">\n    </right-side>\n\n</div>\n"
 
 /***/ },
 
