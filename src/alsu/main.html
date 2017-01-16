@@ -18,7 +18,7 @@
                      (remove)="removeEvent()">
         </code-blocks>
         <div [ngClass]="{
-                'body_disabled': main.config.activated
+                'body_disabled': main.config.activated || main['config'].help
              }">
         </div>
         <pop-up *ngIf="main['config'].help"
@@ -35,4 +35,3 @@
     </right-side>
 
 </div>
-
