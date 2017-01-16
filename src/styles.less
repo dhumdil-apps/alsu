@@ -61,17 +61,32 @@ span {
 
 // responsive design
 .none {
-    //
+    .body {
+        display: none;
+    }
+    .side-panel {
+        display: none;
+    }
 }
 .phone {
-    //
+    .body {
+        width: @sm;
+    }
+    left-side {
+        display: none;
+    }
 }
 .tablet {
-    //
+    .body {
+        width: @sm - 300px;
+    }
+    .side-panel {
+        width: 300px;
+    }
 }
 .desktop1 {
     .body {
-        width: @w-md - 300px;
+        width: @md - 300px;
     }
     .side-panel {
         width: 300px;
@@ -79,44 +94,49 @@ span {
 }
 .desktop2 {
     .body {
-        width: @w-lg - 300px;
+        width: @lg - 300px;
     }
     .side-panel {
         width: 300px;
     }
 }
 .all {
-    //
+    .body {
+        width: @lg - 300px;
+    }
+    .side-panel {
+        width: 300px;
+    }
 }
 // the order is important! (desc)
-@media all and (min-width: @w-xlg) {
+@media all and (min-width: @xlg) {
+    .main {
+        .all;
+    }
+}
+@media all and (max-width: @xlg) {
+    .main {
+        .desktop2;
+    }
+}
+@media all and (max-width: @lg) {
     .main {
         .desktop1;
     }
 }
-@media all and (max-width: @w-xlg) {
+@media all and (max-width: @md) {
     .main {
-        .desktop1;
+        .tablet;
     }
 }
-@media all and (max-width: @w-lg) {
+@media all and (max-width: @sm) {
     .main {
-        .desktop1;
+        .phone;
     }
 }
-@media all and (max-width: @w-md) {
+@media all and (max-width: @xsm) {
     .main {
-        .desktop1;
-    }
-}
-@media all and (max-width: @w-sm) {
-    .main {
-        .desktop1;
-    }
-}
-@media all and (max-width: @w-xsm) {
-    .main {
-        .desktop1;
+        .none;
     }
 }
 // flex-box layout

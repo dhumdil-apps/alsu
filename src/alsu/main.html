@@ -17,7 +17,7 @@
                      (select)="selectEvent($event)"
                      (remove)="removeEvent()">
         </code-blocks>
-        <div [ngClass]="{
+        <div (click)="popUpEvent()" [ngClass]="{
                 'body_disabled': main.config.activated || main['config'].help
              }">
         </div>

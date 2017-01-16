@@ -31,6 +31,7 @@ right-side {
     height: ~"calc(100% - 35px)";
     width: 100%;
     background-color: @white;
+    overflow: hidden;
 
     .body {
         position: relative;
@@ -41,7 +42,13 @@ right-side {
             position: relative;
             width: 100%;
             height: 100%;
-            margin: auto;
+            min-height: 768px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
         }
         .body_disabled {
             display: block;
