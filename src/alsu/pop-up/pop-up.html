@@ -12,26 +12,31 @@
 
         <div>
             <div *ngIf="type === 'assign'">
-                <h4>Assign Block</h4>
                 <p>This type of block is used to declare variables, and do some operations.</p>
                 <h4>Rules</h4>
-                <p>Every single variable and operation must be separated with space (' ')</p>
-                <p>There always must be a single equals-sign ('=')</p>
-                <p>Left side of equals-sign must be a single variable</p>
-                <p>Right side of equals-sign must contain only variables (already declared) and operations (+ - * /)</p>
+                <p>- Every single variable and operation must be separated with spaces (' ')</p>
+                <p>- There always must be a single equals-sign ('=')</p>
+                <p>- On left side of equals-sign must be a single variable</p>
+                <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>
             </div>
             <div *ngIf="type === 'write'">
-                <h4>Write Block</h4>
                 <p>This type of block is used print data to output</p>
                 <h4>Rules</h4>
-                <p>Everything inside this block get's printed to the screen</p>
-                <p>To print out a variable, it must be declared and no other data than the variable itself must be inside this block</p>
+                <p>- Everything inside this block get's printed to the screen</p>
+                <p>- To print out a variable, it must be declared and no other than the variable itself must be inside this block</p>
             </div>
         </div>
 
-        <div class="block" >
-            <block *ngIf="type === 'assign'" [block]="block[0]"></block>
-            <block *ngIf="type === 'write'" [block]="block[1]"></block>
+        <div class="layout-column" *ngIf="type === 'assign'">
+            <div class="block layout-row">
+                <block [block]="block[0]"></block>
+            </div>
+        </div>
+        <div class="layout-column" *ngIf="type === 'write'">
+            <div class="block layout-row">
+                <block [block]="block[1]"></block>
+                <div class="output">{{ block[1].data }}</div>
+            </div>
         </div>
 
     </div>

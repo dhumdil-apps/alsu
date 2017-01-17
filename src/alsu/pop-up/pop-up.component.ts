@@ -17,10 +17,13 @@ export class PopUpComponent {
 
     constructor() {
         this.block = [];
-        this.block.push(new Simple('x = x + 1', 'assign'));
+
+        // assign
+        this.block.push(new Simple('x = 1', 'assign'));
         this.block[0].disabled = this.block[0].draggable = false;
 
-        this.block.push(new Simple('x', 'write'));
+        // write
+        this.block.push(new Simple('Hello World!', 'write'));
         this.block[1].disabled = this.block[1].draggable = false;
     }
 
