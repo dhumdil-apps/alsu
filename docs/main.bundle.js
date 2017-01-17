@@ -724,9 +724,11 @@ var PopUpComponent = (function () {
     function PopUpComponent() {
         this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* EventEmitter */]();
         this.block = [];
-        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x = x + 1', 'assign'));
+        // assign
+        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x = 1', 'assign'));
         this.block[0].disabled = this.block[0].draggable = false;
-        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x', 'write'));
+        // write
+        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('Hello World!', 'write'));
         this.block[1].disabled = this.block[1].draggable = false;
     }
     PopUpComponent.prototype.emitClose = function () {
@@ -1202,7 +1204,7 @@ module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width:
 /***/ 621:
 /***/ function(module, exports) {
 
-module.exports = ".pop-up {\n  position: absolute;\n  width: calc(100% - 100px);\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 50px;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:hover {\n  color: #fff;\n}\n.pop-up .block {\n  left: -50px;\n  margin: 50px 0;\n  position: relative;\n}\n"
+module.exports = ".pop-up {\n  position: absolute;\n  width: calc(100% - 100px);\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 50px;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:hover {\n  color: #fff;\n}\n.pop-up .block {\n  position: relative;\n  left: -50px;\n  margin: 50px 0;\n}\n.pop-up .output {\n  position: absolute;\n  top: 30px;\n  left: 350px;\n}\n"
 
 /***/ },
 
@@ -1265,7 +1267,7 @@ module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compil
 /***/ 630:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"pop-up\">\n\n    <div class=\"title layout-row\">\n        <h4>{{ type }}</h4>\n        <div class=\"flex\"></div>\n        <span (click)=\"emitClose()\">\n            <i class=\"material-icons\">close</i>\n        </span>\n    </div>\n\n    <div class=\"content layout-column\">\n\n        <div>\n            <div *ngIf=\"type === 'assign'\">\n                <h4>Assign Block</h4>\n                <p>This type of block is used to declare variables, and do some operations.</p>\n                <h4>Rules</h4>\n                <p>Every single variable and operation must be separated with space (' ')</p>\n                <p>There always must be a single equals-sign ('=')</p>\n                <p>Left side of equals-sign must be a single variable</p>\n                <p>Right side of equals-sign must contain only variables (already declared) and operations (+ - * /)</p>\n            </div>\n            <div *ngIf=\"type === 'write'\">\n                <h4>Write Block</h4>\n                <p>This type of block is used print data to output</p>\n                <h4>Rules</h4>\n                <p>Everything inside this block get's printed to the screen</p>\n                <p>To print out a variable, it must be declared and no other data than the variable itself must be inside this block</p>\n            </div>\n        </div>\n\n        <div class=\"block\" >\n            <block *ngIf=\"type === 'assign'\" [block]=\"block[0]\"></block>\n            <block *ngIf=\"type === 'write'\" [block]=\"block[1]\"></block>\n        </div>\n\n    </div>\n\n</div>\n"
+module.exports = "<div class=\"pop-up\">\n\n    <div class=\"title layout-row\">\n        <h4>{{ type }}</h4>\n        <div class=\"flex\"></div>\n        <span (click)=\"emitClose()\">\n            <i class=\"material-icons\">close</i>\n        </span>\n    </div>\n\n    <div class=\"content layout-column\">\n\n        <div>\n            <div *ngIf=\"type === 'assign'\">\n                <p>This type of block is used to declare variables, and do some operations.</p>\n                <h4>Rules</h4>\n                <p>- Every single variable and operation must be separated with spaces (' ')</p>\n                <p>- There always must be a single equals-sign ('=')</p>\n                <p>- On left side of equals-sign must be a single variable</p>\n                <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>\n            </div>\n            <div *ngIf=\"type === 'write'\">\n                <p>This type of block is used print data to output</p>\n                <h4>Rules</h4>\n                <p>- Everything inside this block will be displayed on output screen</p>\n                <p>- To display a variable value:</p>\n                <p>-- must be declared</p>\n                <p>-- no other text than the variable itself must be inside this block</p>\n            </div>\n        </div>\n\n        <div class=\"layout-column\" *ngIf=\"type === 'assign'\">\n            <div class=\"block layout-row\">\n                <block [block]=\"block[0]\"></block>\n            </div>\n        </div>\n        <div class=\"layout-column\" *ngIf=\"type === 'write'\">\n            <div class=\"block layout-row\">\n                <block [block]=\"block[1]\"></block>\n                <div class=\"output\">{{ block[1].data }}</div>\n            </div>\n        </div>\n\n    </div>\n\n</div>\n"
 
 /***/ },
 
