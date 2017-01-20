@@ -23,6 +23,8 @@
         </div>
         <pop-up *ngIf="main['config'].help"
                 [type]="main['config'].helpType"
+                [dummyData]="main['dummy-data']"
+                (load)="setData($event)"
                 (close)="popUpEvent()">
         </pop-up>
     </div>

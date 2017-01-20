@@ -133,56 +133,16 @@ export class CodeBlocks {
     }
 
     private init(): void {
-        /* basic
         this.blocks = [];
+
+        // total: 2
         this.uniqueId = 2;
+        // 1st
         this.blocks.push(new Simple('BEGIN', 'begin'));
         this.blocks[0].setIds(0, 1, -1);
+        // 2nd
         this.blocks.push(new Simple('END', 'end'));
         this.blocks[1].setIds(1, -1, 0);
-        this.selectedId = [0, 1];
-        this.blocks[0].selected = true;
-        */
-        this.dummyData();
-
-        console.log(this.blocks);
-    }
-    private dummyData() {
-        this.blocks = [];
-        this.uniqueId = 11;
-
-        this.blocks.push(new Simple('BEGIN', 'begin'));
-        this.blocks[0].setIds(0, 1, 2);
-
-        this.blocks.push(new Simple('x = 5', 'assign'));
-        this.blocks[1].setIds(1, 2, 3);
-
-        this.blocks.push(new Simple('y = 13', 'assign'));
-        this.blocks[2].setIds(2, 3, 4);
-
-        this.blocks.push(new Simple('x', 'write'));
-        this.blocks[3].setIds(3, 4, 5);
-
-        this.blocks.push(new Simple('y', 'write'));
-        this.blocks[4].setIds(4, 5, 6);
-
-        this.blocks.push(new Simple('x = x + y', 'assign'));
-        this.blocks[5].setIds(5, 6, 7);
-
-        this.blocks.push(new Simple('y = x - y', 'assign'));
-        this.blocks[6].setIds(6, 7, 8);
-
-        this.blocks.push(new Simple('x = x - y', 'assign'));
-        this.blocks[7].setIds(7, 8, 9);
-
-        this.blocks.push(new Simple('x', 'write'));
-        this.blocks[8].setIds(8, 9, 10);
-
-        this.blocks.push(new Simple('y', 'write'));
-        this.blocks[9].setIds(9, 10, -1);
-
-        this.blocks.push(new Simple('END', 'end'));
-        this.blocks[10].setIds(10, -1, 0);
 
         this.blocks.forEach(b => {
             b.selected = false;
@@ -190,6 +150,27 @@ export class CodeBlocks {
 
         this.selectedId = [0, 1];
         this.blocks[0].selected = true;
+
+        console.log(this.blocks);
+    }
+
+    private dummyData(data: any): void {
+        console.log(data);
+
+        this.blocks = [];
+        this.uniqueId = 0;
+
+        data.forEach(b => {
+            this.blocks.push(new Simple(b.data, b.type));
+            this.blocks[this.uniqueId].setIds(b.previous, b.id, b.next);
+            this.blocks[this.uniqueId].selected = false;
+            this.uniqueId++;
+        });
+
+        this.selectedId = [0, 1];
+        this.blocks[0].selected = true;
+
+        console.log(this.blocks);
     }
     private unsetSelected(id: number): void {
         this.blocks[id].selected = false;

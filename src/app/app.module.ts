@@ -2,10 +2,12 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { FormsModule }      from '@angular/forms';
 import { HttpModule }       from '@angular/http';
+// import {Observable} from 'rxjs/Rx';
 
 import { AppComponent } from './app.component';
 
 import { MainComponent }       from '../alsu/main.component';
+import { MainService }       from '../alsu/main.service';
 import { CodeBlocksComponent } from '../alsu/code-blocks/code-blocks.component';
 import { BlockComponent }      from '../alsu/code-blocks/block/block.component';
 import { LeftSideComponent }   from '../alsu/left-side/left-side.component';
@@ -30,7 +32,7 @@ import { PopUpComponent }    from '../alsu/pop-up/pop-up.component';
         FormsModule,
         HttpModule
     ],
-    providers: [],
+    providers: [MainService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

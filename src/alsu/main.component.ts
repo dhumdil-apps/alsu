@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 import { CodeBlocks } from './code-blocks/code-blocks';
 import { Block } from './code-blocks/block/block';
+import { MainService } from './main.service';
 
 @Component({
     selector: 'main',
@@ -12,7 +14,7 @@ export class MainComponent {
 
     public main: any;
 
-    constructor() {
+    constructor(private mainService: MainService) {
         this.main = {
             "config": {
                 "activated": false,
@@ -28,8 +30,22 @@ export class MainComponent {
             "output": {
                 "data": []
             },
-            "list": new CodeBlocks()
+            "list": new CodeBlocks(),
+            "dummy-data": this.getData()
         };
+    }
+
+    /**
+     * Ajax - get
+     */
+    private getData(): void {
+        this.mainService
+            .getDummyData()
+            .subscribe(data => this.main['dummy-data'] = data[0]);
+    }
+
+    public setData(data: any): void {
+        this.main['list'].dummyData(data);
     }
 
     /**

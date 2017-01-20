@@ -1,7 +1,9 @@
 <div class="pop-up">
 
     <div class="title layout-row">
-        <h4>{{ type }}</h4>
+        <h5 (click)="setAssign()">assign</h5>
+        <h5 (click)="setWrite()">write</h5>
+        <h5 (click)="setDummyData()">dummy-data</h5>
         <div class="flex"></div>
         <span (click)="emitClose()">
             <i class="material-icons">close</i>
@@ -39,6 +41,13 @@
                 <block [block]="block[1]"></block>
                 <div class="output">{{ block[1].data }}</div>
             </div>
+        </div>
+
+        <div class="layout-column" *ngIf="type === 'dummy-data'">
+            <h4>Dummy data:</h4>
+            <p (click)="emitLoadData(dummyData['empty'])">- empty</p>
+            <p (click)="emitLoadData(dummyData['hello-world'])">- hello-world</p>
+            <p (click)="emitLoadData(dummyData['swap-two-variables-values'])">- swap-two-variables-values</p>
         </div>
 
     </div>

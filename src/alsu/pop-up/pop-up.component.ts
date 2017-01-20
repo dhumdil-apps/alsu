@@ -11,9 +11,11 @@ import { Simple } from '../code-blocks/block/types/simple';
 export class PopUpComponent {
 
     @Input() type: string;
+    @Input() dummyData: string;
     @Output() close = new EventEmitter();
+    @Output() load = new EventEmitter();
 
-    block: Block[];
+    public block: Block[];
 
     constructor() {
         this.block = [];
@@ -27,7 +29,20 @@ export class PopUpComponent {
         this.block[1].disabled = this.block[1].draggable = false;
     }
 
-    emitClose(): void {
+    public emitClose(): void {
         this.close.emit();
+    }
+    public emitLoadData(data: any): void {
+        this.load.emit(data);
+    }
+
+    public setAssign():void {
+        this.type = 'assign';
+    }
+    public setWrite():void {
+        this.type = 'write';
+    }
+    public setDummyData():void {
+        this.type = 'dummy-data';
     }
 }

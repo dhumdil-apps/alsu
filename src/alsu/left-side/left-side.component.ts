@@ -10,6 +10,7 @@ import {Block} from "../code-blocks/block/block";
 export class LeftSideComponent {
 
     @Input() activated: any;
+    @Input() dummyData: any;
     @Output() add = new EventEmitter();
     @Output() help = new EventEmitter();
 
