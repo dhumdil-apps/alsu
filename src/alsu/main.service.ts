@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class MainService {
 
-    private url = '/database/dummy_data.json';  // URL to web API
+    private url = 'alsu/dummy_data.json';  // URL to web API
 
     constructor (private http: Http) {}
     getDummyData (): Observable<Array<any>> {
