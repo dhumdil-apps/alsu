@@ -2,7 +2,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { FormsModule }      from '@angular/forms';
 import { HttpModule }       from '@angular/http';
-// import {Observable} from 'rxjs/Rx';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { AppComponent } from './app.component';
 
@@ -32,7 +32,7 @@ import { PopUpComponent }    from '../alsu/pop-up/pop-up.component';
         FormsModule,
         HttpModule
     ],
-    providers: [MainService],
+    providers: [CookieService, MainService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

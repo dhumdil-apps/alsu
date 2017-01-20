@@ -5,7 +5,8 @@ export class CodeBlocks {
 
     public blocks: Block[];
     public selectedId: any; // [array-index, unique-id]
-    private uniqueId: number;
+    public uniqueId: number;
+
     constructor() {
         this.init();
     }
@@ -153,7 +154,6 @@ export class CodeBlocks {
 
         console.log(this.blocks);
     }
-
     private dummyData(data: any): void {
         console.log(data);
 

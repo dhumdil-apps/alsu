@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
-import { CodeBlocks } from './code-blocks/code-blocks';
-import { Block } from './code-blocks/block/block';
+import { Component }     from '@angular/core';
+import { CookieService } from 'angular2-cookie/core';
+
+import { CodeBlocks }  from './code-blocks/code-blocks';
+import { Block }       from './code-blocks/block/block';
 import { MainService } from './main.service';
+import {unescape} from "querystring";
 
 @Component({
     selector: 'main',
@@ -14,7 +16,7 @@ export class MainComponent {
 
     public main: any;
 
-    constructor(private mainService: MainService) {
+    constructor(private mainService: MainService, private _cookieService:CookieService) {
         this.main = {
             "config": {
                 "activated": false,
@@ -33,19 +35,34 @@ export class MainComponent {
             "list": new CodeBlocks(),
             "dummy-data": this.getData()
         };
+        if (this.getCookie('list')) {
+            console.log("cookies in action...", this.getCookie('list'));
+            this.main['list'].blocks = this.getCookie('list')['blocks'];
+            this.main['list'].selectedId = this.getCookie('list')['selectedId'];
+            this.main['list'].uniqueId = this.getCookie('list')['uniqueId'];
+        }
     }
 
     /**
-     * Ajax - get
+     * Ajax
      */
     private getData(): void {
         this.mainService
             .getDummyData()
             .subscribe(data => this.main['dummy-data'] = data[0]);
     }
-
     public setData(data: any): void {
         this.main['list'].dummyData(data);
+    }
+
+    /**
+     * Cookies
+     */
+    public getCookie(key: string){
+        return this._cookieService.getObject(key);
+    }
+    public putCookie(key: string, value: Object){
+        return this._cookieService.putObject(key, value);
     }
 
     /**
@@ -61,11 +78,13 @@ export class MainComponent {
         this.main['config'].run = "play_arrow";
         this.main['config'].activated = false;
         this.main['list'].select(1);
+        console.log(this.getCookie('list'));
     }
     private activateConfig(): void {
         this.main['config'].run = "stop";
         this.main['config'].activated = true;
         this.main['output'].data = this.main['list'].compile();
+        this.putCookie('list', this.main['list']);
     }
 
     /**
