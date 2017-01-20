@@ -284,7 +284,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MainService = (function () {
     function MainService(http) {
         this.http = http;
-        this.url = 'database/dummy_data.json'; // URL to web API
+        this.url = 'alsu/dummy_data.json'; // URL to web API
     }
     MainService.prototype.getDummyData = function () {
         return this.http.get(this.url)
