@@ -1,5 +1,5 @@
 import { Block } from './block/block';
-import { Simple } from './block/types/simple';
+import { Single } from './block/types/single';
 
 export class CodeBlocks {
 
@@ -139,10 +139,10 @@ export class CodeBlocks {
         // total: 2
         this.uniqueId = 2;
         // 1st
-        this.blocks.push(new Simple('BEGIN', 'begin'));
+        this.blocks.push(new Single('BEGIN', 'begin'));
         this.blocks[0].setIds(0, 1, -1);
         // 2nd
-        this.blocks.push(new Simple('END', 'end'));
+        this.blocks.push(new Single('END', 'end'));
         this.blocks[1].setIds(1, -1, 0);
 
         this.blocks.forEach(b => {
@@ -154,14 +154,14 @@ export class CodeBlocks {
 
         console.log(this.blocks);
     }
-    private dummyData(data: any): void {
-        console.log(data);
+    private setData(data: any): any {
+        // console.log(data);
 
         this.blocks = [];
         this.uniqueId = 0;
 
         data.forEach(b => {
-            this.blocks.push(new Simple(b.data, b.type));
+            this.blocks.push(new Single(b.data, b.type));
             this.blocks[this.uniqueId].setIds(b.previous, b.id, b.next);
             this.blocks[this.uniqueId].selected = false;
             this.uniqueId++;
@@ -170,7 +170,8 @@ export class CodeBlocks {
         this.selectedId = [0, 1];
         this.blocks[0].selected = true;
 
-        console.log(this.blocks);
+        // console.log(this.blocks);
+        return {};
     }
     private unsetSelected(id: number): void {
         this.blocks[id].selected = false;

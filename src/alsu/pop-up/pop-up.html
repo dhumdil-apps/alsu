@@ -1,55 +1,81 @@
-<div class="pop-up">
+<div class="pop-up"
+     [ngClass]="{
+         'debug-mode': !mode['help-active']
+     }">
 
-    <div class="title layout-row">
-        <h5 (click)="setAssign()">assign</h5>
-        <h5 (click)="setWrite()">write</h5>
-        <h5 (click)="setDummyData()">dummy-data</h5>
-        <div class="flex"></div>
-        <span (click)="emitClose()">
-            <i class="material-icons">close</i>
-        </span>
+    <!-- Backdrop-->
+    <div class="backdrop" (click)="emitClose()"></div>
+    <!-- Help -->
+    <div class="help-mode" *ngIf="mode['help-active']">
+        <div class="title layout-row">
+            <span (click)="emitClose()">
+                <i class="material-icons">close</i>
+            </span>
+            <div class="flex"></div>
+            <h5 (click)="setType('assign')">assign</h5>
+            <h5 (click)="setType('write')">write</h5>
+        </div>
+
+        <div class="content layout-column">
+            <div>
+                <div *ngIf="mode['popup'].type === 'assign'">
+                    <h3>assign</h3>
+                    <p>This type of block is used to declare variables, and do some operations.</p>
+                    <h4 (click)="showText()">Rules?</h4>
+                    <div *ngIf="text">
+                        <p>- Every single variable and operation must be separated with spaces (' ')</p>
+                        <p>- There always must be a single equals-sign ('=')</p>
+                        <p>- On left side of equals-sign must be a single variable</p>
+                        <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>
+                    </div>
+                </div>
+                <div *ngIf="mode['popup'].type === 'write'">
+                    <h3>write</h3>
+                    <p>This type of block is used print data to output</p>
+                    <h4 (click)="showText()">Rules?</h4>
+                    <div *ngIf="text">
+                        <p>- Everything inside this block will be displayed on output screen</p>
+                        <p>- To display a variable value:</p>
+                        <p>-- must be declared</p>
+                        <p>-- no other text than the variable itself must be inside this block</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="content layout-column">
-
-        <div>
-            <div *ngIf="type === 'assign'">
-                <p>This type of block is used to declare variables, and do some operations.</p>
-                <h4>Rules</h4>
-                <p>- Every single variable and operation must be separated with spaces (' ')</p>
-                <p>- There always must be a single equals-sign ('=')</p>
-                <p>- On left side of equals-sign must be a single variable</p>
-                <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>
-            </div>
-            <div *ngIf="type === 'write'">
-                <p>This type of block is used print data to output</p>
-                <h4>Rules</h4>
-                <p>- Everything inside this block will be displayed on output screen</p>
-                <p>- To display a variable value:</p>
-                <p>-- must be declared</p>
-                <p>-- no other text than the variable itself must be inside this block</p>
-            </div>
+    <!-- Setting -->
+    <div class="setting-mode" *ngIf="mode['setting-active']">
+        <div class="title layout-row">
+            <h5 (click)="setType('ajax')">ajax</h5>
+            <h5 (click)="setType('cookies')">cookies</h5>
+            <div class="flex"></div>
+            <span (click)="emitClose()">
+                <i class="material-icons">close</i>
+            </span>
         </div>
 
-        <div class="layout-column" *ngIf="type === 'assign'">
-            <div class="block layout-row">
-                <block [block]="block[0]"></block>
+        <div class="content layout-column">
+            <div>
+                <div *ngIf="mode['popup'].type === 'ajax'">
+                    <h3>ajax</h3>
+                    <p>Use ajax to load some dummy data.</p>
+                    <h4 (click)="getDummyData()">Try it!</h4>
+                    <div *ngIf="data">
+                        <h4 (click)="emitAjax(0)">- Empty?</h4>
+                        <h4 (click)="emitAjax(1)">- Hello World?</h4>
+                        <h4 (click)="emitAjax(2)">- Swap Two Variable Values?</h4>
+                    </div>
+                </div>
+                <div *ngIf="mode['popup'].type === 'cookies'">
+                    <h3>cookies</h3>
+                    <p>Use cookies to save current state of the diagram.</p>
+                    <h4 (click)="setCookies()">Try it!</h4>
+                    <div *ngIf="text">
+                        <p>- is it working? Refresh the page and see your work being saved!</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="layout-column" *ngIf="type === 'write'">
-            <div class="block layout-row">
-                <block [block]="block[1]"></block>
-                <div class="output">{{ block[1].data }}</div>
-            </div>
-        </div>
-
-        <div class="layout-column" *ngIf="type === 'dummy-data'">
-            <h4>Dummy data:</h4>
-            <p (click)="emitLoadData(dummyData['empty'])">- empty</p>
-            <p (click)="emitLoadData(dummyData['hello-world'])">- hello-world</p>
-            <p (click)="emitLoadData(dummyData['swap-two-variables-values'])">- swap-two-variables-values</p>
-        </div>
-
     </div>
 
 </div>

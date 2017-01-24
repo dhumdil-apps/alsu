@@ -1,30 +1,44 @@
 webpackJsonp([0,3],{
 
-/***/ 200:
+/***/ 299:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block__ = __webpack_require__(300);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Simple; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Block; });
+var Block = (function () {
+    function Block() {
+    }
+    return Block;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.js.map
+
+/***/ },
+
+/***/ 300:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block__ = __webpack_require__(299);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Single; });
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 
-var Simple = (function (_super) {
-    __extends(Simple, _super);
-    function Simple(data, type) {
+var Single = (function (_super) {
+    __extends(Single, _super);
+    function Single(data, type) {
         _super.call(this);
         this.setType(type);
         this.setData(data);
     }
-    Simple.prototype.setIds = function (previous, id, next) {
+    Single.prototype.setIds = function (previous, id, next) {
         this.previous = previous;
         this.id = id;
         this.next = next;
     };
-    Simple.prototype.setData = function (data) {
+    Single.prototype.setData = function (data) {
         try {
             this.data = data;
         }
@@ -32,8 +46,7 @@ var Simple = (function (_super) {
             console.log(err);
         }
     };
-    // types: read, write, assign, begin, end....
-    Simple.prototype.setType = function (type) {
+    Single.prototype.setType = function (type) {
         switch (type) {
             case 'assign':
                 this.type = 'assign';
@@ -66,23 +79,9 @@ var Simple = (function (_super) {
             default: break;
         }
     };
-    return Simple;
+    return Single;
 }(__WEBPACK_IMPORTED_MODULE_0__block__["a" /* Block */]));
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/simple.js.map
-
-/***/ },
-
-/***/ 300:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Block; });
-var Block = (function () {
-    function Block() {
-    }
-    return Block;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.js.map
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/single.js.map
 
 /***/ },
 
@@ -90,7 +89,284 @@ var Block = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_types_simple__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(641);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PopUpService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var PopUpService = (function () {
+    function PopUpService(http) {
+        this.http = http;
+        // URL to web API
+        this.url = 'alsu/pop-up/dummy-data.json';
+    }
+    PopUpService.prototype.getData = function () {
+        return this.http.get(this.url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    PopUpService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
+    PopUpService.prototype.handleError = function (error) {
+        var errMsg;
+        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Response */]) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+    };
+    PopUpService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+    ], PopUpService);
+    return PopUpService;
+    var _a;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/pop-up.service.js.map
+
+/***/ },
+
+/***/ 343:
+/***/ function(module, exports) {
+
+module.exports = ".side-panel_active {\n  position: relative;\n  height: calc(100% - 50px);\n  width: 300px;\n  background-color: #336699;\n}\n.side-panel_active__header {\n  margin-bottom: 50px;\n}\n.side-panel_active__header__title {\n  width: 250px;\n  padding: 13px 0;\n  text-transform: uppercase;\n  font-size: 24px;\n}\n.side-panel_active__header span {\n  position: relative;\n  color: rgba(255, 255, 255, 0.3);\n  background-color: #333333;\n  -webkit-transition: all 150ms ease-in-out;\n  transition: all 150ms ease-in-out;\n}\n.side-panel_active__header:hover span {\n  color: #eeeeee;\n}\n.side-panel_inactive {\n  position: relative;\n  height: 100%;\n  width: 50px;\n  cursor: pointer;\n  background-color: #336699;\n  -webkit-transition: all 150ms ease-in-out;\n  transition: all 150ms ease-in-out;\n}\n.side-panel_inactive:hover {\n  background-color: rgba(33, 66, 99, 0.5);\n}\n.side-panel_inactive:hover span {\n  color: #eeeeee;\n}\n.side-panel_inactive:active {\n  background-color: rgba(33, 66, 99, 0.9);\n}\n.side-panel_inactive__title {\n  position: relative;\n  top: 0;\n  padding: 0 8px 0 18px;\n  font-size: 24px;\n}\n.side-panel_inactive__button {\n  top: calc(50% - 50px);\n}\n"
+
+/***/ },
+
+/***/ 350:
+/***/ function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 350;
+
+
+/***/ },
+
+/***/ 351:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfills_ts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_module__ = __webpack_require__(469);
+
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["enableProdMode"])();
+}
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/main.js.map
+
+/***/ },
+
+/***/ 459:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__block__ = __webpack_require__(299);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BlockComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BlockComponent = (function () {
+    function BlockComponent() {
+        this.remove = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    BlockComponent.prototype.ngAfterViewInit = function () {
+        var canvas = this.myBlock.nativeElement;
+        this.context = canvas.getContext("2d");
+        var ctx = this.context;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (this.block.type === "begin" || this.block.type === "end") {
+            // rounded rectangle
+            ctx.lineTo(175, 49);
+            ctx.arc(25, 25, 24, Math.PI / 2, Math.PI * (1.5), false);
+            ctx.lineTo(175, 1);
+            ctx.arc(175, 25, 24, Math.PI * (1.5), Math.PI / 2, false);
+        }
+        else if (this.block.type === "assign") {
+            // rectangle
+            ctx.moveTo(0, 1);
+            ctx.lineTo(199, 1);
+            ctx.lineTo(199, 49);
+            ctx.lineTo(1, 49);
+            ctx.lineTo(1, 1);
+        }
+        else if (this.block.type === "write") {
+            // parallelogram
+            ctx.moveTo(25, 1);
+            ctx.lineTo(199, 1);
+            ctx.lineTo(175, 49);
+            ctx.lineTo(1, 49);
+            ctx.lineTo(25, 1);
+        }
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.stroke();
+    };
+    BlockComponent.prototype.emitRemove = function () {
+        if (this.block.id > 0) {
+            this.remove.emit();
+        }
+    };
+    BlockComponent.prototype.clearText = function () {
+        this.block.data = '';
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__block__["a" /* Block */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__block__["a" /* Block */]) === 'function' && _a) || Object)
+    ], BlockComponent.prototype, "block", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], BlockComponent.prototype, "remove", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myBlock"), 
+        __metadata('design:type', Object)
+    ], BlockComponent.prototype, "myBlock", void 0);
+    BlockComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'block',
+            template: __webpack_require__(630),
+            styles: [__webpack_require__(624)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], BlockComponent);
+    return BlockComponent;
+    var _a;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.component.js.map
+
+/***/ },
+
+/***/ 460:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CodeBlocksComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CodeBlocksComponent = (function () {
+    function CodeBlocksComponent() {
+        this.select = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.remove = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    /**
+     * Events
+     */
+    CodeBlocksComponent.prototype.emitSelect = function (block) {
+        this.select.emit(block);
+    };
+    CodeBlocksComponent.prototype.emitRemove = function () {
+        this.remove.emit();
+    };
+    /**
+     * Drag'n Drop
+     */
+    CodeBlocksComponent.prototype.dragStart = function (id) {
+        this.codeblocks.draggingId = id;
+        this.codeblocks.dragging = true;
+    };
+    CodeBlocksComponent.prototype.dragEnd = function () {
+        if (this.codeblocks.list.selectedId[1] !== this.codeblocks.draggingId) {
+            this.codeblocks.list.move(this.codeblocks.draggingId);
+        }
+        this.codeblocks.dragging = false;
+    };
+    CodeBlocksComponent.prototype.dragOver = function (ev, id) {
+        if (id !== this.codeblocks.list.selectedId[1]) {
+            if (id > 0) {
+                ev.preventDefault();
+                this.codeblocks.list.select(id);
+            }
+        }
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', Object)
+    ], CodeBlocksComponent.prototype, "codeblocks", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], CodeBlocksComponent.prototype, "select", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], CodeBlocksComponent.prototype, "remove", void 0);
+    CodeBlocksComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'code-blocks',
+            template: __webpack_require__(631),
+            styles: [__webpack_require__(625)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], CodeBlocksComponent);
+    return CodeBlocksComponent;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/code-blocks.component.js.map
+
+/***/ },
+
+/***/ 461:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_types_single__ = __webpack_require__(300);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CodeBlocks; });
 
 var CodeBlocks = (function () {
@@ -205,10 +481,10 @@ var CodeBlocks = (function () {
         // total: 2
         this.uniqueId = 2;
         // 1st
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('BEGIN', 'begin'));
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_single__["a" /* Single */]('BEGIN', 'begin'));
         this.blocks[0].setIds(0, 1, -1);
         // 2nd
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */]('END', 'end'));
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_single__["a" /* Single */]('END', 'end'));
         this.blocks[1].setIds(1, -1, 0);
         this.blocks.forEach(function (b) {
             b.selected = false;
@@ -217,20 +493,21 @@ var CodeBlocks = (function () {
         this.blocks[0].selected = true;
         console.log(this.blocks);
     };
-    CodeBlocks.prototype.dummyData = function (data) {
+    CodeBlocks.prototype.setData = function (data) {
+        // console.log(data);
         var _this = this;
-        console.log(data);
         this.blocks = [];
         this.uniqueId = 0;
         data.forEach(function (b) {
-            _this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_simple__["a" /* Simple */](b.data, b.type));
+            _this.blocks.push(new __WEBPACK_IMPORTED_MODULE_0__block_types_single__["a" /* Single */](b.data, b.type));
             _this.blocks[_this.uniqueId].setIds(b.previous, b.id, b.next);
             _this.blocks[_this.uniqueId].selected = false;
             _this.uniqueId++;
         });
         this.selectedId = [0, 1];
         this.blocks[0].selected = true;
-        console.log(this.blocks);
+        // console.log(this.blocks);
+        return {};
     };
     CodeBlocks.prototype.unsetSelected = function (id) {
         this.blocks[id].selected = false;
@@ -254,411 +531,14 @@ var CodeBlocks = (function () {
 
 /***/ },
 
-/***/ 302:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(646);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(645);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return MainService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var MainService = (function () {
-    function MainService(http) {
-        this.http = http;
-        this.url = 'alsu/dummy_data.json'; // URL to web API
-    }
-    MainService.prototype.getDummyData = function () {
-        return this.http.get(this.url)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    MainService.prototype.extractData = function (res) {
-        var body = res.json();
-        return body.data || {};
-    };
-    MainService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
-        var errMsg;
-        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Response */]) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
-    };
-    MainService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
-    ], MainService);
-    return MainService;
-    var _a;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/main.service.js.map
-
-/***/ },
-
-/***/ 349:
-/***/ function(module, exports) {
-
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 349;
-
-
-/***/ },
-
-/***/ 350:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfills_ts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(438);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(469);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_module__ = __webpack_require__(468);
-
-
-
-
-
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["enableProdMode"])();
-}
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/main.js.map
-
-/***/ },
-
-/***/ 458:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__block__ = __webpack_require__(300);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return BlockComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var BlockComponent = (function () {
-    function BlockComponent() {
-        this.remove = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-    }
-    BlockComponent.prototype.ngAfterViewInit = function () {
-        var canvas = this.myBlock.nativeElement;
-        this.context = canvas.getContext("2d");
-        var ctx = this.context;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        if (this.block.type === "begin" || this.block.type === "end") {
-            // rounded rectangle
-            ctx.lineTo(175, 49);
-            ctx.arc(25, 25, 24, Math.PI / 2, Math.PI * (1.5), false);
-            ctx.lineTo(175, 1);
-            ctx.arc(175, 25, 24, Math.PI * (1.5), Math.PI / 2, false);
-        }
-        else if (this.block.type === "assign") {
-            // rectangle
-            ctx.moveTo(0, 1);
-            ctx.lineTo(199, 1);
-            ctx.lineTo(199, 49);
-            ctx.lineTo(1, 49);
-            ctx.lineTo(1, 1);
-        }
-        else if (this.block.type === "write") {
-            // parallelogram
-            ctx.moveTo(25, 1);
-            ctx.lineTo(199, 1);
-            ctx.lineTo(175, 49);
-            ctx.lineTo(1, 49);
-            ctx.lineTo(25, 1);
-        }
-        ctx.fillStyle = "#fff";
-        ctx.fill();
-        ctx.stroke();
-    };
-    BlockComponent.prototype.emitRemove = function () {
-        if (this.block.id > 0) {
-            this.remove.emit();
-        }
-    };
-    BlockComponent.prototype.clearText = function () {
-        this.block.data = '';
-    };
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__block__["a" /* Block */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__block__["a" /* Block */]) === 'function' && _a) || Object)
-    ], BlockComponent.prototype, "block", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], BlockComponent.prototype, "remove", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myBlock"), 
-        __metadata('design:type', Object)
-    ], BlockComponent.prototype, "myBlock", void 0);
-    BlockComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'block',
-            template: __webpack_require__(633),
-            styles: [__webpack_require__(624)]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], BlockComponent);
-    return BlockComponent;
-    var _a;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/block.component.js.map
-
-/***/ },
-
-/***/ 459:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks__ = __webpack_require__(301);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CodeBlocksComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var CodeBlocksComponent = (function () {
-    function CodeBlocksComponent() {
-        this.select = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.remove = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-    }
-    /**
-     * Events
-     */
-    CodeBlocksComponent.prototype.emitSelect = function (block) {
-        this.select.emit(block);
-    };
-    CodeBlocksComponent.prototype.emitRemove = function () {
-        this.remove.emit();
-    };
-    /**
-     * Drag'n Drop
-     */
-    CodeBlocksComponent.prototype.dragStart = function (id) {
-        this.codeblocks.draggingId = id;
-        this.codeblocks.dragging = true;
-    };
-    CodeBlocksComponent.prototype.dragEnd = function () {
-        if (this.list.selectedId[1] !== this.codeblocks.draggingId) {
-            this.list.move(this.codeblocks.draggingId);
-        }
-        this.codeblocks.dragging = false;
-    };
-    CodeBlocksComponent.prototype.dragOver = function (ev, id) {
-        if (id !== this.list.selectedId[1]) {
-            if (id > 0) {
-                ev.preventDefault();
-                this.list.select(id);
-            }
-        }
-    };
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__code_blocks__["a" /* CodeBlocks */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__code_blocks__["a" /* CodeBlocks */]) === 'function' && _a) || Object)
-    ], CodeBlocksComponent.prototype, "list", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], CodeBlocksComponent.prototype, "codeblocks", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], CodeBlocksComponent.prototype, "select", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], CodeBlocksComponent.prototype, "remove", void 0);
-    CodeBlocksComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'code-blocks',
-            template: __webpack_require__(634),
-            styles: [__webpack_require__(625)]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], CodeBlocksComponent);
-    return CodeBlocksComponent;
-    var _a;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/code-blocks.component.js.map
-
-/***/ },
-
-/***/ 460:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__ = __webpack_require__(200);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AlsuInputComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var AlsuInputComponent = (function () {
-    function AlsuInputComponent() {
-        this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.help = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.blocks = [];
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('', 'assign'));
-        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('', 'write'));
-        this.blocks.forEach(function (b) {
-            b.disabled = b.draggable = false;
-        });
-    }
-    AlsuInputComponent.prototype.emitAdd = function (block) {
-        try {
-            this.add.emit(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */](block.data, block.type));
-        }
-        catch (err) {
-            console.log(err.message);
-        }
-    };
-    AlsuInputComponent.prototype.emitHelp = function (type) {
-        this.help.emit(type);
-    };
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], AlsuInputComponent.prototype, "add", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], AlsuInputComponent.prototype, "help", void 0);
-    AlsuInputComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'alsu-input',
-            template: __webpack_require__(635),
-            styles: [__webpack_require__(626)]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AlsuInputComponent);
-    return AlsuInputComponent;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/alsu-input.component.js.map
-
-/***/ },
-
-/***/ 461:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LeftSideComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var LeftSideComponent = (function () {
-    function LeftSideComponent() {
-        this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.help = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-    }
-    LeftSideComponent.prototype.emitAdd = function (block) {
-        this.add.emit(block);
-    };
-    LeftSideComponent.prototype.emitHelp = function (type) {
-        this.help.emit(type);
-    };
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], LeftSideComponent.prototype, "activated", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], LeftSideComponent.prototype, "dummyData", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], LeftSideComponent.prototype, "add", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], LeftSideComponent.prototype, "help", void 0);
-    LeftSideComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'left-side',
-            template: __webpack_require__(636),
-            styles: [__webpack_require__(627)]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], LeftSideComponent);
-    return LeftSideComponent;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/left-side.component.js.map
-
-/***/ },
-
 /***/ 462:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__code_blocks_code_blocks__ = __webpack_require__(301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_service__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__code_blocks_code_blocks__ = __webpack_require__(461);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return MainComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -672,126 +552,127 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MainComponent = (function () {
-    function MainComponent(mainService, _cookieService) {
-        this.mainService = mainService;
+    function MainComponent(_cookieService) {
         this._cookieService = _cookieService;
         this.main = {
-            "config": {
-                "activated": false,
-                "run": "play_arrow",
-                "help": false,
-                "helpType": ""
-            },
-            "code-blocks": {
-                "input": false,
-                "dragging": false,
-                "draggingId": 0
-            },
-            "output": {
-                "data": []
-            },
-            "list": new __WEBPACK_IMPORTED_MODULE_2__code_blocks_code_blocks__["a" /* CodeBlocks */](),
-            "dummy-data": this.getData()
+            'mode': {},
+            'code-blocks': {},
+            'input': {},
+            'output': {}
         };
-        if (this.getCookie('list')) {
-            console.log("cookies in action...", this.getCookie('list'));
-            this.main['list'].blocks = this.getCookie('list')['blocks'];
-            this.main['list'].selectedId = this.getCookie('list')['selectedId'];
-            this.main['list'].uniqueId = this.getCookie('list')['uniqueId'];
-        }
+        this.init();
     }
-    /**
-     * Ajax
-     */
-    MainComponent.prototype.getData = function () {
-        var _this = this;
-        this.mainService
-            .getDummyData()
-            .subscribe(function (data) { return _this.main['dummy-data'] = data[0]; });
-    };
-    MainComponent.prototype.setData = function (data) {
-        this.main['list'].dummyData(data);
-    };
-    /**
-     * Cookies
-     */
-    MainComponent.prototype.getCookie = function (key) {
-        return this._cookieService.getObject(key);
-    };
-    MainComponent.prototype.putCookie = function (key, value) {
-        return this._cookieService.putObject(key, value);
-    };
-    /**
-     * Compile Event
-     */
-    MainComponent.prototype.compileEvent = function () {
-        this.isActivatedConfig() ? this.deactivateConfig() : this.activateConfig();
-    };
-    MainComponent.prototype.isActivatedConfig = function () {
-        return this.main['config'].activated;
-    };
-    MainComponent.prototype.deactivateConfig = function () {
-        this.main['config'].run = "play_arrow";
-        this.main['config'].activated = false;
-        this.main['list'].select(1);
-        console.log(this.getCookie('list'));
-    };
-    MainComponent.prototype.activateConfig = function () {
-        this.main['config'].run = "stop";
-        this.main['config'].activated = true;
-        this.main['output'].data = this.main['list'].compile();
-        this.putCookie('list', this.main['list']);
+    // Initialize
+    MainComponent.prototype.init = function () {
+        // Mode
+        this.main['mode'] = {
+            'edit-active': true,
+            'debug-active': false,
+            'help-active': false,
+            'setting-active': false,
+            'popup': {
+                'active': false,
+                'type': ''
+            }
+        };
+        // Code-Blocks
+        this.main['code-blocks'] = {
+            'list': new __WEBPACK_IMPORTED_MODULE_2__code_blocks_code_blocks__["a" /* CodeBlocks */](),
+            'output-data': [],
+            'input': false,
+            'dragging': false,
+            'draggingId': 0
+        };
+        // Load cookies if there are some...
+        if (this._cookieService.getObject('blocks') && this._cookieService.getObject('unique-id')) {
+            this.main['code-blocks']['list']['blocks'] = this._cookieService.getObject('blocks');
+            this.main['code-blocks']['list']['uniqueId'] = this._cookieService.getObject('unique-id');
+            this.main['code-blocks']['list'].select(1);
+        }
     };
     /**
-     * Add Event
+     *  MODES
      */
+    // Debug
+    MainComponent.prototype.activateDebugMode = function () {
+        this.main['mode']['debug-active'] = true;
+        this.main['mode']['edit-active'] = false;
+        this.openPopup('', '');
+        this.main['code-blocks']['output-data'] = this.main['code-blocks']['list'].compile();
+    };
+    // Edit
+    MainComponent.prototype.activateEditMode = function () {
+        this.main['mode']['edit-active'] = true;
+        this.main['mode']['debug-active'] = false;
+        this.main['code-blocks']['list'].select(1);
+    };
+    // Pop-Up
+    MainComponent.prototype.openPopup = function (mode, type) {
+        this.main['mode']['popup'].active = true;
+        this.main['mode']['popup'].type = type;
+        if (mode !== '') {
+            this.main['mode'][mode] = true;
+        }
+    };
+    MainComponent.prototype.closePopup = function () {
+        if (this.main['mode']['setting-active']) {
+            this.main['mode']['setting-active'] = false;
+        }
+        else if (this.main['mode']['help-active']) {
+            this.main['mode']['help-active'] = false;
+            this.main['mode']['popup'].active = false;
+        }
+        else {
+            this.activateEditMode();
+            this.main['mode']['popup'].active = false;
+        }
+    };
+    /**
+     * EVENTS
+     */
+    // Add
     MainComponent.prototype.addEvent = function (block) {
-        this.main['list'].add(block);
+        this.main['code-blocks']['list'].add(block);
     };
-    /**
-     * Remove Event
-     */
+    // Remove
     MainComponent.prototype.removeEvent = function () {
-        this.main['list'].remove();
+        this.main['code-blocks']['list'].remove();
     };
-    /**
-     * Select Event
-     */
+    // Select
     MainComponent.prototype.selectEvent = function (block) {
         if (!block.selected && block.id !== 0) {
             if (block.id === -1) {
-                this.main['list'].select(1);
+                this.main['code-blocks']['list'].select(1);
             }
             else {
-                this.main['list'].select(block.id);
+                this.main['code-blocks']['list'].select(block.id);
             }
         }
     };
-    /**
-     * Help Event
-     */
-    MainComponent.prototype.helpEvent = function (type) {
-        this.main['config'].helpType = type;
-        this.main['config'].help = true;
+    // Help
+    MainComponent.prototype.helpEvent = function () {
+        this.openPopup('help-active', 'assign');
     };
-    /**
-     * Pop-up Event
-     */
-    MainComponent.prototype.popUpEvent = function () {
-        this.main['config'].help = false;
+    MainComponent.prototype.settingEvent = function () {
+        this.openPopup('setting-active', 'ajax');
+    };
+    MainComponent.prototype.setDataEvent = function (data) {
+        this.main['code-blocks']['list'].setData(data);
+        this.closePopup();
+        this.main['mode']['popup'].active = false;
+        this.activateEditMode();
     };
     MainComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'main',
-            template: __webpack_require__(637),
-            styles: [__webpack_require__(628)]
+            template: __webpack_require__(632),
+            styles: [__webpack_require__(626)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__main_service__["a" /* MainService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__main_service__["a" /* MainService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__["CookieService"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__["CookieService"]) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__["CookieService"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_angular2_cookie_core__["CookieService"]) === 'function' && _a) || Object])
     ], MainComponent);
     return MainComponent;
-    var _a, _b;
+    var _a;
 }());
 //# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/main.component.js.map
 
@@ -802,7 +683,9 @@ var MainComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pop_up_service__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_cookie_core__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_cookie_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_cookie_core__);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PopUpComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -815,64 +698,146 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PopUpComponent = (function () {
-    function PopUpComponent() {
+    function PopUpComponent(_cookieService, popupService) {
+        this._cookieService = _cookieService;
+        this.popupService = popupService;
+        this.ajax = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.load = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.block = [];
-        // assign
-        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('x = 1', 'assign'));
-        this.block[0].disabled = this.block[0].draggable = false;
-        // write
-        this.block.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_simple__["a" /* Simple */]('Hello World!', 'write'));
-        this.block[1].disabled = this.block[1].draggable = false;
+        this.text = false;
     }
+    PopUpComponent.prototype.showText = function () {
+        this.text = true;
+    };
+    PopUpComponent.prototype.setType = function (type) {
+        this.mode['popup'].type = type;
+    };
+    // Ajax
+    PopUpComponent.prototype.getDummyData = function () {
+        var _this = this;
+        this.popupService
+            .getData()
+            .subscribe(function (data) { return _this.data = data[0]; });
+        // this.ajax.emit(this.data);
+    };
+    // Cookies
+    PopUpComponent.prototype.setCookies = function () {
+        this.showText();
+        this._cookieService.putObject('blocks', this.blocks);
+        this._cookieService.putObject('unique-id', this.uniqueId);
+    };
+    // Events
     PopUpComponent.prototype.emitClose = function () {
         this.close.emit();
     };
-    PopUpComponent.prototype.emitLoadData = function (data) {
-        this.load.emit(data);
-    };
-    PopUpComponent.prototype.setAssign = function () {
-        this.type = 'assign';
-    };
-    PopUpComponent.prototype.setWrite = function () {
-        this.type = 'write';
-    };
-    PopUpComponent.prototype.setDummyData = function () {
-        this.type = 'dummy-data';
+    PopUpComponent.prototype.emitAjax = function (index) {
+        switch (index) {
+            case 0:
+                this.ajax.emit(this.data['empty']);
+                break;
+            case 1:
+                this.ajax.emit(this.data['hello-world']);
+                break;
+            case 2:
+                this.ajax.emit(this.data['swap-two-variables-values']);
+                break;
+            default: break;
+        }
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', String)
-    ], PopUpComponent.prototype, "type", void 0);
+        __metadata('design:type', Object)
+    ], PopUpComponent.prototype, "mode", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', String)
-    ], PopUpComponent.prototype, "dummyData", void 0);
+        __metadata('design:type', Object)
+    ], PopUpComponent.prototype, "blocks", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', Object)
+    ], PopUpComponent.prototype, "uniqueId", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], PopUpComponent.prototype, "ajax", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
         __metadata('design:type', Object)
     ], PopUpComponent.prototype, "close", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
-        __metadata('design:type', Object)
-    ], PopUpComponent.prototype, "load", void 0);
     PopUpComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'pop-up',
-            template: __webpack_require__(638),
-            styles: [__webpack_require__(629)]
+            template: __webpack_require__(633),
+            styles: [__webpack_require__(627)]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_cookie_core__["CookieService"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2_angular2_cookie_core__["CookieService"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__pop_up_service__["a" /* PopUpService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__pop_up_service__["a" /* PopUpService */]) === 'function' && _b) || Object])
     ], PopUpComponent);
     return PopUpComponent;
+    var _a, _b;
 }());
 //# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/pop-up.component.js.map
 
 /***/ },
 
 /***/ 464:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_single__ = __webpack_require__(300);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AlsuInputComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+// import { Double } from "../../code-blocks/block/types/double";
+var AlsuInputComponent = (function () {
+    function AlsuInputComponent() {
+        this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.blocks = [];
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_single__["a" /* Single */]('', 'assign'));
+        this.blocks.push(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_single__["a" /* Single */]('', 'write'));
+        this.blocks.forEach(function (b) {
+            b.disabled = b.draggable = false;
+        });
+        // this.blocks.push(new Double('', 'if-else'));
+        // this.blocks.push(new Double('', 'while'));
+    }
+    AlsuInputComponent.prototype.emitAdd = function (block) {
+        try {
+            this.add.emit(new __WEBPACK_IMPORTED_MODULE_1__code_blocks_block_types_single__["a" /* Single */](block.data, block.type));
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], AlsuInputComponent.prototype, "add", void 0);
+    AlsuInputComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'alsu-input',
+            template: __webpack_require__(634),
+            styles: [__webpack_require__(628)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AlsuInputComponent);
+    return AlsuInputComponent;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/alsu-input.component.js.map
+
+/***/ },
+
+/***/ 465:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -896,7 +861,7 @@ var AlsuOutputComponent = (function () {
     };
     // demo only (eval is evil)
     AlsuOutputComponent.prototype.evaluateExpression = function () {
-        var blocks = this.output.data;
+        var blocks = this.output;
         var result = [];
         var geval = eval;
         var param = { "key": '', "val": null };
@@ -936,11 +901,11 @@ var AlsuOutputComponent = (function () {
                 }
             });
             console.log(vars);
-            this.output.data = result;
+            this.output = result;
         }
         catch (error) {
             console.log(error);
-            this.output.data = [error];
+            this.output = [error];
         }
         function isValidEqual(str) {
             return (str.trim() === '=') ? 0 : (str.trim().match(/=/g) || []).length;
@@ -1009,8 +974,8 @@ var AlsuOutputComponent = (function () {
     AlsuOutputComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'alsu-output',
-            template: __webpack_require__(639),
-            styles: [__webpack_require__(630)]
+            template: __webpack_require__(635),
+            styles: [__webpack_require__(629)]
         }), 
         __metadata('design:paramtypes', [])
     ], AlsuOutputComponent);
@@ -1020,53 +985,12 @@ var AlsuOutputComponent = (function () {
 
 /***/ },
 
-/***/ 465:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RightSideComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var RightSideComponent = (function () {
-    function RightSideComponent() {
-    }
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], RightSideComponent.prototype, "activated", void 0);
-    __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], RightSideComponent.prototype, "output", void 0);
-    RightSideComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'right-side',
-            template: __webpack_require__(640),
-            styles: [__webpack_require__(631)]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], RightSideComponent);
-    return RightSideComponent;
-}());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/right-side.component.js.map
-
-/***/ },
-
 /***/ 466:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ToolbarComponent; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LeftPanelComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1077,36 +1001,109 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ToolbarComponent = (function () {
-    function ToolbarComponent() {
-        this.compile = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+var LeftPanelComponent = (function () {
+    function LeftPanelComponent() {
+        this.add = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.help = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.debug = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
-    ToolbarComponent.prototype.emitCompile = function () {
-        this.compile.emit();
+    LeftPanelComponent.prototype.emitAdd = function (block) {
+        this.add.emit(block);
+    };
+    LeftPanelComponent.prototype.emitHelp = function () {
+        this.help.emit();
+    };
+    LeftPanelComponent.prototype.emitDebug = function () {
+        this.debug.emit();
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', Object)
-    ], ToolbarComponent.prototype, "config", void 0);
+        __metadata('design:type', Boolean)
+    ], LeftPanelComponent.prototype, "active", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
         __metadata('design:type', Object)
-    ], ToolbarComponent.prototype, "compile", void 0);
-    ToolbarComponent = __decorate([
+    ], LeftPanelComponent.prototype, "add", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], LeftPanelComponent.prototype, "help", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], LeftPanelComponent.prototype, "debug", void 0);
+    LeftPanelComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'toolbar',
-            template: __webpack_require__(641),
-            styles: [__webpack_require__(632)]
+            selector: 'left-panel',
+            template: __webpack_require__(636),
+            styles: [__webpack_require__(343)]
         }), 
         __metadata('design:paramtypes', [])
-    ], ToolbarComponent);
-    return ToolbarComponent;
+    ], LeftPanelComponent);
+    return LeftPanelComponent;
 }());
-//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/toolbar.component.js.map
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/left-panel.component.js.map
 
 /***/ },
 
 /***/ 467:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RightPanelComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RightPanelComponent = (function () {
+    function RightPanelComponent() {
+        this.setting = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    RightPanelComponent.prototype.emitEdit = function () {
+        this.edit.emit();
+    };
+    RightPanelComponent.prototype.emitSetting = function () {
+        this.setting.emit();
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', Boolean)
+    ], RightPanelComponent.prototype, "active", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', Object)
+    ], RightPanelComponent.prototype, "output", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], RightPanelComponent.prototype, "setting", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], RightPanelComponent.prototype, "edit", void 0);
+    RightPanelComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'right-panel',
+            template: __webpack_require__(637),
+            styles: [__webpack_require__(343)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], RightPanelComponent);
+    return RightPanelComponent;
+}());
+//# sourceMappingURL=/home/martin-peter/umb/alsu-umb/src/right-panel.component.js.map
+
+/***/ },
+
+/***/ 468:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1128,7 +1125,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app',
-            template: "<main></main>"
+            template: "<main class=\"layout-row\"></main>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -1138,27 +1135,26 @@ var AppComponent = (function () {
 
 /***/ },
 
-/***/ 468:
+/***/ 469:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(429);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_cookie_services_cookies_service__ = __webpack_require__(305);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_cookie_services_cookies_service___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_cookie_services_cookies_service__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__alsu_main_component__ = __webpack_require__(462);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__alsu_main_service__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__alsu_code_blocks_code_blocks_component__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__alsu_code_blocks_block_block_component__ = __webpack_require__(458);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alsu_left_side_left_side_component__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__alsu_left_side_alsu_input_alsu_input_component__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__alsu_right_side_right_side_component__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__alsu_right_side_alsu_output_alsu_output_component__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__alsu_toolbar_toolbar_component__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__alsu_pop_up_pop_up_component__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__alsu_code_blocks_code_blocks_component__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__alsu_code_blocks_block_block_component__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__alsu_side_panel_left_panel_component__ = __webpack_require__(466);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__alsu_side_panel_right_panel_component__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__alsu_side_panel_alsu_input_alsu_input_component__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__alsu_side_panel_alsu_output_alsu_output_component__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__alsu_pop_up_pop_up_component__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__alsu_pop_up_pop_up_service__ = __webpack_require__(301);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1184,7 +1180,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1193,19 +1188,26 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__alsu_main_component__["a" /* MainComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__alsu_code_blocks_code_blocks_component__["a" /* CodeBlocksComponent */], __WEBPACK_IMPORTED_MODULE_9__alsu_code_blocks_block_block_component__["a" /* BlockComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__alsu_left_side_left_side_component__["a" /* LeftSideComponent */], __WEBPACK_IMPORTED_MODULE_11__alsu_left_side_alsu_input_alsu_input_component__["a" /* AlsuInputComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__alsu_right_side_right_side_component__["a" /* RightSideComponent */], __WEBPACK_IMPORTED_MODULE_13__alsu_right_side_alsu_output_alsu_output_component__["a" /* AlsuOutputComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__alsu_toolbar_toolbar_component__["a" /* ToolbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__alsu_pop_up_pop_up_component__["a" /* PopUpComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__alsu_code_blocks_code_blocks_component__["a" /* CodeBlocksComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__alsu_code_blocks_block_block_component__["a" /* BlockComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__alsu_side_panel_left_panel_component__["a" /* LeftPanelComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__alsu_side_panel_alsu_input_alsu_input_component__["a" /* AlsuInputComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__alsu_side_panel_right_panel_component__["a" /* RightPanelComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__alsu_side_panel_alsu_output_alsu_output_component__["a" /* AlsuOutputComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__alsu_pop_up_pop_up_component__["a" /* PopUpComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["b" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_4_angular2_cookie_services_cookies_service__["CookieService"], __WEBPACK_IMPORTED_MODULE_7__alsu_main_service__["a" /* MainService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_4_angular2_cookie_services_cookies_service__["CookieService"],
+                __WEBPACK_IMPORTED_MODULE_14__alsu_pop_up_pop_up_service__["a" /* PopUpService */]
+            ],
+            bootstrap: [
+                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
@@ -1215,7 +1217,7 @@ var AppModule = (function () {
 
 /***/ },
 
-/***/ 469:
+/***/ 470:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1231,7 +1233,7 @@ var environment = {
 
 /***/ },
 
-/***/ 470:
+/***/ 471:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1265,7 +1267,7 @@ var environment = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(486);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(655);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__);
 
 
@@ -1290,136 +1292,108 @@ var environment = {
 /***/ 624:
 /***/ function(module, exports) {
 
-module.exports = "canvas {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  cursor: pointer;\n}\n.input {\n  position: absolute;\n  left: 72px;\n  top: 20px;\n  width: 145px;\n  height: 20px;\n  outline: 0;\n  border: none;\n  text-align: center;\n  padding: 5px;\n  cursor: pointer;\n}\n.input[type=\"text\"]:disabled {\n  background-color: transparent;\n}\n.remove-text {\n  top: 10px;\n  right: 70px;\n  width: 18px;\n  height: 18px;\n  padding: 16px 1px;\n  color: rgba(0, 0, 0, 0.2);\n  font-size: 14px;\n}\n.remove-text:hover {\n  color: #000;\n}\n.remove-text i {\n  font-size: 18px;\n}\n.remove-block {\n  top: 10px;\n  right: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.remove-block:hover {\n  color: #000;\n}\n.selected {\n  cursor: text;\n  background-color: transparent;\n}\n.begin,\n.end {\n  background-color: #eee;\n}\n.connect-top {\n  position: absolute;\n  left: 149px;\n  top: 0;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n.connect-bottom {\n  position: absolute;\n  left: 149px;\n  top: 60px;\n  width: 2px;\n  height: 10px;\n  background-color: #333;\n}\n"
+module.exports = "canvas {\n  position: absolute;\n  top: 10px;\n  left: 50px;\n  cursor: pointer;\n}\n.input {\n  position: absolute;\n  left: 72px;\n  top: 20px;\n  width: 145px;\n  height: 20px;\n  outline: 0;\n  border: none;\n  text-align: center;\n  padding: 5px;\n  cursor: pointer;\n}\n.input[type=\"text\"]:disabled {\n  background-color: transparent;\n}\n.remove-text {\n  top: 10px;\n  right: 70px;\n  width: 18px;\n  height: 18px;\n  padding: 16px 1px;\n  color: rgba(0, 0, 0, 0.2);\n  font-size: 14px;\n}\n.remove-text:hover {\n  color: #000;\n}\n.remove-text i {\n  font-size: 18px;\n}\n.remove-block {\n  top: 10px;\n  right: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.remove-block:hover {\n  color: #000;\n}\n.selected {\n  cursor: text;\n  background-color: transparent;\n}\n.begin,\n.end {\n  background-color: #eeeeee;\n}\n.connect-top {\n  position: absolute;\n  left: 149px;\n  top: 0;\n  width: 2px;\n  height: 10px;\n  background-color: #333333;\n}\n.connect-bottom {\n  position: absolute;\n  left: 149px;\n  top: 60px;\n  width: 2px;\n  height: 10px;\n  background-color: #333333;\n}\n"
 
 /***/ },
 
 /***/ 625:
 /***/ function(module, exports) {
 
-module.exports = ".code-blocks {\n  width: 300px;\n  margin: auto;\n  color: #333;\n  padding-top: 50px;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
+module.exports = ".code-blocks {\n  width: 300px;\n  color: #333333;\n  margin: 0 auto auto auto;\n}\n.blocks {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\nspan {\n  top: 10px;\n  left: 0;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.block-drag {\n  z-index: 10;\n  display: none;\n}\n.block-drop {\n  width: 300px;\n  height: 50px;\n  background-color: rgba(0, 0, 0, 0);\n  padding: 0;\n}\n.selected {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.visible {\n  display: block;\n}\n"
 
 /***/ },
 
 /***/ 626:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n}\n.add {\n  top: 10px;\n  right: 0;\n  color: #333;\n}\n.add:active {\n  color: #eee;\n}\n.help {\n  top: 10px;\n  left: 0;\n  color: rgba(0, 0, 0, 0.2);\n}\n.help:hover {\n  color: #333;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
+module.exports = "code-blocks {\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  padding: 50px 0;\n  overflow-y: scroll;\n  z-index: 100;\n  background-color: #eeeeee;\n}\nleft-panel,\nright-panel {\n  position: relative;\n  height: 100%;\n  z-index: 100;\n  background-color: #336699;\n}\npop-up {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n"
 
 /***/ },
 
 /***/ 627:
 /***/ function(module, exports) {
 
-module.exports = ".left-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: 2px 0 10px #333;\n}\n.left-side__title {\n  display: inline-block;\n  padding: 5px;\n  margin-bottom: 50px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
+module.exports = ".pop-up {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  z-index: 500;\n}\n.help-mode,\n.setting-mode {\n  position: absolute;\n  top: 0;\n  width: 300px;\n  height: 100%;\n  background-color: #eeeeee;\n  box-shadow: 2px 2px 15px 2px #333333;\n  cursor: auto;\n}\n.help-mode .title,\n.setting-mode .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333333;\n  color: #eeeeee;\n  text-transform: uppercase;\n}\n.help-mode .content,\n.setting-mode .content {\n  position: relative;\n  top: 50px;\n  padding: 25px;\n  height: calc(100% - 100px);\n  background: #eeeeee;\n}\n.help-mode span,\n.setting-mode span {\n  color: #eeeeee;\n  position: relative;\n  top: 0;\n}\n.help-mode span:hover,\n.setting-mode span:hover {\n  color: #336699;\n}\n.help-mode .output,\n.setting-mode .output {\n  position: absolute;\n  top: 30px;\n  left: 350px;\n}\n.help-mode h3,\n.setting-mode h3 {\n  text-transform: uppercase;\n}\n.help-mode h4,\n.setting-mode h4 {\n  cursor: pointer;\n}\n.help-mode h4:hover,\n.setting-mode h4:hover {\n  color: #336699;\n}\n.help-mode h5,\n.setting-mode h5 {\n  padding: 20px;\n  cursor: pointer;\n  margin: 0;\n}\n.help-mode h5:hover,\n.setting-mode h5:hover {\n  color: #336699;\n}\n.setting-mode {\n  right: -300px;\n}\n.help-mode {\n  left: 0;\n}\n.backdrop {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  cursor: pointer;\n  background-color: rgba(0, 0, 0, 0.3);\n}\n.debug-mode {\n  width: calc(100% - 300px);\n}\n.debug-mode .backdrop {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n"
 
 /***/ },
 
 /***/ 628:
 /***/ function(module, exports) {
 
-module.exports = "toolbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 35px;\n  z-index: 100;\n}\nleft-side {\n  left: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\nright-side {\n  right: 0;\n  width: 0;\n  background-color: #369;\n  height: 100%;\n  z-index: 90;\n  -webkit-transition: width 150ms ease;\n  transition: width 150ms ease;\n}\n.main {\n  position: relative;\n  top: 35px;\n  height: calc(100% - 35px);\n  width: 100%;\n  background-color: #eee;\n  overflow: hidden;\n}\n.main .body {\n  position: relative;\n  height: 100%;\n  margin: auto;\n}\n.main .body code-blocks {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 768px;\n  overflow-x: hidden;\n  overflow-y: scroll;\n}\n.main .body code-blocks::-webkit-scrollbar {\n  width: 0;\n}\n.main .body .body_disabled {\n  display: block;\n  position: fixed;\n  top: 35px;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n}\n"
+module.exports = ".alsu-input {\n  position: relative;\n  width: 300px;\n  height: 70px;\n  margin: 25px 0;\n}\n.add {\n  top: 10px;\n  right: 0;\n  color: #333333;\n}\n.add:active {\n  color: #eeeeee;\n}\n:host /deep/ block .connect-bottom,\n:host /deep/ block .connect-top {\n  visibility: hidden;\n}\n"
 
 /***/ },
 
 /***/ 629:
 /***/ function(module, exports) {
 
-module.exports = ".pop-up {\n  position: absolute;\n  width: calc(100% - 100px);\n  height: calc(100% - 100px);\n  top: 50px;\n  left: 50px;\n  background-color: rgba(0, 0, 0, 0.1);\n  box-shadow: 2px 2px 15px 2px #333;\n  z-index: 200;\n}\n.pop-up .title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: calc(100% - 50px);\n  height: 50px;\n  padding-left: 50px;\n  background-color: #333;\n  color: #eee;\n  text-transform: uppercase;\n}\n.pop-up .content {\n  padding: 50px;\n  height: calc(100% - 100px);\n  background: #eee;\n}\n.pop-up span {\n  color: #eee;\n  position: relative;\n  top: 0;\n}\n.pop-up span:hover {\n  color: #fff;\n}\n.pop-up .block {\n  position: relative;\n  left: -50px;\n  margin: 50px 0;\n}\n.pop-up .output {\n  position: absolute;\n  top: 30px;\n  left: 350px;\n}\n.pop-up h5 {\n  padding: 0 10px;\n  cursor: pointer;\n}\n"
+module.exports = ".alsu-output__item {\n  cursor: pointer;\n  font-size: 20px;\n  color: #fff;\n  padding: 10px;\n}\n.alsu-output__item:hover {\n  background-color: #19334d;\n}\n"
 
 /***/ },
 
 /***/ 630:
 /***/ function(module, exports) {
 
-module.exports = ".alsu-output__item {\n  cursor: pointer;\n  font-size: 20px;\n  color: #fff;\n  padding: 10px;\n}\n.alsu-output__item:hover {\n  background-color: #19334d;\n}\n"
+module.exports = "<!-- Shape -->\n<canvas #myBlock width=\"200\" height=\"50\"></canvas>\n<canvas *ngIf=\"block.type === 'if-else' || block.type === 'while'\" #myBlock width=\"300\" height=\"100\"></canvas>\n\n<div class=\"connect-top\" *ngIf=\"block.type !== 'begin'\"></div>\n<div class=\"connect-bottom\" *ngIf=\"block.type !== 'end'\"></div>\n\n<!-- Input -->\n<input [ngClass]=\"{'selected': block.selected}\"\n       class=\"input {{ block.type }}\"\n       placeholder=\"{{ block.type }}\"\n       [disabled]=\"block.disabled\"\n       [(ngModel)]=\"block.data\"\n       type=\"text\"\n/>\n\n<!-- Buttons -->\n<div *ngIf=\"block.selected && block.draggable\">\n    <span class=\"remove-text\"\n          (click)=\"clearText()\">\n          <i class=\"material-icons\">close</i>\n    </span>\n    <span class=\"remove-block\"\n          (click)=\"emitRemove()\">\n          <i class=\"material-icons\">delete</i>\n    </span>\n</div>\n"
 
 /***/ },
 
 /***/ 631:
 /***/ function(module, exports) {
 
-module.exports = ".right-side {\n  height: 100%;\n  width: 100%;\n  box-shadow: -2px 0 10px #333;\n}\n.right-side__title {\n  display: inline-block;\n  padding: 5px;\n  text-transform: uppercase;\n  width: calc(100% - 10px);\n  text-align: center;\n  background-color: #333;\n  color: #eee;\n}\n"
+module.exports = "<div class=\"code-blocks layout-column\">\n    <!-- Blocks -->\n    <div class=\"blocks\" *ngFor=\"let block of codeblocks.list.blocks\">\n\n        <!-- Block -->\n        <block [block]=\"block\"\n               (click)=\"emitSelect(block)\"\n               (remove)=\"emitRemove()\">\n        </block>\n\n        <!-- Drag'n Drop -->\n        <span class=\"block-drag\" *ngIf=\"block.id > 1\"\n              [ngClass]=\"{'visible': block.selected}\"\n              (dragstart)=\"dragStart(block.id)\"\n              (dragend)=\"dragEnd()\"\n              draggable=\"true\">\n              <i class=\"material-icons\">arrow_forward</i>\n        </span>\n        <span class=\"block-drop\"\n              [ngClass]=\"{'selected': block.selected }\"\n              (dragover)=\"dragOver($event, block.id)\"\n              *ngIf=\"codeblocks.dragging && block.id\">\n        </span>\n\n    </div>\n</div>\n"
 
 /***/ },
 
 /***/ 632:
 /***/ function(module, exports) {
 
-module.exports = ".toolbar {\n  width: 100%;\n  height: 35px;\n  background-color: #eee;\n  box-shadow: 0 2px 5px #333;\n  z-index: 100;\n}\nspan {\n  position: relative;\n  top: 0;\n  margin: auto;\n  padding: 5.5px;\n}\nspan:active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n"
+module.exports = "<!-- Backdrop/Help -->\n<pop-up      *ngIf=\"main['mode']['popup'].active\"\n             [mode]=\"main['mode']\"\n             [blocks]=\"main['code-blocks']['list']['blocks']\"\n             [uniqueId]=\"main['code-blocks']['list']['uniqueId']\"\n             (ajax)=\"setDataEvent($event)\"\n             (close)=\"closePopup()\">\n</pop-up>\n\n<!-- Input/Navigation -->\n<left-panel  [active]=\"main['mode']['edit-active']\"\n             (add)=\"addEvent($event)\"\n             (help)=\"helpEvent()\"\n             (debug)=\"activateEditMode()\">\n</left-panel>\n\n<!-- Main -->\n<code-blocks [codeblocks]=\"main['code-blocks']\"\n             (select)=\"selectEvent($event)\"\n             (remove)=\"removeEvent()\">\n</code-blocks>\n\n<!-- Output/Navigation -->\n<right-panel  [active]=\"main['mode']['debug-active']\"\n              [output]=\"main['code-blocks']['output-data']\"\n              (setting)=\"settingEvent()\"\n              (edit)=\"activateDebugMode()\">\n</right-panel>\n"
 
 /***/ },
 
 /***/ 633:
 /***/ function(module, exports) {
 
-module.exports = "<!-- Shape -->\n<canvas #myBlock width=\"200\" height=\"50\"></canvas>\n<div class=\"connect-top\" *ngIf=\"block.type !== 'begin'\"></div>\n<div class=\"connect-bottom\" *ngIf=\"block.type !== 'end'\"></div>\n\n<!-- Input -->\n<input [ngClass]=\"{'selected': block.selected}\"\n       class=\"input {{ block.type }}\"\n       placeholder=\"{{ block.type }}\"\n       [disabled]=\"block.disabled\"\n       [(ngModel)]=\"block.data\"\n       type=\"text\"\n/>\n\n<!-- Buttons -->\n<div *ngIf=\"block.selected && block.draggable\">\n    <span class=\"remove-text\"\n          (click)=\"clearText()\">\n          <i class=\"material-icons\">close</i>\n    </span>\n    <span class=\"remove-block\"\n          (click)=\"emitRemove()\">\n          <i class=\"material-icons\">delete</i>\n    </span>\n</div>\n"
+module.exports = "<div class=\"pop-up\"\n     [ngClass]=\"{\n         'debug-mode': !mode['help-active']\n     }\">\n\n    <!-- Backdrop-->\n    <div class=\"backdrop\" (click)=\"emitClose()\"></div>\n    <!-- Help -->\n    <div class=\"help-mode\" *ngIf=\"mode['help-active']\">\n        <div class=\"title layout-row\">\n            <span (click)=\"emitClose()\">\n                <i class=\"material-icons\">close</i>\n            </span>\n            <div class=\"flex\"></div>\n            <h5 (click)=\"setType('assign')\">assign</h5>\n            <h5 (click)=\"setType('write')\">write</h5>\n        </div>\n\n        <div class=\"content layout-column\">\n            <div>\n                <div *ngIf=\"mode['popup'].type === 'assign'\">\n                    <h3>assign</h3>\n                    <p>This type of block is used to declare variables, and do some operations.</p>\n                    <h4 (click)=\"showText()\">Rules?</h4>\n                    <div *ngIf=\"text\">\n                        <p>- Every single variable and operation must be separated with spaces (' ')</p>\n                        <p>- There always must be a single equals-sign ('=')</p>\n                        <p>- On left side of equals-sign must be a single variable</p>\n                        <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>\n                    </div>\n                </div>\n                <div *ngIf=\"mode['popup'].type === 'write'\">\n                    <h3>write</h3>\n                    <p>This type of block is used print data to output</p>\n                    <h4 (click)=\"showText()\">Rules?</h4>\n                    <div *ngIf=\"text\">\n                        <p>- Everything inside this block will be displayed on output screen</p>\n                        <p>- To display a variable value:</p>\n                        <p>-- must be declared</p>\n                        <p>-- no other text than the variable itself must be inside this block</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <!-- Setting -->\n    <div class=\"setting-mode\" *ngIf=\"mode['setting-active']\">\n        <div class=\"title layout-row\">\n            <h5 (click)=\"setType('ajax')\">ajax</h5>\n            <h5 (click)=\"setType('cookies')\">cookies</h5>\n            <div class=\"flex\"></div>\n            <span (click)=\"emitClose()\">\n                <i class=\"material-icons\">close</i>\n            </span>\n        </div>\n\n        <div class=\"content layout-column\">\n            <div>\n                <div *ngIf=\"mode['popup'].type === 'ajax'\">\n                    <h3>ajax</h3>\n                    <p>Use ajax to load some dummy data.</p>\n                    <h4 (click)=\"getDummyData()\">Try it!</h4>\n                    <div *ngIf=\"data\">\n                        <h4 (click)=\"emitAjax(0)\">- Empty?</h4>\n                        <h4 (click)=\"emitAjax(1)\">- Hello World?</h4>\n                        <h4 (click)=\"emitAjax(2)\">- Swap Two Variable Values?</h4>\n                    </div>\n                </div>\n                <div *ngIf=\"mode['popup'].type === 'cookies'\">\n                    <h3>cookies</h3>\n                    <p>Use cookies to save current state of the diagram.</p>\n                    <h4 (click)=\"setCookies()\">Try it!</h4>\n                    <div *ngIf=\"text\">\n                        <p>- is it working? Refresh the page and see your work being saved!</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n</div>\n"
 
 /***/ },
 
 /***/ 634:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"code-blocks layout-column\">\n    <!-- Blocks -->\n    <div class=\"blocks\" *ngFor=\"let block of list.blocks\">\n\n        <!-- Block -->\n        <block [block]=\"block\"\n               (click)=\"emitSelect(block)\"\n               (remove)=\"emitRemove()\">\n        </block>\n\n        <!-- Drag'n Drop -->\n        <span class=\"block-drag\" *ngIf=\"block.id > 1\"\n              [ngClass]=\"{'visible': block.selected}\"\n              (dragstart)=\"dragStart(block.id)\"\n              (dragend)=\"dragEnd()\"\n              draggable=\"true\">\n              <i class=\"material-icons\">arrow_forward</i>\n        </span>\n        <span class=\"block-drop\"\n              [ngClass]=\"{'selected': block.selected }\"\n              (dragover)=\"dragOver($event, block.id)\"\n              *ngIf=\"codeblocks.dragging && block.id\">\n        </span>\n\n    </div>\n</div>\n"
+module.exports = "<div class=\"alsu-input\" *ngFor=\"let block of blocks\">\n\n    <block [block]=\"block\"></block>\n\n    <!-- Buttons -->\n    <span class=\"add\" (click)=\"emitAdd(block)\">\n        <i class=\"material-icons\">add</i>\n    </span>\n\n</div>\n"
 
 /***/ },
 
 /***/ 635:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"alsu-input\" *ngFor=\"let block of blocks\">\n\n    <block [block]=\"block\"></block>\n\n    <!-- Buttons -->\n    <span class=\"add\" (click)=\"emitAdd(block)\">\n        <i class=\"material-icons\">add</i>\n    </span>\n    <span class=\"help\" (click)=\"emitHelp(block.type)\">\n        <i class=\"material-icons\">help_outline</i>\n    </span>\n\n</div>\n"
+module.exports = "<div class=\"alsu-output\" *ngFor=\"let item of output\">\n    <div class=\"alsu-output__item\">{{ item }}</div>\n</div>\n"
 
 /***/ },
 
 /***/ 636:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"left-side layout-column\" *ngIf=\"!activated\">\n\n    <div class=\"left-side__title\">Input</div>\n    <alsu-input class=\"layout-column\" (add)=\"emitAdd($event)\" (help)=\"emitHelp($event)\"></alsu-input>\n\n</div>\n"
+module.exports = "<!-- I/O -->\n<div class=\"side-panel_active layout-column\" *ngIf=\"active\">\n    <div class=\"side-panel_active__header layout-row\" (click)=\"emitHelp()\">\n        <span class=\"side-panel_active__header__help\">\n            <i class=\"material-icons\">help_outline</i>\n        </span>\n        <span class=\"flex\"></span>\n        <span class=\"side-panel_active__header__title\" style=\"text-align: left\">Input</span>\n    </div>\n\n    <alsu-input class=\"layout-column\" (add)=\"emitAdd($event)\"></alsu-input>\n</div>\n\n<!-- Navigation -->\n<div class=\"side-panel_inactive layout-column\" *ngIf=\"!active\" (click)=\"emitDebug()\">\n    <span class=\"side-panel_inactive__button\">\n        <i class=\"material-icons\">keyboard_arrow_right</i>\n    </span>\n</div>\n"
 
 /***/ },
 
 /***/ 637:
 /***/ function(module, exports) {
 
-module.exports = "<toolbar [config]=\"main.config\"\n         (compile)=\"compileEvent()\">\n</toolbar>\n\n<div class=\"main layout-row\">\n    <left-side [activated]=\"main.config.activated\"\n               (add)=\"addEvent($event)\"\n               (help)=\"helpEvent($event)\"\n               [ngClass]=\"{\n                    'side-panel': !main.config.activated\n                }\">\n    </left-side>\n\n    <div class=\"body layout-row\">\n        <code-blocks [list]=\"main['list']\"\n                     [codeblocks]=\"main['code-blocks']\"\n                     (select)=\"selectEvent($event)\"\n                     (remove)=\"removeEvent()\">\n        </code-blocks>\n        <div (click)=\"popUpEvent()\" [ngClass]=\"{\n                'body_disabled': main.config.activated || main['config'].help\n             }\">\n        </div>\n        <pop-up *ngIf=\"main['config'].help\"\n                [type]=\"main['config'].helpType\"\n                [dummyData]=\"main['dummy-data']\"\n                (load)=\"setData($event)\"\n                (close)=\"popUpEvent()\">\n        </pop-up>\n    </div>\n\n    <right-side [activated]=\"main.config.activated\"\n                [output]=\"main.output\"\n                [ngClass]=\"{\n                    'side-panel': main.config.activated\n                }\">\n    </right-side>\n\n</div>\n"
+module.exports = "<!-- I/O -->\n<div class=\"side-panel_active layout-column\" *ngIf=\"active\">\n    <div class=\"side-panel_active__header layout-row\" (click)=\"emitSetting()\">\n        <span class=\"side-panel_active__header__title\" style=\"text-align: right\">Output</span>\n        <span class=\"flex\"></span>\n        <span class=\"side-panel_active__header__help\">\n            <i class=\"material-icons\">help_outline</i>\n        </span>\n    </div>\n\n    <alsu-output class=\"layout-column\" [output]=\"output\"></alsu-output>\n</div>\n\n<!-- Navigation -->\n<div class=\"side-panel_inactive layout-column\" *ngIf=\"!active\" (click)=\"emitEdit()\">\n    <span class=\"side-panel_inactive__title\">O</span>\n    <span class=\"side-panel_inactive__title\">U</span>\n    <span class=\"side-panel_inactive__title\">T</span>\n    <span class=\"side-panel_inactive__title\">P</span>\n    <span class=\"side-panel_inactive__title\">U</span>\n    <span class=\"side-panel_inactive__title\">T</span>\n    <span class=\"side-panel_inactive__button\">\n        <i class=\"material-icons\">keyboard_arrow_left</i>\n    </span>\n</div>\n"
 
 /***/ },
 
-/***/ 638:
-/***/ function(module, exports) {
-
-module.exports = "<div class=\"pop-up\">\n\n    <div class=\"title layout-row\">\n        <h5 (click)=\"setAssign()\">assign</h5>\n        <h5 (click)=\"setWrite()\">write</h5>\n        <h5 (click)=\"setDummyData()\">dummy-data</h5>\n        <div class=\"flex\"></div>\n        <span (click)=\"emitClose()\">\n            <i class=\"material-icons\">close</i>\n        </span>\n    </div>\n\n    <div class=\"content layout-column\">\n\n        <div>\n            <div *ngIf=\"type === 'assign'\">\n                <p>This type of block is used to declare variables, and do some operations.</p>\n                <h4>Rules</h4>\n                <p>- Every single variable and operation must be separated with spaces (' ')</p>\n                <p>- There always must be a single equals-sign ('=')</p>\n                <p>- On left side of equals-sign must be a single variable</p>\n                <p>- The right side of equals-sign must contain only variables (declared) and operations (+ - * / %)</p>\n            </div>\n            <div *ngIf=\"type === 'write'\">\n                <p>This type of block is used print data to output</p>\n                <h4>Rules</h4>\n                <p>- Everything inside this block will be displayed on output screen</p>\n                <p>- To display a variable value:</p>\n                <p>-- must be declared</p>\n                <p>-- no other text than the variable itself must be inside this block</p>\n            </div>\n        </div>\n\n        <div class=\"layout-column\" *ngIf=\"type === 'assign'\">\n            <div class=\"block layout-row\">\n                <block [block]=\"block[0]\"></block>\n            </div>\n        </div>\n        <div class=\"layout-column\" *ngIf=\"type === 'write'\">\n            <div class=\"block layout-row\">\n                <block [block]=\"block[1]\"></block>\n                <div class=\"output\">{{ block[1].data }}</div>\n            </div>\n        </div>\n\n        <div class=\"layout-column\" *ngIf=\"type === 'dummy-data'\">\n            <h4>Dummy data:</h4>\n            <p (click)=\"emitLoadData(dummyData['empty'])\">- empty</p>\n            <p (click)=\"emitLoadData(dummyData['hello-world'])\">- hello-world</p>\n            <p (click)=\"emitLoadData(dummyData['swap-two-variables-values'])\">- swap-two-variables-values</p>\n        </div>\n\n    </div>\n\n</div>\n"
-
-/***/ },
-
-/***/ 639:
-/***/ function(module, exports) {
-
-module.exports = "<div class=\"alsu-output\" *ngFor=\"let item of output.data\">\n    <div class=\"alsu-output__item\">{{ item }}</div>\n</div>\n"
-
-/***/ },
-
-/***/ 640:
-/***/ function(module, exports) {
-
-module.exports = "<div class=\"right-side layout-column\" *ngIf=\"activated\">\n\n    <div class=\"right-side__title\">Output</div>\n    <alsu-output class=\"layout-column\" [output]=\"output\"></alsu-output>\n\n</div>\n"
-
-/***/ },
-
-/***/ 641:
-/***/ function(module, exports) {
-
-module.exports = "<div class=\"toolbar layout-row\">\n\n    <!-- Start/Stop - TAB -->\n    <span (click)=\"emitCompile()\">\n        <i class=\"material-icons\">{{ config.run }}</i>\n    </span>\n\n</div>\n"
-
-/***/ },
-
-/***/ 660:
+/***/ 656:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(350);
+module.exports = __webpack_require__(351);
 
 
 /***/ }
 
-},[660]);
+},[656]);
 //# sourceMappingURL=main.bundle.map

@@ -17,7 +17,7 @@ export class AlsuOutputComponent {
     // demo only (eval is evil)
     evaluateExpression(): void {
 
-        let blocks : any = this.output.data;
+        let blocks : any = this.output ;
         let result: any = [];
         let geval = eval;
         let param: any = {"key": '', "val": null};
@@ -69,11 +69,11 @@ export class AlsuOutputComponent {
             });
 
             console.log( vars );
-            this.output.data = result;
+            this.output = result;
 
         } catch (error) {
             console.log(error);
-            this.output.data = [error];
+            this.output = [error];
         }
 
         function isValidEqual(str: string): number {

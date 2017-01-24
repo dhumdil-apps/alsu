@@ -5,12 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class MainService {
+export class PopUpService {
 
-    private url = 'alsu/dummy_data.json';  // URL to web API
+    // URL to web API
+    private url = 'alsu/pop-up/dummy-data.json';
 
     constructor (private http: Http) {}
-    getDummyData (): Observable<Array<any>> {
+
+    getData(): Observable<Array<any>> {
         return this.http.get(this.url)
             .map(this.extractData)
             .catch(this.handleError);
@@ -22,7 +24,6 @@ export class MainService {
     }
 
     private handleError (error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
             const body = error.json() || '';

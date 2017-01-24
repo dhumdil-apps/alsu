@@ -1,6 +1,6 @@
 import { Block } from '../block';
 
-export class Simple extends Block {
+export class Double extends Block {
 
     constructor(data: any, type: string) {
         super();
@@ -17,46 +17,32 @@ export class Simple extends Block {
 
     public setData(data: any): void {
         try {
+            // this.data = [];
+            // this.data[0] = data[0];
+            // this.data[1] = data[1];
             this.data = data;
         } catch (err) {
             console.log(err);
         }
     }
 
-    // types: read, write, assign, begin, end....
     private setType(type: string): void {
         switch (type) {
 
-            case 'assign':
-                this.type = 'assign';
-                this.selected = true;
-                this.disabled = false;
-                this.draggable = true;
-                this.setIds(0, 0, 0);
-                break;
-
-            case 'write':
-                this.type = 'write';
-                this.selected = true;
-                this.disabled = false;
-                this.draggable = true;
-                this.setIds(0, 0, 0);
-                break;
-
-            case 'begin':
-                this.type = 'begin';
+            case 'if-else':
+                this.type = 'if-else';
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(0, 1, -1);
+                this.setIds(0, 0, 0);
                 break;
 
-            case 'end':
-                this.type = 'end';
+            case 'while':
+                this.type = 'while';
                 this.selected = false;
                 this.disabled = true;
                 this.draggable = false;
-                this.setIds(1, -1, 0);
+                this.setIds(0, 0, 0);
                 break;
 
             default: break;

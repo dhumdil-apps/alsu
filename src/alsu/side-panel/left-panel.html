@@ -1,0 +1,19 @@
+<!-- I/O -->
+<div class="side-panel_active layout-column" *ngIf="active">
+    <div class="side-panel_active__header layout-row" (click)="emitHelp()">
+        <span class="side-panel_active__header__help">
+            <i class="material-icons">help_outline</i>
+        </span>
+        <span class="flex"></span>
+        <span class="side-panel_active__header__title" style="text-align: left">Input</span>
+    </div>
+
+    <alsu-input class="layout-column" (add)="emitAdd($event)"></alsu-input>
+</div>
+
+<!-- Navigation -->
+<div class="side-panel_inactive layout-column" *ngIf="!active" (click)="emitDebug()">
+    <span class="side-panel_inactive__button">
+        <i class="material-icons">keyboard_arrow_right</i>
+    </span>
+</div>

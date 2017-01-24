@@ -11,10 +11,9 @@ export class BlockComponent implements AfterViewInit {
 
     @Input() block: Block;
     @Output() remove = new EventEmitter();
+
     @ViewChild("myBlock") myBlock;
-
     context: CanvasRenderingContext2D;
-
     ngAfterViewInit() {
         let canvas = this.myBlock.nativeElement;
         this.context = canvas.getContext("2d");
@@ -55,7 +54,6 @@ export class BlockComponent implements AfterViewInit {
             this.remove.emit();
         }
     }
-
     clearText(): void {
         this.block.data = '';
     }

@@ -1,5 +1,7 @@
 <!-- Shape -->
 <canvas #myBlock width="200" height="50"></canvas>
+<canvas *ngIf="block.type === 'if-else' || block.type === 'while'" #myBlock width="300" height="100"></canvas>
+
 <div class="connect-top" *ngIf="block.type !== 'begin'"></div>
 <div class="connect-bottom" *ngIf="block.type !== 'end'"></div>
 

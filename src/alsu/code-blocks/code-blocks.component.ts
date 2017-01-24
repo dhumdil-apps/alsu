@@ -1,6 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CodeBlocks } from './code-blocks';
-import { Block } from './block/block';
 
 @Component({
     selector: 'code-blocks',
@@ -10,7 +8,6 @@ import { Block } from './block/block';
 
 export class CodeBlocksComponent {
 
-    @Input() list: CodeBlocks;
     @Input() codeblocks: any;
     @Output() select = new EventEmitter();
     @Output() remove = new EventEmitter();
@@ -18,7 +15,7 @@ export class CodeBlocksComponent {
     /**
      * Events
      */
-    public emitSelect(block: Block): void {
+    public emitSelect(block: any): void {
         this.select.emit(block);
     }
     public emitRemove(): void {
@@ -33,16 +30,16 @@ export class CodeBlocksComponent {
         this.codeblocks.dragging = true;
     }
     public dragEnd(): void {
-        if (this.list.selectedId[1] !== this.codeblocks.draggingId) {
-            this.list.move(this.codeblocks.draggingId);
+        if (this.codeblocks.list.selectedId[1] !== this.codeblocks.draggingId) {
+            this.codeblocks.list.move(this.codeblocks.draggingId);
         }
         this.codeblocks.dragging = false;
     }
     public dragOver(ev: any, id: number): void {
-        if (id !== this.list.selectedId[1]) {
+        if (id !== this.codeblocks.list.selectedId[1]) {
             if (id > 0) {
                 ev.preventDefault();
-                this.list.select(id);
+                this.codeblocks.list.select(id);
             }
         }
     }

@@ -1,28 +1,35 @@
 @import url("../variables");
 
 .pop-up {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+}
+
+.help-mode, .setting-mode {
     position: absolute;
-    width: ~"calc(100% - 100px)";
-    height: ~"calc(100% - 100px)";
-    top: 50px;
-    left: 50px;
-    background-color: rgba(0,0,0, 0.1);
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: @white;
     box-shadow: 2px 2px 15px 2px @dark;
-    z-index: 200;
+    cursor: auto;
 
     .title {
         position: absolute;
         top: 0;
         left: 0;
-        width: ~"calc(100% - 50px)";
+        width: 100%;
         height: 50px;
-        padding-left: 50px;
         background-color: @dark;
         color: @white;
         text-transform: uppercase;
     }
     .content {
-        padding: 50px;
+        position: relative;
+        top: 50px;
+        padding: 25px;
         height: ~"calc(100% - 100px)";
         background: @white;
     }
@@ -30,22 +37,57 @@
         color: @white;
         position: relative;
         top: 0;
-    }
-    span:hover {
-        color: #fff;
-    }
-    .block {
-        position: relative;
-        left: -50px;
-        margin: 50px 0;
+        &:hover {
+            color: @blue;
+        }
     }
     .output {
         position: absolute;
         top: 30px;
         left: 350px;
     }
-    h5 {
-        padding: 0 10px;
+    h3 {
+        text-transform: uppercase;
+    }
+    h4 {
         cursor: pointer;
+
+        &:hover {
+            color: @blue;
+        }
+    }
+    h5 {
+        padding: 20px;
+        cursor: pointer;
+        margin: 0;
+
+        &:hover {
+            color: @blue;
+        }
+    }
+}
+
+.setting-mode {
+    right: -300px;
+}
+
+.help-mode {
+    left: 0;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0,0,0, 0.3);
+}
+
+.debug-mode {
+    width: ~"calc(100% - 300px)";
+    .backdrop {
+        background-color: rgba(0,0,0, 0.1);
     }
 }

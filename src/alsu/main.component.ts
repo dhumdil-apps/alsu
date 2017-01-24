@@ -1,10 +1,8 @@
-import { Component }     from '@angular/core';
+import { Component }   from '@angular/core';
 import { CookieService } from 'angular2-cookie/core';
 
 import { CodeBlocks }  from './code-blocks/code-blocks';
 import { Block }       from './code-blocks/block/block';
-import { MainService } from './main.service';
-import {unescape} from "querystring";
 
 @Component({
     selector: 'main',
@@ -16,116 +14,117 @@ export class MainComponent {
 
     public main: any;
 
-    constructor(private mainService: MainService, private _cookieService:CookieService) {
+    constructor(private _cookieService: CookieService) {
         this.main = {
-            "config": {
-                "activated": false,
-                "run": "play_arrow",
-                "help": false,
-                "helpType": ""
-            },
-            "code-blocks": {
-                "input": false,
-                "dragging": false,
-                "draggingId": 0
-            },
-            "output": {
-                "data": []
-            },
-            "list": new CodeBlocks(),
-            "dummy-data": this.getData()
+            'mode': {},
+            'code-blocks': {},
+            'input': {},
+            'output': {}
         };
-        if (this.getCookie('list')) {
-            console.log("cookies in action...", this.getCookie('list'));
-            this.main['list'].blocks = this.getCookie('list')['blocks'];
-            this.main['list'].selectedId = this.getCookie('list')['selectedId'];
-            this.main['list'].uniqueId = this.getCookie('list')['uniqueId'];
+        this.init();
+    }
+
+    // Initialize
+    private init(): void {
+
+        // Mode
+        this.main['mode'] = {
+            'edit-active'   : true,
+            'debug-active'  : false,
+            'help-active'   : false,
+            'setting-active': false,
+            'popup': {
+                'active': false,
+                'type'  : ''
+            }
+        };
+
+        // Code-Blocks
+        this.main['code-blocks'] = {
+            'list': new CodeBlocks(),
+            'output-data': [],
+            'input': false,
+            'dragging': false,
+            'draggingId': 0
+        };
+
+        // Load cookies if there are some...
+        if (this._cookieService.getObject('blocks') && this._cookieService.getObject('unique-id')) {
+            this.main['code-blocks']['list']['blocks'] = this._cookieService.getObject('blocks');
+            this.main['code-blocks']['list']['uniqueId'] = this._cookieService.getObject('unique-id');
+            this.main['code-blocks']['list'].select(1);
         }
     }
 
     /**
-     * Ajax
+     *  MODES
      */
-    private getData(): void {
-        this.mainService
-            .getDummyData()
-            .subscribe(data => this.main['dummy-data'] = data[0]);
+    // Debug
+    public activateDebugMode(): void {
+        this.main['mode']['debug-active'] = true;
+        this.main['mode']['edit-active'] = false;
+        this.openPopup('', '');
+        this.main['code-blocks']['output-data'] = this.main['code-blocks']['list'].compile();
     }
-    public setData(data: any): void {
-        this.main['list'].dummyData(data);
+    // Edit
+    public activateEditMode(): void {
+        this.main['mode']['edit-active'] = true;
+        this.main['mode']['debug-active'] = false;
+        this.main['code-blocks']['list'].select(1);
+    }
+    // Pop-Up
+    public openPopup(mode: string, type: string): void {
+        this.main['mode']['popup'].active = true;
+        this.main['mode']['popup'].type = type;
+        if (mode !== '') {
+            this.main['mode'][mode] = true;
+        }
+    }
+    public closePopup(): void {
+        if (this.main['mode']['setting-active']) {
+            this.main['mode']['setting-active'] = false;
+        } else if (this.main['mode']['help-active']) {
+            this.main['mode']['help-active'] = false;
+            this.main['mode']['popup'].active = false;
+        } else {
+            this.activateEditMode();
+            this.main['mode']['popup'].active = false;
+        }
     }
 
     /**
-     * Cookies
+     * EVENTS
      */
-    public getCookie(key: string){
-        return this._cookieService.getObject(key);
-    }
-    public putCookie(key: string, value: Object){
-        return this._cookieService.putObject(key, value);
-    }
-
-    /**
-     * Compile Event
-     */
-    public compileEvent(): void {
-        this.isActivatedConfig() ? this.deactivateConfig() : this.activateConfig();
-    }
-    private isActivatedConfig(): boolean {
-        return this.main['config'].activated;
-    }
-    private deactivateConfig(): void {
-        this.main['config'].run = "play_arrow";
-        this.main['config'].activated = false;
-        this.main['list'].select(1);
-        console.log(this.getCookie('list'));
-    }
-    private activateConfig(): void {
-        this.main['config'].run = "stop";
-        this.main['config'].activated = true;
-        this.main['output'].data = this.main['list'].compile();
-        this.putCookie('list', this.main['list']);
-    }
-
-    /**
-     * Add Event
-     */
+    // Add
     public addEvent(block: Block): void {
-        this.main['list'].add(block);
+        this.main['code-blocks']['list'].add(block);
     }
-
-    /**
-     * Remove Event
-     */
+    // Remove
     public removeEvent(): void {
-        this.main['list'].remove();
+        this.main['code-blocks']['list'].remove();
     }
-
-    /**
-     * Select Event
-     */
+    // Select
     public selectEvent(block: Block): void {
         if (!block.selected && block.id !== 0) {
             if (block.id === -1) {
-                this.main['list'].select(1);
+                this.main['code-blocks']['list'].select(1);
             } else {
-                this.main['list'].select(block.id);
+                this.main['code-blocks']['list'].select(block.id);
             }
         }
     }
-
-    /**
-     * Help Event
-     */
-    public helpEvent(type: string): void {
-        this.main['config'].helpType = type;
-        this.main['config'].help = true;
+    // Help
+    public helpEvent(): void {
+        this.openPopup('help-active', 'assign');
+    }
+    public settingEvent(): void {
+        this.openPopup('setting-active', 'ajax');
+    }
+    public setDataEvent(data: any): void {
+        this.main['code-blocks']['list'].setData(data);
+        this.closePopup();
+        this.main['mode']['popup'].active = false;
+        this.activateEditMode();
     }
 
-    /**
-     * Pop-up Event
-     */
-    public popUpEvent(): void {
-        this.main['config'].help = false;
-    }
 }

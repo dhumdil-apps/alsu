@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Block } from '../code-blocks/block/block'
-import { Simple } from '../code-blocks/block/types/simple';
+import { PopUpService } from './pop-up.service';
+import { CookieService } from 'angular2-cookie/core';
 
 @Component({
     selector: 'pop-up',
@@ -10,39 +10,60 @@ import { Simple } from '../code-blocks/block/types/simple';
 
 export class PopUpComponent {
 
-    @Input() type: string;
-    @Input() dummyData: string;
+    @Input() mode: any;
+    @Input() blocks: any;
+    @Input() uniqueId: any;
+    @Output() ajax = new EventEmitter();
     @Output() close = new EventEmitter();
-    @Output() load = new EventEmitter();
 
-    public block: Block[];
+    text: boolean = false;
+    data: any;
 
-    constructor() {
-        this.block = [];
+    constructor(private _cookieService: CookieService, private popupService: PopUpService) {}
 
-        // assign
-        this.block.push(new Simple('x = 1', 'assign'));
-        this.block[0].disabled = this.block[0].draggable = false;
-
-        // write
-        this.block.push(new Simple('Hello World!', 'write'));
-        this.block[1].disabled = this.block[1].draggable = false;
+    public showText(): void {
+        this.text = true;
+    }
+    public setType(type: string): void {
+        this.mode['popup'].type = type;
     }
 
+    // Ajax
+    public getDummyData(): void {
+        this.popupService
+            .getData()
+            .subscribe(data => this.data = data[0]);
+
+        // this.ajax.emit(this.data);
+    }
+
+    // Cookies
+    public setCookies(): void {
+        this.showText();
+        this._cookieService.putObject('blocks', this.blocks);
+        this._cookieService.putObject('unique-id', this.uniqueId);
+    }
+
+    // Events
     public emitClose(): void {
         this.close.emit();
     }
-    public emitLoadData(data: any): void {
-        this.load.emit(data);
+    public emitAjax(index: number): void {
+        switch (index) {
+            case 0:
+                this.ajax.emit(this.data['empty']);
+                break;
+
+            case 1:
+                this.ajax.emit(this.data['hello-world']);
+                break;
+
+            case 2:
+                this.ajax.emit(this.data['swap-two-variables-values']);
+                break;
+
+            default: break;
+        }
     }
 
-    public setAssign():void {
-        this.type = 'assign';
-    }
-    public setWrite():void {
-        this.type = 'write';
-    }
-    public setDummyData():void {
-        this.type = 'dummy-data';
-    }
 }

@@ -3,29 +3,25 @@
 // imports
 @import "/alsu/variables";
 
+.w100h100 {
+    width: 100%;
+    height: 100%;
+}
+
 // BASIC
 html {
     .w100h100;
-
     body {
-        border: none;
         margin: 0;
-        padding: 0;
         .w100h100;
-
         app {
             .w100h100;
-
             main {
-                overflow: hidden;
+                position: relative;
                 .w100h100;
             }
         }
     }
-}
-.w100h100 {
-    width: 100%;
-    height: 100%;
 }
 
 // elements
@@ -35,6 +31,9 @@ span {
     width: 24px;
     height: 24px;
     cursor: pointer;
+    color: @dark;
+}
+input {
     color: @dark;
 }
 
@@ -61,96 +60,76 @@ span {
 
 // responsive design
 .none {
-    .body {
-        display: none;
-    }
-    .side-panel {
+    .code-blocks {
         display: none;
     }
 }
 .phone {
-    .body {
-        width: @sm;
-    }
-    left-side {
-        display: none;
+    .code-blocks {
+        width: @md - 50px;
     }
 }
 .tablet {
-    .body {
-        width: @sm - 300px;
-    }
-    .side-panel {
-        width: 300px;
+    .code-blocks {
+        width: @md - 50px;
     }
 }
 .desktop1 {
-    .body {
+    .code-blocks {
         width: @md - 300px;
     }
-    .side-panel {
-        width: 300px;
-    }
+
 }
 .desktop2 {
-    .body {
+    .code-blocks {
         width: @lg - 300px;
-    }
-    .side-panel {
-        width: 300px;
     }
 }
 .all {
-    .body {
-        width: @lg - 300px;
-    }
-    .side-panel {
-        width: 300px;
+    .code-blocks {
+        width: @lg - 600px;
     }
 }
 // the order is important! (desc)
 @media all and (min-width: @xlg) {
-    .main {
+    main {
         .all;
     }
 }
 @media all and (max-width: @xlg) {
-    .main {
+    main {
         .desktop2;
     }
 }
 @media all and (max-width: @lg) {
-    .main {
+    main {
         .desktop1;
     }
 }
 @media all and (max-width: @md) {
-    .main {
+    main {
         .tablet;
     }
 }
 @media all and (max-width: @sm) {
-    .main {
+    main {
         .phone;
     }
 }
 @media all and (max-width: @xsm) {
-    .main {
+    main {
         .none;
     }
 }
+
 // flex-box layout
 .flex {
     flex: 1;
-    -webkit-flex: 1;
 }
 .layout-row {
     display: flex;
-    display: -webkit-flex;
 }
 .layout-column {
     display: flex;
-    display: -webkit-flex;
     flex-direction: column;
-    -webkit-flex-direction: column;
 }

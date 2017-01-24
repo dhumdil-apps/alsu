@@ -1,0 +1,25 @@
+<!-- I/O -->
+<div class="side-panel_active layout-column" *ngIf="active">
+    <div class="side-panel_active__header layout-row" (click)="emitSetting()">
+        <span class="side-panel_active__header__title" style="text-align: right">Output</span>
+        <span class="flex"></span>
+        <span class="side-panel_active__header__help">
+            <i class="material-icons">help_outline</i>
+        </span>
+    </div>
+
+    <alsu-output class="layout-column" [output]="output"></alsu-output>
+</div>
+
+<!-- Navigation -->
+<div class="side-panel_inactive layout-column" *ngIf="!active" (click)="emitEdit()">
+    <span class="side-panel_inactive__title">O</span>
+    <span class="side-panel_inactive__title">U</span>
+    <span class="side-panel_inactive__title">T</span>
+    <span class="side-panel_inactive__title">P</span>
+    <span class="side-panel_inactive__title">U</span>
+    <span class="side-panel_inactive__title">T</span>
+    <span class="side-panel_inactive__button">
+        <i class="material-icons">keyboard_arrow_left</i>
+    </span>
+</div>
