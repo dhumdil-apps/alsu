@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 export class PopUpService {
 
     // URL to web API
-    private url = 'alsu/pop-up/dummy-data.json';
+    private url = 'alsu/json/dummy-data.json';
 
     constructor (private http: Http) {}
 

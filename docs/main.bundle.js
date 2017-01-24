@@ -116,7 +116,7 @@ var PopUpService = (function () {
     function PopUpService(http) {
         this.http = http;
         // URL to web API
-        this.url = 'alsu/pop-up/dummy-data.json';
+        this.url = 'alsu/json/dummy-data.json';
     }
     PopUpService.prototype.getData = function () {
         return this.http.get(this.url)
