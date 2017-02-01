@@ -1,4 +1,4 @@
-# Algoritmy a štruktúry údajov I
+# Simulácia vývojových diagramov
 
 ## <a href="https://m16peter.github.io/alsu/">Demo (v0.1.9)</a>
 
